@@ -38,6 +38,9 @@ function blob_fixup() {
     lib64/libwfdnative.so)
         sed -i "s/android.hidl.base@1.0.so/libhidlbase.so\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00/" "${2}"
         ;;
+    etc/permissions/qti_libpermissions.xml)
+        sed -i -e 's|name=\"android.hidl.manager-V1.0-java|name=\"android.hidl.manager@1.0-java|g' "${2}"
+        ;;
     esac
 }
 
