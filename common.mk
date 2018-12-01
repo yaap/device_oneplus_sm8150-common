@@ -385,6 +385,12 @@ PRODUCT_PACKAGES += \
     libqti_vndfwk_detect \
     libqti_vndfwk_detect.vendor
 
+# RCS
+PRODUCT_PACKAGES += \
+    com.android.ims.rcsmanager \
+    PresencePolling \
+    RcsService
+
 # RIL
 PRODUCT_PACKAGES += \
     android.hardware.radio@1.2 \
