@@ -31,10 +31,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.util.Log;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -42,11 +46,16 @@ import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceManager;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.TwoStatePreference;
+import androidx.viewpager.widget.ViewPager;
 
 import com.android.internal.util.yaap.FileUtils;
 
 public class PanelSettings extends PreferenceFragment implements RadioGroup.OnCheckedChangeListener {
     private RadioGroup mRadioGroup;
+    ViewPager viewPager;
+    LinearLayout sliderDotspanel;
+    private int dotscount;
+    private ImageView[] dots;
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -71,7 +80,46 @@ public class PanelSettings extends PreferenceFragment implements RadioGroup.OnCh
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.panel_modes, container, false);
+	final View rootView = inflater.inflate(R.layout.panel_modes, container, false);
+
+	viewPager = (ViewPager) rootView.findViewById(R.id.viewPager);
+        sliderDotspanel = (LinearLayout) rootView.findViewById(R.id.SliderDots);
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getActivity());
+        viewPager.setAdapter(viewPagerAdapter);
+
+        dotscount = viewPagerAdapter.getCount();
+        dots = new ImageView[dotscount];
+
+        for(int i = 0; i < dotscount; i++){
+            dots[i] = new ImageView(getActivity());
+            dots[i].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.inactive_dot));
+
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            params.setMargins(8, 0, 8, 0);
+            sliderDotspanel.addView(dots[i], params);
+        }
+        dots[0].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.active_dot));
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+                for(int i = 0; i< dotscount; i++){
+                    dots[i].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.inactive_dot));
+                }
+                dots[position].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.active_dot));
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
+	return rootView;
     }
 
     @Override
