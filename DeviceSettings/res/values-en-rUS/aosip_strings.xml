@@ -81,7 +81,7 @@
     <string name="refresh_rate_warning">Using forced 90Hz will impact battery life significantly</string>
     <string name="fps_info_title">FPS overlay</string>
     <string name="fps_info_summary">Show overlay with with current frames per second</string>
-    <string name="panel_mode_info">Disable panel mode requires reboot.</string>
+    <string name="panel_mode_info">Disabling panel mode requires a reboot</string>
     <!-- Notification slider -->
     <string name="notification_slider_category_title">Notification slider</string>
     <string name="notification_slider_selection_dialog_title">Action</string>

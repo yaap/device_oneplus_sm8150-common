@@ -40,61 +40,93 @@ limitations under the License
     <RadioGroup
         android:id="@+id/radio_group"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+        android:paddingEnd="?android:attr/listPreferredItemPaddingEnd" >
 
         <RadioButton
             android:id="@+id/off_mode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minHeight="?android:attr/listPreferredItemHeight"
+            android:minHeight="?android:attr/listPreferredItemHeightSmall"
             android:gravity="center_vertical"
             android:text="@string/off_mode_title"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="@*android:style/TextAppearance.DeviceDefault.Subhead"
+            android:paddingStart="20dp" />
 
         <RadioButton
             android:id="@+id/natural_mode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minHeight="?android:attr/listPreferredItemHeight"
+            android:minHeight="?android:attr/listPreferredItemHeightSmall"
             android:gravity="center_vertical"
             android:text="@string/natural_mode_title"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="@*android:style/TextAppearance.DeviceDefault.Subhead"
+            android:paddingStart="20dp" />
 
         <RadioButton
             android:id="@+id/vivid_mode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minHeight="?android:attr/listPreferredItemHeight"
+            android:minHeight="?android:attr/listPreferredItemHeightSmall"
             android:gravity="center_vertical"
             android:text="@string/vivid_mode_title"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="@*android:style/TextAppearance.DeviceDefault.Subhead"
+            android:paddingStart="20dp" />
 
         <RadioButton
             android:id="@+id/srgb_mode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minHeight="?android:attr/listPreferredItemHeight"
+            android:minHeight="?android:attr/listPreferredItemHeightSmall"
             android:gravity="center_vertical"
             android:text="@string/srgb_mode_title"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="@*android:style/TextAppearance.DeviceDefault.Subhead"
+            android:paddingStart="20dp" />
 
         <RadioButton
             android:id="@+id/dci_mode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minHeight="?android:attr/listPreferredItemHeight"
+            android:minHeight="?android:attr/listPreferredItemHeightSmall"
             android:gravity="center_vertical"
             android:text="@string/dci_mode_title"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="@*android:style/TextAppearance.DeviceDefault.Subhead"
+            android:paddingStart="20dp" />
 
         <RadioButton
             android:id="@+id/wide_color_mode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minHeight="?android:attr/listPreferredItemHeight"
+            android:minHeight="?android:attr/listPreferredItemHeightSmall"
             android:gravity="center_vertical"
             android:text="@string/wide_color_mode_title"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
+            android:textAppearance="@*android:style/TextAppearance.DeviceDefault.Subhead"
+            android:paddingStart="20dp" />
     </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+        android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+        android:minHeight="?android:attr/listPreferredItemHeightSmall"
+        android:paddingTop="20dp" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_info_outline_24dp"
+            android:contentDescription="@null"
+            android:layout_gravity="center_vertical"
+            android:paddingStart="4dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/panel_mode_info"
+            android:paddingStart="24dp"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
 </LinearLayout>
