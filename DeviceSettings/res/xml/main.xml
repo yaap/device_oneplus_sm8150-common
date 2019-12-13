@@ -102,6 +102,9 @@
             android:key="vib_strength"
             android:title="@string/vib_strength_title_head"
             android:summary="@string/vib_strength_summary_head" />
+        <Preference
+            android:icon="@drawable/ic_info_outline_24dp"
+            android:persistent="false"
+            android:summary="@string/vibration_warning" />
     </PreferenceCategory>
-
 </PreferenceScreen>
