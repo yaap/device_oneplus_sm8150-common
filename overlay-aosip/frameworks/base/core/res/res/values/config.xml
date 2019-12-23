@@ -63,4 +63,7 @@
 
     <!-- FOD fingerprint scanner -->
     <bool name="config_needCustomFODView">true</bool>
+
+    <!-- Does the device have a notification/battery LED? -->
+    <bool name="config_deviceHasLED">false</bool>
 </resources>
