@@ -1592,9 +1592,6 @@ vendor/firmware/notif_silent.bin
 vendor/firmware/notif_spirit.bin
 vendor/firmware/notif_surprise.bin
 vendor/firmware/notif_twinkle.bin
-vendor/firmware/notif_Ardour.bin
-vendor/firmware/notif_Chic.bin
-vendor/firmware/ring_McLarn.bin
 vendor/firmware/ring_alacrity.bin
 vendor/firmware/ring_amenity.bin
 vendor/firmware/ring_blues.bin
