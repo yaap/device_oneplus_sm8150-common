@@ -32,7 +32,8 @@
 
     <application
         android:label="@string/device_settings_app_name"
-        android:persistent="true">
+        android:persistent="true"
+        android:theme="@style/CustomOptionsTheme">
 
         <receiver android:name=".BootCompletedReceiver">
             <intent-filter>
@@ -48,7 +49,7 @@
         <activity
             android:name=".DozeSettingsActivity"
             android:label="@string/ambient_display_title"
-            android:theme="@style/Theme.Main">
+            android:theme="@style/CustomOptionsTheme">
         </activity>
 
     </application>
