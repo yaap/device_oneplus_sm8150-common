@@ -19,6 +19,7 @@ package org.lineageos.settings.doze;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.hardware.display.AmbientDisplayConfiguration;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
@@ -42,6 +43,7 @@ public final class Utils {
     protected static final String CATEG_PICKUP_SENSOR = "pickup_sensor";
 
     protected static final String GESTURE_PICK_UP_KEY = "gesture_pick_up";
+    protected static final String GESTURE_RAISE_TO_WAKE_KEY = "gesture_raise_to_wake";
 
     protected static void startService(Context context) {
         if (DEBUG) Log.d(TAG, "Starting service");
@@ -56,7 +58,7 @@ public final class Utils {
     }
 
     protected static void checkDozeService(Context context) {
-        if (isDozeEnabled(context) && !isAlwaysOnEnabled(context) && areGesturesEnabled(context)) {
+        if (isDozeEnabled(context) && !isAlwaysOnEnabled(context) && areGesturesEnabled(context) && sensorsEnabled(context)) {
             startService(context);
         } else {
             stopService(context);
@@ -102,8 +104,22 @@ public final class Utils {
         return isGestureEnabled(context, GESTURE_PICK_UP_KEY);
     }
 
+    protected static void setPickUp(Context context, boolean value) {
+	SharedPreferences.Editor e = PreferenceManager.getDefaultSharedPreferences(context).edit();
+	e.putBoolean(GESTURE_PICK_UP_KEY, value);
+	e.commit();
+    }
+
+    protected static boolean isRaiseToWakeEnabled(Context context) {
+        return isGestureEnabled(context, GESTURE_RAISE_TO_WAKE_KEY);
+    }
+
     public static boolean areGesturesEnabled(Context context) {
         return isPickUpEnabled(context);
+    }
+
+    public static boolean sensorsEnabled(Context context) {
+        return isPickUpEnabled(context) || isRaiseToWakeEnabled(context);
     }
 
     protected static Sensor getSensor(SensorManager sm, String type) {
