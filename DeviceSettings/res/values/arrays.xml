@@ -15,7 +15,7 @@
      limitations under the License.
 -->
 <resources>
-
+    <!-- Alert slider -->
     <string-array name="notification_slider_action_entries" translatable="false">
         <item>@string/notification_slider_mode_total_silence</item>
         <item>@string/notification_slider_mode_silent</item>
@@ -23,7 +23,6 @@
         <item>@string/notification_slider_mode_vibrate</item>
         <item>@string/notification_slider_mode_none</item>
     </string-array>
-
     <string-array name="notification_slider_action_entry_values" translatable="false">
         <item>0</item>
         <item>1</item>
@@ -32,4 +31,33 @@
         <item>4</item>
     </string-array>
 
+    <!-- Screen off Gestures -->
+    <string-array name="touchscreen_gesture_action_entries">
+        <item>@string/touchscreen_gesture_action_do_nothing</item>
+        <item>@string/touchscreen_gesture_action_flashlight</item>
+        <item>@string/touchscreen_gesture_action_camera</item>
+        <item>@string/touchscreen_gesture_action_browser</item>
+        <item>@string/touchscreen_gesture_action_dialer</item>
+        <item>@string/touchscreen_gesture_action_email</item>
+        <item>@string/touchscreen_gesture_action_messages</item>
+        <item>@string/touchscreen_gesture_action_play_pause_music</item>
+        <item>@string/touchscreen_gesture_action_previous_track</item>
+        <item>@string/touchscreen_gesture_action_next_track</item>
+        <item>@string/touchscreen_gesture_action_volume_down</item>
+        <item>@string/touchscreen_gesture_action_volume_up</item>
+    </string-array>
+    <string-array name="touchscreen_gesture_action_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+    </string-array>
 </resources>

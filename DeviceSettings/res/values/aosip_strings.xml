@@ -33,6 +33,44 @@
     <string name="tile_hbm_mode">High brightness modes</string>
     <string name="tile_dc_mode">DC-Dimming</string>
 
+    <!-- Screen off Gestures : Input -->
+    <string name="touchscreen_gesture_settings_title">Touchscreen gestures</string>
+    <string name="touchscreen_gesture_settings_summary">Perform various touchscreen gestures for quick actions</string>
+    <string name="touchscreen_gestures_haptic_feedback_title">Haptic feedback</string>
+    <string name="touchscreen_gestures_haptic_feedback_summary">Vibrate when a touchscreen gesture is detected</string>
+    <string name="touchscreen_gesture_two_finger_down_swipe_title">Swipe down with two fingers</string>
+    <string name="touchscreen_gesture_one_finger_up_swipe_title">Swipe up with one finger</string>
+    <string name="touchscreen_gesture_one_finger_up_swipe_home_title">Swipe up from the home button</string>
+    <string name="touchscreen_gesture_one_finger_down_swipe_title">Swipe down with one finger</string>
+    <string name="touchscreen_gesture_one_finger_left_swipe_title">Swipe left with one finger</string>
+    <string name="touchscreen_gesture_one_finger_right_swipe_title">Swipe right with one finger</string>
+    <string name="touchscreen_gesture_up_arrow_title">Draw a \"Λ\"</string>
+    <string name="touchscreen_gesture_down_arrow_title">Draw a \"V\"</string>
+    <string name="touchscreen_gesture_right_arrow_title">Draw a \"&lt;\"</string>
+    <string name="touchscreen_gesture_left_arrow_title">Draw a \"&gt;\"</string>
+    <string name="touchscreen_gesture_letter_c_title">Draw the letter \"C\"</string>
+    <string name="touchscreen_gesture_letter_e_title">Draw the letter \"e\"</string>
+    <string name="touchscreen_gesture_letter_o_title">Draw the letter \"O\"</string>
+    <string name="touchscreen_gesture_letter_m_title">Draw the letter \"M\"</string>
+    <string name="touchscreen_gesture_letter_s_title">Draw the letter \"S\"</string>
+    <string name="touchscreen_gesture_letter_v_title">Draw the letter \"V\"</string>
+    <string name="touchscreen_gesture_letter_w_title">Draw the letter \"W\"</string>
+    <string name="touchscreen_gesture_letter_z_title">Draw the letter \"Z\"</string>
+    <!-- Screen off Gestures : Actions -->
+    <string name="touchscreen_gesture_action_dialog_title">Gesture action</string>
+    <string name="touchscreen_gesture_action_do_nothing">Do nothing</string>
+    <string name="touchscreen_gesture_action_flashlight">Toggle flashlight</string>
+    <string name="touchscreen_gesture_action_camera">Open the camera</string>
+    <string name="touchscreen_gesture_action_browser">Open the browser</string>
+    <string name="touchscreen_gesture_action_dialer">Open the dialer</string>
+    <string name="touchscreen_gesture_action_email">View your emails</string>
+    <string name="touchscreen_gesture_action_messages">View your messages</string>
+    <string name="touchscreen_gesture_action_play_pause_music">Play/pause music</string>
+    <string name="touchscreen_gesture_action_previous_track">Play the previous music track</string>
+    <string name="touchscreen_gesture_action_next_track">Play the next music track</string>
+    <string name="touchscreen_gesture_action_volume_down">Lower media volume</string>
+    <string name="touchscreen_gesture_action_volume_up">Raise media volume</string>
+
     <!-- Refresh rate -->
     <string name="refresh_title">Screen refresh</string>
     <string name="tile_refresh_rate">Screen refresh rate</string>

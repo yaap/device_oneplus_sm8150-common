@@ -24,6 +24,8 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.CAMERA" />
 
+    <protected-broadcast android:name="com.aosip.device.DeviceSettings.UPDATE_SETTINGS" />
+
     <uses-sdk
         android:minSdkVersion="28"
         android:targetSdkVersion="29" />
@@ -62,6 +64,12 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".TouchscreenGestureSettings"
+            android:label="@string/touchscreen_gesture_settings_title"
+            android:theme="@style/AppTheme">
         </activity>
 
         <receiver android:name="com.aosip.device.DeviceSettings.Startup" >

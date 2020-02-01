@@ -35,6 +35,16 @@
                     android:targetPackage="com.aosip.device.DeviceSettings"
                     android:targetClass="com.aosip.device.DeviceSettings.PanelSettingsActivity" />
         </Preference>
+
+        <Preference
+            android:key="touchscreen_gesture_category"
+            android:title="@string/touchscreen_gesture_settings_title"
+            android:summary="@string/touchscreen_gesture_settings_summary"
+            android:persistent="false" >
+            <intent android:action="android.intent.action.MAIN"
+                    android:targetPackage="com.aosip.device.DeviceSettings"
+                    android:targetClass="com.aosip.device.DeviceSettings.TouchscreenGestureSettings" />
+        </Preference>
     </PreferenceCategory>
 
     <PreferenceCategory
