@@ -63,6 +63,7 @@ public class Constants {
     static final int ACTION_NEXT_TRACK = 9;
     static final int ACTION_VOLUME_DOWN = 10;
     static final int ACTION_VOLUME_UP = 11;
+    static final int ACTION_AMBIENT_DISPLAY = 12;
 
     public static final Map<String, String> sStringKeyPreferenceMap = new HashMap<>();
     public static final Map<Integer, String> sKeyMap = new HashMap<>();
