@@ -74,6 +74,7 @@
     <string name="touchscreen_gesture_action_volume_down">Lower media volume</string>
     <string name="touchscreen_gesture_action_volume_up">Raise media volume</string>
     <string name="touchscreen_gesture_action_ambient_display">Show ambient display</string>
+    <string name="touchscreen_gesture_action_wake_device">Wake device</string>
 
     <!-- Refresh rate -->
     <string name="refresh_title">Screen refresh</string>

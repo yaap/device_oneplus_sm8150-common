@@ -46,6 +46,7 @@
         <item>@string/touchscreen_gesture_action_volume_down</item>
         <item>@string/touchscreen_gesture_action_volume_up</item>
         <item>@string/touchscreen_gesture_action_ambient_display</item>
+        <item>@string/touchscreen_gesture_action_wake_device</item>
     </string-array>
     <string-array name="touchscreen_gesture_action_values">
         <item>0</item>
@@ -61,5 +62,6 @@
         <item>10</item>
         <item>11</item>
         <item>12</item>
+        <item>13</item>
     </string-array>
 </resources>
