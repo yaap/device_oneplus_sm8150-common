@@ -1,0 +1,1 @@
+allow system_server aosp_data_file:file r_file_perms;

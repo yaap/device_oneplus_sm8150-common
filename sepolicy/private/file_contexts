@@ -1,0 +1,2 @@
+# Data files
+/data/misc/aosp/client_package_name                u:object_r:aosp_data_file:s0
