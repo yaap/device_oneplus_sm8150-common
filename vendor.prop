@@ -149,6 +149,9 @@ ro.camera.notify_nfc=1
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
 
+# Perf
+ro.vendor.extension_library=libqti-perfd-client.so
+
 # Qualcomm System Daemon
 persist.vendor.qcomsysd.enabled=1
 
