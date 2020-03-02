@@ -123,7 +123,7 @@ PRODUCT_PACKAGES += \
     android.hardware.audio.service \
     android.hardware.audio@6.0-impl:32 \
     android.hardware.audio.effect@6.0-impl:32 \
-    android.hardware.soundtrigger@2.1-impl:32 \
+    android.hardware.soundtrigger@2.3-impl:32 \
     audio.primary.default \
     audio.primary.msmnile \
     audio.bluetooth.default \
