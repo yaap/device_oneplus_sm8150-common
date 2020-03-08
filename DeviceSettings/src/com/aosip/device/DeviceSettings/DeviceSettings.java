@@ -85,8 +85,8 @@ public class DeviceSettings extends PreferenceFragment
         getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
 
         mVibratorStrength = (VibratorStrengthPreference) findPreference(KEY_VIBSTRENGTH);
-        if (mVibratorStrength != null) {
-            mVibratorStrength.setEnabled(VibratorStrengthPreference.isSupported());
+        if (mVibratorStrength == null || !VibratorStrengthPreference.isSupported()) {
+            getPreferenceScreen().removePreference((Preference) findPreference("vibrator"));
         }
 
         mTopKeyPref = (ListPreference) findPreference(Constants.NOTIF_SLIDER_TOP_KEY);
