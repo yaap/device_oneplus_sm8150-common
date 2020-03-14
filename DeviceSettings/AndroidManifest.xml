@@ -129,7 +129,7 @@
 
         <service
             android:name=".FPSTileService"
-            android:icon="@drawable/ic_launcher"
+            android:icon="@drawable/ic_fps"
             android:label="@string/fps_info_title"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
