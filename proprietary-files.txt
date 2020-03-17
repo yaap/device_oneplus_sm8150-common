@@ -1192,7 +1192,7 @@ vendor/lib64/libQTEEConnector_vendor.so
 vendor/lib64/vendor.qti.hardware.qteeconnector@1.0.so
 
 # Radio
--product/app/QtiTelephonyService/QtiTelephonyService.apk
+-product/app/QtiTelephonyService/QtiTelephonyService.apk|9233f71f7bf7071e2ed53dc5383b06c175ade1bf
 -vendor/app/IWlanService/IWlanService.apk
 product/etc/permissions/embms.xml
 etc/permissions/privapp-permissions-qti.xml
@@ -1203,7 +1203,7 @@ etc/sysconfig/qti_whitelist.xml
 product/framework/embmslibrary.jar
 framework/qcnvitems.jar
 product/framework/qcrilhook.jar
-product/framework/QtiTelephonyServicelibrary.jar
+product/framework/QtiTelephonyServicelibrary.jar|ee040ed40595a0c5871780b1d5be753954ae523d
 -product/priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 vendor/bin/hw/qcrild
 vendor/bin/hw/vendor.oneplus.hardware.param@1.0-service
@@ -1302,12 +1302,12 @@ vendor/radio/qcril_database/upgrade/2_version_add_wps_config.sql
 vendor/radio/qcril_database/upgrade/3_version_update_wps_config.sql
 vendor/radio/qcril_database/upgrade/4_version_update_ecc_table.sql
 
-# Telephony (qti-telephony-common) - from DRG - QKQ1.190828.002
-product/framework/qti-telephony-common.jar|b4d187700f279cdbd40e74b4c3be4504f10d8b29
+# Telephony (qti-telephony-common)
+product/framework/qti-telephony-common.jar|64cfd316d246dd890857dcd1c853e75be4ad5d3e
 
 # Radio - IMS
 -product/app/uceShimService/uceShimService.apk
--product/priv-app/ims/ims.apk|d2dfc27ae702a40e3b6a3021b6739424ad842e7c
+-product/priv-app/ims/ims.apk|f9b27cf9af789e3905d7beb9cd9602d1e58c2a25
 product/etc/permissions/com.qualcomm.qti.imscmservice-V2.0-java.xml
 product/etc/permissions/com.qualcomm.qti.imscmservice-V2.1-java.xml
 product/etc/permissions/com.qualcomm.qti.imscmservice-V2.2-java.xml
