@@ -14,9 +14,9 @@
     <!-- Panel modes -->
     <string name="device_title">Paramètres OnePlus</string>
     <string name="device_summary">Ajuster les réglages spécifiques One Plus</string>
-    <string name="display_title">Afficher</string>
+    <string name="display_title">Affichage</string>
     <string name="srgb_mode_summary"></string>
-    <string name="srgb_mode_title">mode sRGB</string>
+    <string name="srgb_mode_title">Mode sRGB</string>
     <string name="hbm_mode_summary"></string>
     <string name="hbm_mode_title">Mode haute luminosité</string>
     <string name="wide_color_mode_title">Mode de couleur étendu</string>
@@ -81,7 +81,7 @@
     <string name="refresh_rate_warning">Forcer 90Hz peut avoir un impact sur la consommation de batterie</string>
     <string name="fps_info_title">Affichage FPS</string>
     <string name="fps_info_summary">Montrer images  par seconde actuelles</string>
-    <string name="panel_mode_info">Disable panel mode requires reboot.</string>
+    <string name="panel_mode_info">Désactiver la dalle demande un redémarrage</string>
     <!-- Notification slider -->
     <string name="notification_slider_category_title">Curseur des notifications</string>
     <string name="notification_slider_selection_dialog_title">Action</string>
@@ -95,8 +95,8 @@
     <string name="notification_slider_mode_none">Normal</string>
     <string name="buttons_dashboard_summary">Paramètres du curseur des alertes</string>
     <!-- Vibration slider -->
-    <string name="category_vibrator">Vibrator</string>
-    <string name="vib_strength_title_head">Strength</string>
-    <string name="vib_strength_summary_head">Define the strength of the vibrator</string>
-    <string name="vibration_warning">Setting strength too high may cause permanent hardware damage</string>
+    <string name="category_vibrator">Vibreur</string>
+    <string name="vib_strength_title_head">Puissance</string>
+    <string name="vib_strength_summary_head">Définir la puissance du vibreur</string>
+    <string name="vibration_warning">Régler une puissance trop haute peut endommager votre téléphone</string>
 </resources>
