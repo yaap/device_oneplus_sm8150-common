@@ -1307,7 +1307,7 @@ product/framework/qti-telephony-common.jar|64cfd316d246dd890857dcd1c853e75be4ad5
 
 # Radio - IMS
 -product/app/uceShimService/uceShimService.apk
--product/priv-app/ims/ims.apk|f9b27cf9af789e3905d7beb9cd9602d1e58c2a25
+-product/priv-app/ims/ims.apk|43e9bba45fb3eadf3eb657989b4ba6b654a40372
 product/etc/permissions/com.qualcomm.qti.imscmservice-V2.0-java.xml
 product/etc/permissions/com.qualcomm.qti.imscmservice-V2.1-java.xml
 product/etc/permissions/com.qualcomm.qti.imscmservice-V2.2-java.xml
