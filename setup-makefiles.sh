@@ -34,7 +34,7 @@ source "${HELPER}"
 setup_vendor "${DEVICE_COMMON}" "${VENDOR}" "${AOSIP_ROOT}" true
 
 # Copyright headers and guards
-write_headers "guacamole guacamoleb guacamoleg hotdog hotdogb"
+write_headers "guacamole guacamoleb guacamoleg hotdog hotdogb hotdogg"
 
 # The standard common blobs
 write_makefiles "${MY_DIR}/proprietary-files.txt" true
