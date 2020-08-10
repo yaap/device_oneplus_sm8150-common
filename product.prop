@@ -1,0 +1,4 @@
+# Audio
+audio.sys.noisy.broadcast.delay=600
+audio.offload.min.duration.secs=30
+audio.sys.offload.pstimeout.secs=3

@@ -1,5 +1,4 @@
 # Audio
-audio.offload.min.duration.secs=30
 persist.vendor.audio.hac.enable=false
 ro.audio.monitorRotation=true
 
