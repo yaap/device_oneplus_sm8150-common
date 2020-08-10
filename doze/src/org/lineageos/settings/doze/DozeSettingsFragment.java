@@ -137,8 +137,8 @@ public class DozeSettingsFragment extends PreferenceFragment implements OnPrefer
             Utils.enableAlwaysOn(getActivity(), (Boolean) newValue);
         }
 
-	if (Utils.GESTURE_RAISE_TO_WAKE_KEY.equals(preference.getKey())) {
-	    Utils.setPickUp(getActivity(), (Boolean) newValue);
+        if (Utils.GESTURE_RAISE_TO_WAKE_KEY.equals(preference.getKey())) {
+            Utils.setPickUp(findPreference(Utils.GESTURE_PICK_UP_KEY), (Boolean) newValue);
         }
 
         mHandler.post(() -> Utils.checkDozeService(getActivity()));
