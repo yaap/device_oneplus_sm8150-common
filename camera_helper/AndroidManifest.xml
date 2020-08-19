@@ -9,8 +9,8 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <uses-sdk
-        android:minSdkVersion="21"
-        android:targetSdkVersion="21"/>
+        android:minSdkVersion="29"
+        android:targetSdkVersion="29"/>
 
     <application
         android:label="OnePlusCameraHelper"
@@ -23,7 +23,7 @@
             </intent-filter>
         </receiver>
 
-        <service android:name="org.lineageos.camerahelper.FallSensorService"
+        <service android:name="org.lineageos.camerahelper.PopupCameraService"
                  android:permission="OnePlusCameraHelperService">
         </service>
 

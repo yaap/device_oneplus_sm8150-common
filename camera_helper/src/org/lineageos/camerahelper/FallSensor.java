@@ -91,7 +91,7 @@ public class FallSensor implements SensorEventListener {
                         mContext.startActivity(intent);
                     })
                     .create();
-            alertDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+            alertDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ERROR);
             alertDialog.setCanceledOnTouchOutside(false);
             alertDialog.show();
         });
