@@ -24,22 +24,29 @@ import android.content.IntentFilter;
 import android.os.IBinder;
 import android.util.Log;
 
-public class FallSensorService extends Service {
-    private static final String TAG = "FallSensorService";
+public class PopupCameraService extends Service {
+    private static final String TAG = "PopupCameraService";
     private static final boolean DEBUG = true;
+
+    private static final String closeCameraState = "0";
+    private static final String openCameraState = "1";
 
     private FallSensor mFallSensor;
 
-    private BroadcastReceiver mScreenStateReceiver = new BroadcastReceiver() {
+    private boolean mMotorDown;
+
+    private BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
-            if (action.equals(Intent.ACTION_SCREEN_ON)) {
-                if (DEBUG) Log.d(TAG, "Screen on, enabling fall sensor");
-                mFallSensor.enable();
-            } else if (action.equals(Intent.ACTION_SCREEN_OFF)) {
+            if (action.equals(Intent.ACTION_SCREEN_OFF)) {
                 if (DEBUG) Log.d(TAG, "Screen off, disabling fall sensor");
                 mFallSensor.disable();
+            } else if (action.equals(Intent.ACTION_CAMERA_STATUS_CHANGED)) {
+                mMotorDown = CameraMotorController.getMotorPosition().equals(CameraMotorController.POSITION_DOWN);
+                String cameraState = intent.getExtras().getString(Intent.EXTRA_CAMERA_STATE);
+                if (DEBUG) Log.d(TAG, "Intent, ACTION_CAMERA_STATUS_CHANGED=" + cameraState + " motorDown=" + mMotorDown);
+                updateMotor(cameraState);
             }
         }
     };
@@ -51,8 +58,8 @@ public class FallSensorService extends Service {
 
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(Intent.ACTION_SCREEN_OFF);
-        intentFilter.addAction(Intent.ACTION_SCREEN_ON);
-        registerReceiver(mScreenStateReceiver, intentFilter);
+        intentFilter.addAction(Intent.ACTION_CAMERA_STATUS_CHANGED);
+        registerReceiver(mIntentReceiver, intentFilter);
     }
 
     @Override
@@ -66,12 +73,28 @@ public class FallSensorService extends Service {
     public void onDestroy() {
         if (DEBUG) Log.d(TAG, "Destroying service");
         mFallSensor.disable();
-        unregisterReceiver(mScreenStateReceiver);
+        unregisterReceiver(mIntentReceiver);
         super.onDestroy();
     }
 
     @Override
     public IBinder onBind(Intent intent) {
         return null;
+    }
+
+    private void updateMotor(String cameraState) {
+        if (cameraState.equals(openCameraState) && mMotorDown) {
+            // Open the camera
+            CameraMotorController.setMotorDirection(CameraMotorController.DIRECTION_UP);
+            CameraMotorController.setMotorEnabled();
+
+            mFallSensor.enable();
+        } else if (cameraState.equals(closeCameraState) && !mMotorDown) {
+            // Close the camera
+            CameraMotorController.setMotorDirection(CameraMotorController.DIRECTION_DOWN);
+            CameraMotorController.setMotorEnabled();
+
+            mFallSensor.disable();
+        }
     }
 }
