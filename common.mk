@@ -516,6 +516,7 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.wifi.hostapd@1.1.vendor \
     vendor.qti.hardware.wifi.supplicant@2.0.vendor \
     vendor.qti.hardware.wifi.supplicant@2.1.vendor \
+    TetheringConfigOverlay \
     wifi-mac-generator \
     WifiOverlay \
     wpa_cli \
