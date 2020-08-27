@@ -16,6 +16,7 @@
 
 package org.lineageos.camerahelper;
 
+import android.app.AlertDialog;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -23,6 +24,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
 import android.util.Log;
+import android.view.WindowManager;
 
 public class PopupCameraService extends Service {
     private static final String TAG = "PopupCameraService";
@@ -31,9 +33,11 @@ public class PopupCameraService extends Service {
     private static final String closeCameraState = "0";
     private static final String openCameraState = "1";
 
+    private AlertDialog mAlertDialog;
     private FallSensor mFallSensor;
 
     private boolean mMotorDown;
+    private boolean mScreenOn = true;
 
     private BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
         @Override
@@ -42,6 +46,9 @@ public class PopupCameraService extends Service {
             if (action.equals(Intent.ACTION_SCREEN_OFF)) {
                 if (DEBUG) Log.d(TAG, "Screen off, disabling fall sensor");
                 mFallSensor.disable();
+                mScreenOn = false;
+            } else if (action.equals(Intent.ACTION_SCREEN_ON)) {
+                mScreenOn = true;
             } else if (action.equals(Intent.ACTION_CAMERA_STATUS_CHANGED)) {
                 mMotorDown = CameraMotorController.getMotorPosition().equals(CameraMotorController.POSITION_DOWN);
                 String cameraState = intent.getExtras().getString(Intent.EXTRA_CAMERA_STATE);
@@ -58,6 +65,7 @@ public class PopupCameraService extends Service {
 
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(Intent.ACTION_SCREEN_OFF);
+        intentFilter.addAction(Intent.ACTION_SCREEN_ON);
         intentFilter.addAction(Intent.ACTION_CAMERA_STATUS_CHANGED);
         registerReceiver(mIntentReceiver, intentFilter);
     }
@@ -84,12 +92,41 @@ public class PopupCameraService extends Service {
 
     private void updateMotor(String cameraState) {
         if (cameraState.equals(openCameraState) && mMotorDown) {
-            // Open the camera
-            CameraMotorController.setMotorDirection(CameraMotorController.DIRECTION_UP);
-            CameraMotorController.setMotorEnabled();
+            if (!mScreenOn) {
+                if (mAlertDialog == null) {
+                    mAlertDialog = new AlertDialog.Builder(this)
+                            .setMessage(R.string.popup_camera_dialog_message)
+                            .setNegativeButton(R.string.popup_camera_dialog_no, (dialog, which) -> {
+                                // Go back to home screen
+                                Intent intent = new Intent(Intent.ACTION_MAIN);
+                                intent.addCategory(Intent.CATEGORY_HOME);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                this.startActivity(intent);
+                            })
+                            .setPositiveButton(R.string.popup_camera_dialog_raise, (dialog, which) -> {
+                                // Open the camera
+                                CameraMotorController.setMotorDirection(CameraMotorController.DIRECTION_UP);
+                                CameraMotorController.setMotorEnabled();
 
-            mFallSensor.enable();
+                                mFallSensor.enable();
+                            })
+                            .create();
+                    mAlertDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ERROR);
+                    mAlertDialog.setCanceledOnTouchOutside(false);
+                }
+                mAlertDialog.show();
+            } else {
+                // Open the camera
+                CameraMotorController.setMotorDirection(CameraMotorController.DIRECTION_UP);
+                CameraMotorController.setMotorEnabled();
+
+                mFallSensor.enable();
+            }
         } else if (cameraState.equals(closeCameraState) && !mMotorDown) {
+            if (mAlertDialog != null && mAlertDialog.isShowing()) {
+                mAlertDialog.dismiss();
+            }
+
             // Close the camera
             CameraMotorController.setMotorDirection(CameraMotorController.DIRECTION_DOWN);
             CameraMotorController.setMotorEnabled();
