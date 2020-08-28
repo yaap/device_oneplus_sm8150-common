@@ -23,6 +23,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.WindowManager;
 
@@ -32,6 +33,9 @@ public class PopupCameraService extends Service {
 
     private static final String closeCameraState = "0";
     private static final String openCameraState = "1";
+    // Should follow KEY_SETTINGS_PREFIX + KEY_ALWAYS_CAMERA_DIALOG
+    // From org.omnirom.device.DeviceSettings:
+    private static final String alwaysOnDialogKey = "device_setting_always_on_camera_dialog";
 
     private AlertDialog mAlertDialog;
     private FallSensor mFallSensor;
@@ -92,7 +96,9 @@ public class PopupCameraService extends Service {
 
     private void updateMotor(String cameraState) {
         if (cameraState.equals(openCameraState) && mMotorDown) {
-            if (!mScreenOn) {
+            boolean alwaysOnDialog = Settings.System.getInt(getContentResolver(),
+                        alwaysOnDialogKey, 0) == 1;
+            if (alwaysOnDialog || !mScreenOn) {
                 if (mAlertDialog == null) {
                     mAlertDialog = new AlertDialog.Builder(this)
                             .setMessage(R.string.popup_camera_dialog_message)

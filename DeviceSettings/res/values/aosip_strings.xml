@@ -103,4 +103,9 @@
     <string name="vib_strength_title_head">Strength</string>
     <string name="vib_strength_summary_head">Define the strength of the vibrator</string>
     <string name="vibration_warning">Setting strength too high may cause permanent hardware damage</string>
+
+    <string name="camera_title">Camera</string>
+    <string name="always_on_camera_dialog_title">Front camera open dialog</string>
+    <string name="always_on_camera_dialog_summary_on">Always ask before openning</string>
+    <string name="always_on_camera_dialog_summary_off">Only ask when the screen is off</string>
 </resources>
