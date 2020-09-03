@@ -22,6 +22,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Configuration;
 import android.os.IBinder;
 import android.provider.Settings;
 import android.util.Log;
@@ -42,6 +43,7 @@ public class PopupCameraService extends Service {
 
     private boolean mMotorDown;
     private boolean mScreenOn = true;
+    private int mDialogThemeResID;
 
     private BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
         @Override
@@ -66,6 +68,7 @@ public class PopupCameraService extends Service {
     public void onCreate() {
         if (DEBUG) Log.d(TAG, "Creating service");
         mFallSensor = new FallSensor(this);
+        mDialogThemeResID = android.R.style.Theme_DeviceDefault_Light_Dialog_Alert;
 
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(Intent.ACTION_SCREEN_OFF);
@@ -99,8 +102,9 @@ public class PopupCameraService extends Service {
             boolean alwaysOnDialog = Settings.System.getInt(getContentResolver(),
                         alwaysOnDialogKey, 0) == 1;
             if (alwaysOnDialog || !mScreenOn) {
+                updateDialogTheme();
                 if (mAlertDialog == null) {
-                    mAlertDialog = new AlertDialog.Builder(this)
+                    mAlertDialog = new AlertDialog.Builder(this, mDialogThemeResID)
                             .setMessage(R.string.popup_camera_dialog_message)
                             .setNegativeButton(R.string.popup_camera_dialog_no, (dialog, which) -> {
                                 // Go back to home screen
@@ -138,6 +142,21 @@ public class PopupCameraService extends Service {
             CameraMotorController.setMotorEnabled();
 
             mFallSensor.disable();
+        }
+    }
+
+    private void updateDialogTheme() {
+        int nightModeFlags = getResources().getConfiguration().uiMode
+                & Configuration.UI_MODE_NIGHT_MASK;
+        int themeResId;
+        if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES)
+            themeResId = android.R.style.Theme_DeviceDefault_Dialog_Alert;
+        else
+            themeResId = android.R.style.Theme_DeviceDefault_Light_Dialog_Alert;
+        if (mDialogThemeResID != themeResId) {
+            mDialogThemeResID = themeResId;
+            // if the theme changed force re-creating the dialog
+            mAlertDialog = null;
         }
     }
 }
