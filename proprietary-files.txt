@@ -645,7 +645,6 @@ vendor/etc/init/vendor.qti.hardware.perf@2.2-service.rc|459b4c23550a56ac545f78c6
 vendor/etc/lm/AdaptLaunchFeature.xml|bc226e5b64cae1d0bb637eb316626868b97e7c3f
 vendor/etc/lm/AppClassifierFeature.xml|80bcbf8fc50ed706e8549432140323dbb9e8ae4c
 vendor/etc/lm/GameOptimizationFeature.xml|5314e8dfdf363d0fbe4599ba64e3e765878569b9
-vendor/etc/msm_irqbalance.conf|0141a3e34175f62a3ae1f0f44cca94cf7043f2de
 vendor/etc/perf/commonresourceconfigs.xml|c03bd36054bb5d327ad12dc711b58b3f658d261c
 vendor/etc/perf/perfboostsconfig.xml|93e57b38e327bfbc174e925d639745e66949229b
 vendor/etc/perf/perfconfigstore.xml|62f780c6f974a62d18a66d0dcee30efb04903512
