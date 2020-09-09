@@ -180,6 +180,9 @@ PRODUCT_PACKAGES += \
     services-ext
 
 # Common init scripts
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/ueventd.rc:$(TARGET_COPY_OUT_VENDOR)/ueventd.rc
+
 PRODUCT_PACKAGES += \
     coredump.sh \
     ftm_power_config.sh \
