@@ -282,6 +282,9 @@
     -->
     <bool name="config_powerDecoupleInteractiveModeFromDisplay">true</bool>
 
+     <!-- Allow automatic adjusting of the screen brightness while dozing in low power state. -->
+    <bool name="config_allowAutoBrightnessWhileDozing">true</bool>
+
     <!-- Control the behavior when the user long presses the home button.
         0 - Nothing
         1 - Recent apps view in SystemUI
