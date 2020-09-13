@@ -417,6 +417,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.servicetracker@1.0.vendor
 
+# Signapk
+PRODUCT_HOST_PACKAGES += \
+    signapk
+
 # Soong namespaces
 SRC_MEDIA_HAL_DIR := hardware/qcom-caf/sm8150/media
 SRC_DISPLAY_HAL_DIR := hardware/qcom-caf/sm8150/display
