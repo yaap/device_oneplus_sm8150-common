@@ -11,6 +11,26 @@ include $(call all-makefiles-under,$(LOCAL_PATH))
 
 include $(CLEAR_VARS)
 
+IMS_LIBS := libimscamera_jni.so libimsmedia_jni.so
+IMS_SYMLINKS := $(addprefix $(TARGET_OUT_PRODUCT)/priv-app/ims/lib/arm64/,$(notdir $(IMS_LIBS)))
+$(IMS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "IMS lib link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /product/lib64/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(IMS_SYMLINKS)
+
+NXP_LIB := libnxpnfc_nci_jni.so
+NXP_SYMLINKS := $(addprefix $(TARGET_OUT_APPS)/NxpNfcNci/lib/arm64/,$(notdir $(NXP_LIB)))
+$(NXP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "NXP lib link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /system/lib64/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(NXP_SYMLINKS)
+
 # A/B builds require us to create the mount points at compile time.
 # Just creating it for all cases since it does not hurt.
 FIRMWARE_MOUNT_POINT := $(TARGET_OUT_VENDOR)/firmware_mnt
