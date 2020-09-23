@@ -37,4 +37,8 @@
      sensor will be delayed when the device first enters dozing but the device has not entered its
      low powered state yet. -->
     <bool name="doze_long_press_uses_prox">false</bool>
+
+    <!-- Should we vibrate on an icon animation of the shelf. This should only be active if the
+     vibrator is capable of subtle vibrations -->
+    <bool name="config_vibrateOnIconAnimation">true</bool>
 </resources>
