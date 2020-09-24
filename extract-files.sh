@@ -91,3 +91,9 @@ fi
 COMMON_BLOB_ROOT="${AOSIP_ROOT}/vendor/${VENDOR}/${DEVICE_COMMON}/proprietary"
 
 "${MY_DIR}/setup-makefiles.sh"
+
+CAM32="$AOSIP_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary/vendor/lib/hw/camera.qcom.so
+patchelf --replace-needed libhidlbase.so libhidlbase-v29.so "$CAM32"
+
+CAM64="$AOSIP_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary/vendor/lib64/hw/camera.qcom.so
+patchelf --replace-needed libhidlbase.so libhidlbase-v29.so "$CAM64"
