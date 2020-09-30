@@ -29,10 +29,13 @@ import android.os.UserHandle;
 import android.view.MenuItem;
 
 import android.preference.PreferenceActivity;
+import android.provider.Settings;
+
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.PreferenceManager;
+import androidx.preference.SwitchPreference;
 
 import com.android.internal.yaap.hardware.LineageHardwareManager; // Need FWB support
 import com.android.internal.yaap.hardware.TouchscreenGesture; // Need FWB support
@@ -73,10 +76,12 @@ public class TouchscreenGestureSettings extends PreferenceActivity
     public static class MainSettingsFragment extends PreferenceFragment {
 
         private static final String KEY_TOUCHSCREEN_GESTURE = "touchscreen_gesture";
+        private static final String KEY_TOUCHSCREEN_GESTURE_HAPTIC = "touchscreen_gesture_haptic_feedback";
         private static final String TOUCHSCREEN_GESTURE_TITLE = KEY_TOUCHSCREEN_GESTURE + "_%s_title";
 
         private TouchscreenGesture[] mTouchscreenGestures;
         private ActionBar actionBar;
+        private SwitchPreference mGetstureHapticsSwitch;
 
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -95,6 +100,21 @@ public class TouchscreenGestureSettings extends PreferenceActivity
         private void initTouchscreenGestures() {
             final LineageHardwareManager manager = LineageHardwareManager.getInstance(getContext());
             mTouchscreenGestures = manager.getTouchscreenGestures();
+            mGetstureHapticsSwitch = findPreference(KEY_TOUCHSCREEN_GESTURE_HAPTIC);
+            boolean enabled = Settings.System.getInt(getContext().getContentResolver(),
+                    KEY_TOUCHSCREEN_GESTURE_HAPTIC, 1) == 1;
+            mGetstureHapticsSwitch.setChecked(enabled);
+            mGetstureHapticsSwitch.setOnPreferenceChangeListener(
+                    new Preference.OnPreferenceChangeListener() {
+                        @Override
+                        public boolean onPreferenceChange(Preference preference,
+                                Object newValue) {
+                            boolean checked = (Boolean) newValue;
+                            Settings.System.putInt(getContext().getContentResolver(),
+                                    KEY_TOUCHSCREEN_GESTURE_HAPTIC, checked ? 1 : 0);
+                            return true;
+                        }
+                    });
             final int[] actions = getDefaultGestureActions(getContext(), mTouchscreenGestures);
             for (final TouchscreenGesture gesture : mTouchscreenGestures) {
                 getPreferenceScreen().addPreference(new TouchscreenGesturePreference(
