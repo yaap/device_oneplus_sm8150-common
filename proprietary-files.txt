@@ -256,6 +256,7 @@ vendor/lib/libvideoutils.so
 vendor/lib/libvidhance.so
 vendor/lib/libvl53l1_daemon.so
 vendor/lib/sensors.hal.tof.so
+vendor/lib/vendor.oneplus.camera.CameraHIDL@1.0.so|1fd56a9350bf11f009daab8d5281c269ec0aaf91
 vendor/lib/vendor.oneplus.camera.CameraMDMHIDL@1.0.so
 vendor/lib64/camera/fdconfigpreview.bin
 vendor/lib64/camera/fdconfigpreviewlite.bin
@@ -366,6 +367,7 @@ vendor/lib64/libtriplecam_video_optical_zoom.so
 vendor/lib64/libvidhance.so
 vendor/lib64/libvl53l1_daemon.so
 vendor/lib64/sensors.hal.tof.so
+vendor/lib64/vendor.oneplus.camera.CameraHIDL@1.0.so|258afc451681fbc4b127d0b83949c3949dabc642
 vendor/lib64/vendor.oneplus.camera.CameraMDMHIDL@1.0.so
 
 # Camera firmware
@@ -563,12 +565,10 @@ framework/tcmclient.jar
 product/lib/com.qualcomm.qti.dpm.api@1.0.so
 product/lib/libdpmctmgr.so
 product/lib/libdpmfdmgr.so
-product/lib/libdpmframework.so
 product/lib/libdpmtcm.so
 product/lib64/com.qualcomm.qti.dpm.api@1.0.so
 product/lib64/libdpmctmgr.so
 product/lib64/libdpmfdmgr.so
-product/lib64/libdpmframework.so
 product/lib64/libdpmtcm.so
 -product/priv-app/dpmserviceapp/dpmserviceapp.apk
 vendor/bin/dpmQmiMgr
@@ -578,13 +578,15 @@ vendor/lib/com.qualcomm.qti.dpm.api@1.0.so
 vendor/lib64/com.qualcomm.qti.dpm.api@1.0.so
 vendor/lib64/libdpmqmihal.so
 
+# DPM from oneplus8 11-RP1A.201005.001-2009051300
+product/lib/libdpmframework.so|168e2ec57d888575512f3d0f9b78eaf08b607158
+product/lib64/libdpmframework.so|67ebd736333ae7158632735e3db06a4f9664f6a6
+
 # DRM
-vendor/bin/hw/android.hardware.drm@1.2-service.widevine
 vendor/bin/hw/vendor.oneplus.hardware.drmkey@1.0-service
 vendor/bin/hw/vendor.oneplus.hardware.hdcpkey@1.0-service
 vendor/bin/qseecomd
 vendor/etc/gpfspath_oem_config.xml
-vendor/etc/init/android.hardware.drm@1.2-service.widevine.rc
 vendor/etc/init/qseecomd.rc
 vendor/etc/init/vendor.oneplus.hardware.drmkey@1.0-service.rc
 vendor/etc/init/vendor.oneplus.hardware.hdcpkey@1.0-service.rc
@@ -630,7 +632,6 @@ vendor/lib64/libspl.so
 vendor/lib64/libssd.so
 vendor/lib64/libStDrvInt.so
 vendor/lib64/libtzdrmgenprov.so
-vendor/lib64/libwvhidl.so
 vendor/lib64/vendor.oneplus.hardware.drmkey@1.0.so
 vendor/lib64/vendor.oneplus.hardware.hdcpkey@1.0.so
 
@@ -653,6 +654,11 @@ vendor/firmware/widevine.b05
 vendor/firmware/widevine.b06
 vendor/firmware/widevine.b07
 vendor/firmware/widevine.mdt
+
+# DRM from sunfish RP1A.200720.010
+vendor/bin/hw/android.hardware.drm@1.3-service.widevine|75103a18355966370895526dc9afb6adff4b755b
+vendor/etc/init/android.hardware.drm@1.3-service.widevine.rc|c35e1a6f9a6faff19064a81e07c4be82ceaf4bb5
+vendor/lib64/libwvhidl.so|68d257f6c4b409f71f80c231789d9951f71308a8
 
 # ESE-Powermanager
 vendor/lib/vendor.qti.esepowermanager@1.0.so
@@ -832,9 +838,11 @@ vendor/lib64/libhbtpclient.so
 vendor/lib64/libhbtpdsp.so
 vendor/lib64/libhbtpfrmwk.so
 
-# HotwordEnrollment
--priv-app/HotwordEnrollmentOKGoogleWCD9340/HotwordEnrollmentOKGoogleWCD9340.apk
--priv-app/HotwordEnrollmentXGoogleWCD9340/HotwordEnrollmentXGoogleWCD9340.apk
+# HotwordEnrollment - from crosshatch R
+etc/permissions/com.android.hotwordenrollment.common.util.xml|d81ab94febd28ec95e6518aa98d2131e49c186fb
+framework/com.android.hotwordenrollment.common.util.jar|714382db8d12aca9f5388dd72060e867e30d88e4
+-priv-app/HotwordEnrollmentOKGoogleWCD9340/HotwordEnrollmentOKGoogleWCD9340.apk|abd5ea62af471a19a51096702a5681088a4c19c3
+-priv-app/HotwordEnrollmentXGoogleWCD9340/HotwordEnrollmentXGoogleWCD9340.apk|c96a20be78b43efdadab79e1316b72c9839b4d27
 
 # IFAA
 vendor/bin/hw/vendor.oneplus.hardware.ifaa@2.0-service
@@ -1030,10 +1038,10 @@ vendor/lib64/vendor.qti.hardware.vpp@1.2.so
 vendor/lib64/vendor.qti.hardware.vpp@1.3.so
 
 # Media - from coral - coral-user-11-RP1A.200720.009-6720564-release-keys
-vendor/lib/libmedia_ecoservice.so
-vendor/lib/libqcodec2.so
-vendor/lib64/libmedia_ecoservice.so
-vendor/lib64/libqcodec2.so
+vendor/lib/libmedia_ecoservice.so|5abf4c780196b5945ca701fd30a8f64ed47f4fdd
+vendor/lib/libqcodec2.so|c163e469736259078b3e7909373f52ea4bc60657
+vendor/lib64/libmedia_ecoservice.so|3ea4a8a5b7bc0b14496d62695f9c67277e150017
+vendor/lib64/libqcodec2.so|992757f9809b798fea033e0bdafe08ad6f7814c3
 
 # Neural-networks
 vendor/bin/hw/android.hardware.neuralnetworks@1.2-service-qti
@@ -1126,6 +1134,10 @@ vendor/bin/pm-proxy
 vendor/bin/pm-service
 vendor/lib/libperipheral_client.so
 vendor/lib64/libperipheral_client.so
+
+# Protobuf-cpp-lite from sunfish RP1A.200720.010
+vendor/lib/libprotobuf-cpp-lite-3.9.1.so|e9c5b0cbf6d122994933b444b40eebfea79f8831
+vendor/lib64/libprotobuf-cpp-lite-3.9.1.so|1c11443407566308d993c7b34cfd82370287074d
 
 # Qualcomm Display Utils
 vendor/bin/hw/vendor.qti.hardware.qdutils_disp@1.0-service-qti
