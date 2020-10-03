@@ -23,7 +23,7 @@ if [[ ! -d "${MY_DIR}" ]]; then MY_DIR="${PWD}"; fi
 
 YAAP_ROOT="${MY_DIR}"/../../..
 
-HELPER="${YAAP_ROOT}/vendor/YAAP/build/tools/extract_utils.sh"
+HELPER="${YAAP_ROOT}/vendor/yaap/build/tools/extract_utils.sh"
 if [ ! -f "${HELPER}" ]; then
     echo "Unable to find helper script at ${HELPER}"
     exit 1
