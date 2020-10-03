@@ -27,11 +27,19 @@
     <!-- Boolean indicating whether 802.11r Fast BSS Transition is enabled on this platform -->
     <bool translatable="false" name="config_wifi_fast_bss_transition_enabled">true</bool>
 
-    <!-- Boolean indicating whether the wifi chipset supports background scanning mechanism.
-         This mechanism allows the host to remain in suspend state and the dongle to actively
-         scan and wake the host when a configured SSID is detected by the dongle. This chipset
-         capability can provide power savings when wifi needs to be always kept on. -->
+    <!-- Boolean indicating whether the wifi chipset has background scan support -->
     <bool translatable="false" name="config_wifi_background_scan_support">true</bool>
+
+    <!-- Integer thresholds, do not connect to APs with RSSI lower than these values  -->
+    <integer translatable="false" name="config_wifi_framework_wifi_score_entry_rssi_threshold_5GHz">-77</integer>
+    <integer translatable="false" name="config_wifi_framework_wifi_score_entry_rssi_threshold_24GHz">-80</integer>
+    <!-- Integer thresholds for low network score, should be somewhat less than the entry thresholds -->
+    <integer translatable="false" name="config_wifi_framework_wifi_score_bad_rssi_threshold_5GHz">-80</integer>
+    <integer translatable="false" name="config_wifi_framework_wifi_score_bad_rssi_threshold_24GHz">-83</integer>
+
+    <!-- Boolean indicating whether or not to revert to default country code when cellular
+    radio is unable to find any MCC information to infer wifi country code from -->
+    <bool translatable="false" name="config_wifi_revert_country_code_on_cellular_loss">false</bool>
 
     <!-- Boolean indicating whether or not wifi should turn off when emergency call is made -->
     <bool translatable="false" name="config_wifi_turn_off_during_emergency_call">true</bool>
@@ -60,6 +68,9 @@
 
     <!-- Indicates that a full bugreport should be triggered when wifi diagnostics detects an error on non-user (i.e debug) builds -->
     <bool translatable="false" name="config_wifi_diagnostics_bugreport_enabled">true</bool>
+
+    <!-- Default access point SSID used for tethering -->
+    <string name="wifi_tether_configure_ssid_default" translatable="false">OnePlus</string>
 
     <!-- Integer indicating maximum hardware supported client number of soft ap -->
     <integer translatable="false" name="config_wifiHardwareSoftapMaxClientCount">32</integer>
