@@ -49,5 +49,14 @@ void property_override(char const prop[], char const value[]) {
     __system_property_add(prop, strlen(prop), value, strlen(value));
 }
 
+void property_override_multi(char const system_prop[], char const vendor_prop[],char const bootimage_prop[], char const value[]) {
+    property_override(system_prop, value);
+    property_override(vendor_prop, value);
+    property_override(bootimage_prop, value);
+}
+
 void vendor_load_properties() {
+  // fingerprint
+  property_override("ro.build.description", "coral-user 11 RP1A.201005.004 6782484 release-keys");
+  property_override_multi("ro.build.fingerprint", "ro.vendor.build.fingerprint","ro.bootimage.build.fingerprint", "google/coral/coral:11/RP1A.201005.004/6782484:user/release-keys");
 }
