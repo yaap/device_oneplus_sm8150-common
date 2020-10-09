@@ -88,7 +88,7 @@ ro.nfc.port=I2C
 ro.vendor.qti.sys.fw.bg_apps_limit=60
 
 # Priv-app permissions whitelist
-ro.control_privapp_permissions=enforce
+ro.control_privapp_permissions=log
 
 # Radio
 DEVICE_PROVISIONED=1
