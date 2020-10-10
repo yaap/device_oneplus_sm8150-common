@@ -40,7 +40,14 @@ function blob_fixup() {
         ;;
     etc/permissions/qti_libpermissions.xml)
         sed -i -e 's|name=\"android.hidl.manager-V1.0-java|name=\"android.hidl.manager@1.0-java|g' "${2}"
-        ;;
+    ;;
+    vendor/lib/hw/camera.qcom.so | vendor/lib64/hw/camera.qcom.so)
+        patchelf --replace-needed "libhidlbase.so" "libhidlbase-v29.so" "${2}"
+    ;;
+    vendor/lib/vendor.oneplus.camera.CameraHIDL@1.0.so | vendor/lib64/vendor.oneplus.camera.CameraHIDL@1.0.so)
+        patchelf --replace-needed "libhidlbase.so" "libhidlbase-v29.so" "${2}"
+        patchelf --add-needed "android.hidl.memory.block@1.0.so"
+    ;;
     esac
 }
 
@@ -91,9 +98,3 @@ fi
 COMMON_BLOB_ROOT="${YAAP_ROOT}/vendor/${VENDOR}/${DEVICE_COMMON}/proprietary"
 
 "${MY_DIR}/setup-makefiles.sh"
-
-CAM32="$YAAP_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary/vendor/lib/hw/camera.qcom.so
-patchelf --replace-needed libhidlbase.so libhidlbase-v29.so "$CAM32"
-
-CAM64="$YAAP_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary/vendor/lib64/hw/camera.qcom.so
-patchelf --replace-needed libhidlbase.so libhidlbase-v29.so "$CAM64"
