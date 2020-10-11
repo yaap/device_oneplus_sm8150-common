@@ -665,7 +665,6 @@ vendor/lib/libizat_core.so
 vendor/lib/libloc_core.so
 vendor/lib/liblocation_api.so
 vendor/lib64/hw/android.hardware.gnss@2.0-impl-qti.so
-vendor/lib64/hw/vendor.qti.gnss@3.0-impl.so
 vendor/lib64/libgarden.so
 vendor/lib64/libgarden_haltests_e2e.so
 vendor/lib64/libgdtap.so
