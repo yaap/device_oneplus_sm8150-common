@@ -12,7 +12,7 @@ $(call inherit-product-if-exists, vendor/oneplus/sm8150-common/sm8150-common-ven
 #Gapps
 $(call inherit-product-if-exists, vendor/google/gms/config.mk)
 $(call inherit-product-if-exists, vendor/google/pixel/config.mk)
-$(call inherit-product-if-exists, vendor/google/modules/config.mk)
+$(call inherit-product-if-exists, vendor/prebuilts/config/common.mk)
 
 # Additional native libraries
 PRODUCT_COPY_FILES += \
