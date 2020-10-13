@@ -28,7 +28,7 @@ namespace implementation {
 
 const std::map<int32_t, TouchscreenGesture::GestureInfo> TouchscreenGesture::kGestureInfoMap = {
     {0, {251, "Two fingers down swipe", "/proc/touchpanel/double_swipe_enable"}},
-    {1, {252, "Down arrow", "/proc/touchpanel/down_arrow_enable"}},
+    {1, {252, "Up arrow", "/proc/touchpanel/down_arrow_enable"}},
     {2, {253, "Left arrow", "/proc/touchpanel/left_arrow_enable"}},
     {3, {254, "Right arrow", "/proc/touchpanel/right_arrow_enable"}},
     {4, {247, "Letter M", "/proc/touchpanel/letter_m_enable"}},
