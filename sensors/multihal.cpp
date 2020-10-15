@@ -20,6 +20,7 @@
 #define LOG_TAG "sensors_multihal"
 #define LOG_NDEBUG 1
 #include <cutils/atomic.h>
+#include <cutils/properties.h>
 #include <hardware/sensors.h>
 #include <log/log.h>
 
@@ -38,7 +39,9 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
+#include "screenshot.h"
 
 static pthread_mutex_t init_modules_mutex = PTHREAD_MUTEX_INITIALIZER;
 static pthread_mutex_t init_sensors_mutex = PTHREAD_MUTEX_INITIALIZER;
@@ -315,6 +318,7 @@ void sensors_poll_context_t::copy_event_remap_handle(sensors_event_t* dest, sens
     }
 }
 
+void light_sensor_correction(sensors_event_t *ev);
 int sensors_poll_context_t::poll(sensors_event_t *data, int maxReads) {
     ALOGV("poll");
     int empties = 0;
@@ -332,6 +336,11 @@ int sensors_poll_context_t::poll(sensors_event_t *data, int maxReads) {
             } else {
                 empties = 0;
                 this->copy_event_remap_handle(&data[eventsRead], event, nextReadIndex);
+                ALOGV("event type %d", data[eventsRead].type);
+                if (data[eventsRead].type == SENSOR_TYPE_QTI_HARDWARE_LIGHT) {
+                    ALOGV("Correcting value based on screen for SENSOR_TYPE_QTI_HARDWARE_LIGHT");
+                    light_sensor_correction(&data[eventsRead]);
+                }
                 if (data[eventsRead].sensor == -1) {
                     // Bad handle, do not pass corrupted event upstream !
                     ALOGW("Dropping bad local handle event packet on the floor");
@@ -535,16 +544,65 @@ static void lazy_init_modules() {
     pthread_mutex_unlock(&init_modules_mutex);
 }
 
+template <typename T>
+static T get(const std::string& path, const T& def) {
+    std::ifstream file(path);
+    T result;
+
+    file >> result;
+    return file.fail() ? def : result;
+}
+
+int red_max_lux, green_max_lux, blue_max_lux, white_max_lux, max_brightness;
+int als_bias;
+
 /*
  * Fix the fields of the sensor
  * Replace vendor sensor types with standard ones
- * TODO: The Light sensor needs some calculation to cancel the effect of the screen.
  */
 static void fix_sensor_fields(sensor_t& sensor) {
-    if (sensor.type == 33171030) { // TYPE_QTI_HARDWARE_LIGHT
+    if (sensor.type == SENSOR_TYPE_QTI_HARDWARE_LIGHT) {
         sensor.type = SENSOR_TYPE_LIGHT;
-        ALOGI("Replaced QTI Light sensor with standard light sensor");
+        ALOGV("Replaced QTI Light sensor with standard light sensor");
+        red_max_lux = get("/mnt/vendor/persist/engineermode/red_max_lux", 0);
+        green_max_lux = get("/mnt/vendor/persist/engineermode/green_max_lux", 0);
+        blue_max_lux = get("/mnt/vendor/persist/engineermode/blue_max_lux", 0);
+        white_max_lux = get("/mnt/vendor/persist/engineermode/white_max_lux", 0);
+        als_bias = get("/mnt/vendor/persist/engineermode/als_bias", 0);
+        max_brightness = get("/sys/class/backlight/panel0-backlight/max_brightness", 255);
+        ALOGV("max r = %d, max g = %d, max b = %d", red_max_lux, green_max_lux, blue_max_lux);
     }
+}
+
+void light_sensor_correction(sensors_event_t *ev) {
+    uint8_t *buffer = NULL;
+    update_screen_buffer((void**) &buffer);
+    uint8_t r = buffer[0];
+    uint8_t g = buffer[1];
+    uint8_t b = buffer[2];
+    ALOGV("Screen Color Above Sensor: %d, %d, %d", r, g, b);
+    ALOGV("Original reading: %f", ev->light);
+    int screen_brightness = get("/sys/class/backlight/panel0-backlight/brightness", 0);
+    float correction = 0.0f;
+    if (red_max_lux > 0 && green_max_lux > 0 && blue_max_lux > 0 && white_max_lux > 0) {
+        uint8_t rgb_min = std::min({r, g, b});
+        correction += ((float) rgb_min) / 255.0f * ((float) white_max_lux);
+        r -= rgb_min;
+        g -= rgb_min;
+        b -= rgb_min;
+        correction += ((float) r) / 255.0f * ((float) red_max_lux);
+        correction += ((float) g) / 255.0f * ((float) green_max_lux);
+        correction += ((float) b) / 255.0f * ((float) blue_max_lux);
+        correction = correction * (((float) screen_brightness) / ((float) max_brightness));
+        correction += als_bias;
+    }
+    ALOGV("Final correction: %f", correction);
+    // Sensor is not accurate for low values
+    if (ev->light < correction) {
+        ev->light = correction;
+    }
+
+    free_screen_buffer();
 }
 
 /*
