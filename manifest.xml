@@ -508,16 +508,6 @@
         <fqname>@1.0::IOneplusRpmb/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>vendor.oneplus.hardware.wifi</name>
-        <transport>hwbinder</transport>
-        <version>1.1</version>
-        <interface>
-            <name>IOneplusWifi</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.1::IOneplusWifi/default</fqname>
-    </hal>
-    <hal format="hidl">
         <name>vendor.qti.data.factory</name>
         <transport>hwbinder</transport>
         <version>2.0</version>

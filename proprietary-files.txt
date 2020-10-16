@@ -1342,10 +1342,8 @@ vendor/firmware/aw8697_rtp_silk.bin
 vendor/firmware/awinic_haptic_params.bin
 
 # WiFi
-vendor/bin/hw/vendor.oneplus.hardware.wifi@1.0-service
 vendor/bin/wifilearner
 vendor/etc/configstore/wigig.xml
-vendor/etc/init/vendor.oneplus.hardware.wifi@1.0-service.rc
 vendor/etc/init/vendor.qti.hardware.wifi.wifilearner@1.0-service.rc
 vendor/etc/init/vendor.qti.hardware.wigig.supptunnel@1.0-service.rc
 vendor/etc/wifi/aoa_cldb_falcon.bin
@@ -1358,9 +1356,6 @@ vendor/etc/wifi/wigig_p2p_supplicant.conf
 vendor/etc/wifi/wigig_supplicant.conf
 vendor/lib/libaoa.so
 vendor/lib64/libaoa.so
-vendor/lib64/vendor.oneplus.hardware.wifi@1.0.so
-vendor/lib64/vendor.oneplus.hardware.wifi@1.1.so
-vendor/lib64/vendor.qti.hardware.wifi.keystore@1.0.so
 vendor/lib64/vendor.qti.hardware.wifi.wifilearner@1.0.so
 vendor/lib64/vendor.qti.hardware.wigig.netperftuner@1.0.so
 vendor/lib64/vendor.qti.hardware.wigig.supptunnel@1.0.so
