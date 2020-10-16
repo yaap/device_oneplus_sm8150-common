@@ -78,4 +78,7 @@
 
     <!-- Whether device has dash charging support -->
     <bool name="config_hasDashCharger">true</bool>
+
+    <!-- Type of the pickup sensor used when config_dozePulsePickup is enabled. -->
+    <string name="config_dozePickupSensorType" translatable="false">oneplus.sensor.op_motion_detect</string>
 </resources>
