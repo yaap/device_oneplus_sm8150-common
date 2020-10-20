@@ -903,7 +903,17 @@ vendor/etc/init/android.hardware.neuralnetworks@1.2-service-qti.rc
 vendor/lib64/libhexagon_nn_stub.so
 
 # NFC
+-app/NxpNfcNci/NxpNfcNci.apk|f349310c6b67ad1d7c7a6b58be3ff686481d0e96
+-app/NxpSecureElement/NxpSecureElement.apk
 etc/nfcee_access.xml|7cd3666e903171a91db8a7f87312ca452badaa8c
+etc/permissions/com.nxp.nfc.xml
+framework/com.nxp.nfc.jar
+lib64/libnxpnfc-nci.so
+lib64/libnxpnfc_nci_jni.so
+vendor/bin/hw/android.hardware.nfc@1.2-service
+vendor/bin/hw/android.hardware.secure_element@1.1-service
+vendor/etc/init/android.hardware.nfc@1.2-service.rc
+vendor/etc/init/android.hardware.secure_element@1.1-service.rc
 vendor/etc/libese-nxp.conf
 vendor/etc/libnfc-nci.conf
 vendor/etc/libnfc-nci_changancard.conf
@@ -923,7 +933,18 @@ vendor/etc/libnfc-nxp_suzhoutong.conf
 vendor/etc/libnfc-nxp_wuhantong.conf
 vendor/etc/libnfc-nxp_yangchengtong.conf
 vendor/etc/libnfc-nxp_zhengzhoubus.conf
+vendor/lib/ese_client.so
+vendor/lib/libp61-jcop-kit.so
 vendor/lib/libpn553_fw.so
+vendor/lib64/hal_libnfc.so
+vendor/lib64/nfc_nci_nxp.so
+vendor/lib64/ese_client.so
+vendor/lib64/ese_spi_nxp.so
+vendor/lib64/libp61-jcop-kit.so
+vendor/lib64/ls_client.so
+vendor/lib64/vendor.nxp.nxpese@1.0.so
+vendor/lib64/vendor.nxp.nxpnfc@1.0.so
+vendor/lib64/vendor.nxp.eventprocessor@1.0.so
 
 # Perf
 -vendor/app/pasrservice/pasrservice.apk
