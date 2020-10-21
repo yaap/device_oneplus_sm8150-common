@@ -903,6 +903,7 @@ vendor/etc/init/android.hardware.neuralnetworks@1.2-service-qti.rc
 vendor/lib64/libhexagon_nn_stub.so
 
 # NFC
+etc/nfcee_access.xml|7cd3666e903171a91db8a7f87312ca452badaa8c
 vendor/etc/libese-nxp.conf
 vendor/etc/libnfc-nci.conf
 vendor/etc/libnfc-nci_changancard.conf
