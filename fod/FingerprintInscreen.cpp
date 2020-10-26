@@ -99,36 +99,40 @@ Return<void> FingerprintInscreen::onRelease() {
 }
 
 Return<void> FingerprintInscreen::onShowFODView() {
-    wide = get(NATIVE_DISPLAY_WIDE, 0);
-    p3 = get(NATIVE_DISPLAY_P3, 0);
-    srgb = get(NATIVE_DISPLAY_SRGB, 0);
-    dcDimState = get(DC_DIM_PATH, 0);
+    if (!mFodCircleVisible) {
+        wide = get(NATIVE_DISPLAY_WIDE, 0);
+        p3 = get(NATIVE_DISPLAY_P3, 0);
+        srgb = get(NATIVE_DISPLAY_SRGB, 0);
+        dcDimState = get(DC_DIM_PATH, 0);
+        set(DC_DIM_PATH, 0);
+        set(NATIVE_DISPLAY_P3, 0);
+        set(NATIVE_DISPLAY_SRGB, 0);
+        set(NATIVE_DISPLAY_WIDE, 0);
+        this->mVendorDisplayService->setMode(16, 0);
+        this->mVendorDisplayService->setMode(17, 0);
+        this->mVendorDisplayService->setMode(18, 0);
+        this->mVendorDisplayService->setMode(20, 0);
+        this->mVendorDisplayService->setMode(21, 0);
+        this->mVendorDisplayService->setMode(17, 1);
+    }
     this->mFodCircleVisible = true;
-    set(DC_DIM_PATH, 0);
-    set(NATIVE_DISPLAY_P3, 0);
-    set(NATIVE_DISPLAY_SRGB, 0);
-    set(NATIVE_DISPLAY_WIDE, 0);
-    this->mVendorDisplayService->setMode(16, 0);
-    this->mVendorDisplayService->setMode(17, 0);
-    this->mVendorDisplayService->setMode(18, 0);
-    this->mVendorDisplayService->setMode(20, 0);
-    this->mVendorDisplayService->setMode(21, 0);
-    this->mVendorDisplayService->setMode(17, 1);
     this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 1);
 
     return Void();
 }
 
 Return<void> FingerprintInscreen::onHideFODView() {
-    this->mVendorDisplayService->setMode(16, 0);
-    this->mVendorDisplayService->setMode(17, 0);
-    this->mVendorDisplayService->setMode(18, 0);
-    this->mVendorDisplayService->setMode(20, 0);
-    this->mVendorDisplayService->setMode(21, 0);
-    set(NATIVE_DISPLAY_WIDE, wide);
-    set(NATIVE_DISPLAY_P3, p3);
-    set(NATIVE_DISPLAY_SRGB, srgb);
-    set(DC_DIM_PATH, dcDimState);
+    if (mFodCircleVisible) {
+        this->mVendorDisplayService->setMode(16, 0);
+        this->mVendorDisplayService->setMode(17, 0);
+        this->mVendorDisplayService->setMode(18, 0);
+        this->mVendorDisplayService->setMode(20, 0);
+        this->mVendorDisplayService->setMode(21, 0);
+        set(NATIVE_DISPLAY_WIDE, wide);
+        set(NATIVE_DISPLAY_P3, p3);
+        set(NATIVE_DISPLAY_SRGB, srgb);
+        set(DC_DIM_PATH, dcDimState);
+    }
     this->mFodCircleVisible = false;
     this->mVendorDisplayService->setMode(OP_DISPLAY_AOD_MODE, 0);
     this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 0);
