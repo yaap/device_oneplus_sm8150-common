@@ -18,4 +18,5 @@
     <!-- Device specific doze package -->
     <string name="config_customDozePackage">org.lineageos.settings.doze/org.lineageos.settings.doze.DozeSettingsActivity</string>
     <string name="ambient_display_custom_title">Ambient Display Settings</string>
+    <bool name="config_show_color_mode">false</bool>
 </resources>
