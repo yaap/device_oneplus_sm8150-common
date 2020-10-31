@@ -31,8 +31,8 @@ allow hal_sensors_default surfaceflinger_service:service_manager find;
 # Allow hal_sensors_default to read files in mnt_vendor_file
 r_dir_file(hal_sensors_default, mnt_vendor_file)
 
-# Allow hal_sensors_default to read files in sysfs_graphics
-r_dir_file(hal_sensors_default, sysfs_graphics)
+# Allow hal_sensors_default to read files in vendor_sysfs_graphics
+r_dir_file(hal_sensors_default, vendor_sysfs_graphics)
 
 # Allow hal_sensors_default to read and write to gpu_device
 allow hal_sensors_default gpu_device:chr_file rw_file_perms;
@@ -61,7 +61,7 @@ allow hal_sensors_default sysfs_motor:dir search;
 allow hal_sensors_default sysfs_motor:file rw_file_perms;
 
 # Allow hal_sensors_default to read graphics sysfs nodes
-r_dir_file(hal_sensors_default, sysfs_graphics)
+r_dir_file(hal_sensors_default, vendor_sysfs_graphics)
 
 # Allow hal_sensors_default to get vendor_sensors_prop
 get_prop(hal_sensors_default, vendor_sensors_prop)
