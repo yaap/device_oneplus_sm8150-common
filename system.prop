@@ -14,7 +14,6 @@ ro.surface_flinger.supports_background_blur=1
 ro.surface_flinger.max_frame_buffer_acquired_buffers=3
 
 # Camera
-persist.vendor.camera.oissr.debug=0
 persist.vendor.camera.privapp.list=com.oneplus.camera
 vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.oneplus.factorymode,com.oneplus.camera,com.oneplus.healthcheck
 
