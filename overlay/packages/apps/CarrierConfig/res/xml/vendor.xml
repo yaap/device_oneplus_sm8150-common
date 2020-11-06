@@ -152,10 +152,6 @@
         <int name="carrier_default_wfc_ims_mode_int" value="1" />
         <int name="carrier_default_wfc_ims_roaming_mode_int" value="1" />
     </carrier_config>
-    <carrier_config mcc="206" mnc="01">
-        <boolean name="carrier_volte_available_bool" value="true" />
-        <boolean name="editable_voicemail_number_setting_bool" value="false" />
-    </carrier_config>
     <carrier_config mcc="208" mnc="01" />
     <carrier_config mcc="208" mnc="02" />
     <carrier_config mcc="208" mnc="09" />
@@ -365,6 +361,9 @@
         <string name="carrier_name_string">H3G-UK</string>
     </carrier_config>
     <carrier_config mcc="238" mnc="01">
+        <boolean name="carrier_volte_available_bool" value="true" />
+        <boolean name="carrier_wfc_ims_available_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
         <string-array name="roaming_operator_string_array" num="1">
             <item value="23801" />
         </string-array>
@@ -384,18 +383,16 @@
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
         <boolean name="config_enable_password_callbarring" value="true" />
     </carrier_config>
-    <carrier_config mcc="238" mnc="10" />
+    <carrier_config mcc="238" mnc="10">
+        <boolean name="carrier_volte_available_bool" value="true" />
+        <boolean name="carrier_wfc_ims_available_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+    </carrier_config>
     <carrier_config mcc="240" mnc="02">
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
         <int name="carrier_default_wfc_ims_mode_int" value="1" />
         <boolean name="vendor_hide_wfc_preference_ui" value="true" />
-    </carrier_config>
-    <carrier_config mcc="240" mnc="07">
-        <boolean name="carrier_volte_available_bool" value="true" />
-        <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
-        <int name="carrier_default_wfc_ims_mode_int" value="1" />
     </carrier_config>
     <carrier_config mcc="240" mnc="08">
         <boolean name="carrier_volte_available_bool" value="true" />
@@ -2219,16 +2216,30 @@
         <boolean name="carrier_volte_tty_supported_bool" value="false" />
     </carrier_config>
     <carrier_config mcc="311" mnc="480">
-        <boolean name="support_video_conference_call_bool" value="false"/>
-        <boolean name="carrier_rtt_supported" value="true"/>
-        <boolean name="carrier_rtt_supported_on_vtcalls" value="false"/>
-        <boolean name="carrier_rtt_upgrade_supported" value="false"/>
-        <boolean name="support_downgrade_vt_to_audio_bool" value="true"/>
-        <boolean name="emergency_sms_support_bool" value="true"/>
+        <boolean name="support_video_conference_call_bool" value="false" />
+        <boolean name="carrier_volte_available_bool" value="true" />
+        <boolean name="support_downgrade_vt_to_audio_bool" value="true" />
+        <boolean name="support_emergency_sms_over_ims_bool" value="true" />
+        <boolean name="show_rtt_visibility_setting_bool" value="true" />
+        <boolean name="vendor_ecc_after_radio_on_under_flight_mode" value="true" />
+        <string name="carrier_name_string">Verizon</string>
+        <int name="maxSubjectLength" value="80" />
+        <boolean name="vendor_hide_volte_settng_ui" value="true" />
+        <boolean name="call_barring_visibility_bool" value="false" />
+        <boolean name="vendor_hide_call_forward_ui" value="true" />
+        <boolean name="vendor_hide_additional_settings_ui" value="true" />
+        <boolean name="carrier_use_ims_first_for_emergency_bool" value="true" />
+        <string-array name="read_only_apn_types_string_array" num="0" />
+        <boolean name="allow_adding_apns_bool" value="false" />
+        <string name="gps.lpp_profile">3</string>
+        <int name="volte_replacement_rat_int" value="3" />
+        <string-array name="carrier_metered_apn_types_strings" num="1">
+            <item value="default" />
+        </string-array>
+        <boolean name="carrier_default_data_roaming_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config gid1="BAE1000000000000" gid2="1A00000000000000" mcc="311" mnc="480">
         <string name="carrier_name_string">Visible</string>
-        <boolean name="carrier_name_override_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="312" mnc="530">
         <boolean name="carrier_rtt_auto_upgrade" value="true" />
@@ -3063,13 +3074,11 @@
     <carrier_config mcc="242" mnc="06">
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
         <boolean name="carrier_use_ims_first_for_emergency_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="242" mnc="14">
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
         <boolean name="carrier_use_ims_first_for_emergency_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="244" mnc="91">
@@ -3097,13 +3106,6 @@
         <boolean name="carrier_use_ims_first_for_emergency_bool" value="true" />
         <boolean name="enhanced_4g_lte_on_by_default_bool" value="true" />
         <boolean name="carrier_vt_available_bool" value="true" />
-    </carrier_config>
-    <carrier_config mcc="248" mnc="02">
-        <boolean name="carrier_volte_available_bool" value="true" />
-        <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <int name="carrier_default_wfc_ims_mode_int" value="1" />
-        <int name="carrier_default_wfc_ims_roaming_mode_int" value="1" />
-        <boolean name="editable_wfc_roaming_mode_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="310" mnc="890">
         <boolean name="vendor_ecc_after_radio_on_under_flight_mode" value="true" />
