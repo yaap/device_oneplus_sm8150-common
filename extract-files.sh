@@ -44,6 +44,14 @@ function blob_fixup() {
     vendor/lib/hw/camera.qcom.so | vendor/lib64/hw/camera.qcom.so)
         sed -i "s/libhidltransport.so/qtimutex.so\x00\x00\x00\x00\x00\x00\x00\x00/" "${2}"
         ;;
+
+    product/etc/permissions/vendor.qti.hardware.data.connection-V1.0-java.xml)
+        sed -i -e 's|xml version=\"2.0\"|xml version=\"1.0\"|g' "${2}"
+        ;;
+
+    product/etc/permissions/vendor.qti.hardware.data.connection-V1.1-java.xml)
+        sed -i -e 's|xml version=\"2.0\"|xml version=\"1.0\"|g' "${2}"
+        ;;
     esac
     case "${DEVICE}" in
         hotdogg )
