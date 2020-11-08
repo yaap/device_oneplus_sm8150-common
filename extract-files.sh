@@ -32,10 +32,7 @@ source "${HELPER}"
 
 function blob_fixup() {
     case "${1}" in
-    lib/libwfdnative.so)
-        sed -i "s/android.hidl.base@1.0.so/libhidlbase.so\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00/" "${2}"
-        ;;
-    lib64/libwfdnative.so)
+    lib/libwfdnative.so | lib64/libwfdnative.so)
         sed -i "s/android.hidl.base@1.0.so/libhidlbase.so\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00/" "${2}"
         ;;
     etc/permissions/qti_libpermissions.xml)
@@ -45,11 +42,7 @@ function blob_fixup() {
         sed -i "s/libhidltransport.so/qtimutex.so\x00\x00\x00\x00\x00\x00\x00\x00/" "${2}"
         ;;
 
-    product/etc/permissions/vendor.qti.hardware.data.connection-V1.0-java.xml)
-        sed -i -e 's|xml version=\"2.0\"|xml version=\"1.0\"|g' "${2}"
-        ;;
-
-    product/etc/permissions/vendor.qti.hardware.data.connection-V1.1-java.xml)
+    product/etc/permissions/vendor.qti.hardware.data.connection-V1.0-java.xml | product/etc/permissions/vendor.qti.hardware.data.connection-V1.1-java.xml)
         sed -i -e 's|xml version=\"2.0\"|xml version=\"1.0\"|g' "${2}"
         ;;
     esac
