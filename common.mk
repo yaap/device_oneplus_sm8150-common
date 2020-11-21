@@ -394,6 +394,13 @@ PRODUCT_PACKAGES += \
     libstagefright_softomx \
     libstagefrighthw
 
+# OnePlus
+PRODUCT_PACKAGES += \
+    oneplus-fwk.oneplus_msmnile
+
+PRODUCT_BOOT_JARS += \
+    oneplus-fwk.oneplus_msmnile
+
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power-service-qti
