@@ -385,16 +385,17 @@ vendor/lib64/vendor.qti.data.factory@2.0.so
 vendor/lib64/vendor.qti.hardware.data.dynamicdds@1.0.so
 vendor/lib64/vendor.qti.hardware.data.qmi@1.0.so
 
-# ConfigStore
--product/framework/vendor.qti.hardware.capabilityconfigstore-V1.0-java.jar
-vendor/bin/hw/vendor.qti.hardware.capabilityconfigstore@1.0-service
-vendor/etc/init/vendor.qti.hardware.capabilityconfigstore@1.0-service.rc
-vendor/lib/hw/vendor.qti.hardware.capabilityconfigstore@1.0-impl.so
--vendor/lib/vendor.qti.hardware.capabilityconfigstore@1.0.so
--vendor/lib/libplatformconfig.so
-vendor/lib64/hw/vendor.qti.hardware.capabilityconfigstore@1.0-impl.so
--vendor/lib64/vendor.qti.hardware.capabilityconfigstore@1.0.so
--vendor/lib64/libplatformconfig.so
+# ConfigStore - from LA.UM.9.1.r1-07300-SMxxx0.0
+-system_ext/framework/vendor.qti.hardware.capabilityconfigstore-V1.0-java.jar|3a67c0991cf7878f3f36a3782b2c6205f900832d
+vendor/bin/hw/vendor.qti.hardware.capabilityconfigstore@1.0-service|8a64779e1a5df5153f10871cf23c65c3f7f94ae7
+vendor/etc/init/vendor.qti.hardware.capabilityconfigstore@1.0-service.rc|4ede0250585a44b01d351bbc301d7a13cc3d783d
+vendor/etc/configstore/vpp.configstore.xml|ed961545186c66fd9523f25866c74f2e11ee63d7
+vendor/lib/hw/vendor.qti.hardware.capabilityconfigstore@1.0-impl.so|3e517ec6b4603c6c1f5945b3f131aa69bccb0b08
+-vendor/lib/vendor.qti.hardware.capabilityconfigstore@1.0.so|a4173f7af5a0a4ea09f89cc06ecb9374dec1653d
+-vendor/lib/libplatformconfig.so|bf2a1c8282be231e18068a958ef208caf5b7fff3
+vendor/lib64/hw/vendor.qti.hardware.capabilityconfigstore@1.0-impl.so|eb1a99915765fca7add8de87d7c4ef9bf031e155
+-vendor/lib64/vendor.qti.hardware.capabilityconfigstore@1.0.so|cca6f5f8bb798633d5a425876ed29155be06321f
+-vendor/lib64/libplatformconfig.so|b9b83d47020405a2fe88743036502b8de6a797f9
 
 # CVP
 vendor/bin/hw/vendor.qti.hardware.cvp@1.0-service
@@ -838,7 +839,6 @@ product/lib/vendor.qti.hardware.vpp@1.1.so
 product/lib64/vendor.qti.hardware.vpp@1.1.so
 vendor/bin/hw/vendor.qti.media.c2@1.0-service
 vendor/bin/vppservice
-vendor/etc/configstore/vpp.configstore.xml
 vendor/etc/init/vendor.qti.media.c2@1.0-service.rc
 vendor/etc/init/vppservice.rc
 vendor/etc/system_properties.xml
