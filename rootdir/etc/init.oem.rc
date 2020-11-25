@@ -399,11 +399,6 @@ service deleteXml /system/bin/rm data/system/packages.xml
     oneshot
     seclabel u:r:logserver:s0
 
-service oneplus.engineer-1-0 /vendor/bin/hw/vendor.oneplus.engnative.engineer@1.0-service
-    class main
-    user system
-    group system
-
 service memplus_config /vendor/bin/sh /vendor/etc/vendor.memplus.sh
     user root
     disabled

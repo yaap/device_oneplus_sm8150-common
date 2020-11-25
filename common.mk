@@ -192,7 +192,6 @@ PRODUCT_PACKAGES += \
     init.class_main.sh \
     init.crda.sh \
     init.mdm.sh \
-    init.msm.usb.configfs.rc \
     init.oem.debug.rc \
     init.oem.engineermode.sh \
     init.oem.rc \
