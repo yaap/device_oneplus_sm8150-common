@@ -28,3 +28,6 @@ set_prop(vendor_init, vendor_disable_spu_prop)
 
 # Allow vendor_init to set vendor_tee_listener_prop
 get_prop(vendor_init, vendor_tee_listener_prop)
+
+# Allow vendor_init to check encryption status of system_data_file
+allow vendor_init system_data_file:dir create_dir_perms;
