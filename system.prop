@@ -6,10 +6,6 @@ ro.audio.monitorRotation=true
 bt.max.hfpclient.connections=1
 vendor.bluetooth.soc=cherokee
 
-# Blurrr
-ro.sf.blurs_are_expensive=1
-ro.surface_flinger.supports_background_blur=1
-
 # Force triple frame buffers
 ro.surface_flinger.max_frame_buffer_acquired_buffers=3
 
