@@ -65,3 +65,6 @@ r_dir_file(hal_sensors_default, vendor_sysfs_graphics)
 
 # Allow hal_sensors_default to get vendor_sensors_prop
 get_prop(hal_sensors_default, vendor_sensors_prop)
+
+# Allow hal_sensors_default to write sysfs file
+allow hal_sensors_default sysfs:file { read write };
