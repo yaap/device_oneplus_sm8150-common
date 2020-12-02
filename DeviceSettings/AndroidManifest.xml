@@ -138,6 +138,9 @@
             </intent-filter>
         </service>
 
+        <service android:name="com.yaap.device.DeviceSettings.HBMModeService"
+            android:exported="false" />
+
         <!-- Search indexing -->
         <provider
             android:name=".ConfigPanelSearchIndexablesProvider"
