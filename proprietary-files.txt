@@ -911,7 +911,6 @@ framework/com.nxp.nfc.jar|9299477fdb0c87845d71c135eedd4ca1d3e6097c
 lib64/libnxpnfc-nci.so|ecbd274d2bb19552137b437360049b88395ebba0
 lib64/libnxpnfc_nci_jni.so
 vendor/bin/hw/android.hardware.nfc@1.2-service
-vendor/bin/hw/android.hardware.secure_element@1.1-service
 vendor/etc/init/android.hardware.nfc@1.2-service.rc
 vendor/etc/init/android.hardware.secure_element@1.1-service.rc
 vendor/etc/libese-nxp.conf
