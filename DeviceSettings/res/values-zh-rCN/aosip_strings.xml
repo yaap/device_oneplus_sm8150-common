@@ -99,4 +99,16 @@
     <string name="vib_strength_title_head">强度</string>
     <string name="vib_strength_summary_head">自定义振动强度</string>
     <string name="vibration_warning">设置强度过高可能会导致永久性硬件损伤</string>
+
+    <string name="camera_title">相机</string>
+    <string name="always_on_camera_dialog_title">使用前置摄像头时打开对话框</string>
+    <string name="always_on_camera_dialog_summary_on">打开前置摄像头前一定会询问</string>
+    <string name="always_on_camera_dialog_summary_off">仅在屏幕关闭时询问</string>
+
+    <!-- Slider toasts -->
+    <string name="slider_toast_normal">来电和通知时响铃</string>
+    <string name="slider_toast_vibrate">来电和通知时震动</string>
+    <string name="slider_toast_dnd">免打扰-无打扰</string>
+    <string name="slider_toast_priority">免打扰-仅优先</string>
+    <string name="slider_toast_silent">通话和通知将被静音</string>
 </resources>
