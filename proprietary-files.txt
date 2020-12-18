@@ -988,10 +988,6 @@ vendor/bin/pm-service
 vendor/lib/libperipheral_client.so
 vendor/lib64/libperipheral_client.so
 
-# Protobuf-cpp-lite from sunfish RP1A.200720.010
-vendor/lib/libprotobuf-cpp-lite-3.9.1.so|e9c5b0cbf6d122994933b444b40eebfea79f8831
-vendor/lib64/libprotobuf-cpp-lite-3.9.1.so|1c11443407566308d993c7b34cfd82370287074d
-
 # Qualcomm Display Utils
 vendor/bin/hw/vendor.qti.hardware.qdutils_disp@1.0-service-qti
 vendor/etc/init/vendor.qti.hardware.qdutils_disp@1.0-service-qti.rc
