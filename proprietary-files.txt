@@ -905,6 +905,7 @@ vendor/lib64/libhexagon_nn_stub.so
 # NFC
 -app/NxpNfcNci/NxpNfcNci.apk|f349310c6b67ad1d7c7a6b58be3ff686481d0e96
 -app/NxpSecureElement/NxpSecureElement.apk
+etc/nfc_card_config.conf
 etc/nfcee_access.xml|7cd3666e903171a91db8a7f87312ca452badaa8c
 etc/permissions/com.nxp.nfc.xml
 framework/com.nxp.nfc.jar|9299477fdb0c87845d71c135eedd4ca1d3e6097c
