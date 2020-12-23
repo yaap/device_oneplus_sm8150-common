@@ -150,12 +150,6 @@ USE_DEVICE_SPECIFIC_GPS := true
 # HIDL
 DEVICE_MATRIX_FILE := $(VENDOR_PATH)/compatibility_matrix.xml
 DEVICE_MANIFEST_FILE := $(VENDOR_PATH)/manifest.xml
-ODM_MANIFEST_SKUS += \
-  ese \
-  noese
-
-ODM_MANIFEST_ESE_FILES := $(VENDOR_PATH)/manifest_ese.xml
-ODM_MANIFEST_NOESE_FILES := $(VENDOR_PATH)/manifest_noese.xml
 
 # Keystore
 TARGET_PROVIDES_KEYMASTER := true
