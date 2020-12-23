@@ -43,6 +43,9 @@ persist.vendor.overlay.izat.optin=rro
 ro.location.osnlp.package=com.google.android.gms
 ro.location.osnlp.region.package=
 
+# Graphics
+debug.sf.enable_hwc_vds=1
+
 # HWUI
 ro.hwui.drop_shadow_cache_size=6
 ro.hwui.gradient_cache_size=1
