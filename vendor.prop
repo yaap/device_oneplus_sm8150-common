@@ -56,6 +56,9 @@ ro.crypto.volume.filenames_mode=aes-256-cts
 # Charger
 ro.charger.enable_suspend=true
 
+# Dalvik
+dalvik.vm.dex2oat64.enabled=true
+
 # Display
 ro.vendor.display.ad.hdr_calib_data=/vendor/etc/hdr_config.cfg
 ro.vendor.display.ad.sdr_calib_data=/vendor/etc/sdr_config.cfg
