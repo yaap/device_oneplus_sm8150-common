@@ -170,6 +170,18 @@ case "$soc_id" in
 	;;
 esac
 
+#ifdef VENDOR_EDIT
+#@BSP, 20171114 Enable diag and adb for FTM
+boot_mode=`getprop ro.boot.ftm_mode`
+echo "boot_mode: $boot_mode" > /dev/kmsg
+case "$boot_mode" in
+    "ftm_at" | "ftm_rf" | "ftm_wlan" | "ftm_mos")
+    setprop sys.usb.config diag,adb
+    setprop persist.sys.usb.config diag,adb
+    echo "AFTER boot_mode: diag,adb" > /dev/kmsg
+esac
+#endif
+
 #
 # Initialize UVC conifguration.
 #
