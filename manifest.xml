@@ -20,15 +20,6 @@
         <fqname>@5.0::IEffectsFactory/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>android.hardware.biometrics.fingerprint</name>
-        <transport>hwbinder</transport>
-        <version>2.1</version>
-        <interface>
-            <name>IBiometricsFingerprint</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
         <name>android.hardware.bluetooth</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -407,16 +398,6 @@
             <instance>default</instance>
         </interface>
         <fqname>@1.0::IOnePlusCameraMDM/default</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.oneplus.fingerprint.extension</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IVendorFingerprintExtensions</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.0::IVendorFingerprintExtensions/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.oneplus.hardware.display</name>
@@ -930,15 +911,6 @@
             <instance>default</instance>
         </interface>
         <fqname>@1.0::IPasrManager/default</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.lineage.biometrics.fingerprint.inscreen</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IFingerprintInscreen</name>
-            <instance>default</instance>
-        </interface>
     </hal>
     <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.fingerprint</name>

@@ -1,0 +1,21 @@
+<manifest version="1.0" type="device">
+    <hal format="hidl">
+        <name>vendor.lineage.biometrics.fingerprint.inscreen</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IFingerprintInscreen</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.oneplus.fingerprint.extension</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IVendorFingerprintExtensions</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.0::IVendorFingerprintExtensions/default</fqname>
+    </hal>
+</manifest>
