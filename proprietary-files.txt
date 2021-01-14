@@ -1030,7 +1030,7 @@ vendor/lib64/libQTEEConnector_vendor.so
 vendor/lib64/vendor.qti.hardware.qteeconnector@1.0.so
 
 # Radio
--product/app/QtiTelephonyService/QtiTelephonyService.apk|9233f71f7bf7071e2ed53dc5383b06c175ade1bf
+-product/app/QtiTelephonyService/QtiTelephonyService.apk
 -vendor/app/IWlanService/IWlanService.apk
 product/etc/permissions/embms.xml
 etc/permissions/privapp-permissions-qti.xml
@@ -1038,7 +1038,7 @@ product/etc/permissions/qcrilhook.xml
 product/etc/permissions/telephonyservice.xml
 etc/sysconfig/qti_whitelist.xml
 product/framework/embmslibrary.jar
-product/framework/QtiTelephonyServicelibrary.jar|ee040ed40595a0c5871780b1d5be753954ae523d
+product/framework/QtiTelephonyServicelibrary.jar
 -product/priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 vendor/bin/hw/qcrild
 vendor/bin/hw/vendor.oneplus.hardware.param@1.0-service
@@ -1108,9 +1108,9 @@ vendor/radio/qcril_database/upgrade/4_version_update_ecc_table.sql
 vendor/radio/qcril_database/upgrade/5_version_update_ecc_table.sql
 vendor/radio/qcril_database/upgrade/6_version_update_ecc_table.sql
 
-# Radio - from LA.UM.9.8.r1-02700-SDM710.0
-system_ext/framework/qti-telephony-common.jar|98be39c37e0bcbbbf6180bd25bca3f5c9a472362
--system_ext/priv-app/ims/ims.apk|f19b7830b11e84871930af7a6e90cccd66aa0044
+# Radio - from LA.QSSI.11.0.r1-09400-qssi.0
+system_ext/framework/qti-telephony-common.jar|710406e01836b558c802ba4960fa59f31545389e
+-system_ext/priv-app/ims/ims.apk|cccc15a4fbaff0f412e09e63744fc95c3c339da8
 
 # Radio - IMS
 -product/app/uceShimService/uceShimService.apk
