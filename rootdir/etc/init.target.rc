@@ -172,6 +172,10 @@ on boot
     restorecon /sys/kernel/debug/regmap/0-0042/registers
     restorecon /sys/kernel/debug/regmap/tavil-slim-pgd/registers
 
+    # Reduce default vibrator gain from 0x80 to 0x55,
+    # also allow gain customization via persistent property
+    write /sys/class/leds/vibrator/gain ${persist.vendor.vib.gain:-0x55}
+
 on boot && property:persist.vendor.usb.controller.default=*
     setprop vendor.usb.controller ${persist.vendor.usb.controller.default}
 
