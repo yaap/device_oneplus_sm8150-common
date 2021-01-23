@@ -823,11 +823,9 @@ vendor/lib64/vendor.qti.hardware.mlshal@1.0.so
 
 # Media
 lib/libFileMux.so
-lib/libmmosal.so
 lib/libmmparser_lite.so
 lib/libOmxMux.so
 lib64/libFileMux.so
-lib64/libmmosal.so
 lib64/libmmparser_lite.so
 lib64/libOmxMux.so
 product/lib/vendor.qti.hardware.vpp@1.1.so
@@ -891,6 +889,12 @@ vendor/lib/libmedia_ecoservice.so|5abf4c780196b5945ca701fd30a8f64ed47f4fdd
 vendor/lib/libqcodec2.so|c163e469736259078b3e7909373f52ea4bc60657
 vendor/lib64/libmedia_ecoservice.so|3ea4a8a5b7bc0b14496d62695f9c67277e150017
 vendor/lib64/libqcodec2.so|992757f9809b798fea033e0bdafe08ad6f7814c3
+
+# MM OSAL
+system_ext/lib/libmmosal.so
+system_ext/lib64/libmmosal.so
+vendor/lib/libmmosal.so
+vendor/lib64/libmmosal.so
 
 # Neural-networks
 vendor/bin/hw/android.hardware.neuralnetworks@1.2-service-qti
