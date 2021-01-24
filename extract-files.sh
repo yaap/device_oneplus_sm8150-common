@@ -32,7 +32,7 @@ source "${HELPER}"
 
 function blob_fixup() {
     case "${1}" in
-    lib/libwfdnative.so | lib64/libwfdnative.so)
+    system_ext/lib64/libwfdnative.so | system_ext/lib64/libwfdnative.so)
         sed -i "s/android.hidl.base@1.0.so/libhidlbase.so\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00/" "${2}"
         ;;
     etc/permissions/qti_libpermissions.xml)
