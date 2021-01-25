@@ -1170,6 +1170,7 @@ product/lib64/vendor.qti.ims.callinfo@1.0.so
 product/lib64/vendor.qti.ims.rcsconfig@1.0.so
 product/lib64/vendor.qti.imsrtpservice@2.0.so
 product/lib64/vendor.qti.imsrtpservice@2.1.so
+system_ext/etc/permissions/telephony_system-ext_privapp-permissions-qti.xml
 vendor/bin/ims_rtp_daemon
 vendor/bin/imsdatadaemon
 vendor/bin/imsqmidaemon
