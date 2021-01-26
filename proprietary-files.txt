@@ -736,7 +736,7 @@ vendor/lib64/libhbtpfrmwk.so
 
 # HotwordEnrollment
 system_ext/etc/permissions/com.android.hotwordenrollment.common.util.xml
-system_ext/framework/com.android.hotwordenrollment.common.util.jar
+-system_ext/framework/com.android.hotwordenrollment.common.util.jar
 -product/priv-app/HotwordEnrollmentOKGoogleWCD9340/HotwordEnrollmentOKGoogleWCD9340.apk
 -product/priv-app/HotwordEnrollmentXGoogleWCD9340/HotwordEnrollmentXGoogleWCD9340.apk
 
