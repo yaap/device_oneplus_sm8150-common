@@ -14,3 +14,13 @@ allow hal_param_default param_block_device:blk_file rw_file_perms;
 
 # Allow hal_param_default to read and write to param_device
 allow hal_param_default param_device:chr_file rw_file_perms;
+
+# Allow hal_param_default to write property_socket:sock_file
+allow hal_param_default property_socket:sock_file write;
+
+# Allow hal_param_default connect to init:unix_stream_socket
+allow hal_param_default init:unix_stream_socket connectto;
+
+# Allow hal_param_default to read sysfs_project_info
+allow hal_param_default sysfs_project_info:dir search;
+allow hal_param_default sysfs_project_info:file r_file_perms;

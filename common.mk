@@ -498,6 +498,10 @@ PRODUCT_PACKAGES_DEBUG += \
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service
 
+# Vendor libgui
+PRODUCT_PACKAGES += \
+    libgui_vendor
+
 # Vendor libstdc++
 PRODUCT_PACKAGES += \
     libstdc++.vendor
