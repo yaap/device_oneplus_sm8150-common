@@ -23,6 +23,7 @@
         <item name="preferenceStyle">@style/Theme.Main.PreferenceStyle</item>
         <item name="preferenceTheme">@style/Theme.Main.PreferenceTheme</item>
         <item name="switchPreferenceStyle">@style/Theme.Main.SwitchPreferenceStyle</item>
+        <item name="android:navigationBarColor">?android:colorPrimary</item>
     </style>
 
     <style name="Theme.Main.DialogPreferenceStyle" parent="@style/Theme.Main.PreferenceStyle" />
