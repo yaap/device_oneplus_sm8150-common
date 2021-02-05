@@ -365,8 +365,12 @@ public final class OpFeatures {
     public static final int OP_FEATURE_CAMERA_CPUSET = 352;
     public static final int OP_FEATURE_SUPPORT_MSD_AOD_INFO = 353;
     public static final int OP_FEATURE_HYPNUS = 354;
+    public static final int OP_FEATURE_OPEN_ID_NEW = 355;
+    public static final int OP_FEATURE_HIGH_TEMPERATURE = 356;
+    public static final int OP_FEATURE_NRCA_SUPPORT = 357;
+    public static final int OP_FEATURE_AOD_ALWAYS_ON_IN_LABORATORY = 358;
 
-    private static final BitSet sFeatures = new BitSet(356);
+    private static final BitSet sFeatures = new BitSet(360);
 
     static {
         File file = new File("/odm/etc/odm_feature_list");
