@@ -59,7 +59,9 @@ ro.crypto.volume.filenames_mode=aes-256-cts
 ro.charger.enable_suspend=true
 
 # Dalvik
-pm.dexopt.boot=speed
+pm.dexopt.boot=verify
+pm.dexopt.first-boot=verify
+pm.dexopt.install=speed-profile
 dalvik.vm.image-dex2oat-filter=speed
 dalvik.vm.image-dex2oat-threads=8
 dalvik.vm.dex2oat-filter=speed
