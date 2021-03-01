@@ -380,13 +380,8 @@ vendor/lib64/vendor.qti.hardware.data.dynamicdds@1.0.so
 vendor/lib64/vendor.qti.hardware.data.qmi@1.0.so
 
 # ConfigStore
--system_ext/framework/vendor.qti.hardware.capabilityconfigstore-V1.0-java.jar
-vendor/bin/hw/capabilityconfigstoretest
 vendor/bin/hw/vendor.qti.hardware.capabilityconfigstore@1.0-service
 vendor/etc/init/vendor.qti.hardware.capabilityconfigstore@1.0-service.rc
-vendor/lib/hw/vendor.qti.hardware.capabilityconfigstore@1.0-impl.so
--vendor/lib/vendor.qti.hardware.capabilityconfigstore@1.0.so
--vendor/lib/libplatformconfig.so
 vendor/lib64/hw/vendor.qti.hardware.capabilityconfigstore@1.0-impl.so
 -vendor/lib64/vendor.qti.hardware.capabilityconfigstore@1.0.so
 -vendor/lib64/libplatformconfig.so

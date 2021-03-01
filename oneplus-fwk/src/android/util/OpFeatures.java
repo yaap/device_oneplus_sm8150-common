@@ -369,8 +369,10 @@ public final class OpFeatures {
     public static final int OP_FEATURE_HIGH_TEMPERATURE = 356;
     public static final int OP_FEATURE_NRCA_SUPPORT = 357;
     public static final int OP_FEATURE_AOD_ALWAYS_ON_IN_LABORATORY = 358;
+    public static final int OP_FEATURE_DEFAULT_HIDE_VOLTE_FOR_EU = 359;
+    public static final int OP_FEATURE_USKU = 360;
 
-    private static final BitSet sFeatures = new BitSet(360);
+    private static final BitSet sFeatures = new BitSet(362);
 
     static {
         File file = new File("/odm/etc/odm_feature_list");
