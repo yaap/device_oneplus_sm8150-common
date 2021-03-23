@@ -19,6 +19,7 @@ package org.lineageos.camerahelper;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -75,7 +76,16 @@ public class FallSensor implements SensorEventListener {
 
         // Show alert dialog informing user that we closed the camera
         new Handler(Looper.getMainLooper()).post(() -> {
-            AlertDialog alertDialog = new AlertDialog.Builder(mContext)
+            // Get the correct theme
+            int nightModeFlags = mContext.getResources().getConfiguration().uiMode
+                    & Configuration.UI_MODE_NIGHT_MASK;
+            int themeResId;
+            if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES)
+                themeResId = android.R.style.Theme_DeviceDefault_Dialog_Alert;
+            else
+                themeResId = android.R.style.Theme_DeviceDefault_Light_Dialog_Alert;
+
+            AlertDialog alertDialog = new AlertDialog.Builder(mContext, themeResId)
                     .setTitle(R.string.free_fall_detected_title)
                     .setMessage(R.string.free_fall_detected_message)
                     .setNegativeButton(R.string.raise_the_camera, (dialog, which) -> {
