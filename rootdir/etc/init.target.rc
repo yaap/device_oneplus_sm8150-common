@@ -106,7 +106,7 @@ on post-fs-data
     mkdir /data/vendor/hbtp 0750 system system
     mkdir /data/vendor/nnhal 0700 system system
 
-on early-boot
+on boot
     start vendor.sensors
 
 # For cpusets initialize for Silver Only first and then Silver + Gold
