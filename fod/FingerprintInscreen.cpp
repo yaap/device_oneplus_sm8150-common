@@ -21,7 +21,6 @@
 #include <hidl/HidlTransportSupport.h>
 #include <fstream>
 
-#define FINGERPRINT_ERROR_CANCELED 5
 #define FINGERPRINT_ACQUIRED_VENDOR 6
 #define FINGERPRINT_ERROR_VENDOR 8
 
