@@ -23,9 +23,6 @@ persist.vendor.cne.feature=1
 # CoreSight STM
 persist.debug.coresight.config=stm-events
 
-# DPM
-persist.vendor.dpm.feature=9
-
 # GPS
 persist.vendor.overlay.izat.optin=rro
 
