@@ -3,6 +3,6 @@ java_library {
     installable: true,
 
     srcs: [
-        "src/**/*.java",
+        "src/android/util/OpFeatures.java",
     ],
 }
