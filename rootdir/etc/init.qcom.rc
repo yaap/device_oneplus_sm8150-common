@@ -74,6 +74,8 @@ on early-init
     exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules msm_11ad_proxy
 
 on init
+    # Change permissions for diag lib.
+    chmod 0666 /dev/diag
 
     # Support legacy paths
     symlink /sdcard /mnt/sdcard
