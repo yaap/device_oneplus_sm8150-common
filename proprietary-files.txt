@@ -538,7 +538,6 @@ vendor/firmware/ipa_uc.mdt
 
 # IRQ balance
 vendor/bin/msm_irqbalance
-vendor/etc/msm_irqbalance.conf
 
 # Keymaster
 vendor/bin/hw/android.hardware.keymaster@4.0-service-qti
@@ -692,7 +691,6 @@ vendor/bin/hw/vendor.qti.hardware.perf@2.2-service
 vendor/etc/init/vendor.qti.hardware.perf@2.2-service.rc
 vendor/etc/perf/commonresourceconfigs.xml
 vendor/etc/perf/perfboostsconfig.xml
-vendor/etc/perf/perfconfigstore.xml
 vendor/etc/perf/targetconfig.xml
 vendor/etc/perf/targetresourceconfigs.xml
 vendor/etc/powerhint.xml
