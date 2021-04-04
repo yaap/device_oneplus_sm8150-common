@@ -21,5 +21,8 @@ allow vendor_init tmpfs:dir create_dir_perms;
 # Allow vendor_init to set vendor_disable_spu_prop
 set_prop(vendor_init, vendor_disable_spu_prop)
 
-# Allow vendor_init to set vendor_tee_listener_prop
+# Allow vendor_init to get vendor_tee_listener_prop
 get_prop(vendor_init, vendor_tee_listener_prop)
+
+# Allow vendor_init to set vendor_nfc_prop
+set_prop(vendor_init, vendor_nfc_prop)
