@@ -10,8 +10,8 @@ allow system_app sysfs_aod:file rw_file_perms;
 # Allow system_app to read and write to sysfs_fod
 allow system_app sysfs_fod:file rw_file_perms;
 
-# Allow system_app to read, open and get attributes of sysfs_graphics
-allow system_app sysfs_graphics:file { getattr open read };
+# Allow system_app to read, open and get attributes of vendor_sysfs_graphics
+allow system_app vendor_sysfs_graphics:file { getattr open read };
 
 # Allow system_app to write sysfs_livedisplay_tuneable
 allow system_app sysfs_livedisplay_tuneable:file write;
