@@ -1,0 +1,12 @@
+type ophdr_detect_exec, system_file_type, exec_type, file_type;
+
+typeattribute ophdr_detect system_writes_vendor_properties_violators;
+
+allow ophdr_detect display_service:service_manager find;
+allow ophdr_detect shell_exec:file rx_file_perms;
+allow ophdr_detect system_file:file execute_no_trans;
+binder_call(ophdr_detect, system_server)
+binder_call(system_server, ophdr_detect)
+binder_use(ophdr_detect)
+init_daemon_domain(ophdr_detect)
+type_transition init ophdr_detect_exec:process ophdr_detect;

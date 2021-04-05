@@ -1,2 +1,5 @@
 # Binaries
 /system/bin/als_correction_service    u:object_r:als_correction_service_exec:s0
+
+# OP HDR
+/(system_ext|system/system_ext)/bin/notify_hdr_change.sh                  u:object_r:ophdr_detect_exec:s0

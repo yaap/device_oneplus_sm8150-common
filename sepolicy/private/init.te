@@ -1,0 +1,2 @@
+allow init ophdr_detect_exec:file { execute read open getattr map };
+allow init ophdr_detect:process { siginh rlimitinh };

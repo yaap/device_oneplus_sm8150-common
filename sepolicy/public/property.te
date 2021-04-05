@@ -1,1 +1,2 @@
 type vendor_sensors_als_prop, property_type;
+type op_hdr_prop, property_type;

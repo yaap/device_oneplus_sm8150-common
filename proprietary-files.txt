@@ -246,6 +246,8 @@ vendor/bin/hw/vendor.oneplus.hardware.display@1.0-service
 vendor/etc/init/vendor.oneplus.hardware.display@1.0-service.rc
 
 # Display (HDR)
+system_ext/bin/notify_hdr_change.sh
+system_ext/etc/init/hdr_trigger.rc
 vendor/etc/hdr_config.cfg
 vendor/etc/sdr_config.cfg
 vendor/lib64/libhdr_tm.so
