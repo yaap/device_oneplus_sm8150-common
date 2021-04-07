@@ -28,5 +28,3 @@ type sysfs_fsc, sysfs_type, fs_type;
 type sysfs_project_info, sysfs_type, fs_type;
 type sysfs_tri_state_key, sysfs_type, fs_type;
 type sysfs_vl53l1, sysfs_type, fs_type;
-
-type sysfs_livedisplay_tuneable, fs_type, sysfs_type;
