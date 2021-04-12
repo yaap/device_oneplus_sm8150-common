@@ -1,0 +1,2 @@
+# Allow priv_app to read files in vendor_sysfs_battery_supply
+r_dir_file(priv_app, vendor_sysfs_battery_supply)
