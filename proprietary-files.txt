@@ -510,8 +510,8 @@ vendor/lib64/vendor.qti.ims.rcsconfig@2.1.so
 vendor/lib64/vendor.qti.imsrtpservice@3.0-service-Impl.so
 vendor/lib64/vendor.qti.imsrtpservice@3.0.so
 
-# IMS - from LA.QSSI.11.0.r1-09400-qssi.0
--system_ext/priv-app/ims/ims.apk|cccc15a4fbaff0f412e09e63744fc95c3c339da8
+# IMS - from LA.QSSI.11.0.r1-010400-qssi.0
+-system_ext/priv-app/ims/ims.apk|7c243d450cc215be2b0187d5e3e6cd01059b8cc1
 
 # IO prefetcher
 vendor/bin/hw/vendor.qti.hardware.iop@2.0-service
