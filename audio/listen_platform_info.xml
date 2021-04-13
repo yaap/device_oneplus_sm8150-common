@@ -39,4 +39,3 @@
     <!-- If value is true, it requires write permissions to /data folder to -->
     <!-- dump lab data to file under /data/LHAL foloder. Do "chmod 777 /data/"  -->
 </listen_platform_info>
-

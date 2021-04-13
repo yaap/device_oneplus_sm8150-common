@@ -161,7 +161,6 @@
         <device name="SND_DEVICE_OUT_SPEAKER_AND_ANC_HEADSET" backend="speaker-and-headphones" interface="QUAT_MI2S_RX-and-SLIMBUS_6_RX"/>
         <device name="SND_DEVICE_OUT_SPEAKER_AND_ANC_FB_HEADSET" backend="speaker-and-headphones" interface="QUAT_MI2S_RX-and-SLIMBUS_6_RX"/>
         <!-- #endif -->
-        <device name="SND_DEVICE_OUT_VOICE_HANDSET_TMUS" interface="QUAT_MI2S_RX" />
         <device name="SND_DEVICE_OUT_VOICE_HEADPHONES" backend="headphones" interface="SLIMBUS_6_RX"/>
         <device name="SND_DEVICE_OUT_VOICE_HEADSET" backend="headset" interface="SLIMBUS_6_RX"/>
         <device name="SND_DEVICE_OUT_VOICE_ANC_HEADSET" backend="headphones" interface="SLIMBUS_6_RX"/>
@@ -574,4 +573,3 @@
         </input_snd_device>
     </snd_devices>
 </audio_platform_info>
-
