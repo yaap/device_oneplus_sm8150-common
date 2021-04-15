@@ -65,8 +65,6 @@ public class DeviceSettings extends PreferenceFragment
     public static final String KEY_FPS_INFO = "fps_info";
     public static final String KEY_ALWAYS_CAMERA_DIALOG = "always_on_camera_dialog";
 
-    public static final String KEY_VIBSTRENGTH = "vib_strength";
-
     public static final String KEY_SETTINGS_PREFIX = "device_setting_";
 
     private static final boolean sHasPopupCamera =
@@ -84,18 +82,12 @@ public class DeviceSettings extends PreferenceFragment
     private ListPreference mBottomKeyPref;
     private SwitchPreference mAlwaysCameraSwitch;
     private PreferenceCategory mCameraCategory;
-    private VibratorStrengthPreference mVibratorStrength;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this.getContext());
         addPreferencesFromResource(R.xml.main);
         getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
-
-        mVibratorStrength = (VibratorStrengthPreference) findPreference(KEY_VIBSTRENGTH);
-        if (mVibratorStrength == null || !VibratorStrengthPreference.isSupported()) {
-            getPreferenceScreen().removePreference((Preference) findPreference("vibrator"));
-        }
 
         mTopKeyPref = (ListPreference) findPreference(Constants.NOTIF_SLIDER_TOP_KEY);
         mTopKeyPref.setValueIndex(Constants.getPreferenceInt(getContext(), Constants.NOTIF_SLIDER_TOP_KEY));
