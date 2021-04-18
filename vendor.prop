@@ -154,8 +154,7 @@ ro.hardware.keystore_desede=true
 ro.camera.notify_nfc=1
 
 # PASR
-vendor.pasr.activemode.enabled=true
-vendor.power.pasr.enabled=false
+vendor.power.pasr.enabled=true
 
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
