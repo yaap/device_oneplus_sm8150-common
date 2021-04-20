@@ -1,1 +1,2 @@
 allow untrusted_app virtual_ab_prop:file { getattr map open read };
+get_prop(untrusted_app, vendor_persist_camera_prop)
