@@ -1,0 +1,1 @@
+allow secure_element vendor_nfc_prop:file { read };
