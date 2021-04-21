@@ -470,35 +470,6 @@ fi
 chmod g-w /data/vendor/modem_config
 setprop ro.vendor.ril.mbn_copy_completed 1
 
-
-oemdump=`getprop persist.vendor.oem.dump`
-oemssrdump=`getprop persist.vendor.oem.ssrdump`
-buildtype=`getprop ro.vendor.build.type`
-default_dump=`getprop ro.vendor.default.dump.enable`
-if [ "$oemdump" == "" ] && [ "$oemssrdump" == "" ]; then
-    if [ "$default_dump" == "true" ]; then
-        setprop persist.vendor.oem.dump 1
-        setprop persist.vendor.oem.ssrdump 0
-    else
-        case "$buildtype" in
-            "release" | "userdebug" | "cta")
-               setprop persist.vendor.oem.dump 0
-               setprop persist.vendor.oem.ssrdump 0
-               ;;
-            *)
-               setprop persist.vendor.oem.dump 1
-               setprop persist.vendor.oem.ssrdump 0
-               ;;
-        esac
-    fi
-fi
-
-
-if [ "$oemdump" != "" ] && [ "$oemssrdump" == "" ]; then
-    setprop persist.vendor.oem.ssrdump 0
-fi
-
-
 #check build variant for printk logging
 #current default minimum boot-time-default
 buildvariant=`getprop ro.build.type`

@@ -1,4 +1,2 @@
-type vendor_memplus_prop, property_type;
 type vendor_nfc_prop, property_type;
-type vendor_oem_dump_prop, property_type;
 type vendor_param_prop, property_type;

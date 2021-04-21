@@ -437,12 +437,6 @@ on post-fs-data
     restorecon /mnt/vendor/persist/hdcp
 #endif
 
-# ifdef VENDOR_EDIT
-# denzel.chen@performance, 2020/05/12, add for OPBRITN-3462
-    chmod 664 /sys/module/memplus_core/parameters/memory_plus_wake_memex
-    chown system system /sys/module/memplus_core/parameters/memory_plus_wake_memex
-# endif
-
     # neil.sun@Connectivity, 2020/08/12, add for wifi minidump
     mkdir /data/vendor/ramdump/wifi 0770 system system
 
@@ -678,21 +672,6 @@ on property:gf.debug.dump_path=*
     mkdir /sdcard/Android/data/gf_file 0755 system ext_data_rw
 
 #endif
-
-# ken.lin@ASTI, 2019/6/21, add for memplus
-service memplus_config /vendor/bin/sh /vendor/etc/vendor.memplus.sh
-    user root
-    disabled
-    oneshot
-    seclabel u:r:vendor_qti_init_shell:s0
-
-on property:persist.vendor.memplus.enable=*
-    start memplus_config
-
-on property:persist.sys.memplus.swappiness=*
-    write /proc/sys/vm/swappiness ${persist.sys.memplus.swappiness}
-on property:persist.sys.memplus.direct_swappiness=*
-    write /proc/sys/vm/direct_swappiness ${persist.sys.memplus.direct_swappiness}
 
 #ifdef VENDOR_EDIT
 #brandon.zeng@Conn,2020/05/08. add for nfc pnscr tool
