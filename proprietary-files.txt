@@ -85,7 +85,6 @@ vendor/bin/hw/vendor.oneplus.hardware.CameraMDMHIDL@1.0-service
 vendor/bin/vl53l1_daemon_main
 vendor/etc/init/vendor.oneplus.hardware.camera@1.0-service.rc
 vendor/etc/init/vendor.oneplus.hardware.CameraMDMHIDL@1.0-service.rc
-vendor/lib64/hw/com.qti.chi.override.so
 vendor/lib64/lib_bokehlib.so
 vendor/lib64/lib_oneplus_watermark.so
 vendor/lib64/libarcsoft_beautyshot.so
