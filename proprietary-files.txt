@@ -717,7 +717,7 @@ vendor/lib64/vendor.qti.hardware.perf@2.2.so|9504a8618f79ceba7f4dad838c80f880421
 vendor/etc/powerhint.xml
 
 # Power-off alarm
--product/app/PowerOffAlarm/PowerOffAlarm.apk|4903fdba4ce32c32f3755224dae13a2eee1ce1d0
+-product/app/PowerOffAlarm/PowerOffAlarm.apk|5d5fc4cfcb825379c3115c2fefe773d1a621eee9
 vendor/bin/hw/vendor.qti.hardware.alarm@1.0-service
 vendor/bin/power_off_alarm
 vendor/etc/init/vendor.qti.hardware.alarm@1.0-service.rc
