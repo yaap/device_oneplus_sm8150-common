@@ -16,12 +16,12 @@
     <string name="device_summary">Adjust OnePlus specific device settings</string>
     <string name="display_title">Display</string>
     <string name="srgb_mode_summary"></string>
-    <string name="srgb_mode_title">sRGB mode</string>
+    <string name="srgb_mode_title">sRGB</string>
     <string name="hbm_mode_summary"></string>
     <string name="hbm_mode_title">High brightness mode</string>
-    <string name="wide_color_mode_title">Wide Color mode</string>
+    <string name="wide_color_mode_title">AMOLED Wide Gamut</string>
     <string name="dci_mode_summary"></string>
-    <string name="dci_mode_title">DCI-P3 wide colour gamut mode</string>
+    <string name="dci_mode_title">DCI-P3</string>
     <string name="Night_mode_summary"></string>
     <string name="Night_mode_title">Night mode</string>
     <string name="panel_category_title">Panel modes</string>
@@ -32,6 +32,8 @@
     <string name="dc_mode_title">DC-Dimming</string>
     <string name="tile_hbm_mode">High brightness modes</string>
     <string name="tile_dc_mode">DC-Dimming</string>
+    <string name="natural_mode_title">Natural</string>
+    <string name="vivid_mode_title">Vivid</string>
 
     <!-- Screen off Gestures : Input -->
     <string name="touchscreen_gesture_settings_title">Touchscreen gestures</string>

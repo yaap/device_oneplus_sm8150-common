@@ -52,6 +52,24 @@ limitations under the License
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <RadioButton
+            android:id="@+id/natural_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="?android:attr/listPreferredItemHeight"
+            android:gravity="center_vertical"
+            android:text="@string/natural_mode_title"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <RadioButton
+            android:id="@+id/vivid_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="?android:attr/listPreferredItemHeight"
+            android:gravity="center_vertical"
+            android:text="@string/vivid_mode_title"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <RadioButton
             android:id="@+id/srgb_mode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
