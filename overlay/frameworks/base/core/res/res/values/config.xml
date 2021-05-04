@@ -201,6 +201,10 @@
     <!-- Screen brightness when dozing -->
     <integer name="config_screenBrightnessDoze">27</integer>
 
+    <!-- If we allow automatic adjustment of screen brightness while dozing, how many times we want
+         to reduce it to preserve the battery. Value of 100% means no scaling. -->
+    <fraction name="config_screenAutoBrightnessDozeScaleFactor">80%</fraction>
+
     <!-- ComponentName of a dream to show whenever the system would otherwise have
          gone to sleep.  When the PowerManager is asked to go to sleep, it will instead
          try to start this dream if possible.  The dream should typically call startDozing()
