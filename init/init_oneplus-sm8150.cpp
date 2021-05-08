@@ -50,6 +50,11 @@ void property_override(char const prop[], char const value[]) {
     __system_property_add(prop, strlen(prop), value, strlen(value));
 }
 
+void property_override_dual(char const system_prop[], char const vendor_prop[], char const value[]) {
+    property_override(system_prop, value);
+    property_override(vendor_prop, value);
+}
+
 void property_override_multi(char const system_prop[], char const vendor_prop[],char const bootimage_prop[], char const value[]) {
     property_override(system_prop, value);
     property_override(vendor_prop, value);
@@ -85,6 +90,7 @@ void load_dalvikvm_properties() {
 }
 
 void vendor_load_properties() {
+  int prj_version = stoi(android::base::GetProperty("ro.boot.prj_version", ""));
   int project_name = stoi(android::base::GetProperty("ro.boot.project_name", ""));
   int rf_version = stoi(android::base::GetProperty("ro.boot.rf_version", ""));
   switch(project_name){
@@ -197,6 +203,9 @@ void vendor_load_properties() {
       }
       break;
     }
+
+    property_override("vendor.boot.prj_version", std::to_string(prj_version).c_str());
+    property_override_dual("vendor.rf.version", "vendor.boot.rf_version", std::to_string(rf_version).c_str());
 
   // dalvikvm props
   load_dalvikvm_properties();
