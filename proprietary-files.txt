@@ -32,8 +32,8 @@ vendor/lib/rfsa/adsp/libSuperSensor_skel.so
 vendor/lib/rfsa/adsp/libVC1Dec.so
 vendor/lib/rfsa/adsp/libVC1DecDsp_skel.so
 
-# ANT+
-vendor/lib64/hw/com.dsi.ant@1.0-impl.so
+# ANT+ - from LA.UM.9.1.r1-09200-SMxxx0.0
+vendor/lib64/hw/com.dsi.ant@1.0-impl.so|962a3e712339e27a19217bf73e0497a90387faef
 
 # Audio firmware
 vendor/firmware/tfa98xx.cnt
@@ -315,12 +315,12 @@ vendor/lib64/libStDrvInt.so|14cd89374d9e2aa9808881c528020dba03601d21
 vendor/lib64/libtzdrmgenprov.so|2b9be8f20f00eea59d0efcdf13b4052d0a0a2145
 vendor/lib64/vendor.qti.hardware.qseecom@1.0.so|84e38997eb849e16f076d2071e5b3eceda167d1e
 
-# ESE
-vendor/bin/hw/vendor.qti.esepowermanager@1.1-service
-vendor/etc/init/vendor.qti.esepowermanager@1.1-service.rc
-vendor/lib64/hw/vendor.qti.esepowermanager@1.1-impl.so
-vendor/lib64/vendor.qti.esepowermanager@1.0.so
-vendor/lib64/vendor.qti.esepowermanager@1.1.so
+# ESE - from LA.UM.9.1.r1-09200-SMxxx0.0
+vendor/bin/hw/vendor.qti.esepowermanager@1.1-service|afaf2e7e006e4e9cae2fe8a8cd836e08ad5811fd
+vendor/etc/init/vendor.qti.esepowermanager@1.1-service.rc|3c024c7135ec3dd8658624509ee61396a74f1ede
+vendor/lib64/hw/vendor.qti.esepowermanager@1.1-impl.so|cbaaf7b45bd5de333fe1be4610fdab1f32ea3aee
+vendor/lib64/vendor.qti.esepowermanager@1.0.so|e5999ae72d0c10291db74f57baad30be911f674d
+vendor/lib64/vendor.qti.esepowermanager@1.1.so|0ff38d7dc073177da858bba3709efb1874dad07d
 
 # Gatekeeper - from LA.UM.9.1.r1-09200-SMxxx0.0
 vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti|de1e8d026b16255040dbe6eb67faa73c9b656553
@@ -546,17 +546,17 @@ vendor/etc/system_properties.xml
 vendor/lib/libqcodec2.so
 vendor/lib64/libmmosal.so
 
-# Neural networks
-vendor/bin/hw/android.hardware.neuralnetworks@1.3-service-qti
-vendor/etc/init/android.hardware.neuralnetworks@1.3-service-qti.rc
--vendor/etc/vintf/manifest/android.hardware.neuralnetworks@1.3-service-qti-hta.xml
--vendor/etc/vintf/manifest/android.hardware.neuralnetworks@1.3-service-qti.xml
-vendor/lib64/libhexagon_nn_stub.so
-vendor/lib64/libhta_hexagon_runtime.so
-vendor/lib64/unnhal-acc-adreno.so
-vendor/lib64/unnhal-acc-common.so
-vendor/lib64/unnhal-acc-hta.so
-vendor/lib64/unnhal-acc-hvx.so
+# Neural networks - from LA.UM.9.1.r1-09200-SMxxx0.0
+vendor/bin/hw/android.hardware.neuralnetworks@1.3-service-qti|9c28c743381b21ef2ff04e87928fdddbad3e998d
+vendor/etc/init/android.hardware.neuralnetworks@1.3-service-qti.rc|4b7f2c5f914f3eef38f19936c0a06efc09b5b28c
+-vendor/etc/vintf/manifest/android.hardware.neuralnetworks@1.3-service-qti-hta.xml|57e182a296097870a4c4ed1579c67da20c2b69de
+-vendor/etc/vintf/manifest/android.hardware.neuralnetworks@1.3-service-qti.xml|ac07e83ba7c2a87a2f216f04ec84df4539ea8507
+vendor/lib64/libhexagon_nn_stub.so|6173fdbc220aaee6fb241c6af4fe11edae7eb9c8
+vendor/lib64/libhta_hexagon_runtime.so|55ee2928fae3662b83c405875c1907525a29a1b0
+vendor/lib64/unnhal-acc-adreno.so|fc4a4beb8343e814d75eeac769a7a3310eac5e9e
+vendor/lib64/unnhal-acc-common.so|aec184825fccbc3e9d67c7b2e6393b67ce5d533c
+vendor/lib64/unnhal-acc-hta.so|33d90bdd068b64f3f68fc78a3e5239c8118ce666
+vendor/lib64/unnhal-acc-hvx.so|019475b5f33f833624f91e1f77d2b5e00dbe7432
 
 # NFC
 system/etc/nfcee_access.xml|2b6ae484bffbc47033ba475de8eae756c9364125
@@ -723,21 +723,21 @@ vendor/lib64/vendor.qti.hardware.perf@2.2.so|72ca3b9fb5403378d39eacee52d40b3df62
 # Perf
 vendor/etc/powerhint.xml
 
-# Power-off alarm
--product/app/PowerOffAlarm/PowerOffAlarm.apk|34eebc80518d2099dfe60719f7f6a70cef29ec1e
-vendor/bin/hw/vendor.qti.hardware.alarm@1.0-service
-vendor/bin/power_off_alarm
-vendor/etc/init/vendor.qti.hardware.alarm@1.0-service.rc
-vendor/lib64/hw/vendor.qti.hardware.alarm@1.0-impl.so
-vendor/lib64/vendor.qti.hardware.alarm@1.0.so
+# Power-off alarm - from LA.UM.9.1.r1-09200-SMxxx0.0
+-product/app/PowerOffAlarm/PowerOffAlarm.apk|bc906abd03e4a243201dde626b6580fd8a4f73ce
+vendor/bin/hw/vendor.qti.hardware.alarm@1.0-service|8837c93af35835116be98451040cf7843947198c
+vendor/bin/power_off_alarm|73f5fc2ee9436512a02e80890608722cd7643ab3
+vendor/etc/init/vendor.qti.hardware.alarm@1.0-service.rc|a03a9a1c818595b19272ea6ffb466e23a7fc3b05
+vendor/lib64/hw/vendor.qti.hardware.alarm@1.0-impl.so|d00a0d1670efd97273bc019281cdb24b97611e6d
+vendor/lib64/vendor.qti.hardware.alarm@1.0.so|101eacc45dd5cf36c2b76f9e0aea52fb6424ddcc
 
-# QCC
-vendor/bin/hw/vendor.qti.hardware.qccvndhal@1.0-service
-vendor/etc/init/vendor.qti.hardware.qccvndhal@1.0-service.rc
-vendor/lib64/hw/vendor.qti.hardware.qccvndhal@1.0-impl.so
-vendor/lib64/vendor.qti.hardware.qccsyshal@1.0.so
-vendor/lib64/vendor.qti.hardware.qccvndhal@1.0-halimpl.so
-vendor/lib64/vendor.qti.hardware.qccvndhal@1.0.so
+# QCC - from LA.UM.9.1.r1-09200-SMxxx0.0
+vendor/bin/hw/vendor.qti.hardware.qccvndhal@1.0-service|66eed303012e050a8ee2eb8550a49dbd7665b2e6
+vendor/etc/init/vendor.qti.hardware.qccvndhal@1.0-service.rc|afeb332a4750a11587658fcc9a75a27f63bbccdd
+vendor/lib64/hw/vendor.qti.hardware.qccvndhal@1.0-impl.so|d1fccf72e4d84f31b7f0ea2d762be4ac5e185df3
+vendor/lib64/vendor.qti.hardware.qccsyshal@1.0.so|19a1f7ffb8118c207aa8cb2318996605771c339a
+vendor/lib64/vendor.qti.hardware.qccvndhal@1.0-halimpl.so|8c85aec8456f69296722c10ae034bd228cd70be2
+vendor/lib64/vendor.qti.hardware.qccvndhal@1.0.so|711f50db51cd10607f9065998cac4521950c4d5a
 
 # QMI
 etc/permissions/privapp-permissions-qti.xml
@@ -910,29 +910,21 @@ vendor/etc/init/vendor.qti.hardware.servicetracker@1.2-service.rc|7cf06148da8955
 vendor/lib64/hw/vendor.qti.hardware.servicetracker@1.2-impl.so|90204879ce935fa8d5079c6c5511c9056cdca36f
 vendor/lib64/vendor.qti.hardware.servicetracker@1.2.so|6cc3bfa511d91c9a66fa7759b1da9c80dc952dbc
 
-# Snapdragon Computer Vision Engine
-vendor/lib/libfastcvdsp_stub.so
--vendor/lib/libfastcvopt.so
-vendor/lib/libscveCommon.so
-vendor/lib/libscveCommon_stub.so
-vendor/lib/libscveObjectSegmentation.so
-vendor/lib/libscveObjectSegmentation_stub.so
-vendor/lib/libscveObjectTracker.so
-vendor/lib/libscveObjectTracker_stub.so
-vendor/lib64/libfastcvdsp_stub.so
--vendor/lib64/libfastcvopt.so
-vendor/lib64/libscveCommon.so
-vendor/lib64/libscveCommon_stub.so
-vendor/lib64/libscveObjectSegmentation.so
-vendor/lib64/libscveObjectSegmentation_stub.so
-vendor/lib64/libscveObjectTracker.so
-vendor/lib64/libscveObjectTracker_stub.so
+# Snapdragon Computer Vision Engine - from LA.UM.9.1.r1-09200-SMxxx0.0
+vendor/lib64/libfastcvdsp_stub.so|de764c199026839848cdc803ed5cb2d8a51ad9b9
+vendor/lib64/libfastcvopt.so|123859ab24627b5cf289e12db694a5d7c65f5558
+vendor/lib64/libscveCommon.so|cce405a28a4c45b5e8c4446de271533deca1cd21
+vendor/lib64/libscveCommon_stub.so|1549ed1252e64a9f1ae3c8d51927bff247a537d2
+vendor/lib64/libscveObjectSegmentation.so|6c4e6d4b5bfe458cbf1e3a6a325fbba6b933265a
+vendor/lib64/libscveObjectSegmentation_stub.so|0292cef1811ccca7f40b011fe502920f90ccacb1
+vendor/lib64/libscveObjectTracker.so|abcf8df3e5128bedf263749e3dea62497fffecbf
+vendor/lib64/libscveObjectTracker_stub.so|c92e4e11bdbca1313ba69646fca6782aa78df1fc
 
-# Soter
-vendor/bin/hw/vendor.qti.hardware.soter@1.0-service
-vendor/etc/init/vendor.qti.hardware.soter@1.0-service.rc
-vendor/lib64/hw/vendor.qti.hardware.soter@1.0-impl.so
-vendor/lib64/vendor.qti.hardware.soter@1.0.so
+# Soter - from LA.UM.9.1.r1-09200-SMxxx0.0
+vendor/bin/hw/vendor.qti.hardware.soter@1.0-service|a6ea6031c27889797b96fe29ba100924b79fe3fb
+vendor/etc/init/vendor.qti.hardware.soter@1.0-service.rc|76447a61ad5529949365eeb7e8ca000e48bd28ae
+vendor/lib64/hw/vendor.qti.hardware.soter@1.0-impl.so|2a60368784eafcb68dd855a5e2ea5c774ec5efa4
+vendor/lib64/vendor.qti.hardware.soter@1.0.so|1154dffcf41bd1a2257b93ebb4b20e0a8941de1c
 
 # Thermal engine
 vendor/bin/thermal-engine
@@ -974,24 +966,17 @@ vendor/firmware/awinic_haptic_params.bin
 vendor/firmware/shuntai24k_rtp.bin
 vendor/firmware/wentai24k_rtp.bin
 
-# VPP
-vendor/bin/vppservice
-vendor/etc/configstore/vpp.configstore.xml
-vendor/etc/init/vppservice.rc
-vendor/lib/libvppclient.so
-vendor/lib/libvpphcp.so
-vendor/lib/libvpphvx.so
-vendor/lib/libvpplibrary.so
-vendor/lib/vendor.qti.hardware.vpp@1.1.so
-vendor/lib/vendor.qti.hardware.vpp@1.2.so
-vendor/lib/vendor.qti.hardware.vpp@1.3.so
-vendor/lib64/libvppclient.so
-vendor/lib64/libvpphcp.so
-vendor/lib64/libvpphvx.so
-vendor/lib64/libvpplibrary.so
-vendor/lib64/vendor.qti.hardware.vpp@1.1.so
-vendor/lib64/vendor.qti.hardware.vpp@1.2.so
-vendor/lib64/vendor.qti.hardware.vpp@1.3.so
+# VPP - from LA.UM.9.1.r1-09200-SMxxx0.0
+vendor/bin/vppservice|efabc747172cea9685838a411e6aca6e10a64b39
+vendor/etc/configstore/vpp.configstore.xml|ed961545186c66fd9523f25866c74f2e11ee63d7
+vendor/etc/init/vppservice.rc|24c089e0e413cbb3fa6daaf0af4215870bdf1b8e
+vendor/lib64/libvppclient.so|9aa7961f1a4a1852b3f58fed8233b0d643a6df19
+vendor/lib64/libvpphcp.so|0bd9a46e74d64dab42668e4289353e905e48d7d5
+vendor/lib64/libvpphvx.so|3091aa5f01d3b23bb22518e5984733234e61dbbd
+vendor/lib64/libvpplibrary.so|5da45c57405856cda96ae3dfe37d5a9744d541e8
+vendor/lib64/vendor.qti.hardware.vpp@1.1.so|21dbff3b62de2d01b3dc1846c43df18443fbb12c
+vendor/lib64/vendor.qti.hardware.vpp@1.2.so|0c140119657c2271ef0fb6a094ee8bcfe0a8f24b
+vendor/lib64/vendor.qti.hardware.vpp@1.3.so|a04c0cab80abb6d8f823cab66a358401c71f53f9
 
 # Widevine DRM
 vendor/bin/hw/android.hardware.drm@1.3-service.widevine
