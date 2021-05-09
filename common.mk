@@ -404,7 +404,7 @@ PRODUCT_PACKAGES += \
 
 # Servicetracker
 PRODUCT_PACKAGES += \
-    vendor.qti.hardware.servicetracker@1.0.vendor
+    vendor.qti.hardware.servicetracker@1.2.vendor:64
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \

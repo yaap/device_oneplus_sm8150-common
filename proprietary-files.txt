@@ -85,6 +85,7 @@ vendor/bin/hw/vendor.oneplus.hardware.CameraMDMHIDL@1.0-service
 vendor/bin/vl53l1_daemon_main
 vendor/etc/init/vendor.oneplus.hardware.camera@1.0-service.rc
 vendor/etc/init/vendor.oneplus.hardware.CameraMDMHIDL@1.0-service.rc
+vendor/etc/init/vl53l1.rc
 vendor/lib64/lib_bokehlib.so
 vendor/lib64/lib_oneplus_watermark.so
 vendor/lib64/libarcsoft_beautyshot.so
@@ -159,6 +160,12 @@ vendor/lib64/libsysmon_cdsp_skel.so
 # Charger
 vendor/bin/dashd
 vendor/etc/init/vendor.qti.hardware.charger_monitor@1.0-service.rc
+
+# Certificate Authority - from LA.UM.9.1.r1-09200-SMxxx0.0
+-vendor/app/CACertService/CACertService.apk|b08fa7c9d2faba99547db99df908909dfc0c8e90
+vendor/lib64/libcacertclient.so|90281ef665d6a66ad7aa0806d97c20866fe1a83d
+vendor/lib64/libjnihelper.so|89136c4d8541cb5b303615b100b4708f7ee2f429
+vendor/lib64/vendor.qti.hardware.cacert@1.0.so|398e5510db4d739de008b7230aa6e688d6c51a8a
 
 # CNE
 -vendor/app/CneApp/CneApp.apk
@@ -387,7 +394,6 @@ vendor/lib64/hw/android.hardware.gnss@2.1-impl-qti.so
 vendor/lib64/hw/vendor.qti.gnss@4.0-impl.so
 vendor/lib64/libaoa.so
 vendor/lib64/libbatching.so
-vendor/lib64/libcacertclient.so
 vendor/lib64/libdataitems.so
 vendor/lib64/libgdtap.so
 vendor/lib64/libgeofencing.so
@@ -396,7 +402,6 @@ vendor/lib64/libgnsspps.so
 vendor/lib64/libgps.utils.so
 vendor/lib64/libizat_client_api.so
 vendor/lib64/libizat_core.so
-vendor/lib64/libjnihelper.so
 vendor/lib64/liblbs_core.so
 vendor/lib64/libloc_api_v02.so
 vendor/lib64/libloc_core.so
@@ -666,6 +671,7 @@ vendor/bin/hw/vendor.qti.power.pasrmanager@1.0-service|c3ff775c61df0a55186723080
 vendor/etc/init/vendor.qti.power.pasrmanager@1.0-service.rc|b34c1b9179c89cd47adce145bae9a609e5141bc0
 vendor/lib64/hw/vendor.qti.power.pasrmanager@1.0-impl.so|35e6fd568a2752b402645452f0aa528d2b5b0982
 vendor/lib64/vendor.qti.memory.pasrmanager@1.0.so|4f267bd97316c7c726fa8491d7273fe6bcca7686
+vendor/lib64/vendor.qti.memory.pasrmanager@1.1.so|c4a1d2d3d56e9c466bc7f6091a1bad1470fb63d4
 vendor/lib64/vendor.qti.power.pasrmanager@1.0.so|4f71c0d0f9b987c35f9fb64f426db347de1586e7
 
 # Peripheral manager - from LA.UM.9.1.r1-09200-SMxxx0.0
@@ -698,6 +704,7 @@ vendor/lib64/libperfconfig.so|c1e9f25aeb9d891950e7119fcd10b5b17bd3da7b
 vendor/lib64/libperfgluelayer.so|2265d8d44b700dfeeccc72dcff4ceb3b07ce6e22
 vendor/lib64/libperfioctl.so|603cc609b658aae97b1aec4be35ffefb126a5275
 vendor/lib64/libqti-iopd-client.so|2cb87d4c56f29e561ba54bdda001df82bc631615
+vendor/lib64/libqti-iopd-client-vendor.so|7e3e4ca8d06e2a2ea1383b9eedebbd6b7d18177c
 vendor/lib64/libqti-iopd.so|d62b4ade5cc5602d679fe0d50a5a6a1ed4ea9b31
 vendor/lib64/libqti-perfd-client.so|3bc34a04c34be06d501aac539c5c6b5fbdb68df9
 vendor/lib64/libqti-perfd-client-vendor.so|6f05a98ad47e2ce6f0171688921ef7db68429d9e
@@ -717,7 +724,7 @@ vendor/lib64/vendor.qti.hardware.perf@2.2.so|72ca3b9fb5403378d39eacee52d40b3df62
 vendor/etc/powerhint.xml
 
 # Power-off alarm
--product/app/PowerOffAlarm/PowerOffAlarm.apk|5d5fc4cfcb825379c3115c2fefe773d1a621eee9
+-product/app/PowerOffAlarm/PowerOffAlarm.apk|34eebc80518d2099dfe60719f7f6a70cef29ec1e
 vendor/bin/hw/vendor.qti.hardware.alarm@1.0-service
 vendor/bin/power_off_alarm
 vendor/etc/init/vendor.qti.hardware.alarm@1.0-service.rc
