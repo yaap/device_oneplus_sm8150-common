@@ -252,7 +252,6 @@ on boot
     chown system system sys/devices/platform/soc/soc:goodix_fp/screen_state
     chmod 0666 /dev/qseecom
 #endif
-    setprop ro.nfc.port "I2C"
     chmod 0666 /dev/pn553
     chown nfc nfc /dev/pn553
     chmod 0666 /dev/p73
