@@ -42,10 +42,9 @@ ro.hwui.texture_cache_size=72
 vendor.iop.enable_uxe=1
 
 # Media
-av.offload.enable=true
 media.settings.xml=/vendor/etc/media_profiles_vendor.xml
-vendor.swvdec.log.level=1
-vendor.vidc.debug.level=1
+media.stagefright.thumbnail.prefer_hw_codecs=true
+ro.media.recorder-max-base-layer-fps=60
 
 # Memory optimizations
 ro.vendor.qti.sys.fw.bservice_age=5000
