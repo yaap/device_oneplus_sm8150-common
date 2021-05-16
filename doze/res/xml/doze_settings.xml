@@ -22,8 +22,7 @@
         android:disableDependentsState="true"
         android:title="@string/ambient_display_always_on_title"
         android:summary="@string/ambient_display_always_on_summary"
-        android:persistent="false" 
-	android:icon="@drawable/ic_eye" />
+        android:persistent="false" />
 
     <PreferenceCategory
         android:key="pickup_sensor"
@@ -32,30 +31,9 @@
         <SwitchPreference
             android:key="gesture_pick_up"
             android:defaultValue="false"
+            android:icon="@drawable/ic_pickup"
             android:title="@string/pick_up_gesture_title"
-            android:summary="@string/pick_up_gesture_summary"
-	    android:icon="@drawable/ic_pickup" />
-
-        <SwitchPreference
-            android:defaultValue="false"
-            android:disableDependentsState="true"
-            android:icon="@drawable/ic_raise"
-            android:key="gesture_raise_to_wake"
-            android:summary="@string/raise_to_wake_gesture_summary"
-            android:title="@string/raise_to_wake_gesture_title" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="proximity_sensor"
-        android:title="@string/proximity_sensor_title">
-
-        <SwitchPreference
-            android:key="gesture_pocket"
-            android:defaultValue="false"
-            android:title="@string/pocket_gesture_title"
-            android:summary="@string/pocket_gesture_summary"
-	    android:icon="@drawable/ic_pocket" />
+            android:summary="@string/pick_up_gesture_summary" />
 
     </PreferenceCategory>
 

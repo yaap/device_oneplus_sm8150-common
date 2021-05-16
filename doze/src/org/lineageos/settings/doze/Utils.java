@@ -25,10 +25,7 @@ import android.hardware.SensorManager;
 import android.os.UserHandle;
 import android.provider.Settings;
 import android.util.Log;
-import androidx.preference.Preference;
 import androidx.preference.PreferenceManager;
-import androidx.preference.SwitchPreference;
-
 
 import static android.provider.Settings.Secure.DOZE_ALWAYS_ON;
 import static android.provider.Settings.Secure.DOZE_ENABLED;
@@ -43,11 +40,8 @@ public final class Utils {
     protected static final String ALWAYS_ON_DISPLAY = "always_on_display";
 
     protected static final String CATEG_PICKUP_SENSOR = "pickup_sensor";
-    protected static final String CATEG_PROX_SENSOR = "proximity_sensor";
 
     protected static final String GESTURE_PICK_UP_KEY = "gesture_pick_up";
-    protected static final String GESTURE_RAISE_TO_WAKE_KEY = "gesture_raise_to_wake";
-    protected static final String GESTURE_POCKET_KEY = "gesture_pocket";
 
     protected static void startService(Context context) {
         if (DEBUG) Log.d(TAG, "Starting service");
@@ -62,7 +56,7 @@ public final class Utils {
     }
 
     protected static void checkDozeService(Context context) {
-        if (isDozeEnabled(context) && !isAlwaysOnEnabled(context) && areGesturesEnabled(context) && sensorsEnabled(context)) {
+        if (isDozeEnabled(context) && !isAlwaysOnEnabled(context) && areGesturesEnabled(context)) {
             startService(context);
         } else {
             stopService(context);
@@ -108,26 +102,8 @@ public final class Utils {
         return isGestureEnabled(context, GESTURE_PICK_UP_KEY);
     }
 
-    protected static void setPickUp(Preference preference, boolean value) {
-        SwitchPreference pickup = (SwitchPreference)preference;
-        pickup.setChecked(value);
-        pickup.setEnabled(!value);
-    }
-
-    protected static boolean isRaiseToWakeEnabled(Context context) {
-        return isGestureEnabled(context, GESTURE_RAISE_TO_WAKE_KEY);
-    }
-
-    protected static boolean isPocketEnabled(Context context) {
-        return isGestureEnabled(context, GESTURE_POCKET_KEY);
-    }
-
     public static boolean areGesturesEnabled(Context context) {
-        return isPickUpEnabled(context) || isPocketEnabled(context);
-    }
-
-    public static boolean sensorsEnabled(Context context) {
-        return isPickUpEnabled(context) || isRaiseToWakeEnabled(context) || isPocketEnabled(context);
+        return isPickUpEnabled(context);
     }
 
     protected static Sensor getSensor(SensorManager sm, String type) {
