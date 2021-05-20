@@ -111,11 +111,11 @@ void vendor_load_properties() {
           break;
         case 5:
           /* Global / US Unlocked */
-          property_override("ro.product.model", "GM1907");
+          property_override("ro.product.model", "GM1905");
           break;
         default:
           /* Generic */
-          property_override("ro.product.model", "GM1907");
+          property_override("ro.product.model", "GM1905");
           break;
       }
       break;
@@ -125,10 +125,6 @@ void vendor_load_properties() {
         case 1:
           /* China */
           property_override("ro.product.model", "GM1910");
-          break;
-        case 2:
-          /* T-Mobile */
-          property_override("ro.product.model", "GM1915");
           break;
         case 3:
           /* India */
@@ -148,16 +144,16 @@ void vendor_load_properties() {
           break;
       }
       break;
+    case 18831:
+      /* OnePlus 7 Pro T-Mobile */
+      property_override("ro.product.model", "GM1915");
+      break;
     case 18865:
       /* OnePlus 7T */
       switch (rf_version){
         case 1:
           /* China */
           property_override("ro.product.model", "HD1900");
-          break;
-        case 2:
-          /* T-Mobile */
-          property_override("ro.product.model", "HD1907");
           break;
         case 3:
           /* India */
@@ -176,6 +172,10 @@ void vendor_load_properties() {
           property_override("ro.product.model", "HD1905");
           break;
       }
+      break;
+    case 19863:
+      /* OnePlus 7T T-Mobile */
+      property_override("ro.product.model", "HD1907");
       break;
     case 19801:
       /* OnePlus 7T Pro */
