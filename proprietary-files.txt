@@ -717,9 +717,6 @@ vendor/lib64/libreffeature.so|c7de4fe7702528882d1ea742b3a6323b4553fd4b
 vendor/lib64/libskewknob.so|bc76a05d7ea41c4f35b1dba47e9c66321654023e
 vendor/lib64/vendor.qti.hardware.iop@1.0.so|b7d7efa1c56f3ad202189bafd7e2f77fc55e44fc
 vendor/lib64/vendor.qti.hardware.iop@2.0.so|a850b213d5bee907d638b998a746af2014f2a3f0
-vendor/lib64/vendor.qti.hardware.perf@2.0.so|ad8749a1b0f883f3273161642815117fe50e9928
-vendor/lib64/vendor.qti.hardware.perf@2.1.so|b34264871c6fb1f1607b91badd6bd8b9fcb5f1a3
-vendor/lib64/vendor.qti.hardware.perf@2.2.so|72ca3b9fb5403378d39eacee52d40b3df6289cd1
 
 # Perf
 vendor/etc/powerhint.xml
@@ -909,7 +906,6 @@ vendor/bin/hw/vendor.qti.hardware.servicetracker@1.2-service|588775e1bdf6ff00afc
 vendor/etc/init/vendor.qti.hardware.servicetracker@1.2-service.rc|7cf06148da895586c20aab7e6bd01b806d8128b6
 -vendor/etc/vintf/manifest/vendor.qti.hardware.servicetracker@1.2-service.xml|40b6abd9b4be99dc5722eb60d71ee36764bf4ef3
 vendor/lib64/hw/vendor.qti.hardware.servicetracker@1.2-impl.so|90204879ce935fa8d5079c6c5511c9056cdca36f
-vendor/lib64/vendor.qti.hardware.servicetracker@1.2.so|6cc3bfa511d91c9a66fa7759b1da9c80dc952dbc
 
 # Snapdragon Computer Vision Engine - from LA.UM.9.1.r1-09200-SMxxx0.0
 vendor/lib64/libfastcvdsp_stub.so|de764c199026839848cdc803ed5cb2d8a51ad9b9
