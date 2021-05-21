@@ -16,3 +16,6 @@ allow hal_camera_default sysfs_dtb_model:file r_file_perms;
 
 # Properties
 set_prop(hal_camera_default, vendor_camera_prop)
+
+# Allow camera to read over /dev/adsprpc-smd-secure 
+allow hal_camera_default vendor_xdsp_device:chr_file r_file_perms;
