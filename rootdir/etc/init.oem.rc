@@ -285,7 +285,6 @@ on boot
 #endif /*VENDOR_EDIT*/
 
 on init
-    setprop vendor.boot.verifiedbootstate ${ro.boot.verifiedbootstate}
     setprop vendor.boot.hw_version ${ro.boot.hw_version}
 
     #@bsp, 2019/08/22 Add dash charging
@@ -665,12 +664,6 @@ service chownalikey /system/bin/chown -R system.system  /mnt/vendor/op2/.lii
     disabled
     oneshot
     seclabel u:r:vold:s0
-
-#len.nie@bsp, 2020/11/04. add for dump fingerprint data
-on property:gf.debug.dump_path=*
-    mkdir /sdcard/Android/data/gf_file 0755 system ext_data_rw
-
-#endif
 
 #ifdef VENDOR_EDIT
 #brandon.zeng@Conn,2020/05/08. add for nfc pnscr tool
