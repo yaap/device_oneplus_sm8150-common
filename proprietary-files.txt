@@ -925,8 +925,7 @@ vendor/lib64/vendor.qti.hardware.soter@1.0.so|1154dffcf41bd1a2257b93ebb4b20e0a89
 
 # Thermal engine
 vendor/bin/thermal-engine
--vendor/lib/libthermalclient.so
--vendor/lib64/libthermalclient.so
+vendor/lib64/libthermalclient.so
 
 # Time services - from LA.UM.9.1.r1-09200-SMxxx0.0
 -vendor/app/TimeService/TimeService.apk|1a5f39aa2969feee50ff81ec870b5e2669ae515e
