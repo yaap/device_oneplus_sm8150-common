@@ -370,17 +370,19 @@ public final class OpFeatures {
     public static final int OP_FEATURE_HIGH_TEMPERATURE = 357;
     public static final int OP_FEATURE_NRCA_SUPPORT = 358;
     public static final int OP_FEATURE_IMS_RECOVERY = 359;
-    public static final int OP_FEATURE_AOD_ALWAYS_ON_IN_LABORATORY = 360;
-    public static final int OP_FEATURE_USKU = 361;
-    public static final int OP_FEATURE_DEFAULT_HIDE_VOLTE_FOR_EU = 362;
-    public static final int OP_FEATURE_GPS_ENABLE_LPP_UP_FOR_TMO = 363;
-    public static final int OP_FEATURE_CHARGING_ANIM_P3_REPEAT_MAX_COUNT_4 = 364;
-    public static final int OP_FEATURE_DISPLAY_LCD = 365;
-    public static final int OP_FEATURE_NEW_BATTERY_FILE_NODE_PATH = 366;
-    public static final int OP_FEATURE_MM_MUTE_DELAY_SWITCH = 367;
-    public static final int OP_FEATURE_ONLINE_CONFIG_NETWORK = 368;
+    public static final int OP_FEATURE_SMART_WIFI_CALLING_MODE = 360;
+    public static final int OP_FEATURE_AOD_ALWAYS_ON_IN_LABORATORY = 361;
+    public static final int OP_FEATURE_USKU = 362;
+    public static final int OP_FEATURE_DEFAULT_HIDE_VOLTE_FOR_EU = 363;
+    public static final int OP_FEATURE_GPS_ENABLE_LPP_UP_FOR_TMO = 364;
+    public static final int OP_FEATURE_CHARGING_ANIM_P3_REPEAT_MAX_COUNT_4 = 365;
+    public static final int OP_FEATURE_DISPLAY_LCD = 366;
+    public static final int OP_FEATURE_NEW_BATTERY_FILE_NODE_PATH = 367;
+    public static final int OP_FEATURE_MM_MUTE_DELAY_SWITCH = 368;
+    public static final int OP_FEATURE_ONLINE_CONFIG_NETWORK = 369;
+    public static final int OP_FEATURE_KEEP_HIGH_VSYNC = 370;
 
-    private static final BitSet sFeatures = new BitSet(370);
+    private static final BitSet sFeatures = new BitSet(372);
 
     static {
         File file = new File("/odm/etc/odm_feature_list");
