@@ -1,3 +1,0 @@
-allow hal_secure_element_default nfc_device:chr_file rw_file_perms;
-allow hal_secure_element_default vendor_nfc_prop:file { open read getattr map };
-allow hal_secure_element_default hal_nxpnfc_hwservice:hwservice_manager { find };

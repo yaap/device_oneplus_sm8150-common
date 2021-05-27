@@ -610,15 +610,6 @@ vendor/lib64/libchrome.so
 vendor/lib64/nfc_nci_nxp.so
 vendor/lib64/vendor.nxp.eventprocessor@1.0.so
 
-# NFC (SecureElement)
--system_ext/app/NxpSecureElement/NxpSecureElement.apk
-vendor/bin/hw/android.hardware.secure_element@1.0-service
-vendor/etc/init/android.hardware.secure_element@1.0-service.rc
-vendor/lib64/libp61-jcop-kit.so
-vendor/lib64/ls_client.so
-vendor/lib64/vendor.nxp.nxpese@1.0.so
-vendor/lib64/vendor.nxp.nxpnfc@1.0.so
-
 # OMX
 vendor/lib/libAlacSwDec.so
 vendor/lib/libApeSwDec.so

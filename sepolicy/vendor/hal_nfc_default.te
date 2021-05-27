@@ -1,9 +1,3 @@
-# Allow access to the HALs
-hal_client_domain(hal_nfc_default, hal_secure_element)
-
-# Allow hal_nfc_default to find hal_secure_element_hwservice
-allow hal_nfc_default hal_secure_element_hwservice:hwservice_manager find;
-
 # Allow hal_nfc_default to read and write to proc_touchpanel
 allow hal_nfc_default proc_touchpanel:dir search;
 allow hal_nfc_default proc_touchpanel:file rw_file_perms;

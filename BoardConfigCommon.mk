@@ -120,17 +120,6 @@ DEVICE_MATRIX_FILE += $(VENDOR_PATH)/compatibility_matrix.xml
 DEVICE_MANIFEST_FILE += $(VENDOR_PATH)/manifest.xml
 ODM_MANIFEST_FILES += $(VENDOR_PATH)/manifest-qva.xml
 
-ODM_MANIFEST_SKUS += \
-    2 \
-    3
-
-ODM_MANIFEST_2_FILES := \
-    $(VENDOR_PATH)/manifest-qva.xml \
-
-ODM_MANIFEST_3_FILES := \
-    $(VENDOR_PATH)/manifest-qva.xml \
-    $(VENDOR_PATH)/manifest_3.xml
-
 # Init
 TARGET_INIT_VENDOR_LIB := //$(VENDOR_PATH):libinit_oneplus-sm8150
 TARGET_RECOVERY_DEVICE_MODULES := libinit_oneplus-sm8150
