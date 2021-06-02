@@ -612,13 +612,4 @@
             <instance>imsrtpservice</instance>
         </interface>
     </hal>
-    <hal format="hidl">
-        <name>vendor.qti.power.pasrmanager</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IPasrManager</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
 </manifest>

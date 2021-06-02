@@ -661,15 +661,6 @@ vendor/lib64/libswvdec.so
 vendor/bin/opf-service
 vendor/etc/init/init.opf.rc
 
-# PASR - from LA.UM.9.1.r1-09600-SMxxx0.0
--vendor/app/pasrservice/pasrservice.apk|6d4e8bab2426b03231531ec09bce922601b8e8e6
-vendor/bin/hw/vendor.qti.power.pasrmanager@1.0-service|27dd1f54cfdc65f365c6b63e9b13bdb6ade5aa70
-vendor/etc/init/vendor.qti.power.pasrmanager@1.0-service.rc|b34c1b9179c89cd47adce145bae9a609e5141bc0
-vendor/lib64/hw/vendor.qti.power.pasrmanager@1.0-impl.so|4e83bd83fa439f15dc3c0a2256eadd81d6c45386
-vendor/lib64/vendor.qti.memory.pasrmanager@1.0.so|4f267bd97316c7c726fa8491d7273fe6bcca7686
-vendor/lib64/vendor.qti.memory.pasrmanager@1.1.so|c4a1d2d3d56e9c466bc7f6091a1bad1470fb63d4
-vendor/lib64/vendor.qti.power.pasrmanager@1.0.so|4f71c0d0f9b987c35f9fb64f426db347de1586e7
-
 # Peripheral manager - from LA.UM.9.1.r1-09600-SMxxx0.0
 vendor/bin/pm-proxy|c36785c811db9af0d6d938cdbc6b90dedaaf706e
 vendor/bin/pm-service|c3d1b2f6e7f731b1328afbcf8e344405744528e3
@@ -895,12 +886,6 @@ vendor/lib64/libssc.so
 vendor/lib64/libssc_default_listener.so
 vendor/lib64/vendor.qti.hardware.sensorscalibrate@1.0.so
 
-# Service Tracker - from LA.UM.9.1.r1-09600-SMxxx0.0
-vendor/bin/hw/vendor.qti.hardware.servicetracker@1.2-service|588775e1bdf6ff00afcd165a8ffa05d98582835f
-vendor/etc/init/vendor.qti.hardware.servicetracker@1.2-service.rc|7cf06148da895586c20aab7e6bd01b806d8128b6
--vendor/etc/vintf/manifest/vendor.qti.hardware.servicetracker@1.2-service.xml|40b6abd9b4be99dc5722eb60d71ee36764bf4ef3
-vendor/lib64/hw/vendor.qti.hardware.servicetracker@1.2-impl.so|90204879ce935fa8d5079c6c5511c9056cdca36f
-
 # Snapdragon Computer Vision Engine - from LA.UM.9.1.r1-09600-SMxxx0.0
 vendor/lib64/libfastcvdsp_stub.so|af78b8104678b87fbe07d679448ae2f4bc5c461e
 vendor/lib64/libfastcvopt.so|2d1b98548b8e5fd0e60452f849c4f0748e56d67c
@@ -991,21 +976,13 @@ vendor/bin/cnss-daemon
 
 # WiFi Display
 -system/framework/WfdCommon.jar
-system_ext/bin/rtspclient
-system_ext/bin/rtspserver
-system_ext/bin/sigma_miracasthalservice
 system_ext/bin/wfdservice
-system_ext/etc/init/com.qualcomm.qti.sigma_miracast@1.0-service.rc
 system_ext/etc/init/wfdservice.rc
-system_ext/etc/permissions/wfd-system-ext-privapp-permissions-qti.xml
 system_ext/etc/seccomp_policy/wfdservice.policy
 system_ext/etc/wfdconfigsink.xml
-system_ext/lib/hw/vendor.qti.hardware.sigma_miracast@1.0-impl.so
 system_ext/lib/com.qualcomm.qti.wifidisplayhal@1.0.so
-system_ext/lib/libmiracastsystem.so
 system_ext/lib/libmmrtpdecoder.so
 system_ext/lib/libmmrtpencoder.so
-system_ext/lib/libwfdaac.so
 system_ext/lib/libwfdavenhancements.so
 system_ext/lib/libwfdclient.so
 system_ext/lib/libwfdcommonutils.so
@@ -1014,7 +991,6 @@ system_ext/lib/libwfddisplayconfig.so
 system_ext/lib/libwfdmminterface.so
 system_ext/lib/libwfdmmsink.so
 system_ext/lib/libwfdmmsrc_system.so
-system_ext/lib/libwfdnative.so
 system_ext/lib/libwfdrtsp.so
 system_ext/lib/libwfdservice.so
 system_ext/lib/libwfdsinksm.so
@@ -1023,12 +999,8 @@ system_ext/lib/libwfduibcsink.so
 system_ext/lib/libwfduibcsinkinterface.so
 system_ext/lib/libwfduibcsrc.so
 system_ext/lib/libwfduibcsrcinterface.so
-system_ext/lib/vendor.qti.hardware.sigma_miracast@1.0.so
-system_ext/lib/vendor.qti.hardware.sigma_miracast@1.0-halimpl.so
 system_ext/lib/vendor.qti.hardware.wifidisplaysession@1.0.so
 system_ext/lib64/libmmparser_lite.so
-system_ext/lib64/hw/vendor.qti.hardware.sigma_miracast@1.0-impl.so
-system_ext/lib64/libmiracastsystem.so
 system_ext/lib64/libmmrtpdecoder.so
 system_ext/lib64/libmmrtpencoder.so
 system_ext/lib64/libwfdclient.so
@@ -1045,9 +1017,6 @@ system_ext/lib64/libwfduibcsink.so
 system_ext/lib64/libwfduibcsinkinterface.so
 system_ext/lib64/libwfduibcsrc.so
 system_ext/lib64/libwfduibcsrcinterface.so
-system_ext/lib64/vendor.qti.hardware.sigma_miracast@1.0.so
-system_ext/lib64/vendor.qti.hardware.sigma_miracast@1.0-halimpl.so
-system_ext/lib64/vendor.qti.hardware.wifidisplaysession@1.0.so
 -system_ext/priv-app/WfdService/WfdService.apk
 vendor/bin/wfdhdcphalservice
 vendor/bin/wfdvndservice
@@ -1063,7 +1032,6 @@ vendor/etc/wfdconfig.xml
 vendor/lib/libFileMux_proprietary.so
 vendor/lib/libmm-hdcpmgr.so
 vendor/lib/libmmosal.so
-vendor/lib/libmiracast.so
 vendor/lib/libmmrtpdecoder_proprietary.so
 vendor/lib/libmmrtpencoder_proprietary.so
 vendor/lib/libwfdcodecv4l2_proprietary.so
@@ -1086,11 +1054,5 @@ vendor/lib/libwfduibcsinkinterface_proprietary.so
 vendor/lib/libwfduibcsrc_proprietary.so
 vendor/lib/libwfduibcsrcinterface_proprietary.so
 vendor/lib/libwfdutils_proprietary.so
-vendor/lib/vendor.qti.hardware.sigma_miracast@1.0.so
 vendor/lib/vendor.qti.hardware.wifidisplaysession@1.0.so
 vendor/lib/vendor.qti.hardware.wifidisplaysessionl@1.0-halimpl.so
-vendor/lib64/libmiracast.so
-vendor/lib64/libwfddisplayconfig_proprietary.so
-vendor/lib64/libwfdhdcpcp.so
-vendor/lib64/vendor.qti.hardware.sigma_miracast@1.0.so
-vendor/lib64/vendor.qti.hardware.wifidisplaysession@1.0.so
