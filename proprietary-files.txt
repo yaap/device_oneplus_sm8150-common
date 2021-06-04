@@ -929,11 +929,6 @@ vendor/lib64/vendor.qti.hardware.tui_comm@1.0.so|00f87ecf5c7e4ad640b45bdc7425207
 
 # Vibrator firmware
 vendor/firmware/aw8697_haptic.bin
-vendor/firmware/aw8697_haptic_166.bin
-vendor/firmware/aw8697_haptic_168.bin
-vendor/firmware/aw8697_haptic_170.bin
-vendor/firmware/aw8697_haptic_172.bin
-vendor/firmware/aw8697_haptic_174.bin
 vendor/firmware/aw8697_rtp.bin
 vendor/firmware/aw8697_rtp_lighthouse.bin
 vendor/firmware/aw8697_rtp_silk.bin
