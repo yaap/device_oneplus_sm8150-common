@@ -77,3 +77,9 @@
 /sys/devices/virtual/diag/diag/wakeup[0-9]+(/.*)? u:object_r:sysfs_wakeup:s0
 /sys/devices/virtual/misc/(msm_aac|msm_alac|msm_amrnb|msm_amrwb|msm_amrwbplus|msm_ape|msm_evrc|msm_g711alaw|msm_g711mlaw|msm_mp3|msm_multi_aac|msm_qcelp|msm_wma|msm_wmapro)/wakeup[0-9]+(/.*)? u:object_r:sysfs_wakeup:s0
 /sys/devices/virtual/wakeup/wakeup[0-9]+(/.*)? u:object_r:sysfs_wakeup:s0
+
+# Sys files (Brightness)
+/sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-05/c440000.qcom,spmi:qcom,pm8150l@5:qcom,leds@d300/leds/led:torch_[0-9]/brightness u:object_r:sysfs_oem:s0
+/sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-05/c440000.qcom,spmi:qcom,pm8150l@5:qcom,leds@d300/leds/led:switch_[0-9]/brightness u:object_r:sysfs_oem:s0
+/sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8350c@2:qcom,flash_led@ee00/leds/led:torch_[0-9]/brightness u:object_r:sysfs_oem:s0
+/sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8350c@2:qcom,flash_led@ee00/leds/led:switch_[0-9]/brightness u:object_r:sysfs_oem:s0
