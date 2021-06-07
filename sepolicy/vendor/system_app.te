@@ -15,3 +15,5 @@ allow system_app vendor_sysfs_graphics:file { getattr open read };
 
 # Allow system_app to access zram sysfs nodes
 allow system_app sysfs_zram:dir { search r_file_perms };
+
+allow system_app oem_service:service_manager { find };
