@@ -31,14 +31,9 @@ import /vendor/etc/init/hw/init.oem.rc
 import /vendor/etc/init/hw/init.oem.debug.rc
 #endif VENDOR_EDIT
 
-#ifdef VENDOR_EDIT
-import /vendor/etc/init/hw/init.guacamoleg.rc
-#endif VENDOR_EDIT
-
 import /vendor/etc/init/hw/init.qcom.usb.rc
 import /vendor/etc/init/hw/init.target.rc
 import /vendor/etc/init/hw/init.qcom.factory.rc
-import /vendor/etc/init/hw/init.qcom.test.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -74,8 +69,6 @@ on early-init
     exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules msm_11ad_proxy
 
 on init
-    # Change permissions for diag lib.
-    chmod 0666 /dev/diag
 
     # Support legacy paths
     symlink /sdcard /mnt/sdcard
@@ -102,7 +95,6 @@ on early-boot
     write /sys/devices/virtual/npu/msm_npu/boot 1
     write /sys/devices/virtual/cvp/cvp/boot 1
     exec u:r:vendor_qti_init_shell:s0 -- /vendor/bin/init.qcom.early_boot.sh
-    exec u:r:vendor_qti_init_shell:s0 -- /vendor/bin/init.qti.can.sh
     setprop ro.sf.lcd_density ${vendor.display.lcd_density}
 
     chown system system /mnt/vendor/persist/data/pfm/licenses
@@ -271,7 +263,6 @@ on boot
     # Create vpp directory
     mkdir /mnt/vendor/persist/vpp 0770 media media
 
-
     # Create hvdcp_opti directory
     mkdir /mnt/vendor/persist/hvdcp_opti 0770 root system
 
@@ -324,7 +315,6 @@ on post-fs-data
 
     #Create folder of camera
     mkdir /data/vendor/camera 0770 camera camera
-
 
     #Create directory for tftp
     mkdir /data/vendor/tombstones 0771 system system
@@ -718,21 +708,6 @@ service iprenew_bt-pan /system/bin/dhcpcd -n
     disabled
     oneshot
 
-#ifdef VENDOR_EDIT
-#Disable connection security service
-#service ssgqmigd /vendor/bin/ssgqmigd
-#    class late_start
-#    user radio
-#    group radio gps system
-#    socket ssgqmig seqpacket 0660 radio inet
-#
-#service ssgtzd /vendor/bin/ssgtzd
-#    class late_start
-#    user system
-#    group system
-#    socket ssgtzd stream 0660 system inet
-#endif
-
 service mlid /vendor/bin/mlid
     class late_start
     user gps
@@ -749,11 +724,6 @@ service qcom-sh /vendor/bin/init.qcom.sh
     user root
     group root system radio
     oneshot
-# Remove since is deprecated but throws AVC denial.
-# service crashdata-sh /vendor/bin/init.qcom.crashdata.sh
-#    class late_start
-#    user root
-#    oneshot
 
 service qcom-post-boot /vendor/bin/init.qcom.post_boot.sh
     class late_start
@@ -761,25 +731,6 @@ service qcom-post-boot /vendor/bin/init.qcom.post_boot.sh
     group root system wakelock graphics
     disabled
     oneshot
-
-service qti-testscripts /system/bin/sh /product/etc/init.qcom.testscripts.sh
-    class late_start
-    user root
-    disabled
-    oneshot
-    seclabel u:r:qti-testscripts:s0
-
-service wifi-sdio-on /vendor/bin/init.qcom.sdio.sh
-    class late_start
-    group wifi inet
-    disabled
-    oneshot
-
-service wifi-crda /vendor/bin/init.crda.sh
-   class late_start
-   user root
-   disabled
-   oneshot
 
 on property:sys.boot_completed=1
     start qcom-post-boot
