@@ -23,13 +23,14 @@ ro.boot.ftm_mode    u:object_r:exported_default_prop:s0
 ro.gfx.driver.1    u:object_r:exported3_default_prop:s0
 
 # NFC
-persist.vendor.nfc.        u:object_r:vendor_nfc_prop:s0
-persist.nfc.               u:object_r:vendor_nfc_prop:s0
-persist.vendor.oem.nfc.    u:object_r:vendor_nfc_prop:s0
-ro.vendor.nfc.notify_tp    u:object_r:vendor_nfc_prop:s0
-vendor.oem.nfc.            u:object_r:vendor_nfc_prop:s0
-persist.factoryota.reboot  u:object_r:vendor_nfc_prop:s0
-persist.vendor.nfc.delayese u:object_r:vendor_nfc_prop:s0
+persist.vendor.ese.          u:object_r:vendor_nfc_prop:s0
+persist.vendor.nfc.          u:object_r:vendor_nfc_prop:s0
+persist.nfc.                 u:object_r:vendor_nfc_prop:s0
+persist.vendor.oem.nfc.      u:object_r:vendor_nfc_prop:s0
+ro.vendor.nfc.notify_tp      u:object_r:vendor_nfc_prop:s0
+vendor.oem.nfc.              u:object_r:vendor_nfc_prop:s0
+persist.factoryota.reboot    u:object_r:vendor_nfc_prop:s0
+persist.vendor.nfc.delayese  u:object_r:vendor_nfc_prop:s0
 
 # Param
 ro.boot.prmec    u:object_r:exported_default_prop:s0
