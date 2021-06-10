@@ -1,6 +1,9 @@
 # Audio
 persist.vendor.audio.hac.enable    u:object_r:vendor_audio_prop:s0
 
+# Bluetooth
+persist.vendor.bt.a2dp_offload_cap    u:object_r:bluetooth_a2dp_offload_prop:s0
+
 # Camera
 camera.OPpictureId    u:object_r:vendor_camera_prop:s0
 ro.camera.            u:object_r:vendor_camera_prop:s0
