@@ -500,4 +500,7 @@
         <!-- B b-coefficient --> <item>0.000207598323269139</item>
         <!-- B y-intercept --> <item>-0.349361641294833436</item>
     </string-array>
+
+    <!-- Whether device supports increased touch sensitvity -->
+    <bool name="config_supportGloveMode">true</bool>
 </resources>
