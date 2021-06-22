@@ -514,11 +514,7 @@ vendor/firmware/ipa_uc.elf
 vendor/firmware/ipa_uc.mdt
 
 # Keymaster - from LA.UM.9.1.r1-09600-SMxxx0.0
-vendor/bin/hw/android.hardware.keymaster@4.0-service-qti|3630c9aea09ea484578a260c6f007036d084089c
-vendor/bin/hw/android.hardware.keymaster@4.0-strongbox-service-qti|30507f03bda271ca0052d6bd5177b8d7976dfbae
 vendor/bin/hw/android.hardware.keymaster@4.1-service-qti|f2dfed2111ada63ddc5283e12b6cb051bd9f9736
-vendor/bin/init.qti.keymaster.sh|bb86324e15915b114a3e5fdaf81e32a2043a1a79
-vendor/etc/init/android.hardware.keymaster@4.0-strongbox-service-qti.rc|21178f2505737bb920c1a645a2d014e9fa613b10
 vendor/etc/init/android.hardware.keymaster@4.1-service-qti.rc|f6907552961ba772c1ad5b493913a60d65abedb4
 vendor/lib64/libkeymasterdeviceutils.so|24d3870e052b4f877d4392901a68a95359bdc48c
 vendor/lib64/libkeymasterprovision.so|6ae941ffc74b31caf3a1dccb773e175f01021ddc
