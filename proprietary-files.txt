@@ -885,8 +885,16 @@ vendor/lib64/libssc_default_listener.so
 vendor/lib64/vendor.qti.hardware.sensorscalibrate@1.0.so
 
 # Snapdragon Computer Vision Engine - from LA.UM.9.1.r1-09600-SMxxx0.0
+vendor/lib/libfastcvdsp_stub.so|7f27cee24281bc9bf4f08c6100cc66bd650d8efb
+-vendor/lib/libfastcvopt.so|c9283635cd25e19245b09722186a598d91219f3c
+vendor/lib/libscveCommon.so|4be56b846f71f4ba8032471abf9f02dc5b01810c
+vendor/lib/libscveCommon_stub.so|dd8ecbe1c788eb48ddfe70366df8d2779aac0a8f
+vendor/lib/libscveObjectSegmentation.so|b60b43377262ef6cc7882ff5cc49d35e4c516670
+vendor/lib/libscveObjectSegmentation_stub.so|e4c80867f010399d57c6cb67918f656698ffb2e5
+vendor/lib/libscveObjectTracker.so|26318c862d3d56596fe7208ebcc3ae1900f7d55f
+vendor/lib/libscveObjectTracker_stub.so|cafdeed8fa0d51672806038065cf4ce38d442b6b
 vendor/lib64/libfastcvdsp_stub.so|af78b8104678b87fbe07d679448ae2f4bc5c461e
-vendor/lib64/libfastcvopt.so|2d1b98548b8e5fd0e60452f849c4f0748e56d67c
+-vendor/lib64/libfastcvopt.so|2d1b98548b8e5fd0e60452f849c4f0748e56d67c
 vendor/lib64/libscveCommon.so|1603e11f268390739f9d0297ab0b8e84886becab
 vendor/lib64/libscveCommon_stub.so|bcf566f120b795ef6fe85450298475b56e7c9659
 vendor/lib64/libscveObjectSegmentation.so|1598ad3797897eb3331a545c74d937c0ae0aeddf
@@ -938,6 +946,13 @@ vendor/firmware/wentai24k_rtp.bin
 vendor/bin/vppservice|efabc747172cea9685838a411e6aca6e10a64b39
 vendor/etc/configstore/vpp.configstore.xml|ed961545186c66fd9523f25866c74f2e11ee63d7
 vendor/etc/init/vppservice.rc|24c089e0e413cbb3fa6daaf0af4215870bdf1b8e
+vendor/lib/libvppclient.so|f34a69c65e289237891d82d99e1ce7e6efb2b6c9
+vendor/lib/libvpphcp.so|91bfde32023ba6c65d80a4ec56c33bbc972f1251
+vendor/lib/libvpphvx.so|32f90b9809ea221f0856f0a3563511cf54d7e9f8
+vendor/lib/libvpplibrary.so|521e6dd4845acc2f897644808bce52c07849c3ec
+vendor/lib/vendor.qti.hardware.vpp@1.1.so|721abfa51882df46c3261fe3eccc4b198dff3b16
+vendor/lib/vendor.qti.hardware.vpp@1.2.so|91c9e8d152409d0be6fecaea6d72fb9d1e5c1c8f
+vendor/lib/vendor.qti.hardware.vpp@1.3.so|53e5816a54793fda59928e67f9bae0f7b3bf82b9
 vendor/lib64/libvppclient.so|9aa7961f1a4a1852b3f58fed8233b0d643a6df19
 vendor/lib64/libvpphcp.so|6a2580bde806136a150b12cd67b287c8f6709f85
 vendor/lib64/libvpphvx.so|449c9d5448081aed1191c0478cd1e236eabf2a26
