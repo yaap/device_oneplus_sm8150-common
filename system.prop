@@ -48,9 +48,19 @@ ro.hwui.texture_cache_size=72
 vendor.iop.enable_uxe=1
 
 # Media
+media.stagefright.enable-player=true
+media.stagefright.enable-http=true
+media.stagefright.enable-aac=true
+media.stagefright.enable-qcp=true
+media.stagefright.enable-fma2dp=true
+media.stagefright.enable-scan=true
+mmp.enable.3g2=true
+media.aac_51_output_enabled=true
 media.settings.xml=/vendor/etc/media_profiles_vendor.xml
 media.stagefright.thumbnail.prefer_hw_codecs=true
 ro.media.recorder-max-base-layer-fps=60
+persist.mm.enable.prefetch=true
+vendor.mm.enable.qcom_parser=16711679
 
 # Memory optimizations
 ro.vendor.qti.sys.fw.bservice_age=5000
