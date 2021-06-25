@@ -8,6 +8,7 @@ vendor.bluetooth.soc=cherokee
 
 # Bluetooth
 persist.vendor.btstack.enable.lpa=true
+persist.vendor.btstack.enable.twsplus=true
 persist.vendor.bt.a2dp.aac_whitelist=false
 ro.bluetooth.library_name=libbluetooth_qti.so
 
