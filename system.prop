@@ -10,6 +10,7 @@ vendor.bluetooth.soc=cherokee
 persist.vendor.btstack.enable.lpa=true
 persist.vendor.btstack.enable.twsplus=true
 persist.vendor.bt.a2dp.aac_whitelist=false
+persist.vendor.bt.a2dp.hal.implementation=true
 ro.bluetooth.library_name=libbluetooth_qti.so
 
 # Camera
