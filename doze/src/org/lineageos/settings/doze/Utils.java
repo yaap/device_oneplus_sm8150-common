@@ -79,18 +79,9 @@ public final class Utils {
                 new UserHandle(UserHandle.USER_CURRENT));
     }
 
-    protected static boolean enableAlwaysOn(Context context, boolean enable) {
-        return Settings.Secure.putIntForUser(context.getContentResolver(),
-                DOZE_ALWAYS_ON, enable ? 1 : 0, UserHandle.USER_CURRENT);
-    }
-
     protected static boolean isAlwaysOnEnabled(Context context) {
         return Settings.Secure.getIntForUser(context.getContentResolver(),
                 DOZE_ALWAYS_ON, 0, UserHandle.USER_CURRENT) != 0;
-    }
-
-    protected static boolean alwaysOnDisplayAvailable(Context context) {
-        return new AmbientDisplayConfiguration(context).alwaysOnAvailable();
     }
 
     protected static boolean isPickUpEnabled(Context context) {
