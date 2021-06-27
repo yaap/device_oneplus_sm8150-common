@@ -1,3 +1,5 @@
+vendor.nxp.eventprocessor::INxpEseEvtProcessor                        u:object_r:hal_secure_element_hwservice:s0
+vendor.nxp.nxpese::INxpEse                                            u:object_r:hal_secure_element_hwservice:s0
 vendor.nxp.nxpnfc::INxpNfc                                            u:object_r:hal_nxpnfc_hwservice:s0
 vendor.oneplus.camera.CameraMDMHIDL::IOnePlusCameraMDM                u:object_r:hal_cameraHIDL_hwservice:s0
 vendor.oneplus.fingerprint.extension::IVendorFingerprintExtensions    u:object_r:hal_fingerprint_hwservice:s0

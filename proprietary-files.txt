@@ -608,6 +608,7 @@ vendor/lib64/ese_client.so
 vendor/lib64/ese_spi_nxp.so
 vendor/lib64/hal_libnfc.so
 vendor/lib64/libchrome.so
+vendor/lib64/libp61-jcop-kit.so
 vendor/lib64/nfc_nci_nxp.so
 vendor/lib64/vendor.nxp.nxpnfc@1.0.so
 vendor/lib64/vendor.nxp.eventprocessor@1.0.so
