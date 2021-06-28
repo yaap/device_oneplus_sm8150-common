@@ -25,7 +25,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
-import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.IBinder;
@@ -40,16 +39,8 @@ import android.view.WindowManager;
 import android.util.Log;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
-import java.lang.StringBuffer;
 import java.lang.Math;
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class FPSInfoService extends Service {
     private View mView;
@@ -62,17 +53,16 @@ public class FPSInfoService extends Service {
     private IDreamManager mDreamManager;
 
     private class FPSView extends View {
-        private Paint mOnlinePaint;
-        private float mAscent;
-        private int mFH;
-        private int mMaxWidth;
+        private final Paint mOnlinePaint;
+        private final float mAscent;
+        private final int mMaxWidth;
 
         private int mNeededWidth;
         private int mNeededHeight;
 
         private boolean mDataAvail;
 
-        private Handler mCurFPSHandler = new Handler() {
+        private final Handler mCurFPSHandler = new Handler() {
             public void handleMessage(Message msg) {
                 if(msg.obj==null){
                     return;
@@ -106,8 +96,6 @@ public class FPSInfoService extends Service {
             mOnlinePaint.setShadowLayer(5.0f, 0.0f, 0.0f, Color.BLACK);
 
             mAscent = mOnlinePaint.ascent();
-            float descent = mOnlinePaint.descent();
-            mFH = (int)(descent - mAscent + .5f);
 
             final String maxWidthStr="fps: 60.1";
             mMaxWidth = (int)mOnlinePaint.measureText(maxWidthStr);
@@ -143,19 +131,14 @@ public class FPSInfoService extends Service {
                 return;
             }
 
-            final int W = mNeededWidth;
             final int LEFT = getWidth()-1;
 
-            int x = LEFT - mPaddingLeft;
-            int top = mPaddingTop + 2;
-            int bottom = mPaddingTop + mFH - 2;
 
             int y = mPaddingTop - (int)mAscent;
 
             String s=getFPSInfoString();
             canvas.drawText(s, LEFT-mPaddingLeft-mMaxWidth,
                     y-1, mOnlinePaint);
-            y += mFH;
         }
 
         void updateDisplay() {
@@ -179,9 +162,9 @@ public class FPSInfoService extends Service {
         }
     }
 
-    protected class CurFPSThread extends Thread {
+    protected static class CurFPSThread extends Thread {
         private boolean mInterrupt = false;
-        private Handler mHandler;
+        private final Handler mHandler;
 
         public CurFPSThread(Handler handler){
             mHandler=handler;
@@ -196,15 +179,12 @@ public class FPSInfoService extends Service {
             try {
                 while (!mInterrupt) {
                     sleep(1000);
-                    StringBuffer sb=new StringBuffer();
-                    String fpsVal = FPSInfoService.readOneLine(MEASURED_FPS);
+                    String fpsVal = FPSInfoService.readOneLine();
                     mHandler.sendMessage(mHandler.obtainMessage(1, fpsVal));
                 }
-            } catch (InterruptedException e) {
-                return;
-            }
+            } catch (InterruptedException ignored) { }
         }
-    };
+    }
 
     @Override
     public void onCreate() {
@@ -247,11 +227,11 @@ public class FPSInfoService extends Service {
         return null;
     }
 
-    private static String readOneLine(String fname) {
+    private static String readOneLine() {
         BufferedReader br;
-        String line = null;
+        String line;
         try {
-            br = new BufferedReader(new FileReader(fname), 512);
+            br = new BufferedReader(new FileReader(FPSInfoService.MEASURED_FPS), 512);
             try {
                 line = br.readLine();
             } finally {
@@ -263,7 +243,7 @@ public class FPSInfoService extends Service {
         return line;
     }
 
-    private BroadcastReceiver mScreenStateReceiver = new BroadcastReceiver() {
+    private final BroadcastReceiver mScreenStateReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
@@ -303,8 +283,7 @@ public class FPSInfoService extends Service {
             mCurFPSThread.interrupt();
             try {
                 mCurFPSThread.join();
-            } catch (InterruptedException e) {
-            }
+            } catch (InterruptedException ignored) { }
         }
         mCurFPSThread = null;
     }

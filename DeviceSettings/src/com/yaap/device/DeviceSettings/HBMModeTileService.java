@@ -18,14 +18,9 @@
 package com.yaap.device.DeviceSettings;
 
 import android.annotation.TargetApi;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
-import androidx.preference.PreferenceManager;
-
-import java.lang.IllegalArgumentException;
 
 @TargetApi(24)
 public class HBMModeTileService extends TileService {
@@ -62,7 +57,7 @@ public class HBMModeTileService extends TileService {
     @Override
     public void onClick() {
         super.onClick();
-        boolean enabled = HBMModeSwitch.isCurrentlyEnabled(this);
+        boolean enabled = com.yaap.device.DeviceSettings.HBMModeSwitch.isCurrentlyEnabled(this);
         // NOTE: reverse logic, enabled reflects the state before press
         Utils.writeValue(HBMModeSwitch.getFile(), enabled ? "0" : "5");
         if (!enabled) {

@@ -27,16 +27,15 @@ import android.widget.ImageView;
 
 public class ViewPagerAdapter extends PagerAdapter {
 
-    private Context context;
-    private LayoutInflater layoutInflater;
-    private Integer [] images = {R.drawable.image1,R.drawable.image2,R.drawable.image3};
+    private final Context mContext;
+    private final Integer [] mImages = {R.drawable.image1,R.drawable.image2,R.drawable.image3};
 
     public ViewPagerAdapter(Context context) {
-        this.context = context;
+        this.mContext = context;
     }
 
     public int getCount() {
-        return images.length;
+        return mImages.length;
     }
 
     public boolean isViewFromObject(View view, Object object) {
@@ -44,10 +43,10 @@ public class ViewPagerAdapter extends PagerAdapter {
     }
 
     public Object instantiateItem(ViewGroup container, final int position) {
-        layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.image_layout, null);
-        ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
-        imageView.setImageResource(images[position]);
+        ImageView imageView = view.findViewById(R.id.imageView);
+        imageView.setImageResource(mImages[position]);
 
         ViewPager vp = (ViewPager) container;
         vp.addView(view, 0);

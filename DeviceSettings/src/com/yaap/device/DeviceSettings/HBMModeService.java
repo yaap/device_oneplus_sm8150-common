@@ -28,7 +28,7 @@ import com.yaap.device.DeviceSettings.HBMModeSwitch;
 
 public class HBMModeService extends Service {
 
-    private BroadcastReceiver mReceiver = new BroadcastReceiver() {
+    private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();

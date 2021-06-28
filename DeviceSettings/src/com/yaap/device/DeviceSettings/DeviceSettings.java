@@ -18,36 +18,23 @@
 package com.yaap.device.DeviceSettings;
 
 import android.app.ActivityManager;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.text.TextUtils;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ListView;
-import android.util.Log;
-import androidx.preference.PreferenceCategory;
-import androidx.preference.PreferenceFragment;
-import androidx.preference.PreferenceManager;
-import androidx.preference.SwitchPreference;
+
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
+import androidx.preference.PreferenceFragment;
 import androidx.preference.PreferenceGroup;
+import androidx.preference.PreferenceManager;
 import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 import androidx.preference.TwoStatePreference;
 
-import com.android.internal.util.yaap.FileUtils;
 import com.yaap.device.DeviceSettings.Constants;
 import com.yaap.device.DeviceSettings.FPSInfoService;
 
@@ -55,7 +42,6 @@ public class DeviceSettings extends PreferenceFragment
         implements Preference.OnPreferenceChangeListener {
 
     private static final String KEY_CATEGORY_CAMERA = "camera";
-    private static final String KEY_CATEGORY_GRAPHICS = "graphics";
     public static final String KEY_SRGB_SWITCH = "srgb";
     public static final String KEY_HBM_SWITCH = "hbm";
     public static final String KEY_DC_SWITCH = "dc";
@@ -78,33 +64,27 @@ public class DeviceSettings extends PreferenceFragment
             Build.DEVICE.equals("OnePlus7TProNR");
 
     private static TwoStatePreference mHBMModeSwitch;
-    private static TwoStatePreference mDCModeSwitch;
     private static TwoStatePreference mRefreshRate;
     private static SwitchPreference mAutoRefreshRate;
     private static SwitchPreference mFpsInfo;
-    private ListPreference mTopKeyPref;
-    private ListPreference mMiddleKeyPref;
-    private ListPreference mBottomKeyPref;
     private SwitchPreference mAlwaysCameraSwitch;
-    private PreferenceCategory mCameraCategory;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this.getContext());
         addPreferencesFromResource(R.xml.main);
         getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mTopKeyPref = (ListPreference) findPreference(Constants.NOTIF_SLIDER_TOP_KEY);
+        ListPreference mTopKeyPref = (ListPreference) findPreference(Constants.NOTIF_SLIDER_TOP_KEY);
         mTopKeyPref.setValueIndex(Constants.getPreferenceInt(getContext(), Constants.NOTIF_SLIDER_TOP_KEY));
         mTopKeyPref.setOnPreferenceChangeListener(this);
-        mMiddleKeyPref = (ListPreference) findPreference(Constants.NOTIF_SLIDER_MIDDLE_KEY);
+        ListPreference mMiddleKeyPref = (ListPreference) findPreference(Constants.NOTIF_SLIDER_MIDDLE_KEY);
         mMiddleKeyPref.setValueIndex(Constants.getPreferenceInt(getContext(), Constants.NOTIF_SLIDER_MIDDLE_KEY));
         mMiddleKeyPref.setOnPreferenceChangeListener(this);
-        mBottomKeyPref = (ListPreference) findPreference(Constants.NOTIF_SLIDER_BOTTOM_KEY);
+        ListPreference mBottomKeyPref = (ListPreference) findPreference(Constants.NOTIF_SLIDER_BOTTOM_KEY);
         mBottomKeyPref.setValueIndex(Constants.getPreferenceInt(getContext(), Constants.NOTIF_SLIDER_BOTTOM_KEY));
         mBottomKeyPref.setOnPreferenceChangeListener(this);
 
-        mDCModeSwitch = (TwoStatePreference) findPreference(KEY_DC_SWITCH);
+        TwoStatePreference mDCModeSwitch = (TwoStatePreference) findPreference(KEY_DC_SWITCH);
         mDCModeSwitch.setEnabled(DCModeSwitch.isSupported());
         mDCModeSwitch.setChecked(DCModeSwitch.isCurrentlyEnabled(this.getContext()));
         mDCModeSwitch.setOnPreferenceChangeListener(new DCModeSwitch());
@@ -132,7 +112,7 @@ public class DeviceSettings extends PreferenceFragment
         mFpsInfo.setChecked(isFPSOverlayRunning());
         mFpsInfo.setOnPreferenceChangeListener(this);
 
-        mCameraCategory = (PreferenceCategory) findPreference(KEY_CATEGORY_CAMERA);
+        PreferenceCategory mCameraCategory = (PreferenceCategory) findPreference(KEY_CATEGORY_CAMERA);
         if (sHasPopupCamera) {
             mAlwaysCameraSwitch = (SwitchPreference) findPreference(KEY_ALWAYS_CAMERA_DIALOG);
             boolean enabled = Settings.System.getInt(getContext().getContentResolver(),
@@ -147,7 +127,6 @@ public class DeviceSettings extends PreferenceFragment
     @Override
     public void onResume() {
         super.onResume();
-        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this.getContext());
         mHBMModeSwitch.setChecked(HBMModeSwitch.isCurrentlyEnabled(this.getContext()));
         mFpsInfo.setChecked(isFPSOverlayRunning());
     }

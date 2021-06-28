@@ -17,41 +17,24 @@
 */
 package com.yaap.device.DeviceSettings;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.res.Resources;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.util.Log;
-import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceFragment;
-import androidx.preference.ListPreference;
 import androidx.preference.Preference;
-import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceManager;
-import androidx.preference.PreferenceScreen;
-import androidx.preference.TwoStatePreference;
 import androidx.viewpager.widget.ViewPager;
 
 import com.android.internal.util.yaap.FileUtils;
 
 public class PanelSettings extends PreferenceFragment implements RadioGroup.OnCheckedChangeListener {
-    private RadioGroup mRadioGroup;
     ViewPager viewPager;
     LinearLayout sliderDotspanel;
     private int dotscount;
@@ -60,7 +43,7 @@ public class PanelSettings extends PreferenceFragment implements RadioGroup.OnCh
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mRadioGroup = (RadioGroup) view.findViewById(R.id.radio_group);
+        RadioGroup mRadioGroup = (RadioGroup) view.findViewById(R.id.radio_group);
         int checkedButtonId = R.id.off_mode;
         if (NaturalModeSwitch.isCurrentlyEnabled(getContext())) {
             checkedButtonId = R.id.natural_mode;
@@ -197,6 +180,6 @@ public class PanelSettings extends PreferenceFragment implements RadioGroup.OnCh
             Utils.writeValue(WideColorModeSwitch.getFile(), "0");
             edit.putBoolean(DeviceSettings.KEY_WIDECOLOR_SWITCH, false);
         }
-        edit.commit();
+        edit.apply();
     }
 }

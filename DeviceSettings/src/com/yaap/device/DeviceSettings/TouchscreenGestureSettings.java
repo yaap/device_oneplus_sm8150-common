@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2016 The CyanogenMod project
  *               2017 The LineageOS Project
  *
@@ -22,8 +22,6 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.view.MenuItem;
@@ -160,7 +158,6 @@ public class TouchscreenGestureSettings extends PreferenceActivity
                 if (!super.persistString(value)) {
                     return false;
                 }
-                final int action = Integer.parseInt(String.valueOf(value));
                 sendUpdateBroadcast(mContext, mTouchscreenGestures);
                 return true;
             }

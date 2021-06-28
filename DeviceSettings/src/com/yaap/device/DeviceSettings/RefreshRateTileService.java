@@ -18,7 +18,6 @@
 package com.yaap.device.DeviceSettings;
 
 import android.annotation.TargetApi;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Icon;
 import android.provider.Settings;
@@ -77,7 +76,7 @@ public class RefreshRateTileService extends TileService {
             SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
             enabled = RefreshRateSwitch.isCurrentlyEnabled(this);
             RefreshRateSwitch.setPeakRefresh(this, enabled);
-            sharedPrefs.edit().putBoolean(DeviceSettings.KEY_REFRESH_RATE, enabled ? false : true).commit();
+            sharedPrefs.edit().putBoolean(DeviceSettings.KEY_REFRESH_RATE, !enabled).apply();
             Settings.System.putFloat(this.getContentResolver(),
                     Settings.System.PEAK_REFRESH_RATE, enabled ? 60f : 90f);
             Settings.System.putFloat(this.getContentResolver(),
