@@ -70,4 +70,7 @@
 
     <!-- Does the device have a notification led -->
     <bool name="config_hasNotificationLed">false</bool>
+
+    <!-- Path to fast charging status file to detect whether an oem fast charger is active -->
+    <string name="config_oem_charger_path">/sys/class/power_supply/battery/fastchg_status</string>
 </resources>
