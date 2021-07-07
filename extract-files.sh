@@ -67,7 +67,7 @@ function blob_fixup() {
     case "${DEVICE}" in
         hotdog | hotdogb | hotdogg )
         case "${1}" in
-            vendor/lib/libgf_ud_hal.so | vendor/lib64/libgf_ud_hal.so )
+            vendor/lib64/libgf_ud_hal.so )
             sed -i "s|vendor.boot.verifiedbootstate|vendor.boot.fingerprintbstate|g" "${2}"
             ;;
             esac
