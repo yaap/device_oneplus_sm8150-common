@@ -561,7 +561,7 @@ vendor/lib64/unnhal-acc-hta.so|7e11ddb04581f172e69b3778e0b803ef5ec39382
 vendor/lib64/unnhal-acc-hvx.so|c0892ac04f9c3cb9bb25e240ff22ced3522c31e0
 
 # NFC
-system/etc/nfcee_access.xml|2b6ae484bffbc47033ba475de8eae756c9364125
+system/etc/nfcee_access.xml
 -system_ext/app/NxpNfcNci/NxpNfcNci.apk
 system_ext/etc/permissions/com.nxp.nfc.xml
 system_ext/framework/com.nxp.nfc.jar
