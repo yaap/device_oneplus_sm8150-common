@@ -11,8 +11,6 @@
 ##################################################################################
 #Load WLAN driver
 
-import /vendor/etc/init/hw/init.cust.rc
-
 on property:wlan.driver.status=ok
     start load_wlan_driver
 
@@ -261,9 +259,6 @@ on boot
     chmod 0666 /proc/tzdbg/tz_log
 #Norman@Connectivity 2020/04/24 add for default country code
     setprop ro.boot.wificountrycode 00
-
-#Brandon@Conn 2020/07/24 add for default uicc support
-    setprop persist.vendor.radio.uicc_se_enabled true
 
 #martin.li@BSP, 2019/12/03,support for EngineeringMode tool start
    chown system system /proc/rf_cable_config

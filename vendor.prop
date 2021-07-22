@@ -168,6 +168,7 @@ ro.vendor.extension_library=libqti-perfd-client.so
 persist.vendor.qcomsysd.enabled=1
 
 # Radio
+persist.radio.multisim.config=dsds
 persist.vendor.data.iwlan.enable=true
 persist.vendor.radio.5g_mode_pref=0
 persist.vendor.radio.apm_sim_not_pwdn=1
@@ -183,4 +184,4 @@ persist.vendor.radio.ignore_dom_time=10
 persist.vendor.radio.procedure_bytes=SKIP
 persist.vendor.radio.rat_on=combine
 persist.vendor.radio.sib16_support=1
-persist.vendor.radio.uicc_se_enabled=false
+persist.vendor.radio.uicc_se_enabled=true
