@@ -381,8 +381,10 @@ public final class OpFeatures {
     public static final int OP_FEATURE_MM_MUTE_DELAY_SWITCH = 368;
     public static final int OP_FEATURE_ONLINE_CONFIG_NETWORK = 369;
     public static final int OP_FEATURE_KEEP_HIGH_VSYNC = 370;
+    public static final int OP_FEATURE_MM_SYNC_ACDB_ID_FROM_Q = 371;
+    public static final int OP_FEATURE_BITMOJI_AOD_ENABLED = 372;
 
-    private static final BitSet sFeatures = new BitSet(372);
+    private static final BitSet sFeatures = new BitSet(374);
 
     static {
         File file = new File("/odm/etc/odm_feature_list");
