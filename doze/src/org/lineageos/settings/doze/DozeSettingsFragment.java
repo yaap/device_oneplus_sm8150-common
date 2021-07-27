@@ -21,20 +21,18 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.PreferenceFragment;
 
-public class DozeSettingsFragment extends PreferenceFragment
-        implements OnPreferenceChangeListener {
+public class DozeSettingsFragment extends PreferenceFragment implements OnPreferenceChangeListener {
 
     private ListPreference mPickUpPreference;
 
@@ -42,8 +40,7 @@ public class DozeSettingsFragment extends PreferenceFragment
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.doze_settings);
 
-        SharedPreferences prefs = getActivity().getSharedPreferences("doze_settings",
-                Activity.MODE_PRIVATE);
+        SharedPreferences prefs = getActivity().getSharedPreferences("doze_settings", Activity.MODE_PRIVATE);
         if (savedInstanceState == null && !prefs.getBoolean("first_help_shown", false)) {
             showHelp();
         }
@@ -66,6 +63,8 @@ public class DozeSettingsFragment extends PreferenceFragment
             mPickUpPreference.setValueIndex(index);
             updatePickUpSummary();
         }
+        (new Handler(Looper.getMainLooper())).post(
+                () -> Utils.checkDozeService(getActivity()));
         return true;
     }
 
@@ -81,19 +80,15 @@ public class DozeSettingsFragment extends PreferenceFragment
     private static class HelpDialogFragment extends DialogFragment {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
-            return new AlertDialog.Builder(getActivity())
-                    .setTitle(R.string.doze_settings_help_title)
+            return new AlertDialog.Builder(getActivity()).setTitle(R.string.doze_settings_help_title)
                     .setMessage(R.string.doze_settings_help_text)
-                    .setNegativeButton(R.string.dialog_ok, (dialog, which) -> dialog.cancel())
-                    .create();
+                    .setNegativeButton(R.string.dialog_ok, (dialog, which) -> dialog.cancel()).create();
         }
 
         @Override
         public void onCancel(DialogInterface dialog) {
-            getActivity().getSharedPreferences("doze_settings", Activity.MODE_PRIVATE)
-                    .edit()
-                    .putBoolean("first_help_shown", true)
-                    .commit();
+            getActivity().getSharedPreferences("doze_settings", Activity.MODE_PRIVATE).edit()
+                    .putBoolean("first_help_shown", true).commit();
         }
     }
 
@@ -107,9 +102,12 @@ public class DozeSettingsFragment extends PreferenceFragment
         boolean aodEnabled = Utils.isAlwaysOnEnabled(getActivity());
         boolean enabled = dozeEnabled && !aodEnabled;
         mPickUpPreference.setEnabled(enabled);
-        if (!dozeEnabled) mPickUpPreference.setSummary(R.string.disabled_for_doze);
-        else if (aodEnabled) mPickUpPreference.setSummary(R.string.disabled_for_aod);
-        else if (enabled) updatePickUpSummary();
+        if (!dozeEnabled)
+            mPickUpPreference.setSummary(R.string.disabled_for_doze);
+        else if (aodEnabled)
+            mPickUpPreference.setSummary(R.string.disabled_for_aod);
+        else if (enabled)
+            updatePickUpSummary();
     }
 
     private void updatePickUpSummary() {
