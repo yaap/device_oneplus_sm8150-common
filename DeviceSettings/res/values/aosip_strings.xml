@@ -35,6 +35,9 @@
     <string name="natural_mode_title">Natural</string>
     <string name="vivid_mode_title">Vivid</string>
     <string name="panel_mode_info">Disabling panel mode requires a reboot</string>
+    <string name="color_mode_balance_red">Red strength</string>
+    <string name="color_mode_balance_green">Green strength</string>
+    <string name="color_mode_balance_blue">Blue strength</string>
 
     <!-- Screen off Gestures : Input -->
     <string name="touchscreen_gesture_settings_title">Touchscreen gestures</string>
