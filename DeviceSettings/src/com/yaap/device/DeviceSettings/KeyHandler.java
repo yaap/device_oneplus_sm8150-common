@@ -1,6 +1,5 @@
 /*
- * Copyright (C) 2015-2016 The CyanogenMod Project
- * Copyright (C) 2017 The LineageOS Project
+ * Copyright (C) 2021 Yet Another AOSP Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,11 +18,7 @@ package com.yaap.device.DeviceSettings;
 
 import android.app.NotificationManager;
 import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
 import android.media.AudioManager;
-import android.os.PowerManager;
-import android.os.PowerManager.WakeLock;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.provider.Settings;
@@ -31,14 +26,10 @@ import android.util.SparseIntArray;
 import android.view.KeyEvent;
 
 import com.android.internal.os.DeviceKeyHandler;
-import com.android.internal.util.ArrayUtils;
-
-import com.yaap.device.DeviceSettings.Constants;
 
 public class KeyHandler implements DeviceKeyHandler {
 
     private static final String TAG = KeyHandler.class.getSimpleName();
-    private static final int GESTURE_REQUEST = 1;
 
     private static final SparseIntArray sSupportedSliderZenModes = new SparseIntArray();
     private static final SparseIntArray sSupportedSliderRingModes = new SparseIntArray();
@@ -64,26 +55,16 @@ public class KeyHandler implements DeviceKeyHandler {
     }
 
     private final Context mContext;
-    private final PowerManager mPowerManager;
     private final NotificationManager mNotificationManager;
     private final AudioManager mAudioManager;
-    private SensorManager mSensorManager;
-    private Sensor mProximitySensor;
     private Vibrator mVibrator;
-    WakeLock mProximityWakeLock;
-    WakeLock mGestureWakeLock;
-    private int mProximityTimeOut;
     private int mPrevKeyCode = 0;
-    private boolean mProximityWakeSupported;
 
     public KeyHandler(Context context) {
         mContext = context;
-        mPowerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
         mNotificationManager
                 = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         mAudioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-        mGestureWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,
-                "GestureWakeLock");
 
         mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
         if (mVibrator == null || !mVibrator.hasVibrator()) {
@@ -99,7 +80,7 @@ public class KeyHandler implements DeviceKeyHandler {
     public KeyEvent handleKeyEvent(KeyEvent event) {
         int scanCode = event.getScanCode();
         String keyCode = Constants.sKeyMap.get(scanCode);
-        int keyCodeValue = 0;
+        int keyCodeValue;
 
         try {
             keyCodeValue = Constants.getPreferenceInt(mContext, keyCode);
@@ -129,13 +110,5 @@ public class KeyHandler implements DeviceKeyHandler {
         if (mVibrator != null && mVibrator.hasVibrator() && effect != -1) {
             mVibrator.vibrate(VibrationEffect.get(effect));
         }
-    }
-
-    public void handleNavbarToggle(boolean enabled) {
-        // do nothing
-    }
-
-    public boolean canHandleKeyEvent(KeyEvent event) {
-        return false;
     }
 }
