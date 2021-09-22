@@ -51,10 +51,10 @@ public class DeviceSettings extends PreferenceFragment
     public static final String KEY_VIVID_SWITCH = "vivid";
 
     private static final String KEY_CATEGORY_REFRESH = "refresh";
-    public static final String KEY_REFRESH_RATE = "refresh_rate";
-    public static final String KEY_AUTO_REFRESH_RATE = "auto_refresh_rate";
+    private static final String KEY_REFRESH_RATE = "refresh_rate";
+    private static final String KEY_AUTO_REFRESH_RATE = "auto_refresh_rate";
+    private static final String KEY_ALWAYS_CAMERA_DIALOG = "always_on_camera_dialog";
     public static final String KEY_FPS_INFO = "fps_info";
-    public static final String KEY_ALWAYS_CAMERA_DIALOG = "always_on_camera_dialog";
 
     public static final String KEY_SETTINGS_PREFIX = "device_setting_";
 
@@ -86,24 +86,25 @@ public class DeviceSettings extends PreferenceFragment
 
         TwoStatePreference mDCModeSwitch = (TwoStatePreference) findPreference(KEY_DC_SWITCH);
         mDCModeSwitch.setEnabled(DCModeSwitch.isSupported());
-        mDCModeSwitch.setChecked(DCModeSwitch.isCurrentlyEnabled(this.getContext()));
+        mDCModeSwitch.setChecked(DCModeSwitch.isCurrentlyEnabled(getContext()));
         mDCModeSwitch.setOnPreferenceChangeListener(new DCModeSwitch());
 
         mHBMModeSwitch = (TwoStatePreference) findPreference(KEY_HBM_SWITCH);
         mHBMModeSwitch.setEnabled(HBMModeSwitch.isSupported());
-        mHBMModeSwitch.setChecked(HBMModeSwitch.isCurrentlyEnabled(this.getContext()));
+        mHBMModeSwitch.setChecked(HBMModeSwitch.isCurrentlyEnabled(getContext()));
         mHBMModeSwitch.setOnPreferenceChangeListener(this);
 
         if (getResources().getBoolean(R.bool.config_deviceHasHighRefreshRate)) {
-            boolean autoRefresh = AutoRefreshRateSwitch.isCurrentlyEnabled(this.getContext());
+            boolean autoRefresh = AutoRefreshRateSwitch.isCurrentlyEnabled(getContext());
             mAutoRefreshRate = (SwitchPreference) findPreference(KEY_AUTO_REFRESH_RATE);
             mAutoRefreshRate.setChecked(autoRefresh);
             mAutoRefreshRate.setOnPreferenceChangeListener(this);
 
             mRefreshRate = (TwoStatePreference) findPreference(KEY_REFRESH_RATE);
-            mRefreshRate.setChecked(RefreshRateSwitch.isCurrentlyEnabled(this.getContext()));
             mRefreshRate.setOnPreferenceChangeListener(this);
-            updateRefreshRateState(autoRefresh);
+            mRefreshRate.setEnabled(!autoRefresh);
+            if (!autoRefresh)
+                mRefreshRate.setChecked(RefreshRateSwitch.isCurrentlyEnabled(getContext()));
         } else {
             getPreferenceScreen().removePreference((Preference) findPreference(KEY_CATEGORY_REFRESH));
         }
@@ -127,7 +128,7 @@ public class DeviceSettings extends PreferenceFragment
     @Override
     public void onResume() {
         super.onResume();
-        mHBMModeSwitch.setChecked(HBMModeSwitch.isCurrentlyEnabled(this.getContext()));
+        mHBMModeSwitch.setChecked(HBMModeSwitch.isCurrentlyEnabled(getContext()));
         mFpsInfo.setChecked(isFPSOverlayRunning());
     }
 
@@ -135,11 +136,11 @@ public class DeviceSettings extends PreferenceFragment
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference == mFpsInfo) {
             boolean enabled = (Boolean) newValue;
-            Intent fpsinfo = new Intent(this.getContext(), FPSInfoService.class);
+            Intent fpsinfo = new Intent(getContext(), FPSInfoService.class);
             if (enabled) {
-                this.getContext().startService(fpsinfo);
+                getContext().startService(fpsinfo);
             } else {
-                this.getContext().stopService(fpsinfo);
+                getContext().stopService(fpsinfo);
             }
         } else if (preference == mAlwaysCameraSwitch) {
             boolean enabled = (Boolean) newValue;
@@ -152,23 +153,23 @@ public class DeviceSettings extends PreferenceFragment
                     Settings.System.PEAK_REFRESH_RATE, 90f);
             Settings.System.putFloat(getContext().getContentResolver(),
                     Settings.System.MIN_REFRESH_RATE, 60f);
-            Settings.System.putInt(getContext().getContentResolver(),
-                    AutoRefreshRateSwitch.SETTINGS_KEY, enabled ? 1 : 0);
-            updateRefreshRateState(enabled);
+            mRefreshRate.setEnabled(!enabled);
+            mRefreshRate.setChecked(!enabled);
+            if (!enabled) RefreshRateSwitch.setPeakRefresh(getContext(), true);
         } else if (preference == mRefreshRate) {
             Boolean enabled = (Boolean) newValue;
             RefreshRateSwitch.setPeakRefresh(getContext(), enabled);
         } else if (preference == mHBMModeSwitch) {
             Boolean enabled = (Boolean) newValue;
             Utils.writeValue(HBMModeSwitch.getFile(), enabled ? "5" : "0");
-            Intent hbmIntent = new Intent(this.getContext(),
+            Intent hbmIntent = new Intent(getContext(),
                     com.yaap.device.DeviceSettings.HBMModeService.class);
             if (enabled) {
-                this.getContext().startService(hbmIntent);
+                getContext().startService(hbmIntent);
             } else {
-                this.getContext().stopService(hbmIntent);
+                getContext().stopService(hbmIntent);
             }
-        } else {
+        } else if (newValue instanceof String) {
             Constants.setPreferenceInt(getContext(), preference.getKey(),
                     Integer.parseInt((String) newValue));
         }
@@ -184,11 +185,6 @@ public class DeviceSettings extends PreferenceFragment
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private void updateRefreshRateState(boolean auto) {
-        mRefreshRate.setEnabled(!auto);
-        if (auto) mRefreshRate.setChecked(false);
     }
 
     private boolean isFPSOverlayRunning() {

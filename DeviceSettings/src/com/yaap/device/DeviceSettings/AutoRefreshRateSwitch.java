@@ -24,11 +24,13 @@ import com.yaap.device.DeviceSettings.DeviceSettings;
 
 public class AutoRefreshRateSwitch {
 
-    public static final String SETTINGS_KEY = DeviceSettings.KEY_SETTINGS_PREFIX + DeviceSettings.KEY_AUTO_REFRESH_RATE;
-
     public AutoRefreshRateSwitch() { }
 
     public static boolean isCurrentlyEnabled(Context context) {
-        return Settings.System.getInt(context.getContentResolver(), SETTINGS_KEY, 1) == 1;
+        boolean peak = Settings.System.getFloat(context.getContentResolver(),
+                Settings.System.PEAK_REFRESH_RATE, 90f) == 90f;
+        boolean min = Settings.System.getFloat(context.getContentResolver(),
+                Settings.System.MIN_REFRESH_RATE, 60f) == 60f;
+        return peak && min;
     }
 }
