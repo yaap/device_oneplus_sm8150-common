@@ -28,9 +28,4 @@
     <string name="motor_cannot_go_up_message">The front facing camera cannot pop up, please ensure there is no obstruction</string>
 
     <string name="motor_press_message">Pressing down the front facing camera can damage the motor. Please avoid doing so.</string>
-
-    <!-- Popup camera dialog -->
-    <string name="popup_camera_dialog_message">Do you want to raise the front facing camera?</string>
-    <string name="popup_camera_dialog_no">No</string>
-    <string name="popup_camera_dialog_raise">Yes</string>
 </resources>
