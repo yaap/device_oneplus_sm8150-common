@@ -451,7 +451,12 @@ PRODUCT_PACKAGES += \
 
 # tri-state key
 PRODUCT_PACKAGES += \
-    tri-state-key_daemon
+    KeyHandler \
+    tri-state-key-calibrate
+
+# Trust HAL
+PRODUCT_PACKAGES += \
+    vendor.lineage.trust@1.0-service
 
 # Update engine
 PRODUCT_PACKAGES += \

@@ -21,6 +21,7 @@
         <item>/system/system_ext/priv-app/DeviceSettings/DeviceSettings.apk</item>
         <item>/system/system_ext/priv-app/DeviceSettings/DeviceSettings.apk</item>
         <item>/system/priv-app/LineageParts/LineageParts.apk</item>
+        <item>/system_ext/priv-app/LineageParts/LineageParts.apk</item>
         <item>/system/priv-app/OnePlusCameraHelper/OnePlusCameraHelper.apk</item>
         <item>/system_ext/priv-app/TouchGestures/TouchGestures.apk</item>
     </string-array>
