@@ -96,7 +96,6 @@ void vendor_load_properties() {
   switch(project_name){
     case 18857:
       /* OnePlus 7 */
-      property_override("vendor.product.device", "guacamoleb");
       switch (rf_version){
         case 1:
           /* China */
@@ -118,7 +117,6 @@ void vendor_load_properties() {
       break;
     case 18821:
       /* OnePlus 7 Pro */
-      property_override("vendor.product.device", "guacamole");
       switch (rf_version){
         case 1:
           /* China */
@@ -140,12 +138,10 @@ void vendor_load_properties() {
       break;
     case 18831:
       /* OnePlus 7 Pro T-Mobile */
-      property_override("vendor.product.device", "guacamolet");
       property_override("ro.product.model", "GM1915");
       break;
     case 18865:
       /* OnePlus 7T */
-      property_override("vendor.product.device", "hotdogb");
       switch (rf_version){
         case 1:
           /* China */
@@ -167,12 +163,10 @@ void vendor_load_properties() {
       break;
     case 19863:
       /* OnePlus 7T T-Mobile */
-      property_override("vendor.product.device", "hotdogt");
       property_override("ro.product.model", "HD1907");
       break;
     case 19801:
       /* OnePlus 7T Pro */
-      property_override("vendor.product.device", "hotdog");
       switch (rf_version){
         case 1:
           /* China */

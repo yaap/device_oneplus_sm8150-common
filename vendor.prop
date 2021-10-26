@@ -158,9 +158,6 @@ debug.stagefright.omx_default_rank=0
 # NFC
 ro.camera.notify_nfc=1
 
-# OnePlus
-vendor.product.manufacturer=OPD
-
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
 
