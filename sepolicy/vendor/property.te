@@ -1,3 +1,2 @@
-type vendor_db_security_prop, property_type;
 type vendor_nfc_prop, property_type;
 type vendor_param_prop, property_type;

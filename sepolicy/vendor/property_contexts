@@ -9,10 +9,6 @@ camera.OPpictureId    u:object_r:vendor_camera_prop:s0
 ro.camera.            u:object_r:vendor_camera_prop:s0
 vendor.camera.        u:object_r:vendor_camera_prop:s0
 
-# Device Info
-ro.vendor.product.device.db               u:object_r:vendor_db_security_prop:s0
-ro.vendor.product.manufacturer.db         u:object_r:vendor_db_security_prop:s0
-
 # Display
 persist.vendor.color.matrix    u:object_r:vendor_display_prop:s0
 
