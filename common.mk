@@ -208,7 +208,6 @@ PRODUCT_PACKAGES += \
     libdisplayconfig.qti \
     libdisplayconfig.qti.vendor \
     libqdMetaData \
-    libtinyxml \
     libvulkan \
     memtrack.msmnile \
     vendor.display.config@1.0 \
@@ -377,10 +376,6 @@ PRODUCT_PACKAGES += \
     libril_shim \
     librmnetctl \
     libxml2
-
-# Vendor libstdc++
-PRODUCT_PACKAGES += \
-    libstdc++.vendor
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \
