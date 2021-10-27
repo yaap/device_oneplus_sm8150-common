@@ -27,10 +27,6 @@
 #
 #
 
-
-# kevin@system, 2019/06/08, add carrier rc
-import /vendor/etc/init/hw/init.oem.carrier.rc
-
 on early-init
     exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules audio_wglink audio_q6_pdr audio_q6_notifier audio_apr audio_adsp_loader audio_q6 audio_native audio_usf audio_pinctrl_wcd audio_swr audio_platform audio_hdmi audio_wcd_spi audio_stub audio_wcd_core audio_wsa881x audio_tfa9894 audio_wcd9360 audio_hdmi audio_machine_msmnile
     write /proc/sys/kernel/sched_boost 1
@@ -58,7 +54,7 @@ on fs
     chmod 0771 /mnt/vendor/persist
     restorecon_recursive /mnt/vendor/persist
     mkdir /mnt/vendor/persist/data 0700 system system
-#liuhaituo@MM.Audio, 2019/6/25, chmod to support audio_hal and sensor hal
+    #liuhaituo@MM.Audio, 2019/6/25, chmod to support audio_hal and sensor hal
     chmod 0666 /dev/audio_ultrasound
     chmod 0666 /dev/sensor_ultrasound
 
@@ -83,14 +79,6 @@ on fs
 on post-fs
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
-
-    #miao.guom@system Bug35643 mkdir recovery
-    # mkdir /op2/recovery 0770 root system
-    mkdir /mnt/vendor/op2/recovery 0770 root system
-    # ifdef vendor_edit remove SPU
-    # start vendor.spdaemon
-    # start vendor.sec_nvm
-    # endif vendor_edit
 
 on late-fs
     wait_for_prop hwservicemanager.ready true
@@ -127,11 +115,6 @@ on boot
     write /dev/cpuset/foreground/boost/cpus 0-7
     write /dev/cpuset/background/cpus 0-7
     write /dev/cpuset/system-background/cpus 0-7
-
-    # ifdef VENDOR_EDIT
-    # chris.gao@SYSTEM, 2019/3/2, [GCE-9966] Optimize surfaceflinger
-    write /dev/cpuset/display/cpus 4-7
-    # endif VENDOR_EDIT
 
 # Add a cpuset for the camera daemon
 # We want all cores for camera
@@ -197,21 +180,6 @@ on property:vendor.display.lcd_density=640
 on boot && property:persist.vendor.usb.controller.default=*
     setprop vendor.usb.controller ${persist.vendor.usb.controller.default}
 
-on property:vendor.usb.controller=*
-    setprop sys.usb.controller ${vendor.usb.controller}
-
-#Load WLAN driver
-on property:wlan.driver.status=ok
-    start load_wlan_driver
-
-service load_wlan_driver /vendor/bin/sh /vendor/bin/load_wlan_driver.sh
-    class main
-    disabled
-    oneshot
-
-on property:vendor.load.ftm.wlan.driver=ok
-    start load_wlan_driver
-
 #pd-mapper
 service vendor.pd_mapper /vendor/bin/pd-mapper
     class core
@@ -255,13 +223,12 @@ service vendor.sec_nvm /vendor/bin/sec_nvm
 
 service vendor.thermal-engine /vendor/bin/thermal-engine
    class main
-   user system
+   user root
    socket thermal-send-client stream 0666 system system
    socket thermal-recv-client stream 0660 system system
    socket thermal-recv-passive-client stream 0666 system system
    socket thermal-send-rule stream 0660 system system
-   group system
-
+   group root
 
 service vendor.lowi /vendor/bin/sscrpcd
    class core
@@ -274,6 +241,9 @@ service vendor.mdm_helper /vendor/bin/mdm_helper
     group system wakelock
     disabled
 
+service vendor.mdm_launcher /vendor/bin/sh /vendor/bin/init.mdm.sh
+    class main
+    oneshot
 
 on property:vold.decrypt=trigger_restart_framework
     start cnss_diag
