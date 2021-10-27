@@ -5,15 +5,10 @@ persist.vendor.audio.hac.enable    u:object_r:vendor_audio_prop:s0
 persist.vendor.bt.a2dp_offload_cap    u:object_r:bluetooth_a2dp_offload_prop:s0
 
 # Camera
-camera.OPpictureId    u:object_r:vendor_camera_prop:s0
-ro.camera.            u:object_r:vendor_camera_prop:s0
 vendor.camera.        u:object_r:vendor_camera_prop:s0
 
 # Display
 persist.vendor.color.matrix    u:object_r:vendor_display_prop:s0
-
-# Fastbootd
-ro.fastbootd.available                 u:object_r:exported_default_prop:s0
 
 # FTM mode
 ro.boot.ftm_mode    u:object_r:exported_default_prop:s0
@@ -21,11 +16,9 @@ ro.boot.ftm_mode    u:object_r:exported_default_prop:s0
 # NFC
 persist.vendor.ese.          u:object_r:vendor_nfc_prop:s0
 persist.vendor.nfc.          u:object_r:vendor_nfc_prop:s0
-persist.nfc.                 u:object_r:vendor_nfc_prop:s0
 persist.vendor.oem.nfc.      u:object_r:vendor_nfc_prop:s0
 ro.vendor.nfc.notify_tp      u:object_r:vendor_nfc_prop:s0
 vendor.oem.nfc.              u:object_r:vendor_nfc_prop:s0
-persist.factoryota.reboot    u:object_r:vendor_nfc_prop:s0
 persist.vendor.nfc.delayese  u:object_r:vendor_nfc_prop:s0
 
 # Param
@@ -41,7 +34,6 @@ ro.boot.rf_version    u:object_r:exported_default_prop:s0
 # RIL
 persist.vendor.diag.max.num     u:object_r:telephony_config_prop:s0
 persist.vendor.diag.max.size    u:object_r:telephony_config_prop:s0
-ro.ril.supportLTE               u:object_r:radio_prop:s0
 vendor.oem.bt.addr              u:object_r:vendor_radio_prop:s0
 vendor.oem.device.imeicache1    u:object_r:vendor_radio_prop:s0
 vendor.oem.device.imeicache2    u:object_r:vendor_radio_prop:s0
