@@ -52,14 +52,17 @@ void updateScreenBuffer() {
         captureArgs.width = ALS_RADIUS * 2;
         captureArgs.height = ALS_RADIUS * 2;
         captureArgs.useIdentityTransform = true;
-        ScreenshotClient::captureDisplay(
+        android::status_t ret = ScreenshotClient::captureDisplay(
                 captureArgs, captureListener);
-        captureListener->onScreenCaptureCompleted(captureResults);
+        if(ret != android::NO_ERROR) {
+            return;
+        }
+	    android::binder::Status s = captureListener->onScreenCaptureCompleted(captureResults);
+        if(s.isOk()){
+		    outBuffer = captureResults.buffer;
+	    }
         lastScreenUpdate = now.tv_sec;
     }
-
-    outBuffer = captureResults.buffer;
-
     uint8_t *out;
     auto resultWidth = outBuffer->getWidth();
     auto resultHeight = outBuffer->getHeight();
