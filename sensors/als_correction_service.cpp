@@ -16,6 +16,7 @@
 
 #include <android-base/properties.h>
 #include <gui/SurfaceComposerClient.h>
+#include <gui/SyncScreenCaptureListener.h>
 
 #include <cstdio>
 #include <signal.h>
@@ -28,6 +29,7 @@ using android::Rect;
 using android::ScreenshotClient;
 using android::sp;
 using android::SurfaceComposerClient;
+using namespace android;
 
 constexpr int ALS_RADIUS = 64;
 constexpr int SCREENSHOT_INTERVAL = 1;
@@ -40,29 +42,26 @@ void updateScreenBuffer() {
 
     struct timespec now;
     clock_gettime(CLOCK_MONOTONIC, &now);
-    sp<android::IScreenCaptureListener> captureListener;
-    android::gui::ScreenCaptureResults captureResults;
+    sp<SyncScreenCaptureListener> captureListener = new SyncScreenCaptureListener();
+    gui::ScreenCaptureResults captureResults;
 
     if (now.tv_sec - lastScreenUpdate >= SCREENSHOT_INTERVAL) {
         // Update Screenshot at most every second
-        android::DisplayCaptureArgs captureArgs;
+        DisplayCaptureArgs captureArgs;
         captureArgs.displayToken = SurfaceComposerClient::getInternalDisplayToken();
-        captureArgs.pixelFormat = android::ui::PixelFormat::RGBA_8888;
+        captureArgs.pixelFormat = ui::PixelFormat::RGBA_8888;
         captureArgs.sourceCrop = Rect(ALS_POS_X - ALS_RADIUS, ALS_POS_Y - ALS_RADIUS, ALS_POS_X + ALS_RADIUS, ALS_POS_Y + ALS_RADIUS);
         captureArgs.width = ALS_RADIUS * 2;
         captureArgs.height = ALS_RADIUS * 2;
         captureArgs.useIdentityTransform = true;
-        android::status_t ret = ScreenshotClient::captureDisplay(
-                captureArgs, captureListener);
-        if(ret != android::NO_ERROR) {
-            return;
+        status_t result = ScreenshotClient::captureDisplay(captureArgs, captureListener);
+        if (result == NO_ERROR) {
+            captureResults = captureListener->waitForResults();
+            if (captureResults.result == NO_ERROR) outBuffer = captureResults.buffer;
         }
-	    android::binder::Status s = captureListener->onScreenCaptureCompleted(captureResults);
-        if(s.isOk()){
-		    outBuffer = captureResults.buffer;
-	    }
         lastScreenUpdate = now.tv_sec;
     }
+
     uint8_t *out;
     auto resultWidth = outBuffer->getWidth();
     auto resultHeight = outBuffer->getHeight();
