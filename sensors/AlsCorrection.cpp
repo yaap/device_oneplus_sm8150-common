@@ -193,6 +193,14 @@ void AlsCorrection::process(Event& event) {
     */
     ALOGV("Raw sensor reading: %.0f", event.u.scalar);
 
+    if (conf.rgbw_max_lux[0] == 0.0 && conf.rgbw_max_lux[1] == 0.0 &&
+        conf.rgbw_max_lux[2] == 0.0 && conf.rgbw_max_lux[3] == 0.0) {
+        ALOGE("Trying to init AlsCorrection again");
+        AlsCorrection::init();
+        event.sensorHandle = 0;
+        return;
+    }
+
     if (event.u.scalar > conf.bias) {
         event.u.scalar -= conf.bias;
     }
