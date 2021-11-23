@@ -74,11 +74,6 @@
     <!-- Refresh rate -->
     <string name="refresh_title">Screen refresh</string>
     <string name="tile_refresh_rate">Screen refresh rate</string>
-    <string name="auto_refresh_rate_summary">Let apps decide what refresh rate to use</string>
-    <string name="auto_refresh_rate_title">Auto refresh mode</string>
-    <string name="refresh_rate_summary">Choose between 60Hz or 90Hz peak refresh</string>
-    <string name="refresh_rate_title">Force 90Hz peak refresh rate</string>
-    <string name="refresh_rate_warning">Using forced 90Hz will impact battery life significantly</string>
     <string name="fps_info_title">FPS overlay</string>
     <string name="fps_info_summary">Show overlay with with current frames per second</string>
     <string name="panel_mode_info">Disable panel mode requires reboot.</string>

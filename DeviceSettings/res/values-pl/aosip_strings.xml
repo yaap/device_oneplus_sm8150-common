@@ -74,11 +74,6 @@
     <!-- Refresh rate -->
     <string name="refresh_title">Częstotliwość odświeżania ekranu</string>
     <string name="tile_refresh_rate">Częstotliwość odświeżania ekranu</string>
-    <string name="auto_refresh_rate_summary">Pozwól aplikacjom decydować, jakiej częstotliwości odświeżania użyć</string>
-    <string name="auto_refresh_rate_title">Automatycznie odświeżaj kanał.</string>
-    <string name="refresh_rate_summary">Wybierz częstotliwość odświeżania szczytowego 60 Hz lub 90 Hz</string>
-    <string name="refresh_rate_title">Wymuś szczytową częstotliwość odświeżania 90 Hz</string>
-    <string name="refresh_rate_warning">Zastosowanie wymuszonego 90 Hz znacząco wpłynie na żywotność baterii</string>
     <string name="fps_info_title">Nakładka FPS</string>
     <string name="fps_info_summary">Pokaż nakładkę z bieżącymi klatkami na sekundę</string>
     <string name="panel_mode_info">Wyłączenie tryb panelu wymaga ponownego uruchomienia.</string>

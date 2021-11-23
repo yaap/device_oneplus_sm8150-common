@@ -74,11 +74,6 @@
     <!-- Refresh rate -->
     <string name="refresh_title">Rafraîchissement de l\'écran</string>
     <string name="tile_refresh_rate">Taux de rafraîchissement de l\'écran </string>
-    <string name="auto_refresh_rate_summary">Laisser l\'appareil décider du taux de rafraîchissement</string>
-    <string name="auto_refresh_rate_title">Mode auto rafraîchissement</string>
-    <string name="refresh_rate_summary">Choisir entre 60Hz et 90 Hz</string>
-    <string name="refresh_rate_title">Force 90Hz</string>
-    <string name="refresh_rate_warning">Forcer 90Hz peut avoir un impact sur la consommation de batterie</string>
     <string name="fps_info_title">Affichage FPS</string>
     <string name="fps_info_summary">Montrer images  par seconde actuelles</string>
     <string name="panel_mode_info">Désactiver la dalle demande un redémarrage</string>

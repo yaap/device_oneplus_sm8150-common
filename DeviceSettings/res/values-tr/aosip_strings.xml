@@ -74,11 +74,6 @@
     <!-- Refresh rate -->
     <string name="refresh_title">Ekran yenileme</string>
     <string name="tile_refresh_rate">Ekran yenileme oranı</string>
-    <string name="auto_refresh_rate_summary">Hangi yenileme hızının kullanılacağına uygulamaların karar vermesine izin verin</string>
-    <string name="auto_refresh_rate_title">Otomatik yenileme modu</string>
-    <string name="refresh_rate_summary">60Hz veya 90Hz tepe yenileme arasında seçim yapın</string>
-    <string name="refresh_rate_title">90Hz tepe yenileme hızını zorla</string>
-    <string name="refresh_rate_warning">Zorlanmış 90Hz kullanmak pil ömrünü önemli ölçüde etkiler</string>
     <string name="fps_info_title">FPS kaplama</string>
     <string name="fps_info_summary">Saniyede mevcut kare ile kaplamayı göster</string>
     <string name="panel_mode_info">Panel modunu devre dışı bırak, yeniden başlatma gerektirir.</string>

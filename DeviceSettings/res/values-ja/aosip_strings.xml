@@ -74,11 +74,6 @@
     <!-- Refresh rate -->
     <string name="refresh_title">画面リフレッシュ</string>
     <string name="tile_refresh_rate">画面リフレッシュレート</string>
-    <string name="auto_refresh_rate_summary">使用するリフレッシュレートをアプリに決定させる</string>
-    <string name="auto_refresh_rate_title">自動リフレッシュモード</string>
-    <string name="refresh_rate_summary">60Hzから90Hzの間でピークリフレッシュを選択する</string>
-    <string name="refresh_rate_title">強制的に90Hzをピークリフレッシュにする</string>
-    <string name="refresh_rate_warning">強制90Hzを使用するとバッテリー寿命に大きな影響を与えます</string>
     <string name="fps_info_title">FPS オーバーレイ</string>
     <string name="fps_info_summary">現在の FPS をオーバーレイ表示する</string>
     <string name="panel_mode_info">パネルモードを無効にするには再起動が必要です</string>

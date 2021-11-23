@@ -45,14 +45,10 @@ public class RefreshRateTileService extends TileService {
     @Override
     public void onStartListening() {
         super.onStartListening();
-        if (AutoRefreshRateSwitch.isCurrentlyEnabled(this)) {
-            getQsTile().setState(Tile.STATE_UNAVAILABLE);
-        } else {
-            boolean enabled = RefreshRateSwitch.isCurrentlyEnabled(this);
-            getQsTile().setIcon(Icon.createWithResource(this,
-                    enabled ? R.drawable.ic_refresh_tile_90 : R.drawable.ic_refresh_tile_60));
-            getQsTile().setState(enabled ? Tile.STATE_ACTIVE : Tile.STATE_INACTIVE);
-        }
+        boolean enabled = RefreshRateSwitch.isCurrentlyEnabled(this);
+        getQsTile().setIcon(Icon.createWithResource(this,
+                enabled ? R.drawable.ic_refresh_tile_60 : R.drawable.ic_refresh_tile_90));
+        getQsTile().setState(enabled ? Tile.STATE_ACTIVE : Tile.STATE_INACTIVE);
         getQsTile().updateTile();
     }
 
@@ -64,13 +60,11 @@ public class RefreshRateTileService extends TileService {
     @Override
     public void onClick() {
         super.onClick();
-        if (!AutoRefreshRateSwitch.isCurrentlyEnabled(this)) {
-            boolean enabled = RefreshRateSwitch.isCurrentlyEnabled(this);
-            RefreshRateSwitch.setPeakRefresh(this, !enabled);
-            getQsTile().setIcon(Icon.createWithResource(this,
-                    enabled ? R.drawable.ic_refresh_tile_60 : R.drawable.ic_refresh_tile_90));
-            getQsTile().setState(enabled ? Tile.STATE_INACTIVE : Tile.STATE_ACTIVE);
-            getQsTile().updateTile();
-        }
+        boolean enabled = RefreshRateSwitch.isCurrentlyEnabled(this);
+        RefreshRateSwitch.setPeakRefresh(this, !enabled);
+        getQsTile().setIcon(Icon.createWithResource(this,
+                enabled ? R.drawable.ic_refresh_tile_90 : R.drawable.ic_refresh_tile_60));
+        getQsTile().setState(enabled ? Tile.STATE_INACTIVE : Tile.STATE_ACTIVE);
+        getQsTile().updateTile();
     }
 }

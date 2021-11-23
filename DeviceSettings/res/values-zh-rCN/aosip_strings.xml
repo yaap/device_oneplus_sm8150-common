@@ -74,11 +74,6 @@
     <!-- Refresh rate -->
     <string name="refresh_title">屏幕刷新率</string>
     <string name="tile_refresh_rate">屏幕刷新率</string>
-    <string name="auto_refresh_rate_summary">由应用决定刷新率</string>
-    <string name="auto_refresh_rate_title">自动刷新模式</string>
-    <string name="refresh_rate_summary">在 60Hz 或 90Hz 峰值刷新之间选择</string>
-    <string name="refresh_rate_title">强制 90Hz 刷新率</string>
-    <string name="refresh_rate_warning">强制使用 90Hz 会严重影响电池寿命</string>
     <string name="fps_info_title">FPS 叠加层</string>
     <string name="fps_info_summary">显示帧率悬浮窗</string>
     <string name="panel_mode_info">禁用面板模式需要重新启动。</string>

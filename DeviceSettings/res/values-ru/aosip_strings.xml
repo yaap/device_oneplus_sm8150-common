@@ -74,11 +74,6 @@
     <!-- Refresh rate -->
     <string name="refresh_title">Частота обновления экрана</string>
     <string name="tile_refresh_rate">Частота обновления экрана</string>
-    <string name="auto_refresh_rate_summary">Пусть приложения решают, какую частоту обновления использовать</string>
-    <string name="auto_refresh_rate_title">Автоматический режим обновления</string>
-    <string name="refresh_rate_summary">Выберите пиковое обновление 60 Гц или 90 Гц</string>
-    <string name="refresh_rate_title">Принудительная максимальная частота обновления 90 Гц</string>
-    <string name="refresh_rate_warning">Принудительное использование 90 Гц значительно повлияет на срок службы батареи</string>
     <string name="fps_info_title">FPS overlay</string>
     <string name="fps_info_summary">Показать overlay с текущими кадрами в секунду</string>
     <string name="panel_mode_info">Отключение режима панели требует перезагрузки.</string>

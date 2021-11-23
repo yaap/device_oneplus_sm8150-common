@@ -52,7 +52,6 @@ public class DeviceSettings extends PreferenceFragment
 
     private static final String KEY_CATEGORY_REFRESH = "refresh";
     private static final String KEY_REFRESH_RATE = "refresh_rate";
-    private static final String KEY_AUTO_REFRESH_RATE = "auto_refresh_rate";
     private static final String KEY_ALWAYS_CAMERA_DIALOG = "always_on_camera_dialog";
     public static final String KEY_FPS_INFO = "fps_info";
 
@@ -65,7 +64,6 @@ public class DeviceSettings extends PreferenceFragment
 
     private static TwoStatePreference mHBMModeSwitch;
     private static TwoStatePreference mRefreshRate;
-    private static SwitchPreference mAutoRefreshRate;
     private static SwitchPreference mFpsInfo;
     private SwitchPreference mAlwaysCameraSwitch;
 
@@ -95,16 +93,8 @@ public class DeviceSettings extends PreferenceFragment
         mHBMModeSwitch.setOnPreferenceChangeListener(this);
 
         if (getResources().getBoolean(R.bool.config_deviceHasHighRefreshRate)) {
-            boolean autoRefresh = AutoRefreshRateSwitch.isCurrentlyEnabled(getContext());
-            mAutoRefreshRate = (SwitchPreference) findPreference(KEY_AUTO_REFRESH_RATE);
-            mAutoRefreshRate.setChecked(autoRefresh);
-            mAutoRefreshRate.setOnPreferenceChangeListener(this);
-
             mRefreshRate = (TwoStatePreference) findPreference(KEY_REFRESH_RATE);
             mRefreshRate.setOnPreferenceChangeListener(this);
-            mRefreshRate.setEnabled(!autoRefresh);
-            if (!autoRefresh)
-                mRefreshRate.setChecked(RefreshRateSwitch.isCurrentlyEnabled(getContext()));
         } else {
             getPreferenceScreen().removePreference((Preference) findPreference(KEY_CATEGORY_REFRESH));
         }
@@ -147,15 +137,6 @@ public class DeviceSettings extends PreferenceFragment
             Settings.System.putInt(getContext().getContentResolver(),
                         KEY_SETTINGS_PREFIX + KEY_ALWAYS_CAMERA_DIALOG,
                         enabled ? 1 : 0);
-        } else if (preference == mAutoRefreshRate) {
-            Boolean enabled = (Boolean) newValue;
-            Settings.System.putFloat(getContext().getContentResolver(),
-                    Settings.System.PEAK_REFRESH_RATE, 90f);
-            Settings.System.putFloat(getContext().getContentResolver(),
-                    Settings.System.MIN_REFRESH_RATE, 60f);
-            mRefreshRate.setEnabled(!enabled);
-            mRefreshRate.setChecked(!enabled);
-            if (!enabled) RefreshRateSwitch.setPeakRefresh(getContext(), true);
         } else if (preference == mRefreshRate) {
             Boolean enabled = (Boolean) newValue;
             RefreshRateSwitch.setPeakRefresh(getContext(), enabled);

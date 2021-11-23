@@ -74,11 +74,6 @@
     <!-- Refresh rate -->
     <string name="refresh_title">Bildwiederholrate</string>
     <string name="tile_refresh_rate">Bildwiederholrate</string>
-    <string name="auto_refresh_rate_summary">Anwendungen entscheiden, welche Wiederholrate verwendet wird</string>
-    <string name="auto_refresh_rate_title">Automatischer Modus</string>
-    <string name="refresh_rate_summary">Wähle zwischen 60Hz und 90Hz</string>
-    <string name="refresh_rate_title">Erzwinge 90Hz</string>
-    <string name="refresh_rate_warning">Das Erzwingen der maximalen Wiederholrate beeinträchtigt die Akkulaufzeit!</string>
     <string name="fps_info_title">FPS overlay</string>
     <string name="fps_info_summary">Überlagerung mit aktuellen Bildern pro Sekunde anzeigen</string>
     <string name="panel_mode_info">Die Deaktivierung erfordert einen Neustart.</string>

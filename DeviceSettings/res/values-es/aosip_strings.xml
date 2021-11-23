@@ -74,11 +74,6 @@
     <!-- Refresh rate -->
     <string name="refresh_title">Refresco de pantalla</string>
     <string name="tile_refresh_rate">Frecuencia de refresco de la pantalla</string>
-    <string name="auto_refresh_rate_summary">Permitir que las aplicaciones decidan qué frecuencia de refresco usar</string>
-    <string name="auto_refresh_rate_title">Modo de refresco automático</string>
-    <string name="refresh_rate_summary">Elige entre la taza de refresco 60 Hz o 90 Hz </string>
-    <string name="refresh_rate_title">Forzar taza de refresco a 90 Hz</string>
-    <string name="refresh_rate_warning">El uso forzado de la frecuencia de refresco máxima afectará significativamente a la duración de la batería</string>
     <string name="fps_info_title">Capas de cuadros por segundo</string>
     <string name="fps_info_summary">Mostrar capas con los cuadros por segundos actuales</string>
     <string name="panel_mode_info">Deshabilitar modos de color necesita un reinicio.</string>

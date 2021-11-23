@@ -74,11 +74,6 @@
     <!-- Refresh rate -->
     <string name="refresh_title">Obnovení obrazovky</string>
     <string name="tile_refresh_rate">Obnovovací frekvence obrazovky</string>
-    <string name="auto_refresh_rate_summary">Nechte aplikace rozhodnout, jakou obnovovací frekvenci použít</string>
-    <string name="auto_refresh_rate_title">Automatický režim obnovení</string>
-    <string name="refresh_rate_summary">Vyberte si mezi 60Hz nebo 90Hz obnovovací frekvencí</string>
-    <string name="refresh_rate_title">Vynutit maximální obnovovací frekvenci 90Hz</string>
-    <string name="refresh_rate_warning">Používání vynucené frekvence 90Hz bude mít významný vliv na životnost baterie</string>
     <string name="fps_info_title">Překrytí FPS</string>
     <string name="fps_info_summary">Zobrazit překrytí s aktuálním počtem snímků za sekundu</string>
     <string name="panel_mode_info">Vypnutí režimu panelu vyžaduje restart.</string>

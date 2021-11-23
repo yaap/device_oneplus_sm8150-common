@@ -21,6 +21,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.provider.Settings;
 import androidx.preference.PreferenceManager;
 
 import com.yaap.device.DeviceSettings.TouchscreenGestureSettings;
@@ -66,5 +67,8 @@ public class Startup extends BroadcastReceiver {
         if (enabled) {
             context.startService(new Intent(context, FPSInfoService.class));
         }
+        // setting minimum refresh rate to 0 (for dirty flashers)
+        Settings.System.putFloat(context.getContentResolver(),
+                Settings.System.MIN_REFRESH_RATE, 0);
     }
 }

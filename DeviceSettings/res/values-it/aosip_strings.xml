@@ -74,11 +74,6 @@
     <!-- Refresh rate -->
     <string name="refresh_title">Aggiornamento dello schermo</string>
     <string name="tile_refresh_rate">Frequenza di aggiornamento dello schermo</string>
-    <string name="auto_refresh_rate_summary">Lascia che sia l\'applicazione a scegliere la frequenza di aggiornamento dello schermo da utilizzare</string>
-    <string name="auto_refresh_rate_title">Frequenza di aggiornamento automatica</string>
-    <string name="refresh_rate_summary">Scegli fra 60hz e 90hz come frequenza di aggiornamento massima</string>
-    <string name="refresh_rate_title">Forza la frequenza di aggiornamento a 90hz</string>
-    <string name="refresh_rate_warning">Forzando la frequenza di aggiornamento a 90hz verrà notevolmente impattata la durata della batteria</string>
     <string name="fps_info_title">FPS sullo schermo</string>
     <string name="fps_info_summary">Mostra sullo schermo i tuoi FPS </string>
     <string name="panel_mode_info">Disabilitare la modalità colore necessita un riavvio</string>

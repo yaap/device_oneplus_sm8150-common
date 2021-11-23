@@ -74,11 +74,6 @@
     <!-- Refresh rate -->
     <string name="refresh_title">Taxa de atualização da tela</string>
     <string name="tile_refresh_rate">Taxa de atualização da tela</string>
-    <string name="auto_refresh_rate_summary">Deixar os aplicativos decidirem qual taxa de atualização usar</string>
-    <string name="auto_refresh_rate_title">Atualizar automaticamente</string>
-    <string name="refresh_rate_summary">Escolha entre atualização de pico de 60Hz ou 90Hz</string>
-    <string name="refresh_rate_title">Forçar taxa de atualização de pico de 90Hz</string>
-    <string name="refresh_rate_warning">O uso de 90Hz forçado afetará significativamente a vida da bateria</string>
     <string name="fps_info_title">Sobreposição de FPS</string>
     <string name="fps_info_summary">Mostrar sobreposição com os quadros atuais por segundo</string>
     <string name="panel_mode_info">Desativar o modo de painel requer reinicialização.</string>

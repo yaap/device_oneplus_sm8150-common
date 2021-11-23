@@ -74,11 +74,6 @@
     <!-- Refresh rate -->
     <string name="refresh_title">Làm mới màn hình</string>
     <string name="tile_refresh_rate">Tốc độ làm tươi màn hình</string>
-    <string name="auto_refresh_rate_summary">Hãy để ứng dụng quyết định tốc độ làm tươi để sử dụng</string>
-    <string name="auto_refresh_rate_title">Chế độ tự động làm tươi</string>
-    <string name="refresh_rate_summary">Chọn giữa làm tươi 60Hz hoặc 90Hz</string>
-    <string name="refresh_rate_title">Tốc độ làm tươi cực đại 90Hz</string>
-    <string name="refresh_rate_warning">Sử dụng cưỡng bức 90Hz sẽ ảnh hưởng đáng kể đến tuổi thọ pin</string>
     <string name="fps_info_title">Lớp phủ FPS</string>
     <string name="fps_info_summary">Hiển thị lớp phủ với các khung hiện tại mỗi giây</string>
     <string name="panel_mode_info">Vô hiệu hóa chế độ bảng điều khiển yêu cầu khởi động lại.</string>

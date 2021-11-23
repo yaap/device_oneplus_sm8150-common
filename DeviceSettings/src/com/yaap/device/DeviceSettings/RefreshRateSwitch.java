@@ -26,16 +26,12 @@ public class RefreshRateSwitch {
 
     public static boolean isCurrentlyEnabled(Context context) {
         boolean peak = Settings.System.getFloat(context.getContentResolver(),
-                Settings.System.PEAK_REFRESH_RATE, 90f) == 90f;
-        boolean min = Settings.System.getFloat(context.getContentResolver(),
-                Settings.System.MIN_REFRESH_RATE, 60f) == 90f;
-        return peak && min;
+                Settings.System.PEAK_REFRESH_RATE, 90f) == 60f;
+        return peak;
     }
 
     public static void setPeakRefresh(Context context, boolean enabled) {
         Settings.System.putFloat(context.getContentResolver(),
-                Settings.System.PEAK_REFRESH_RATE, enabled ? 90f : 60f);
-        Settings.System.putFloat(context.getContentResolver(),
-                Settings.System.MIN_REFRESH_RATE, enabled ? 90f : 60f);
+                Settings.System.PEAK_REFRESH_RATE, enabled ? 60f : 90f);
     }
 }
