@@ -17,17 +17,14 @@
 */
 package com.yaap.device.DeviceSettings;
 
-import android.annotation.TargetApi;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Icon;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 import androidx.preference.PreferenceManager;
 
-import com.yaap.device.DeviceSettings.DeviceSettings;
+import com.yaap.device.DeviceSettings.ModeSwitch.DCModeSwitch;
 
-@TargetApi(24)
 public class DCModeTileService extends TileService {
     private boolean enabled = false;
 
@@ -49,8 +46,7 @@ public class DCModeTileService extends TileService {
     @Override
     public void onStartListening() {
         super.onStartListening();
-        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-        enabled = DCModeSwitch.isCurrentlyEnabled(this);
+        enabled = DCModeSwitch.isCurrentlyEnabled();
         getQsTile().setIcon(Icon.createWithResource(this,
                     enabled ? R.drawable.ic_dimming_on : R.drawable.ic_dimming_off));
         getQsTile().setState(enabled ? Tile.STATE_ACTIVE : Tile.STATE_INACTIVE);
@@ -67,9 +63,9 @@ public class DCModeTileService extends TileService {
     public void onClick() {
         super.onClick();
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-        enabled = DCModeSwitch.isCurrentlyEnabled(this);
+        enabled = DCModeSwitch.isCurrentlyEnabled();
         Utils.writeValue(DCModeSwitch.getFile(), enabled ? "0" : "1");
-        sharedPrefs.edit().putBoolean(DeviceSettings.KEY_DC_SWITCH, enabled ? false : true).commit();
+        sharedPrefs.edit().putBoolean(DeviceSettings.KEY_DC_SWITCH, !enabled).commit();
         //getQsTile().setLabel(enabled ? "DC off" : "DC On");
         getQsTile().setIcon(Icon.createWithResource(this,
                     enabled ? R.drawable.ic_dimming_off : R.drawable.ic_dimming_on));

@@ -1,5 +1,5 @@
 /*
-* Copyright (C) 2013 The OmniROM Project
+* Copyright (C) 2021 Yet Another AOSP Project
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -24,49 +24,35 @@ import android.content.SharedPreferences;
 import android.provider.Settings;
 import androidx.preference.PreferenceManager;
 
-import com.yaap.device.DeviceSettings.TouchscreenGestureSettings;
+import com.yaap.device.DeviceSettings.ModeSwitch.*;
 
 public class Startup extends BroadcastReceiver {
 
     private void restore(String file, boolean enabled) {
-        if (file == null) {
-            return;
-        }
-        if (enabled) {
-            Utils.writeValue(file, "1");
-        }
-    }
-
-    private void restore(String file, String value) {
-        if (file == null) {
-            return;
-        }
-        Utils.writeValue(file, value);
+        if (file == null) return;
+        if (enabled) Utils.writeValue(file, "1");
     }
 
     @Override
     public void onReceive(final Context context, final Intent bootintent) {
-        boolean enabled;
         TouchscreenGestureSettings.MainSettingsFragment.restoreTouchscreenGestureStates(context);
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-        enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_SRGB_SWITCH, false);
-        restore(SRGBModeSwitch.getFile(), enabled);
-        enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_HBM_SWITCH, false);
-        restore(HBMModeSwitch.getFile(), enabled);
-        enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_DC_SWITCH, false);
-        restore(DCModeSwitch.getFile(), enabled);
-        enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_DCI_SWITCH, false);
-        restore(DCIModeSwitch.getFile(), enabled);
-        enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_WIDECOLOR_SWITCH, false);
-        restore(WideColorModeSwitch.getFile(), enabled);
-        enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_NATURAL_SWITCH, false);
-        restore(NaturalModeSwitch.getFile(), enabled);
-        enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_VIVID_SWITCH, false);
-        restore(VividModeSwitch.getFile(), enabled);
-        enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_FPS_INFO, false);
-        if (enabled) {
-            context.startService(new Intent(context, FPSInfoService.class));
-        }
+
+        restore(SRGBModeSwitch.getFile(),
+                sharedPrefs.getBoolean(DeviceSettings.KEY_SRGB_SWITCH, false));
+        restore(HBMModeSwitch.getFile(),
+                sharedPrefs.getBoolean(DeviceSettings.KEY_HBM_SWITCH, false));
+        restore(DCModeSwitch.getFile(),
+                sharedPrefs.getBoolean(DeviceSettings.KEY_DC_SWITCH, false));
+        restore(DCIModeSwitch.getFile(),
+                sharedPrefs.getBoolean(DeviceSettings.KEY_DCI_SWITCH, false));
+        restore(WideColorModeSwitch.getFile(),
+                sharedPrefs.getBoolean(DeviceSettings.KEY_WIDECOLOR_SWITCH, false));
+        restore(NaturalModeSwitch.getFile(),
+                sharedPrefs.getBoolean(DeviceSettings.KEY_NATURAL_SWITCH, false));
+        restore(VividModeSwitch.getFile(),
+                sharedPrefs.getBoolean(DeviceSettings.KEY_VIVID_SWITCH, false));
+
         // setting minimum refresh rate to 0 (for dirty flashers)
         Settings.System.putFloat(context.getContentResolver(),
                 Settings.System.MIN_REFRESH_RATE, 0);

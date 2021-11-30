@@ -64,10 +64,8 @@ public class FPSInfoService extends Service {
 
         private final Handler mCurFPSHandler = new Handler() {
             public void handleMessage(Message msg) {
-                if(msg.obj==null){
-                    return;
-                }
-                if(msg.what==1){
+                if (msg.obj == null) return;
+                if (msg.what == 1) {
                     String msgData = (String) msg.obj;
                     msgData = msgData.substring(0, Math.min(msgData.length(), 9));
                     mFps = msgData;

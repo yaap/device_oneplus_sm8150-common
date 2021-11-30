@@ -1,5 +1,5 @@
 /*
-* Copyright (C) 2016 The OmniROM Project
+* Copyright (C) 2021 Yet Another AOSP Project
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -25,9 +25,8 @@ public class RefreshRateSwitch {
     public RefreshRateSwitch() { }
 
     public static boolean isCurrentlyEnabled(Context context) {
-        boolean peak = Settings.System.getFloat(context.getContentResolver(),
+        return Settings.System.getFloat(context.getContentResolver(),
                 Settings.System.PEAK_REFRESH_RATE, 90f) == 60f;
-        return peak;
     }
 
     public static void setPeakRefresh(Context context, boolean enabled) {

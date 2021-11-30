@@ -1,5 +1,5 @@
 /*
-* Copyright (C) 2018 The OmniROM Project
+* Copyright (C) 2021 Yet Another AOSP Project
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -17,11 +17,9 @@
 */
 package com.yaap.device.DeviceSettings;
 
-import android.annotation.TargetApi;
 import android.content.Intent;
 import android.service.quicksettings.TileService;
 
-@TargetApi(24)
 public class PanelModeTileService extends TileService {
     @Override
     public void onDestroy() {

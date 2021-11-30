@@ -34,7 +34,7 @@
     <application
         android:icon="@drawable/ic_settings_device"
         android:label="@string/device_title"
-        android:theme="@style/AppTheme">
+        android:theme="@style/Theme.SubSettingsBase">
 
         <!-- Device Settings -->
         <activity
@@ -73,7 +73,7 @@
         <activity
             android:name=".TouchscreenGestureSettings"
             android:label="@string/touchscreen_gesture_settings_title"
-            android:theme="@style/AppTheme">
+            android:theme="@style/Theme.SubSettingsBase">
         </activity>
 
         <receiver android:name="com.yaap.device.DeviceSettings.Startup" >

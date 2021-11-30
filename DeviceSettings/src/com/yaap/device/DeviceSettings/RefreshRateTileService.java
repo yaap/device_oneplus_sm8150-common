@@ -1,5 +1,5 @@
 /*
-* Copyright (C) 2018 The OmniROM Project
+* Copyright (C) 2021 Yet Another AOSP Project
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -17,15 +17,10 @@
 */
 package com.yaap.device.DeviceSettings;
 
-import android.annotation.TargetApi;
 import android.graphics.drawable.Icon;
-import android.provider.Settings;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 
-import androidx.preference.PreferenceManager;
-
-@TargetApi(24)
 public class RefreshRateTileService extends TileService {
     @Override
     public void onDestroy() {

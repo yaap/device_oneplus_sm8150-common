@@ -1,5 +1,5 @@
 /*
-* Copyright (C) 2016 The OmniROM Project
+* Copyright (C) 2021 Yet Another AOSP Project
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -29,14 +29,10 @@ import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragment;
-import androidx.preference.PreferenceGroup;
-import androidx.preference.PreferenceManager;
-import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 import androidx.preference.TwoStatePreference;
-
-import com.yaap.device.DeviceSettings.Constants;
-import com.yaap.device.DeviceSettings.FPSInfoService;
+import com.yaap.device.DeviceSettings.ModeSwitch.DCModeSwitch;
+import com.yaap.device.DeviceSettings.ModeSwitch.HBMModeSwitch;
 
 public class DeviceSettings extends PreferenceFragment
         implements Preference.OnPreferenceChangeListener {
@@ -62,50 +58,49 @@ public class DeviceSettings extends PreferenceFragment
             Build.DEVICE.equals("OnePlus7TPro") ||
             Build.DEVICE.equals("OnePlus7TProNR");
 
-    private static TwoStatePreference mHBMModeSwitch;
-    private static TwoStatePreference mRefreshRate;
-    private static SwitchPreference mFpsInfo;
+    private TwoStatePreference mHBMModeSwitch;
+    private TwoStatePreference mRefreshRate;
+    private SwitchPreference mFpsInfo;
     private SwitchPreference mAlwaysCameraSwitch;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.main);
-        getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
 
-        ListPreference mTopKeyPref = (ListPreference) findPreference(Constants.NOTIF_SLIDER_TOP_KEY);
+        TwoStatePreference mDCModeSwitch = findPreference(KEY_DC_SWITCH);
+        ListPreference mTopKeyPref = findPreference(Constants.NOTIF_SLIDER_TOP_KEY);
         mTopKeyPref.setValueIndex(Constants.getPreferenceInt(getContext(), Constants.NOTIF_SLIDER_TOP_KEY));
         mTopKeyPref.setOnPreferenceChangeListener(this);
-        ListPreference mMiddleKeyPref = (ListPreference) findPreference(Constants.NOTIF_SLIDER_MIDDLE_KEY);
+        ListPreference mMiddleKeyPref = findPreference(Constants.NOTIF_SLIDER_MIDDLE_KEY);
         mMiddleKeyPref.setValueIndex(Constants.getPreferenceInt(getContext(), Constants.NOTIF_SLIDER_MIDDLE_KEY));
         mMiddleKeyPref.setOnPreferenceChangeListener(this);
-        ListPreference mBottomKeyPref = (ListPreference) findPreference(Constants.NOTIF_SLIDER_BOTTOM_KEY);
+        ListPreference mBottomKeyPref = findPreference(Constants.NOTIF_SLIDER_BOTTOM_KEY);
         mBottomKeyPref.setValueIndex(Constants.getPreferenceInt(getContext(), Constants.NOTIF_SLIDER_BOTTOM_KEY));
         mBottomKeyPref.setOnPreferenceChangeListener(this);
 
-        TwoStatePreference mDCModeSwitch = (TwoStatePreference) findPreference(KEY_DC_SWITCH);
         mDCModeSwitch.setEnabled(DCModeSwitch.isSupported());
-        mDCModeSwitch.setChecked(DCModeSwitch.isCurrentlyEnabled(getContext()));
+        mDCModeSwitch.setChecked(DCModeSwitch.isCurrentlyEnabled());
         mDCModeSwitch.setOnPreferenceChangeListener(new DCModeSwitch());
 
-        mHBMModeSwitch = (TwoStatePreference) findPreference(KEY_HBM_SWITCH);
+        mHBMModeSwitch = findPreference(KEY_HBM_SWITCH);
         mHBMModeSwitch.setEnabled(HBMModeSwitch.isSupported());
-        mHBMModeSwitch.setChecked(HBMModeSwitch.isCurrentlyEnabled(getContext()));
+        mHBMModeSwitch.setChecked(HBMModeSwitch.isCurrentlyEnabled());
         mHBMModeSwitch.setOnPreferenceChangeListener(this);
 
         if (getResources().getBoolean(R.bool.config_deviceHasHighRefreshRate)) {
-            mRefreshRate = (TwoStatePreference) findPreference(KEY_REFRESH_RATE);
+            mRefreshRate = findPreference(KEY_REFRESH_RATE);
             mRefreshRate.setOnPreferenceChangeListener(this);
         } else {
-            getPreferenceScreen().removePreference((Preference) findPreference(KEY_CATEGORY_REFRESH));
+            getPreferenceScreen().removePreference(findPreference(KEY_CATEGORY_REFRESH));
         }
 
-        mFpsInfo = (SwitchPreference) findPreference(KEY_FPS_INFO);
+        mFpsInfo = findPreference(KEY_FPS_INFO);
         mFpsInfo.setChecked(isFPSOverlayRunning());
         mFpsInfo.setOnPreferenceChangeListener(this);
 
-        PreferenceCategory mCameraCategory = (PreferenceCategory) findPreference(KEY_CATEGORY_CAMERA);
+        PreferenceCategory mCameraCategory = findPreference(KEY_CATEGORY_CAMERA);
         if (sHasPopupCamera) {
-            mAlwaysCameraSwitch = (SwitchPreference) findPreference(KEY_ALWAYS_CAMERA_DIALOG);
+            mAlwaysCameraSwitch = findPreference(KEY_ALWAYS_CAMERA_DIALOG);
             boolean enabled = Settings.System.getInt(getContext().getContentResolver(),
                         KEY_SETTINGS_PREFIX + KEY_ALWAYS_CAMERA_DIALOG, 0) == 1;
             mAlwaysCameraSwitch.setChecked(enabled);
@@ -118,7 +113,7 @@ public class DeviceSettings extends PreferenceFragment
     @Override
     public void onResume() {
         super.onResume();
-        mHBMModeSwitch.setChecked(HBMModeSwitch.isCurrentlyEnabled(getContext()));
+        mHBMModeSwitch.setChecked(HBMModeSwitch.isCurrentlyEnabled());
         mFpsInfo.setChecked(isFPSOverlayRunning());
     }
 
@@ -159,9 +154,8 @@ public class DeviceSettings extends PreferenceFragment
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
         // Respond to the action bar's Up/Home button
-        case android.R.id.home:
+        if (item.getItemId() == android.R.id.home) {
             getActivity().finish();
             return true;
         }

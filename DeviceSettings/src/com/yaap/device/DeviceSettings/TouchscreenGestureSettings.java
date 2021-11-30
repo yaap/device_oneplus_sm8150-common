@@ -1,6 +1,5 @@
 /*
- * Copyright (C) 2016 The CyanogenMod project
- *               2017 The LineageOS Project
+ * Copyright (C) 2021 Yet Another AOSP Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +16,6 @@
 
 package com.yaap.device.DeviceSettings;
 
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
@@ -26,7 +24,6 @@ import android.os.Bundle;
 import android.os.UserHandle;
 import android.view.MenuItem;
 
-import android.preference.PreferenceActivity;
 import android.provider.Settings;
 
 import androidx.preference.ListPreference;
@@ -37,12 +34,12 @@ import androidx.preference.SwitchPreference;
 
 import com.android.internal.yaap.hardware.LineageHardwareManager; // Need FWB support
 import com.android.internal.yaap.hardware.TouchscreenGesture; // Need FWB support
-
-import com.yaap.device.DeviceSettings.R;
+import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
+import com.android.settingslib.collapsingtoolbar.R;
 
 import java.lang.System;
 
-public class TouchscreenGestureSettings extends PreferenceActivity
+public class TouchscreenGestureSettings extends CollapsingToolbarBaseActivity
         implements PreferenceFragment.OnPreferenceStartFragmentCallback {
 
     @Override
@@ -51,13 +48,9 @@ public class TouchscreenGestureSettings extends PreferenceActivity
 
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
-                    .replace(android.R.id.content, getNewFragment())
+                    .replace(R.id.content_frame, new MainSettingsFragment())
                     .commit();
         }
-    }
-
-    private PreferenceFragment getNewFragment() {
-        return new MainSettingsFragment();
     }
 
     @Override
@@ -78,17 +71,11 @@ public class TouchscreenGestureSettings extends PreferenceActivity
         private static final String TOUCHSCREEN_GESTURE_TITLE = KEY_TOUCHSCREEN_GESTURE + "_%s_title";
 
         private TouchscreenGesture[] mTouchscreenGestures;
-        private ActionBar actionBar;
-        private SwitchPreference mGetstureHapticsSwitch;
 
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
 
             setPreferencesFromResource(R.xml.touchscreen_gesture_settings, rootKey);
-
-            actionBar = getActivity().getActionBar();
-            assert actionBar != null;
-            actionBar.setDisplayHomeAsUpEnabled(true);
 
             if (isTouchscreenGesturesSupported(getContext())) {
                 initTouchscreenGestures();
@@ -98,20 +85,16 @@ public class TouchscreenGestureSettings extends PreferenceActivity
         private void initTouchscreenGestures() {
             final LineageHardwareManager manager = LineageHardwareManager.getInstance(getContext());
             mTouchscreenGestures = manager.getTouchscreenGestures();
-            mGetstureHapticsSwitch = findPreference(KEY_TOUCHSCREEN_GESTURE_HAPTIC);
+            SwitchPreference getstureHapticsSwitch = findPreference(KEY_TOUCHSCREEN_GESTURE_HAPTIC);
             boolean enabled = Settings.System.getInt(getContext().getContentResolver(),
                     KEY_TOUCHSCREEN_GESTURE_HAPTIC, 1) == 1;
-            mGetstureHapticsSwitch.setChecked(enabled);
-            mGetstureHapticsSwitch.setOnPreferenceChangeListener(
-                    new Preference.OnPreferenceChangeListener() {
-                        @Override
-                        public boolean onPreferenceChange(Preference preference,
-                                Object newValue) {
-                            boolean checked = (Boolean) newValue;
-                            Settings.System.putInt(getContext().getContentResolver(),
-                                    KEY_TOUCHSCREEN_GESTURE_HAPTIC, checked ? 1 : 0);
-                            return true;
-                        }
+            getstureHapticsSwitch.setChecked(enabled);
+            getstureHapticsSwitch.setOnPreferenceChangeListener(
+                    (preference, newValue) -> {
+                        boolean checked = (Boolean) newValue;
+                        Settings.System.putInt(getContext().getContentResolver(),
+                                KEY_TOUCHSCREEN_GESTURE_HAPTIC, checked ? 1 : 0);
+                        return true;
                     });
             final int[] actions = getDefaultGestureActions(getContext(), mTouchscreenGestures);
             for (final TouchscreenGesture gesture : mTouchscreenGestures) {
@@ -245,10 +228,9 @@ public class TouchscreenGestureSettings extends PreferenceActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
