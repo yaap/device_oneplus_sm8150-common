@@ -68,16 +68,6 @@ vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.oneplus.factorymode,com
 ro.crypto.allow_encrypt_override=true
 ro.crypto.volume.filenames_mode=aes-256-cts
 
-# Dalvik
-pm.dexopt.boot=verify
-pm.dexopt.first-boot=verify
-pm.dexopt.install=speed-profile
-dalvik.vm.image-dex2oat-filter=speed
-dalvik.vm.image-dex2oat-threads=8
-dalvik.vm.dex2oat-filter=speed
-dalvik.vm.dex2oat-threads=8
-dalvik.vm.dex2oat64.enabled=true
-
 # Display
 ro.vendor.display.ad.hdr_calib_data=/vendor/etc/hdr_config.cfg
 ro.vendor.display.ad.sdr_calib_data=/vendor/etc/sdr_config.cfg
