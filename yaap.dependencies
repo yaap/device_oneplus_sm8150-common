@@ -4,11 +4,16 @@
     "target_path" : "kernel/oneplus/sm8150"
   },
   {
-    "repository"  : "device_oneplus_common",
-    "target_path" : "device/oneplus/common"
+    "repository"  : "hardware_oneplus",
+    "target_path" : "hardware/oneplus"
   },
   {
-    "repository"  : "vendor_oneplus",
-    "target_path" : "vendor/oneplus"
+    "repository"  : "vendor_oneplus_sm8150-common",
+    "target_path" : "vendor/oneplus/sm8150-common"
+  },
+  {
+    "repository"  : "vendor_oneplus_wfdcommon",
+    "target_path" : "vendor/oneplus/wfdcommon",
+    "branch"      : "msmnile"
   }
 ]
