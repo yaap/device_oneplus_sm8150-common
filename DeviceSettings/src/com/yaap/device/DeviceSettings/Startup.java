@@ -52,9 +52,5 @@ public class Startup extends BroadcastReceiver {
                 sharedPrefs.getBoolean(DeviceSettings.KEY_NATURAL_SWITCH, false));
         restore(VividModeSwitch.getFile(),
                 sharedPrefs.getBoolean(DeviceSettings.KEY_VIVID_SWITCH, false));
-
-        // setting minimum refresh rate to 0 (for dirty flashers)
-        Settings.System.putFloat(context.getContentResolver(),
-                Settings.System.MIN_REFRESH_RATE, 0);
     }
 }

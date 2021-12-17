@@ -24,13 +24,27 @@ public class RefreshRateSwitch {
 
     public RefreshRateSwitch() { }
 
+    /**
+     * Gets the current state of the switch
+     * @param context context for Resources and ContentResolver
+     * @return true if peak rate is currently forced to 60Hz
+     **/
     public static boolean isCurrentlyEnabled(Context context) {
+        float def = context.getResources().getInteger(
+                com.android.internal.R.integer.config_defaultPeakRefreshRate);
         return Settings.System.getFloat(context.getContentResolver(),
-                Settings.System.PEAK_REFRESH_RATE, 90f) == 60f;
+                Settings.System.PEAK_REFRESH_RATE, def) == 60f;
     }
 
+    /**
+     * Sets peak refresh rate
+     * @param context context for Resources and ContentResolver
+     * @param enabled true to force 60Hz, false for default peak rate
+     */
     public static void setPeakRefresh(Context context, boolean enabled) {
+        float def = context.getResources().getInteger(
+                com.android.internal.R.integer.config_defaultPeakRefreshRate);
         Settings.System.putFloat(context.getContentResolver(),
-                Settings.System.PEAK_REFRESH_RATE, enabled ? 60f : 90f);
+                Settings.System.PEAK_REFRESH_RATE, enabled ? 60f : def);
     }
 }
