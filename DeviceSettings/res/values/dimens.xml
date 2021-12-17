@@ -12,6 +12,5 @@
 -->
 
 <resources>
-    <dimen name="panel_mode_preview_height">320dp</dimen>
-    <dimen name="panel_mode_preview_padding_bottom">40dp</dimen>
+    <dimen name="color_mode_preview_height">320dp</dimen>
 </resources>

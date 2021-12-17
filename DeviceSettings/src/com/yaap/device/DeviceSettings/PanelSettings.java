@@ -29,13 +29,15 @@ import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.PreferenceManager;
+import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.yaap.device.DeviceSettings.ModeSwitch.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Locale;
 
 public class PanelSettings extends PreferenceFragment implements RadioGroup.OnCheckedChangeListener,
@@ -43,12 +45,19 @@ public class PanelSettings extends PreferenceFragment implements RadioGroup.OnCh
     private static final int COLOR_CHANNEL_RED = 0;
     private static final int COLOR_CHANNEL_GREEN = 1;
     private static final int COLOR_CHANNEL_BLUE = 2;
+    private static final int DOT_INDICATOR_SIZE = 12;
+    private static final int DOT_INDICATOR_LEFT_PADDING = 6;
+    private static final int DOT_INDICATOR_RIGHT_PADDING = 6;
+    private static final String PAGE_VIEWER_SELECTION_INDEX = "page_viewer_selection_index";
 
-    ViewPager viewPager;
-    LinearLayout sliderDotspanel;
-    private int dotscount;
-    private ImageView[] dots;
+    private View mViewArrowPrevious;
+    private View mViewArrowNext;
+    private ViewPager mViewPager;
     private ColorDisplayManager mColorDisplayManager;
+
+    private ArrayList<View> mPageList;
+    private ImageView[] mDotIndicators;
+    private View[] mViewPagerImages;
 
     private SeekBar mRedPref;
     private SeekBar mGreenPref;
@@ -97,6 +106,18 @@ public class PanelSettings extends PreferenceFragment implements RadioGroup.OnCh
             slidersCategory.setVisibility(View.GONE);
             slidersCategory.setEnabled(false);
         }
+
+        if (savedInstanceState != null) {
+            final int selectedPosition = savedInstanceState.getInt(PAGE_VIEWER_SELECTION_INDEX);
+            mViewPager.setCurrentItem(selectedPosition);
+            updateIndicator(selectedPosition);
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+        outState.putInt(PAGE_VIEWER_SELECTION_INDEX, mViewPager.getCurrentItem());
     }
 
     @Override
@@ -128,48 +149,7 @@ public class PanelSettings extends PreferenceFragment implements RadioGroup.OnCh
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.panel_modes, container, false);
-
-        viewPager = rootView.findViewById(R.id.viewPager);
-        sliderDotspanel = rootView.findViewById(R.id.SliderDots);
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getActivity());
-        viewPager.setAdapter(viewPagerAdapter);
-
-        dotscount = viewPagerAdapter.getCount();
-        dots = new ImageView[dotscount];
-
-        for (int i = 0; i < dotscount; i++) {
-            dots[i] = new ImageView(getActivity());
-            dots[i].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(),
-                    R.drawable.inactive_dot));
-
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            params.setMargins(8, 0, 8, 0);
-            sliderDotspanel.addView(dots[i], params);
-        }
-        dots[0].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(),
-                R.drawable.active_dot));
-
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-                for(int i = 0; i< dotscount; i++){
-                    dots[i].setImageDrawable(ContextCompat.getDrawable(
-                            getActivity().getApplicationContext(), R.drawable.inactive_dot));
-                }
-                dots[position].setImageDrawable(ContextCompat.getDrawable(
-                        getActivity().getApplicationContext(), R.drawable.active_dot));
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-            }
-        });
+        addViewPager(rootView);
         return rootView;
     }
 
@@ -201,5 +181,137 @@ public class PanelSettings extends PreferenceFragment implements RadioGroup.OnCh
         edit.apply();
     }
 
+    private ArrayList<Integer> getViewPagerResource() {
+        return new ArrayList<>(
+                Arrays.asList(
+                        R.layout.color_mode_view1,
+                        R.layout.color_mode_view2,
+                        R.layout.color_mode_view3));
+    }
 
+    private void addViewPager(View rootView) {
+        final ArrayList<Integer> tmpviewPagerList = getViewPagerResource();
+        mViewPager = rootView.findViewById(R.id.viewpager);
+
+        mViewPagerImages = new View[3];
+        for (int idx = 0; idx < tmpviewPagerList.size(); idx++) {
+            mViewPagerImages[idx] =
+                    getLayoutInflater().inflate(tmpviewPagerList.get(idx), null /* root */);
+        }
+
+        mPageList = new ArrayList<>();
+        mPageList.add(mViewPagerImages[0]);
+        mPageList.add(mViewPagerImages[1]);
+        mPageList.add(mViewPagerImages[2]);
+
+        mViewPager.setAdapter(new ColorPagerAdapter(mPageList));
+
+        mViewArrowPrevious = rootView.findViewById(R.id.arrow_previous);
+        mViewArrowPrevious.setOnClickListener(v -> {
+            final int previousPos = mViewPager.getCurrentItem() - 1;
+            mViewPager.setCurrentItem(previousPos, true);
+        });
+
+        mViewArrowNext = rootView.findViewById(R.id.arrow_next);
+        mViewArrowNext.setOnClickListener(v -> {
+            final int nextPos = mViewPager.getCurrentItem() + 1;
+            mViewPager.setCurrentItem(nextPos, true);
+        });
+
+        mViewPager.addOnPageChangeListener(createPageListener());
+
+        final ViewGroup viewGroup = rootView.findViewById(R.id.viewGroup);
+        mDotIndicators = new ImageView[mPageList.size()];
+        for (int i = 0; i < mPageList.size(); i++) {
+            final ImageView imageView = new ImageView(getContext());
+            final ViewGroup.MarginLayoutParams lp =
+                    new ViewGroup.MarginLayoutParams(DOT_INDICATOR_SIZE, DOT_INDICATOR_SIZE);
+            lp.setMargins(DOT_INDICATOR_LEFT_PADDING, 0, DOT_INDICATOR_RIGHT_PADDING, 0);
+            imageView.setLayoutParams(lp);
+            mDotIndicators[i] = imageView;
+
+            viewGroup.addView(mDotIndicators[i]);
+        }
+
+        updateIndicator(mViewPager.getCurrentItem());
+    }
+
+    private ViewPager.OnPageChangeListener createPageListener() {
+        return new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(
+                    int position, float positionOffset, int positionOffsetPixels) {
+                if (positionOffset != 0) {
+                    for (int idx = 0; idx < mPageList.size(); idx++)
+                        mViewPagerImages[idx].setVisibility(View.VISIBLE);
+                } else {
+                    updateIndicator(position);
+                }
+            }
+
+            @Override
+            public void onPageSelected(int position) {}
+
+            @Override
+            public void onPageScrollStateChanged(int state) {}
+        };
+    }
+
+    private void updateIndicator(int position) {
+        for (int i = 0; i < mPageList.size(); i++) {
+            if (position == i) {
+                mDotIndicators[i].setBackgroundResource(
+                        R.drawable.ic_color_page_indicator_focused);
+
+                mViewPagerImages[i].setVisibility(View.VISIBLE);
+            } else {
+                mDotIndicators[i].setBackgroundResource(
+                        R.drawable.ic_color_page_indicator_unfocused);
+
+                mViewPagerImages[i].setVisibility(View.INVISIBLE);
+            }
+        }
+
+        if (position == 0) {
+            mViewArrowPrevious.setVisibility(View.INVISIBLE);
+            mViewArrowNext.setVisibility(View.VISIBLE);
+        } else if (position == (mPageList.size() - 1)) {
+            mViewArrowPrevious.setVisibility(View.VISIBLE);
+            mViewArrowNext.setVisibility(View.INVISIBLE);
+        } else {
+            mViewArrowPrevious.setVisibility(View.VISIBLE);
+            mViewArrowNext.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private static class ColorPagerAdapter extends PagerAdapter {
+        private final ArrayList<View> mPageViewList;
+
+        ColorPagerAdapter(ArrayList<View> pageViewList) {
+            mPageViewList = pageViewList;
+        }
+
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+            if (mPageViewList.get(position) != null) {
+                container.removeView(mPageViewList.get(position));
+            }
+        }
+
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            container.addView(mPageViewList.get(position));
+            return mPageViewList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mPageViewList.size();
+        }
+
+        @Override
+        public boolean isViewFromObject(View view, Object object) {
+            return object == view;
+        }
+    }
 }

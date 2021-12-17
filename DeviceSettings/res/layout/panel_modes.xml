@@ -12,7 +12,6 @@ limitations under the License
 -->
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:settings="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -21,24 +20,49 @@ limitations under the License
         android:layout_height="match_parent"
         android:orientation="vertical" >
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/color_mode_preview_height"/>
 
-            <androidx.viewpager.widget.ViewPager
-                android:layout_height="232dp"
-                android:layout_width="match_parent"
-                android:id="@+id/viewPager" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp">
+
+            <FrameLayout
+                android:id="@+id/arrow_previous"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:paddingLeft="24dp"
+                android:layout_gravity="center_vertical|left">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_color_arrow_left_lt"/>
+            </FrameLayout>
 
             <LinearLayout
-                android:id="@+id/SliderDots"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="200dp"
-                android:gravity="center"
-                android:orientation="horizontal" />
+                android:id="@+id/viewGroup"
+                android:layout_width="fill_parent"
+                android:layout_height="48dp"
+                android:gravity="center"/>
 
-        </RelativeLayout>
+            <FrameLayout
+                android:id="@+id/arrow_next"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:paddingRight="24dp"
+                android:layout_gravity="center_vertical|right">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_color_arrow_right_lt"/>
+            </FrameLayout>
+        </FrameLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
