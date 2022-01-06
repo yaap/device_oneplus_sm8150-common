@@ -46,7 +46,6 @@ public class DeviceSettings extends PreferenceFragment
     public static final String KEY_NATURAL_SWITCH = "natural";
     public static final String KEY_VIVID_SWITCH = "vivid";
 
-    private static final String KEY_CATEGORY_REFRESH = "refresh";
     private static final String KEY_REFRESH_RATE = "refresh_rate";
     private static final String KEY_ALWAYS_CAMERA_DIALOG = "always_on_camera_dialog";
     public static final String KEY_FPS_INFO = "fps_info";
@@ -91,7 +90,7 @@ public class DeviceSettings extends PreferenceFragment
             mRefreshRate = findPreference(KEY_REFRESH_RATE);
             mRefreshRate.setOnPreferenceChangeListener(this);
         } else {
-            getPreferenceScreen().removePreference(findPreference(KEY_CATEGORY_REFRESH));
+            getPreferenceScreen().removePreference(findPreference(KEY_REFRESH_RATE));
         }
 
         mFpsInfo = findPreference(KEY_FPS_INFO);
