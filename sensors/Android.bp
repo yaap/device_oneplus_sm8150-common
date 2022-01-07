@@ -88,6 +88,7 @@ cc_binary {
         "libbinder",
         "libgui",
         "libui",
+        "libsysutils",
         "libutils",
     ],
     cflags: [
