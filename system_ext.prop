@@ -1,4 +1,8 @@
-persist.vendor.dpm.feature=11
+# Audio
+audio.offload.min.duration.secs=30
+persist.vendor.audio_hal.dsp_bit_width_enforce_mode=24
 
 # Bluetooth
+
 bluetooth.device.class_of_device=90,2,12
+bluetooth.profile.asha.central=false
