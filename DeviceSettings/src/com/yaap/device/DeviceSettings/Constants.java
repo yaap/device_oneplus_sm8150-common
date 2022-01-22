@@ -38,6 +38,8 @@ public class Constants {
     public static final String NOTIF_SLIDER_TOP_KEY = "keycode_top_position";
     public static final String NOTIF_SLIDER_MIDDLE_KEY = "keycode_middle_position";
     public static final String NOTIF_SLIDER_BOTTOM_KEY = "keycode_bottom_position";
+    public static final String NOTIF_SLIDER_MUTE_MEDIA_KEY = "slider_mute_media";
+    private static final String NOTIF_SLIDER_MUTE_MEDIA_LEVEL_KEY = "slider_mute_media_level";
 
     // Button prefs
     public static final String NOTIF_SLIDER_TOP_PREF = "pref_keycode_top_position";
@@ -97,5 +99,20 @@ public class Constants {
     public static void setPreferenceInt(Context context, String key, int value) {
         Settings.System.putIntForUser(context.getContentResolver(),
                 sStringKeyPreferenceMap.get(key), value, UserHandle.USER_CURRENT);
+    }
+
+    public static void setLastMediaLevel(Context context, int level) {
+        Settings.System.putIntForUser(context.getContentResolver(),
+                NOTIF_SLIDER_MUTE_MEDIA_LEVEL_KEY, level, UserHandle.USER_CURRENT);
+    }
+
+    public static int getLastMediaLevel(Context context) {
+        return Settings.System.getIntForUser(context.getContentResolver(),
+                NOTIF_SLIDER_MUTE_MEDIA_LEVEL_KEY, 80, UserHandle.USER_CURRENT);
+    }
+
+    public static boolean getIsMuteMediaEnabled(Context context) {
+        return Settings.System.getIntForUser(context.getContentResolver(),
+                NOTIF_SLIDER_MUTE_MEDIA_KEY, 0, UserHandle.USER_CURRENT) == 1;
     }
 }

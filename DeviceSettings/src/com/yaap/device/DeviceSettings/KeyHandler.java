@@ -62,8 +62,7 @@ public class KeyHandler implements DeviceKeyHandler {
 
     public KeyHandler(Context context) {
         mContext = context;
-        mNotificationManager
-                = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         mAudioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
 
         mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
@@ -78,14 +77,14 @@ public class KeyHandler implements DeviceKeyHandler {
     }
 
     public KeyEvent handleKeyEvent(KeyEvent event) {
-        int scanCode = event.getScanCode();
-        String keyCode = Constants.sKeyMap.get(scanCode);
+        final int scanCode = event.getScanCode();
+        final String keyCode = Constants.sKeyMap.get(scanCode);
         int keyCodeValue;
 
         try {
             keyCodeValue = Constants.getPreferenceInt(mContext, keyCode);
         } catch (Exception e) {
-             return event;
+            return event;
         }
 
         if (!hasSetupCompleted()) {
@@ -102,6 +101,21 @@ public class KeyHandler implements DeviceKeyHandler {
         if (mPrevKeyCode == Constants.KEY_VALUE_TOTAL_SILENCE)
             doHapticFeedback(sSupportedSliderHaptics.get(keyCodeValue));
         mNotificationManager.setZenMode(sSupportedSliderZenModes.get(keyCodeValue), null, TAG);
+
+        if (Constants.getIsMuteMediaEnabled(mContext)) {
+            final int max = mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+            if (keyCodeValue == Constants.KEY_VALUE_SILENT) {
+                final int curr = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+                Constants.setLastMediaLevel(mContext, Math.round((float)curr * 100f / (float)max));
+                mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC,
+                        0, AudioManager.FLAG_SHOW_UI);
+            } else if (mPrevKeyCode == Constants.KEY_VALUE_SILENT) {
+                final int last = Constants.getLastMediaLevel(mContext);
+                mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC,
+                        Math.round((float)max * (float)last / 100f), AudioManager.FLAG_SHOW_UI);
+            }
+        }
+
         mPrevKeyCode = keyCodeValue;
         return null;
     }

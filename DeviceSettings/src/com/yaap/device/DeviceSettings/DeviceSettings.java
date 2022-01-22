@@ -18,6 +18,7 @@
 package com.yaap.device.DeviceSettings;
 
 import android.app.ActivityManager;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -61,6 +62,7 @@ public class DeviceSettings extends PreferenceFragment
     private TwoStatePreference mRefreshRate;
     private SwitchPreference mFpsInfo;
     private SwitchPreference mAlwaysCameraSwitch;
+    private SwitchPreference mMuteMediaSwitch;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -76,6 +78,10 @@ public class DeviceSettings extends PreferenceFragment
         ListPreference mBottomKeyPref = findPreference(Constants.NOTIF_SLIDER_BOTTOM_KEY);
         mBottomKeyPref.setValueIndex(Constants.getPreferenceInt(getContext(), Constants.NOTIF_SLIDER_BOTTOM_KEY));
         mBottomKeyPref.setOnPreferenceChangeListener(this);
+
+        mMuteMediaSwitch = findPreference(Constants.NOTIF_SLIDER_MUTE_MEDIA_KEY);
+        mMuteMediaSwitch.setChecked(Constants.getIsMuteMediaEnabled(getContext()));
+        mMuteMediaSwitch.setOnPreferenceChangeListener(this);
 
         mDCModeSwitch.setEnabled(DCModeSwitch.isSupported());
         mDCModeSwitch.setChecked(DCModeSwitch.isCurrentlyEnabled());
@@ -101,7 +107,7 @@ public class DeviceSettings extends PreferenceFragment
         if (sHasPopupCamera) {
             mAlwaysCameraSwitch = findPreference(KEY_ALWAYS_CAMERA_DIALOG);
             boolean enabled = Settings.System.getInt(getContext().getContentResolver(),
-                        KEY_SETTINGS_PREFIX + KEY_ALWAYS_CAMERA_DIALOG, 0) == 1;
+                    KEY_SETTINGS_PREFIX + KEY_ALWAYS_CAMERA_DIALOG, 0) == 1;
             mAlwaysCameraSwitch.setChecked(enabled);
             mAlwaysCameraSwitch.setOnPreferenceChangeListener(this);
         } else {
@@ -118,19 +124,17 @@ public class DeviceSettings extends PreferenceFragment
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        final ContentResolver resolver = getContext().getContentResolver();
         if (preference == mFpsInfo) {
             boolean enabled = (Boolean) newValue;
             Intent fpsinfo = new Intent(getContext(), FPSInfoService.class);
-            if (enabled) {
-                getContext().startService(fpsinfo);
-            } else {
-                getContext().stopService(fpsinfo);
-            }
+            if (enabled) getContext().startService(fpsinfo);
+            else getContext().stopService(fpsinfo);
         } else if (preference == mAlwaysCameraSwitch) {
             boolean enabled = (Boolean) newValue;
-            Settings.System.putInt(getContext().getContentResolver(),
-                        KEY_SETTINGS_PREFIX + KEY_ALWAYS_CAMERA_DIALOG,
-                        enabled ? 1 : 0);
+            Settings.System.putInt(resolver,
+                    KEY_SETTINGS_PREFIX + KEY_ALWAYS_CAMERA_DIALOG,
+                    enabled ? 1 : 0);
         } else if (preference == mRefreshRate) {
             Boolean enabled = (Boolean) newValue;
             RefreshRateSwitch.setPeakRefresh(getContext(), enabled);
@@ -139,11 +143,12 @@ public class DeviceSettings extends PreferenceFragment
             Utils.writeValue(HBMModeSwitch.getFile(), enabled ? "5" : "0");
             Intent hbmIntent = new Intent(getContext(),
                     com.yaap.device.DeviceSettings.HBMModeService.class);
-            if (enabled) {
-                getContext().startService(hbmIntent);
-            } else {
-                getContext().stopService(hbmIntent);
-            }
+            if (enabled) getContext().startService(hbmIntent);
+            else getContext().stopService(hbmIntent);
+        } else if (preference == mMuteMediaSwitch) {
+            Boolean enabled = (Boolean) newValue;
+            Settings.System.putInt(resolver,
+                    Constants.NOTIF_SLIDER_MUTE_MEDIA_KEY, enabled ? 1 : 0);
         } else if (newValue instanceof String) {
             Constants.setPreferenceInt(getContext(), preference.getKey(),
                     Integer.parseInt((String) newValue));
@@ -169,5 +174,5 @@ public class DeviceSettings extends PreferenceFragment
             if (FPSInfoService.class.getName().equals(service.service.getClassName()))
                 return true;
         return false;
-   }
+    }
 }

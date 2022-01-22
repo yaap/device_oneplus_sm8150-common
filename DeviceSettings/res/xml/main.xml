@@ -78,12 +78,19 @@
             android:entryValues="@array/notification_slider_action_entry_values" />
 
         <ListPreference
-          android:key="keycode_bottom_position"
-          android:dialogTitle="@string/notification_slider_selection_dialog_title"
-          android:title="@string/notification_slider_bottom_position"
-          android:summary="%s"
-          android:entries="@array/notification_slider_action_entries"
-          android:entryValues="@array/notification_slider_action_entry_values" />
+            android:key="keycode_bottom_position"
+            android:dialogTitle="@string/notification_slider_selection_dialog_title"
+            android:title="@string/notification_slider_bottom_position"
+            android:summary="%s"
+            android:entries="@array/notification_slider_action_entries"
+            android:entryValues="@array/notification_slider_action_entry_values" />
+
+        <SwitchPreference
+            android:key="slider_mute_media"
+            android:title="@string/slider_mute_media_title"
+            android:summary="@string/slider_mute_media_summary"
+            android:defaultValue="false"
+            android:persistent="false" />
     </PreferenceCategory>
 
     <PreferenceCategory
