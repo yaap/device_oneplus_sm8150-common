@@ -147,8 +147,7 @@ PRODUCT_PACKAGES_DEBUG += \
 PRODUCT_PACKAGES += \
     liba2dpoffload \
     libbthost_if \
-    android.hardware.bluetooth.audio@2.0:32 \
-    android.hardware.bluetooth.audio@2.0-impl:32 \
+    android.hardware.bluetooth.audio-impl \
     vendor.qti.hardware.bluetooth_audio@2.0.vendor:32 \
     vendor.qti.hardware.btconfigstore@1.0.vendor:64 \
     vendor.qti.hardware.btconfigstore@2.0.vendor:64
