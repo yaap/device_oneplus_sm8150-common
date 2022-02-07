@@ -94,6 +94,7 @@ public class DeviceSettings extends PreferenceFragment
 
         if (getResources().getBoolean(R.bool.config_deviceHasHighRefreshRate)) {
             mRefreshRate = findPreference(KEY_REFRESH_RATE);
+            mRefreshRate.setChecked(RefreshRateSwitch.isCurrentlyEnabled(getContext()));
             mRefreshRate.setOnPreferenceChangeListener(this);
         } else {
             getPreferenceScreen().removePreference(findPreference(KEY_REFRESH_RATE));
