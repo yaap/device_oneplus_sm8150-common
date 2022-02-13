@@ -244,21 +244,16 @@ vendor/etc/hdr_config.cfg
 vendor/etc/sdr_config.cfg
 vendor/lib64/libhdr_tm.so
 
-# Display (HWC)
-vendor/lib64/hw/hwcomposer.msmnile.so
-vendor/lib64/libsdmcore.so
-vendor/lib64/libsdmutils.so
-
-# Display (SDM)
-vendor/lib64/libdisplayqos.so
-vendor/lib64/libqseed3.so
-vendor/lib64/libsdedrm.so
-vendor/lib64/libsdm-color.so
-vendor/lib64/libsdm-colormgr-algo.so
-vendor/lib64/libsdm-diag.so
-vendor/lib64/libsdm-disp-vndapis.so
-vendor/lib64/libsdmextension.so
-vendor/lib64/libtinyxml2_1.so
+# Display (SDM) - from LA.UM.9.1.r1-10200-SMxxx0.0
+vendor/lib64/libdisplayqos.so|5548732c916e629f18f45ce257ce843b679a136a
+vendor/lib64/libqseed3.so|7f2a659fb9acd84d79c11dbd6901b816d5d1214f
+vendor/lib64/libsdedrm.so|a9a3ffb121f65c66615f1852cdb3d59063d90b5b
+vendor/lib64/libsdm-color.so|a39b8aeeeec1fe99c76ffaccfa1f4c3756498264
+vendor/lib64/libsdm-colormgr-algo.so|073245d67ec606f7b73c34e2b4956ebcc81b350c
+vendor/lib64/libsdm-diag.so|c21a643ab4ec151e0374df8ce5b839f71d07df90
+vendor/lib64/libsdm-disp-vndapis.so|4fbf76da3a9eb5d227f948521bd4c80842446bb4
+vendor/lib64/libsdmextension.so|e10d29f29b7a53b75369e58e8a165b2b86609f26
+vendor/lib64/libtinyxml2_1.so|ff32deb110acb02cb5def5f3404f9064c1276483
 
 # Display calibration data
 vendor/etc/qdcm_calib_data_samsung_dsc_cmd_mode_oneplus_dsi_panel.xml
@@ -500,7 +495,7 @@ vendor/lib64/vendor.qti.imsrtpservice@3.0-service-Impl.so
 vendor/lib64/vendor.qti.imsrtpservice@3.0.so
 
 # IMS - from LA.QSSI.11.0.r1-010400-qssi.0
--system_ext/priv-app/ims/ims.apk|7c243d450cc215be2b0187d5e3e6cd01059b8cc1
+-system_ext/priv-app/ims/ims.apk|956e73e4d231daa43f6f7e6f105b943f8883dd81
 
 # IPA firmware
 vendor/etc/init/ipa_fws.rc
@@ -659,7 +654,7 @@ vendor/lib64/vendor.qti.hardware.iop@2.0.so|a850b213d5bee907d638b998a746af2014f2
 vendor/etc/powerhint.xml
 
 # Power-off alarm - from LA.UM.9.1.r1-10200-SMxxx0.0
--product/app/PowerOffAlarm/PowerOffAlarm.apk|bc906abd03e4a243201dde626b6580fd8a4f73ce
+-product/app/PowerOffAlarm/PowerOffAlarm.apk|6e3ba805cfbeb0db590f988891448345cc3698ba
 vendor/bin/hw/vendor.qti.hardware.alarm@1.0-service|8837c93af35835116be98451040cf7843947198c
 vendor/bin/power_off_alarm|73f5fc2ee9436512a02e80890608722cd7643ab3
 vendor/etc/init/vendor.qti.hardware.alarm@1.0-service.rc|a03a9a1c818595b19272ea6ffb466e23a7fc3b05
@@ -973,7 +968,7 @@ system_ext/lib64/libwfdconfigutils.so|55b9467cc3a373c7f5725e5924d663a70dbf703c
 system_ext/lib64/libwfddisplayconfig.so|8190c64a0e3ebf5ae09dd65c5d0398cd3001b4c9
 system_ext/lib64/libwfdmminterface.so|2e49a3d58c945dc9472a0b6b250c56e60787e62e
 system_ext/lib64/libwfdmmsink.so|6d242e3cea5dc46cbd237a3b02e5596581091250
-system_ext/lib64/libwfdnative.so|ea6fb1e9a767f1dcaffde09a5fc5ab64d7f26071|33e8e82490d67fb1e4b88b3aecdf2d07f135b517
+system_ext/lib64/libwfdnative.so|33e8e82490d67fb1e4b88b3aecdf2d07f135b517
 system_ext/lib64/libwfdrtsp.so|2fb6c120db75e8b7fb4a08c48659e8bb7d0376b2
 system_ext/lib64/libwfdsinksm.so|7f8ace302737112b7b8b7862d8462e5e55a6af1c
 system_ext/lib64/libwfduibcinterface.so|1e8df941b0c2f71ad0e15e85522f177ed38e766d
