@@ -314,12 +314,12 @@ vendor/lib64/libStDrvInt.so|c6866bfa63fa8ea4ac7ce8f3ea7daeabba90ae03
 vendor/lib64/libtzdrmgenprov.so|bdc078935051b6c9e16bbf7fc4a8241410cea97a
 vendor/lib64/vendor.qti.hardware.qseecom@1.0.so|ce94ef46eea7c32e8a0d47ce4aa372153cc339fb
 
-# DSP
-vendor/bin/dspservice
-vendor/etc/init/vendor.qti.hardware.dsp@1.0-service.rc
-vendor/etc/seccomp_policy/vendor.qti.hardware.dsp.policy
-vendor/lib/vendor.qti.hardware.dsp@1.0.so
-vendor/lib64/vendor.qti.hardware.dsp@1.0.so
+# DSP - from LA.UM.9.1.r1-11500.02-SMxxx0.QSSI12.0
+vendor/bin/dspservice|a7344fc3d27a49df30858ebc3f73ee5818e752d4
+vendor/etc/init/vendor.qti.hardware.dsp@1.0-service.rc|fbf2bb38ca6bdddf98c7123da9e1f263a4eec55f
+vendor/etc/seccomp_policy/vendor.qti.hardware.dsp.policy|f060101b26d3674bb173e5fc95e118f56a8ac15d
+vendor/lib/vendor.qti.hardware.dsp@1.0.so|bec8d99fd7f943a8fbf1239fa6793311ceadf93e
+vendor/lib64/vendor.qti.hardware.dsp@1.0.so|0af387d416acf6d697b9edd4090e3a6941696970
 
 # ESE - from LA.UM.9.1.r1-11500.02-SMxxx0.QSSI12.0
 vendor/bin/hw/vendor.qti.esepowermanager@1.1-service|c6b5cf65cb4096abbf137f0c1f6674dce7d7db71
