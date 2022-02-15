@@ -441,6 +441,15 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     WifiResCommon
 
+# WiFi Display
+PRODUCT_PACKAGES += \
+    libnl \
+    libwfdaac_vendor \
+    WfdCommon
+
+PRODUCT_BOOT_JARS += \
+    WfdCommon
+
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.surface_flinger.force_hwc_copy_for_virtual_displays=true \
     ro.surface_flinger.has_HDR_display=true \
