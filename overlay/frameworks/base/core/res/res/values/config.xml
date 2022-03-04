@@ -464,4 +464,8 @@
      <!-- How long it takes for the HW to start illuminating after the illumination is requested. -->
      <integer name="config_udfps_illumination_transition_ms">10</integer>
 
+     <!-- Package name of a telephony-related system app, such as an IMS service.
+         Exempted from privacy indicators. -->
+     <string name="config_systemTelephonyPackage" translatable="false">com.qualcomm.qti.cne</string>
+
 </resources>
