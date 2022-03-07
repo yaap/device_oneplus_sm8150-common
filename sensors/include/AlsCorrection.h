@@ -16,8 +16,6 @@
 
 #pragma once
 
-#include <android/hardware/sensors/2.1/types.h>
-
 namespace android {
 namespace hardware {
 namespace sensors {
@@ -29,7 +27,7 @@ static constexpr int SENSOR_TYPE_QTI_HARDWARE_LIGHT = 33171030;
 class AlsCorrection {
   public:
     static void init();
-    static void process(Event& event);
+    static void correct(float& light);
 };
 
 }  // namespace implementation
