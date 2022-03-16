@@ -61,7 +61,7 @@ fi
 function blob_fixup() {
     case "${1}" in
         system_ext/lib64/libwfdnative.so )
-            sed -i "s/android.hidl.base@1.0.so/libhidlbase.so\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00/" "${2}"
+            "${PATCHELF}" --remove-needed "android.hidl.base@1.0.so" "${2}"
             ;;
         vendor/bin/hw/qcrild )
             "${PATCHELF}" --add-needed libril_shim.so "${2}"
