@@ -24,40 +24,42 @@ import android.service.quicksettings.TileService;
 // TODO: Add FPS drawables
 public class FPSTileService extends TileService {
 
-  private boolean isShowing = false;
+    private boolean mIsShowing = false;
 
-  public FPSTileService() { }
+    public FPSTileService() { }
 
-  @Override
-  public void onStartListening() {
-      super.onStartListening();
-      ActivityManager manager =
-              (ActivityManager) getSystemService(ACTIVITY_SERVICE);
-      for (ActivityManager.RunningServiceInfo service :
-              manager.getRunningServices(Integer.MAX_VALUE)) {
-          if (FPSInfoService.class.getName().equals(
-                  service.service.getClassName())) {
-              isShowing = true;
-          }
-      }
-      updateTile();
-  }
+    @Override
+    public void onStartListening() {
+        super.onStartListening();
+        mIsShowing = isRunning();
+        updateTile();
+    }
 
-  @Override
-  public void onClick() {
-      Intent fpsinfo = new Intent(this, FPSInfoService.class);
-      if (!isShowing)
-          this.startService(fpsinfo);
-      else
-          this.stopService(fpsinfo);
-      isShowing = !isShowing;
-      updateTile();
-  }
+    @Override
+    public void onClick() {
+        Intent fpsinfo = new Intent(this, FPSInfoService.class);
+        mIsShowing = isRunning();
+        if (!mIsShowing) this.startService(fpsinfo);
+        else this.stopService(fpsinfo);
+        mIsShowing = !mIsShowing;
+        updateTile();
+    }
 
-  private void updateTile() {
-      final Tile tile = getQsTile();
-      tile.setState(isShowing ? Tile.STATE_ACTIVE : Tile.STATE_INACTIVE);
-      tile.updateTile();
-  }
+    private void updateTile() {
+        final Tile tile = getQsTile();
+        tile.setState(mIsShowing ? Tile.STATE_ACTIVE : Tile.STATE_INACTIVE);
+        tile.updateTile();
+    }
 
+    private boolean isRunning() {
+        ActivityManager manager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service :
+                manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (FPSInfoService.class.getName().equals(
+                service.service.getClassName())) {
+                    return true;
+            }
+        }
+        return false;
+    }
 }
