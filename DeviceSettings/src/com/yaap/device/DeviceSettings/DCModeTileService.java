@@ -17,16 +17,15 @@
 */
 package com.yaap.device.DeviceSettings;
 
-import android.content.SharedPreferences;
 import android.graphics.drawable.Icon;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
-import androidx.preference.PreferenceManager;
 
 import com.yaap.device.DeviceSettings.ModeSwitch.DCModeSwitch;
 
 public class DCModeTileService extends TileService {
-    private boolean enabled = false;
+    private boolean mEnabled = false;
+    private boolean mInternalChange = false;
 
     @Override
     public void onDestroy() {
@@ -46,12 +45,7 @@ public class DCModeTileService extends TileService {
     @Override
     public void onStartListening() {
         super.onStartListening();
-        enabled = DCModeSwitch.isCurrentlyEnabled();
-        getQsTile().setIcon(Icon.createWithResource(this,
-                    enabled ? R.drawable.ic_dimming_on : R.drawable.ic_dimming_off));
-        getQsTile().setState(enabled ? Tile.STATE_ACTIVE : Tile.STATE_INACTIVE);
-        getQsTile().updateTile();
-
+        refreshState();
     }
 
     @Override
@@ -62,14 +56,20 @@ public class DCModeTileService extends TileService {
     @Override
     public void onClick() {
         super.onClick();
-        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-        enabled = DCModeSwitch.isCurrentlyEnabled();
-        Utils.writeValue(DCModeSwitch.getFile(), enabled ? "0" : "1");
-        sharedPrefs.edit().putBoolean(DeviceSettings.KEY_DC_SWITCH, !enabled).commit();
-        //getQsTile().setLabel(enabled ? "DC off" : "DC On");
+        mEnabled = DCModeSwitch.isCurrentlyEnabled();
+        DCModeSwitch.setEnabled(!mEnabled, this);
+        //getQsTile().setLabel(mEnabled ? "DC off" : "DC On");
         getQsTile().setIcon(Icon.createWithResource(this,
-                    enabled ? R.drawable.ic_dimming_off : R.drawable.ic_dimming_on));
-        getQsTile().setState(enabled ? Tile.STATE_INACTIVE : Tile.STATE_ACTIVE);
+                    mEnabled ? R.drawable.ic_dimming_off : R.drawable.ic_dimming_on));
+        getQsTile().setState(mEnabled ? Tile.STATE_INACTIVE : Tile.STATE_ACTIVE);
+        getQsTile().updateTile();
+    }
+
+    private void refreshState() {
+        mEnabled = DCModeSwitch.isCurrentlyEnabled();
+        getQsTile().setIcon(Icon.createWithResource(this,
+                    mEnabled ? R.drawable.ic_dimming_on : R.drawable.ic_dimming_off));
+        getQsTile().setState(mEnabled ? Tile.STATE_ACTIVE : Tile.STATE_INACTIVE);
         getQsTile().updateTile();
     }
 }

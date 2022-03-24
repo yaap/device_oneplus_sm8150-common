@@ -17,14 +17,22 @@
 */
 package com.yaap.device.DeviceSettings.ModeSwitch;
 
-import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceChangeListener;
+import android.content.SharedPreferences;
+import android.content.Context;
+import android.content.Intent;
+import android.os.UserHandle;
+
+import androidx.preference.PreferenceManager;
 
 import com.yaap.device.DeviceSettings.Utils;
 
-public class DCModeSwitch implements OnPreferenceChangeListener {
+public class DCModeSwitch {
 
     private static final String FILE = "/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/card0-DSI-1/dimlayer_bl_en";
+    
+    public static final String ACTION_DCMODE_CHANGED = "com.yaap.device.DeviceSettings.ModeSwitch.DCMODE_CHANGED";
+    public static final String EXTRA_DCMODE_STATE = "enabled";
+    public static final String KEY_DC_SWITCH = "dc";
 
     public static String getFile() {
         if (Utils.fileWritable(FILE)) {
@@ -41,10 +49,13 @@ public class DCModeSwitch implements OnPreferenceChangeListener {
         return Utils.getFileValueAsBoolean(getFile(), false);
     }
 
-    @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-        Boolean enabled = (Boolean) newValue;
+    public static void setEnabled(boolean enabled, Context context) {
         Utils.writeValue(getFile(), enabled ? "1" : "0");
-        return true;
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        prefs.edit().putBoolean(KEY_DC_SWITCH, !enabled).commit();
+        Intent intent = new Intent(ACTION_DCMODE_CHANGED);
+        intent.putExtra(EXTRA_DCMODE_STATE, enabled);
+        intent.setFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY);
+        context.sendBroadcastAsUser(intent, UserHandle.CURRENT);
     }
 }

@@ -31,6 +31,7 @@ import android.os.IBinder;
 import android.os.Message;
 import android.os.RemoteException;
 import android.os.ServiceManager;
+import android.os.UserHandle;
 import android.service.dreams.DreamService;
 import android.service.dreams.IDreamManager;
 import android.view.Gravity;
@@ -43,6 +44,10 @@ import java.io.FileReader;
 import java.lang.Math;
 
 public class FPSInfoService extends Service {
+    public static final String ACTION_FPS_SERVICE_CHANGED =
+            "com.yaap.device.DeviceSettings.FPS_SERVICE_CHANGED";
+    public static final String EXTRA_FPS_STATE = "running";
+
     private View mView;
     private Thread mCurFPSThread;
     private final String TAG = "FPSInfoService";
@@ -273,6 +278,7 @@ public class FPSInfoService extends Service {
         Log.d(TAG, "started CurFPSThread");
         mCurFPSThread = new CurFPSThread(mView.getHandler());
         mCurFPSThread.start();
+        broadcastServiceState(true);
     }
 
     private void stopThread() {
@@ -284,5 +290,13 @@ public class FPSInfoService extends Service {
             } catch (InterruptedException ignored) { }
         }
         mCurFPSThread = null;
+        broadcastServiceState(false);
+    }
+
+    private void broadcastServiceState(boolean started) {
+        Intent intent = new Intent(ACTION_FPS_SERVICE_CHANGED);
+        intent.putExtra(EXTRA_FPS_STATE, started);
+        intent.setFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY);
+        sendBroadcastAsUser(intent, UserHandle.CURRENT);
     }
 }

@@ -18,11 +18,17 @@
 package com.yaap.device.DeviceSettings;
 
 import android.app.ActivityManager;
+import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
+import android.content.IntentFilter;
+import android.database.ContentObserver;
 import android.os.Bundle;
+import android.os.Build;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.UserHandle;
 import android.provider.Settings;
 import android.view.MenuItem;
 
@@ -32,6 +38,7 @@ import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.SwitchPreference;
 import androidx.preference.TwoStatePreference;
+
 import com.yaap.device.DeviceSettings.ModeSwitch.DCModeSwitch;
 import com.yaap.device.DeviceSettings.ModeSwitch.HBMModeSwitch;
 
@@ -41,7 +48,6 @@ public class DeviceSettings extends PreferenceFragment
     private static final String KEY_CATEGORY_CAMERA = "camera";
     public static final String KEY_SRGB_SWITCH = "srgb";
     public static final String KEY_HBM_SWITCH = "hbm";
-    public static final String KEY_DC_SWITCH = "dc";
     public static final String KEY_DCI_SWITCH = "dci";
     public static final String KEY_WIDECOLOR_SWITCH = "widecolor";
     public static final String KEY_NATURAL_SWITCH = "natural";
@@ -58,17 +64,68 @@ public class DeviceSettings extends PreferenceFragment
             Build.DEVICE.equals("OnePlus7TPro") ||
             Build.DEVICE.equals("OnePlus7TProNR");
 
+    private TwoStatePreference mDCModeSwitch;
     private TwoStatePreference mHBMModeSwitch;
     private TwoStatePreference mRefreshRate;
     private SwitchPreference mFpsInfo;
     private SwitchPreference mAlwaysCameraSwitch;
     private SwitchPreference mMuteMediaSwitch;
 
+    private boolean mInternalFpsStart = false;
+    private boolean mInternalHbmStart = false;
+    private boolean mInternalDCStart = false;
+
+    private final BroadcastReceiver mServiceStateReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            switch (intent.getAction()) {
+                case FPSInfoService.ACTION_FPS_SERVICE_CHANGED:
+                    if (mInternalFpsStart) {
+                        mInternalFpsStart = false;
+                        return;
+                    }
+                    if (mFpsInfo == null) return;
+                    final boolean fpsStarted = intent.getBooleanExtra(
+                            FPSInfoService.EXTRA_FPS_STATE, false);
+                    mFpsInfo.setChecked(fpsStarted);
+                    break;
+                case HBMModeSwitch.ACTION_HBM_SERVICE_CHANGED:
+                    if (mInternalHbmStart) {
+                        mInternalHbmStart = false;
+                        return;
+                    }
+                    if (mHBMModeSwitch == null) return;
+                    final boolean hbmStarted = intent.getBooleanExtra(
+                            HBMModeSwitch.EXTRA_HBM_STATE, false);
+                    mHBMModeSwitch.setChecked(hbmStarted);
+                    break;
+                case DCModeSwitch.ACTION_DCMODE_CHANGED:
+                    if (mInternalDCStart) {
+                        mInternalDCStart = false;
+                        return;
+                    }
+                    if (mDCModeSwitch == null) return;
+                    final boolean dcEnabled = intent.getBooleanExtra(
+                            DCModeSwitch.EXTRA_DCMODE_STATE, false);
+                    mDCModeSwitch.setChecked(dcEnabled);
+                    break;
+            }
+        }
+    };
+
+    private final ContentObserver mRefreshRateObserver = new ContentObserver(
+            new Handler(Looper.getMainLooper())) {
+        @Override
+        public void onChange(boolean selfChange) {
+            if (mRefreshRate == null) return;
+            mRefreshRate.setChecked(RefreshRateSwitch.isCurrentlyEnabled(getContext()));
+        }
+    };
+
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.main);
 
-        TwoStatePreference mDCModeSwitch = findPreference(KEY_DC_SWITCH);
         ListPreference mTopKeyPref = findPreference(Constants.NOTIF_SLIDER_TOP_KEY);
         mTopKeyPref.setValueIndex(Constants.getPreferenceInt(getContext(), Constants.NOTIF_SLIDER_TOP_KEY));
         mTopKeyPref.setOnPreferenceChangeListener(this);
@@ -83,9 +140,10 @@ public class DeviceSettings extends PreferenceFragment
         mMuteMediaSwitch.setChecked(Constants.getIsMuteMediaEnabled(getContext()));
         mMuteMediaSwitch.setOnPreferenceChangeListener(this);
 
+        mDCModeSwitch = findPreference(DCModeSwitch.KEY_DC_SWITCH);
         mDCModeSwitch.setEnabled(DCModeSwitch.isSupported());
         mDCModeSwitch.setChecked(DCModeSwitch.isCurrentlyEnabled());
-        mDCModeSwitch.setOnPreferenceChangeListener(new DCModeSwitch());
+        mDCModeSwitch.setOnPreferenceChangeListener(this);
 
         mHBMModeSwitch = findPreference(KEY_HBM_SWITCH);
         mHBMModeSwitch.setEnabled(HBMModeSwitch.isSupported());
@@ -114,6 +172,20 @@ public class DeviceSettings extends PreferenceFragment
         } else {
             mCameraCategory.setVisible(false);
         }
+
+        // Registering observers
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(FPSInfoService.ACTION_FPS_SERVICE_CHANGED);
+        filter.addAction(HBMModeSwitch.ACTION_HBM_SERVICE_CHANGED);
+        filter.addAction(DCModeSwitch.ACTION_DCMODE_CHANGED);
+        getContext().registerReceiver(mServiceStateReceiver, filter);
+
+        if (getResources().getBoolean(R.bool.config_deviceHasHighRefreshRate)) {
+            getContext().getContentResolver().registerContentObserver(
+                    Settings.System.getUriFor(
+                    Settings.System.PEAK_REFRESH_RATE),
+                    false, mRefreshRateObserver, UserHandle.USER_ALL);
+        }
     }
 
     @Override
@@ -127,6 +199,7 @@ public class DeviceSettings extends PreferenceFragment
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         final ContentResolver resolver = getContext().getContentResolver();
         if (preference == mFpsInfo) {
+            mInternalFpsStart = true;
             boolean enabled = (Boolean) newValue;
             Intent fpsinfo = new Intent(getContext(), FPSInfoService.class);
             if (enabled) getContext().startService(fpsinfo);
@@ -140,16 +213,17 @@ public class DeviceSettings extends PreferenceFragment
             Boolean enabled = (Boolean) newValue;
             RefreshRateSwitch.setPeakRefresh(getContext(), enabled);
         } else if (preference == mHBMModeSwitch) {
+            mInternalHbmStart = true;
             Boolean enabled = (Boolean) newValue;
-            Utils.writeValue(HBMModeSwitch.getFile(), enabled ? "5" : "0");
-            Intent hbmIntent = new Intent(getContext(),
-                    com.yaap.device.DeviceSettings.HBMModeService.class);
-            if (enabled) getContext().startService(hbmIntent);
-            else getContext().stopService(hbmIntent);
+            HBMModeSwitch.setEnabled(enabled, getContext());            
         } else if (preference == mMuteMediaSwitch) {
             Boolean enabled = (Boolean) newValue;
             Settings.System.putInt(resolver,
                     Constants.NOTIF_SLIDER_MUTE_MEDIA_KEY, enabled ? 1 : 0);
+        } else if (preference == mDCModeSwitch) {
+            mInternalDCStart = true;
+            Boolean enabled = (Boolean) newValue;
+            DCModeSwitch.setEnabled(enabled, getContext());
         } else if (newValue instanceof String) {
             Constants.setPreferenceInt(getContext(), preference.getKey(),
                     Integer.parseInt((String) newValue));
@@ -165,6 +239,16 @@ public class DeviceSettings extends PreferenceFragment
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        getContext().unregisterReceiver(mServiceStateReceiver);
+        if (getResources().getBoolean(R.bool.config_deviceHasHighRefreshRate)) {
+            getContext().getContentResolver().unregisterContentObserver(
+                    mRefreshRateObserver);
+        }
     }
 
     private boolean isFPSOverlayRunning() {

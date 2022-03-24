@@ -17,11 +17,40 @@
 */
 package com.yaap.device.DeviceSettings;
 
+import android.database.ContentObserver;
 import android.graphics.drawable.Icon;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.UserHandle;
+import android.provider.Settings;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 
 public class RefreshRateTileService extends TileService {
+    private boolean mIsInternalChange = false;
+    private final ContentObserver mRefreshRateObserver = new ContentObserver(
+            new Handler(Looper.getMainLooper())) {
+        void observe() {
+            getContentResolver().registerContentObserver(
+                    Settings.System.getUriFor(
+                    Settings.System.PEAK_REFRESH_RATE),
+                    false, this, UserHandle.USER_ALL);
+        }
+
+        void stop() {
+            getContentResolver().unregisterContentObserver(this);
+        } 
+
+        @Override
+        public void onChange(boolean selfChange) {
+            if (mIsInternalChange) {
+                mIsInternalChange = false;
+                return;
+            }
+            refreshState();
+        }
+    };
+
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -40,11 +69,7 @@ public class RefreshRateTileService extends TileService {
     @Override
     public void onStartListening() {
         super.onStartListening();
-        boolean enabled = RefreshRateSwitch.isCurrentlyEnabled(this);
-        getQsTile().setIcon(Icon.createWithResource(this,
-                enabled ? R.drawable.ic_refresh_tile_60 : R.drawable.ic_refresh_tile_90));
-        getQsTile().setState(enabled ? Tile.STATE_ACTIVE : Tile.STATE_INACTIVE);
-        getQsTile().updateTile();
+        refreshState();
     }
 
     @Override
@@ -55,11 +80,20 @@ public class RefreshRateTileService extends TileService {
     @Override
     public void onClick() {
         super.onClick();
+        mIsInternalChange = true;
         boolean enabled = RefreshRateSwitch.isCurrentlyEnabled(this);
         RefreshRateSwitch.setPeakRefresh(this, !enabled);
         getQsTile().setIcon(Icon.createWithResource(this,
                 enabled ? R.drawable.ic_refresh_tile_90 : R.drawable.ic_refresh_tile_60));
         getQsTile().setState(enabled ? Tile.STATE_INACTIVE : Tile.STATE_ACTIVE);
+        getQsTile().updateTile();
+    }
+
+    private void refreshState() {
+        boolean enabled = RefreshRateSwitch.isCurrentlyEnabled(this);
+        getQsTile().setIcon(Icon.createWithResource(this,
+                enabled ? R.drawable.ic_refresh_tile_60 : R.drawable.ic_refresh_tile_90));
+        getQsTile().setState(enabled ? Tile.STATE_ACTIVE : Tile.STATE_INACTIVE);
         getQsTile().updateTile();
     }
 }

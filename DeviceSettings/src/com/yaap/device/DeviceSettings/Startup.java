@@ -43,7 +43,7 @@ public class Startup extends BroadcastReceiver {
         restore(HBMModeSwitch.getFile(),
                 sharedPrefs.getBoolean(DeviceSettings.KEY_HBM_SWITCH, false));
         restore(DCModeSwitch.getFile(),
-                sharedPrefs.getBoolean(DeviceSettings.KEY_DC_SWITCH, false));
+                sharedPrefs.getBoolean(DCModeSwitch.KEY_DC_SWITCH, false));
         restore(DCIModeSwitch.getFile(),
                 sharedPrefs.getBoolean(DeviceSettings.KEY_DCI_SWITCH, false));
         restore(WideColorModeSwitch.getFile(),

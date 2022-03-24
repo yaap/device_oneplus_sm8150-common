@@ -17,10 +17,18 @@
 */
 package com.yaap.device.DeviceSettings.ModeSwitch;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.UserHandle;
+
 import com.yaap.device.DeviceSettings.Utils;
 
 public class HBMModeSwitch {
 
+    public static final String ACTION_HBM_SERVICE_CHANGED =
+            "com.yaap.device.DeviceSettings.ModeSwitch.HBM_SERVICE_CHANGED";
+    public static final String EXTRA_HBM_STATE = "running";
+    
     private static final String FILE = "/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/card0-DSI-1/hbm";
 
     public static String getFile() {
@@ -36,5 +44,17 @@ public class HBMModeSwitch {
 
     public static boolean isCurrentlyEnabled() {
         return Utils.getFileValueAsBoolean(getFile(), false);
+    }
+
+    public static void setEnabled(boolean enabled, Context context) {
+        Utils.writeValue(getFile(), enabled ? "5" : "0");
+        Intent hbmIntent = new Intent(context,
+                    com.yaap.device.DeviceSettings.HBMModeService.class);
+        if (enabled) context.startService(hbmIntent);
+        else context.stopService(hbmIntent);
+        Intent intent = new Intent(ACTION_HBM_SERVICE_CHANGED);
+        intent.putExtra(EXTRA_HBM_STATE, enabled);
+        intent.setFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY);
+        context.sendBroadcastAsUser(intent, UserHandle.CURRENT);;
     }
 }
