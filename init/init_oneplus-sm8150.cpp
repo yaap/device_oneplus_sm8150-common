@@ -186,6 +186,34 @@ void vendor_load_properties() {
           break;
       }
       break;
+    case 18827:
+      switch (rf_version){
+	case 1:
+	  /* Europe */
+          property_override("persist.radio.multisim.config", "ssss");
+	  property_override("ro.product.model", "GM1920");
+	  break;
+        case 5:
+	  /* Global / US Unlocked */
+          property_override("persist.radio.multisim.config", "ssss");
+          property_override("ro.product.model", "GM1925");
+	  break;
+       }
+       break;
+    case 18825:
+      switch (rf_version){
+	case 1:
+	  /* Europe */
+          property_override("persist.radio.multisim.config", "ssss");
+	  property_override("ro.product.model", "GM1920");
+	  break;
+        case 5:
+	  /* Global / US Unlocked */
+          property_override("persist.radio.multisim.config", "ssss");
+          property_override("ro.product.model", "GM1925");
+	  break;
+       }
+       break;
     case 19861:
       /* OnePlus 7T Pro NR */
       property_override("persist.radio.multisim.config", "ssss");
