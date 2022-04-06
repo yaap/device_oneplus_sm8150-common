@@ -957,11 +957,34 @@ vendor/lib64/libwvhidl.so
 vendor/bin/cnss-daemon
 
 # WiFi Display (system) - from LA.QSSI.12.0.r1-05800.02-qssi.0
+system_ext/bin/wfdservice|2d9bde189325b3faf4e1571543867c6a7e00762d
 system_ext/bin/wfdservice64|dfba81ff32b92652dfca237b590dd104dc7ced34
 system_ext/etc/init/wfdservice.rc|907def8565d8f91f531ca7dfad880af05d540b0c
 system_ext/etc/permissions/wfd-system-ext-privapp-permissions-qti.xml|828999946f9dfef98f17f42a1c8daba47c2c442d
+system_ext/etc/seccomp_policy/wfdservice.policy|37994de64d6bd127898bd556cd614db459fe07ec
 system_ext/etc/seccomp_policy/wfdservice64.policy|593df3ba16a8bb81b2d82c55ae095838c12cbf25
 system_ext/etc/wfdconfigsink.xml|cb78df66948314a75080a4161321fb3111a0785a
+system_ext/lib/com.qualcomm.qti.wifidisplayhal@1.0.so|409766cfd64d801d341f38dcc3e41f74aa257f8a
+system_ext/lib/libmmrtpdecoder.so|d8f7b3c849cb5254fd25a94ec85a62492d46c173
+system_ext/lib/libmmrtpencoder.so|b730328d4225dde2d057cabc537828192df6cb0b
+system_ext/lib/libwfdavenhancements.so|5bfacac70365e187a2a67e1d52e418376dfcd916
+system_ext/lib/libwfdclient.so|7f9c46d00446c9eaaa705100627336c4f033bfe0
+system_ext/lib/libwfdcommonutils.so|ab4b909d5c8bdc3bf204f7f544830fcb867713aa
+system_ext/lib/libwfdconfigutils.so|ab4299f9ef6e88c8649e7f36c64c8ac4f0e51442
+system_ext/lib/libwfddisplayconfig.so|a28632c27712fed3a169da6a04eb0ae6521b8e20
+system_ext/lib/libwfdmminterface.so|7902326a27e6c65a9b592ae7270bf3389eabfa29
+system_ext/lib/libwfdmmsink.so|f6b055e72b4dcd471bcb584a4f0ccee75a1d82a6
+system_ext/lib/libwfdmmsrc_system.so|2d2075b3e0f88490feeef50042ae7221bd241bde
+system_ext/lib/libwfdnative.so|75fba1fcbaf0264b7b5ecde9519c501dafb99eeb
+system_ext/lib/libwfdrtsp.so|afacb36d7c81849c8c4389c99505babf0944254b
+system_ext/lib/libwfdservice.so|bd3d5e4b9177deba42b201726644391d9de4528d
+system_ext/lib/libwfdsinksm.so|9ad592807e3853af56ed4a46f932ec0bfd853211
+system_ext/lib/libwfduibcinterface.so|62e3b74365046d70f0c6c5bceba99c83d62ee877
+system_ext/lib/libwfduibcsinkinterface.so|5aa2ec3238a1c982fb9c40cd4443dd8634334534
+system_ext/lib/libwfduibcsink.so|9c2f09898837b46a4aea4a6444f2c37f9a76f02a
+system_ext/lib/libwfduibcsrcinterface.so|a26c4ce864a63f9875f620b969146da412e8dee2
+system_ext/lib/libwfduibcsrc.so|b269c1b9ef1636875b8a16f0bafdb69f38c039aa
+system_ext/lib/vendor.qti.hardware.wifidisplaysession@1.0.so|db7b55eb78b6f90ac50e39435fa75b878c21ffea
 system_ext/lib64/libmmrtpdecoder.so|8f7c96109acb7d2566c178fc17601d48447efe27
 system_ext/lib64/libmmrtpencoder.so|ed98e847430e34aaf2d31ed9cef1275acad405fd
 system_ext/lib64/libwfdavenhancements.so|359e197f8e00a0e0948cfe8af8d59d3070bb4701
@@ -983,6 +1006,7 @@ system_ext/lib64/libwfduibcsrcinterface.so|aef1b83ef458c79cd345031654d38bc8897c9
 system_ext/lib64/libwfduibcsrc.so|03e2b139fb399aa5beb1caaa4df0f5c7eb675a9d
 system_ext/lib64/vendor.qti.hardware.wifidisplaysession@1.0.so|b987719b34b788eee534c70c404ed2fd90bd6b81
 -system_ext/priv-app/WfdService/WfdService.apk|622836ab49bc66bf31b83d4855198f87115dc106
+-system/framework/WfdCommon.jar|9f431b56d7f38c71089333008695dd5f717e5034
 
 # WiFi Display (vendor) - from LA.UM.9.1.r1-11500.02-SMxxx0.QSSI12.0
 vendor/bin/wfdhdcphalservice|40c3d329f49cbb56286d6a550cc8b12ac95048df
