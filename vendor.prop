@@ -178,3 +178,7 @@ persist.vendor.radio.uicc_se_enabled=true
 # SoC
 ro.soc.manufacturer=Qualcomm
 ro.soc.model=SM8150
+
+# USB
+vendor.usb.diag.func.name=diag
+vendor.usb.use_ffs_mtp=0
