@@ -669,6 +669,7 @@ vendor/lib64/libreffeature.so|0f3cb1381f12a9cd938ceb7c00686285f9faa444
 vendor/lib64/libskewknob.so|ad8430fa5e5a53441d36b4e2c09ab9e53f8585f7
 vendor/lib64/vendor.qti.hardware.iop@1.0.so|162a2488ad279f7582e05326e88b4ca12ae319a0
 vendor/lib64/vendor.qti.hardware.iop@2.0.so|a520fd07df2a5a6ea78372300978baf6deaf89da
+vendor/lib64/vendor.qti.memory.pasrmanager@1.1.so|dab1ce59502c375105db1ca06c7048735ee024c0
 
 # Perf
 vendor/etc/powerhint.xml
