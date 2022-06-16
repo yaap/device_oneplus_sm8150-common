@@ -9,3 +9,6 @@ allow init { op1_file op2_file }:dir mounton;
 
 # Allow init to contextmount op1_file
 allow op1_file self:filesystem associate;
+
+# Allow init to set attribute to sysfs_kprofiles
+allow init sysfs_kprofiles:file { setattr };

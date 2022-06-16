@@ -2,6 +2,9 @@
 type fpc_images_file, file_type, core_data_file_type, data_file_type;
 type wifi_nv_data_file, file_type, data_file_type;
 
+# KProfiles
+type sysfs_kprofiles, sysfs_type, fs_type;
+
 # persist
 type persist_camera_file, file_type;
 type persist_engineer_file, file_type;
