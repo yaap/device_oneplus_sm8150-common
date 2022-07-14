@@ -17,6 +17,10 @@
 */
 package com.yaap.device.DeviceSettings;
 
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.PackageManager.PackageInfoFlags;
 import android.content.res.Resources;
 import android.util.Log;
 
@@ -124,6 +128,15 @@ public class Utils {
             return defaultValue;
         } else {
             return res.getString(resId);
+        }
+    }
+
+    public static boolean isPackageInstalled(final String name, Context context) {
+        try {
+            context.getPackageManager().getPackageInfo(name, 0);
+            return true;
+        } catch (NameNotFoundException e) {
+            return false;
         }
     }
 }
