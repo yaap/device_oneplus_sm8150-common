@@ -1,4 +1,4 @@
-# All unpinned blobs below are extracted from OnePlus7ProOxygen_21.P.44_GLO_0440_2205261920
+# All unpinned blobs below are extracted from OnePlus7ProHydrogen_21.H.46_OTA_0460_ALL_2206171440
 
 # ADSP
 vendor/bin/adsprpcd
@@ -392,9 +392,9 @@ vendor/firmware/a640_zap.b02
 vendor/firmware/a640_zap.elf
 vendor/firmware/a640_zap.mdt
 
-# Graphics (Vulkan) - from LA.UM.9.14.r1-18900-LAHAINA.QSSI12.0
-vendor/lib/hw/vulkan.adreno.so|ca43eefab537c1ee8ec4bb9dbae06331f2bd872b
-vendor/lib64/hw/vulkan.adreno.so|3e981baca903027296ddccfc4b7fb73e4c190d90
+# Graphics (Vulkan) - from LA.UM.9.14.r1-19300-LAHAINA.QSSI12.0
+vendor/lib/hw/vulkan.adreno.so|040b1bfaa025c0eae3a69df306f0567ea6fe1960
+vendor/lib64/hw/vulkan.adreno.so|dbe08047ec51224d63645180673eb7db1db2a004
 
 # GNSS
 vendor/bin/hw/android.hardware.gnss@2.1-service-qti
@@ -1005,8 +1005,6 @@ system_ext/lib64/libwfduibcsink.so|ba8d0e93566359220c801166e098077db2bc7530
 system_ext/lib64/libwfduibcsrcinterface.so|aef1b83ef458c79cd345031654d38bc8897c94ae
 system_ext/lib64/libwfduibcsrc.so|03e2b139fb399aa5beb1caaa4df0f5c7eb675a9d
 system_ext/lib64/vendor.qti.hardware.wifidisplaysession@1.0.so|b987719b34b788eee534c70c404ed2fd90bd6b81
--system_ext/priv-app/WfdService/WfdService.apk|622836ab49bc66bf31b83d4855198f87115dc106
--system/framework/WfdCommon.jar|9f431b56d7f38c71089333008695dd5f717e5034
 
 # WiFi Display (vendor) - from LA.UM.9.1.r1-11500.02-SMxxx0.QSSI12.0
 vendor/bin/wfdhdcphalservice|40c3d329f49cbb56286d6a550cc8b12ac95048df
