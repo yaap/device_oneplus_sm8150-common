@@ -64,7 +64,6 @@ public class FPSInfoService extends Service {
 
         private int mNeededWidth;
         private int mNeededHeight;
-
         private boolean mDataAvail;
 
         private final Handler mCurFPSHandler = new Handler() {
@@ -84,7 +83,7 @@ public class FPSInfoService extends Service {
             super(c);
             final float density = c.getResources().getDisplayMetrics().density;
             final int paddingPx = Math.round(5 * density);
-            setPadding(paddingPx, paddingPx * 4, paddingPx, paddingPx);
+            setPadding(paddingPx, paddingPx, paddingPx, paddingPx);
             setBackgroundColor(Color.argb(0x60, 0, 0, 0));
 
             final int textSize = Math.round(12 * density);
@@ -101,7 +100,7 @@ public class FPSInfoService extends Service {
             mAscent = mOnlinePaint.ascent();
 
             final String maxWidthStr="fps: 60.1";
-            mMaxWidth = (int)mOnlinePaint.measureText(maxWidthStr);
+            mMaxWidth = (int) mOnlinePaint.measureText(maxWidthStr);
 
             updateDisplay();
         }
@@ -133,15 +132,11 @@ public class FPSInfoService extends Service {
             if (!mDataAvail) {
                 return;
             }
-
-            final int LEFT = getWidth()-1;
-
-
-            int y = mPaddingTop - (int)mAscent;
-
-            String s=getFPSInfoString();
-            canvas.drawText(s, LEFT-mPaddingLeft-mMaxWidth,
-                    y-1, mOnlinePaint);
+            final int LEFT = getWidth() - 1;
+            final int y = mPaddingTop - (int)mAscent;
+            canvas.drawText(getFPSInfoString(),
+                    LEFT-mPaddingLeft-mMaxWidth,
+                    y - 1, mOnlinePaint);
         }
 
         void updateDisplay() {
@@ -202,6 +197,7 @@ public class FPSInfoService extends Service {
             WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
             PixelFormat.TRANSLUCENT);
         params.gravity = Gravity.LEFT | Gravity.TOP;
+        params.verticalMargin = 0.03f;
         params.setTitle("FPS Info");
 
         startThread();
