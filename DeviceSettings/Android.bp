@@ -18,10 +18,6 @@
 android_app {
     name: "DeviceSettings",
 
-    defaults: [
-        "SettingsLibDefaults",
-    ],
-
     srcs: ["src/**/*.java"],
     certificate: "platform",
     platform_apis: true,
@@ -29,8 +25,6 @@ android_app {
     privileged: true,
 
     static_libs: [
-        "androidx.core_core",
-        "androidx.preference_preference",
         "org.lineageos.settings.resources",
     ],
 
