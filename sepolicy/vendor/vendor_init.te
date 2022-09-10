@@ -26,3 +26,6 @@ get_prop(vendor_init, vendor_tee_listener_prop)
 
 # Allow vendor_init to set vendor_nfc_prop
 set_prop(vendor_init, vendor_nfc_prop)
+
+# Allow vendor init to set SSR property
+set_prop(vendor_init, vendor_ssr_prop)

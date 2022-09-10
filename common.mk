@@ -392,6 +392,10 @@ PRODUCT_BOOT_JARS += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/privapp-permissions-qti.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-qti.xml
 
+# Subsystem silent restart
+PRODUCT_VENDOR_PROPERTIES += \
+    persist.vendor.ssr.restart_level=ALL_ENABLE
+
 # Touch
 PRODUCT_PACKAGES += \
     vendor.lineage.touch@1.0-service.oneplus_msmnile
