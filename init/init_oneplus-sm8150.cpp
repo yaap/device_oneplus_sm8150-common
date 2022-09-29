@@ -77,16 +77,7 @@ void load_dalvikvm_properties() {
     property_override("dalvik.vm.heapgrowthlimit", "256m");
     property_override("dalvik.vm.heaptargetutilization", "0.46");
     property_override("dalvik.vm.heapmaxfree", "48m");
-    }
-  else {
-    // from - phone-xhdpi-6144-dalvik-heap.mk
-    property_override("dalvik.vm.heapstartsize", "16m");
-    property_override("dalvik.vm.heapgrowthlimit", "256m");
-    property_override("dalvik.vm.heaptargetutilization", "0.5");
-    property_override("dalvik.vm.heapmaxfree", "32m");
   }
-  property_override("dalvik.vm.heapsize", "512m");
-  property_override("dalvik.vm.heapminfree", "8m");
 }
 
 void vendor_load_properties() {
