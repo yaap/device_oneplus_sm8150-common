@@ -514,7 +514,7 @@
              display brightness <= disp0 && ambient brightness <= amb0
              || display brightness <= disp1 && ambient brightness <= amb1 -->
     <integer-array translatable="false" name="config_brightnessThresholdsOfPeakRefreshRate">
-           <item>167</item>
+           <item>1167</item>
     </integer-array>
     <integer-array translatable="false" name="config_ambientThresholdsOfPeakRefreshRate">
            <item>-1</item>
