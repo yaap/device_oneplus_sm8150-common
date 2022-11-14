@@ -87,6 +87,7 @@ void vendor_load_properties() {
   switch(project_name){
     case 18857:
       /* OnePlus 7 */
+      property_override("bluetooth.device.default_name", "OnePlus 7");
       switch (rf_version){
         case 1:
           /* China */
@@ -108,6 +109,7 @@ void vendor_load_properties() {
       break;
     case 18821:
       /* OnePlus 7 Pro */
+      property_override("bluetooth.device.default_name", "OnePlus 7 Pro");
       switch (rf_version){
         case 1:
           /* China */
@@ -129,10 +131,12 @@ void vendor_load_properties() {
       break;
     case 18831:
       /* OnePlus 7 Pro T-Mobile */
+      property_override("bluetooth.device.default_name", "OnePlus 7 Pro");
       property_override("ro.product.model", "GM1915");
       break;
     case 18865:
       /* OnePlus 7T */
+      property_override("bluetooth.device.default_name", "OnePlus 7T");
       switch (rf_version){
         case 1:
           /* China */
@@ -154,10 +158,12 @@ void vendor_load_properties() {
       break;
     case 19863:
       /* OnePlus 7T T-Mobile */
+      property_override("bluetooth.device.default_name", "OnePlus 7T");
       property_override("ro.product.model", "HD1907");
       break;
     case 19801:
       /* OnePlus 7T Pro */
+      property_override("bluetooth.device.default_name", "OnePlus 7T Pro");
       switch (rf_version){
         case 1:
           /* China */
@@ -178,6 +184,7 @@ void vendor_load_properties() {
       }
       break;
     case 18827:
+      property_override("bluetooth.device.default_name", "OnePlus 7 Pro 5G");
       switch (rf_version){
 	case 1:
 	  /* Europe */
@@ -192,6 +199,7 @@ void vendor_load_properties() {
        }
        break;
     case 18825:
+      property_override("ro.product.model", "OnePlus 7 Pro NR");
       switch (rf_version){
 	case 1:
 	  /* Europe */
@@ -207,6 +215,7 @@ void vendor_load_properties() {
        break;
     case 19861:
       /* OnePlus 7T Pro NR */
+      property_override("bluetooth.device.default_name", "OnePlus 7T Pro 5G");
       property_override("persist.radio.multisim.config", "ssss");
       property_override("ro.product.model", "HD1925");
       break;

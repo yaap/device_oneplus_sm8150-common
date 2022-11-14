@@ -33,41 +33,6 @@ int property_get(const char *key, char *value, const char *default_value);
 }
 #endif
 
-#include "osi/include/osi.h"
-
-typedef struct {
-    const char *project_name;
-    const char *product_model;
-} device_t;
-
-static const device_t devices[] = {
-    {"18857", "OnePlus 7"},
-    {"18821", "OnePlus 7 Pro"},
-    {"18831", "OnePlus 7 Pro TMO"},
-    {"18865", "OnePlus 7T"},
-    {"19863", "OnePlus 7T TMO"},
-    {"19801", "OnePlus 7T Pro"},
-    {"19861", "OnePlus 7T Pro NR"},
-};
-
-static inline const char *BtmGetDefaultName()
-{
-    char project_name[92];
-    property_get("ro.boot.project_name", project_name, "");
-
-    for (unsigned int i = 0; i < ARRAY_SIZE(devices); i++) {
-        device_t device = devices[i];
-
-        if (strcmp(device.project_name, project_name) == 0) {
-            return device.product_model;
-        }
-    }
-
-    // Fallback to ro.product.model
-    return "";
-}
-
-#define BTM_DEF_LOCAL_NAME BtmGetDefaultName()
 // Disables read remote device feature
 #define BTM_WBS_INCLUDED TRUE
 #define BTIF_HF_WBS_PREFERRED TRUE
