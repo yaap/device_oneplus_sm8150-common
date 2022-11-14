@@ -84,11 +84,11 @@ void vendor_load_properties() {
   int prj_version = stoi(android::base::GetProperty("ro.boot.prj_version", ""));
   int project_name = stoi(android::base::GetProperty("ro.boot.project_name", ""));
   int rf_version = stoi(android::base::GetProperty("ro.boot.rf_version", ""));
-  switch(project_name){
+  switch(project_name) {
     case 18857:
       /* OnePlus 7 */
       property_override("bluetooth.device.default_name", "OnePlus 7");
-      switch (rf_version){
+      switch (rf_version) {
         case 1:
           /* China */
           property_override("ro.product.model", "GM1900");
@@ -110,7 +110,7 @@ void vendor_load_properties() {
     case 18821:
       /* OnePlus 7 Pro */
       property_override("bluetooth.device.default_name", "OnePlus 7 Pro");
-      switch (rf_version){
+      switch (rf_version) {
         case 1:
           /* China */
           property_override("ro.product.model", "GM1910");
@@ -137,7 +137,7 @@ void vendor_load_properties() {
     case 18865:
       /* OnePlus 7T */
       property_override("bluetooth.device.default_name", "OnePlus 7T");
-      switch (rf_version){
+      switch (rf_version) {
         case 1:
           /* China */
           property_override("ro.product.model", "HD1900");
@@ -164,7 +164,7 @@ void vendor_load_properties() {
     case 19801:
       /* OnePlus 7T Pro */
       property_override("bluetooth.device.default_name", "OnePlus 7T Pro");
-      switch (rf_version){
+      switch (rf_version) {
         case 1:
           /* China */
           property_override("ro.product.model", "HD1910");
@@ -184,33 +184,20 @@ void vendor_load_properties() {
       }
       break;
     case 18827:
+    case 18825:
+      /* OnePlus 7 Pro NR */
       property_override("bluetooth.device.default_name", "OnePlus 7 Pro 5G");
       switch (rf_version){
-	case 1:
-	  /* Europe */
+        case 1:
+          /* Europe */
           property_override("persist.radio.multisim.config", "ssss");
-	  property_override("ro.product.model", "GM1920");
-	  break;
+          property_override("ro.product.model", "GM1920");
+          break;
         case 5:
-	  /* Global / US Unlocked */
+          /* Global / US Unlocked */
           property_override("persist.radio.multisim.config", "ssss");
           property_override("ro.product.model", "GM1925");
-	  break;
-       }
-       break;
-    case 18825:
-      property_override("ro.product.model", "OnePlus 7 Pro NR");
-      switch (rf_version){
-	case 1:
-	  /* Europe */
-          property_override("persist.radio.multisim.config", "ssss");
-	  property_override("ro.product.model", "GM1920");
-	  break;
-        case 5:
-	  /* Global / US Unlocked */
-          property_override("persist.radio.multisim.config", "ssss");
-          property_override("ro.product.model", "GM1925");
-	  break;
+          break;
        }
        break;
     case 19861:
@@ -219,10 +206,10 @@ void vendor_load_properties() {
       property_override("persist.radio.multisim.config", "ssss");
       property_override("ro.product.model", "HD1925");
       break;
-    }
+  }
 
-    property_override("vendor.boot.prj_version", std::to_string(prj_version).c_str());
-    property_override_dual("vendor.rf.version", "vendor.boot.rf_version", std::to_string(rf_version).c_str());
+  property_override("vendor.boot.prj_version", std::to_string(prj_version).c_str());
+  property_override_dual("vendor.rf.version", "vendor.boot.rf_version", std::to_string(rf_version).c_str());
 
   // dalvikvm props
   load_dalvikvm_properties();
