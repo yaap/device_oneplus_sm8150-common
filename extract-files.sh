@@ -66,6 +66,9 @@ function blob_fixup() {
         vendor/bin/hw/qcrild )
             "${PATCHELF}" --add-needed libril_shim.so "${2}"
             ;;
+        vendor/lib64/hw/camera.qcom.so )
+            grep -q libcamera_metadata_shim.so "${2}" || "${PATCHELF}" --add-needed libcamera_metadata_shim.so "${2}"
+            ;;
     esac
     case "${DEVICE}" in
         hotdog | hotdogb | hotdogg )
