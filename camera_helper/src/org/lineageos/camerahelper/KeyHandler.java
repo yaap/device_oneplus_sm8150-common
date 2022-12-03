@@ -73,6 +73,11 @@ public class KeyHandler implements DeviceKeyHandler {
         return null;
     }
 
+    @Override
+    public void onPocketStateChanged(boolean inPocket) {
+        // do nothing
+    }
+
     private Context getPackageContext() {
         try {
             return mContext.createPackageContext("org.lineageos.camerahelper", 0);

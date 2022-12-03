@@ -121,6 +121,11 @@ public class KeyHandler implements DeviceKeyHandler {
         return null;
     }
 
+    @Override
+    public void onPocketStateChanged(boolean inPocket) {
+        // do nothing
+    }
+
     private void doHapticFeedback(int effect) {
         if (mVibrator != null && mVibrator.hasVibrator() && effect != -1) {
             mVibrator.vibrate(VibrationEffect.get(effect));
