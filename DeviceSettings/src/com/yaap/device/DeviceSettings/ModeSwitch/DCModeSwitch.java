@@ -52,7 +52,7 @@ public class DCModeSwitch {
     public static void setEnabled(boolean enabled, Context context) {
         Utils.writeValue(getFile(), enabled ? "1" : "0");
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        prefs.edit().putBoolean(KEY_DC_SWITCH, !enabled).commit();
+        prefs.edit().putBoolean(KEY_DC_SWITCH, enabled).commit();
         Intent intent = new Intent(ACTION_DCMODE_CHANGED);
         intent.putExtra(EXTRA_DCMODE_STATE, enabled);
         intent.setFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY);
