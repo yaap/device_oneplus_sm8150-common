@@ -168,6 +168,9 @@ on boot
     # FPS Info
     chown system graphics /sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/sde-crtc-0/measured_fps
     chmod 0666 /sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/sde-crtc-0/measured_fps
+    # UDFPS Sensor
+    chown system system /sys/devices/platform/soc/soc:goodix_fp/udfps_pressed
+    chmod 0660 /sys/devices/platform/soc/soc:goodix_fp/udfps_pressed
 
     chown system system /sys/devices/platform/vendor/vendor:infrared_pl/infrared_power_enable
     chmod 0666 /sys/devices/platform/vendor/vendor:infrared_pl/infrared_power_enable                #for infrared proximity sensor

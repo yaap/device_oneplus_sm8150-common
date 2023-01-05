@@ -29,3 +29,5 @@ genfscon sysfs /devices/virtual/fastrpc/adsprpc-smd/wakeup u:object_r:sysfs_wake
 # KProfiles
 genfscon sysfs /module/kprofiles/parameters/auto_kprofiles u:object_r:sysfs_kprofiles:s0
 genfscon sysfs /module/kprofiles/parameters/kp_mode u:object_r:sysfs_kprofiles:s0
+
+genfscon sysfs /devices/platform/soc/soc:goodix_fp/udfps_pressed u:object_r:vendor_sysfs_sensors:s0
