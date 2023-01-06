@@ -38,10 +38,6 @@ public class Startup extends BroadcastReceiver {
         TouchscreenGestureSettings.MainSettingsFragment.restoreTouchscreenGestureStates(context);
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
 
-        // DC Dimming
-        restore(DCModeSwitch.getFile(),
-                sharedPrefs.getBoolean(DCModeSwitch.KEY_DC_SWITCH, false));
-
         // Panel modes
         restore(SRGBModeSwitch.getFile(),
                 sharedPrefs.getBoolean(DeviceSettings.KEY_SRGB_SWITCH, false));
