@@ -24,14 +24,18 @@
     <string name="dci_mode_title">Режим широкой цветовой гаммы DCI-P3</string>
     <string name="Night_mode_summary"></string>
     <string name="Night_mode_title">Ночной режим</string>
-    <string name="panel_category_title">Режим панелей</string>
-    <string name="panel_category_summary">Режимы для цветовой коррекции панелей</string>
+    <string name="panel_category_title">Режим экрана</string>
+    <string name="panel_category_summary">Режимы для цветовой коррекции экрана</string>
     <string name="off_mode_title">Выкл</string>
-    <string name="tile_panel_mode">Режим панелей</string>
-    <string name="dc_mode_summary"></string>
-    <string name="dc_mode_title">DC-Dimming</string>
-    <string name="tile_hbm_mode">Режимы высокой яркости</string>
-    <string name="tile_dc_mode">DC-Dimming</string>
+    <string name="tile_panel_mode">Режим экрана</string>
+     <string name="tile_hbm_mode">Режим повышенной яркости</string>
+    <string name="natural_mode_title">Натуральный</string>
+    <string name="vivid_mode_title">Vivid</string>
+    <string name="panel_mode_info">Disabling panel mode requires a reboot</string>
+    <string name="color_mode_balance_red">Сила Красного</string>
+    <string name="color_mode_balance_green">Сила Зелёного</string>
+    <string name="color_mode_balance_blue">Сила Синего</string>
+
     <!-- Screen off Gestures : Input -->
     <string name="touchscreen_gesture_settings_title">Экранные жесты</string>
     <string name="touchscreen_gesture_settings_summary">Выполняйте разные действия с помощью экранных жестов</string>
@@ -71,12 +75,16 @@
     <string name="touchscreen_gesture_action_volume_down">Уменьшить громкость мультимедиа</string>
     <string name="touchscreen_gesture_action_volume_up">Увеличить громкость мультимедиа</string>
     <string name="touchscreen_gesture_action_ambient_display">Показать Ambient Display</string>
+    <string name="touchscreen_gesture_action_wake_device">Включить устройство</string>
+
     <!-- Refresh rate -->
     <string name="refresh_title">Частота обновления экрана</string>
     <string name="tile_refresh_rate">Частота обновления экрана</string>
-    <string name="fps_info_title">FPS overlay</string>
-    <string name="fps_info_summary">Показать overlay с текущими кадрами в секунду</string>
-    <string name="panel_mode_info">Отключение режима панели требует перезагрузки.</string>
+    <string name="refresh_rate_summary">Принудительно включить 60Гц или разрешить использовать до 90Гц</string>
+    <string name="refresh_rate_title">Принудительная частота экрана 60Гц</string>
+    <string name="fps_info_title">Панель с FPS</string>
+    <string name="fps_info_summary">Показать панель с текущими кадрами в секунду</string>
+
     <!-- Notification slider -->
     <string name="notification_slider_category_title">Слайдер уведомлений</string>
     <string name="notification_slider_selection_dialog_title">Действие</string>
@@ -89,9 +97,17 @@
     <string name="notification_slider_mode_vibrate">Вибрация</string>
     <string name="notification_slider_mode_none">Нормальный</string>
     <string name="buttons_dashboard_summary">Параметры слайдера уведомлений</string>
+    <string name="slider_mute_media_title">Выключить звук медиа</string>
+    <string name="slider_mute_media_summary">Отключает звук медиа когда слайдер в режиме полной тишины\nПри отключении режима вернутся прежние значения громкости</string>
+
     <!-- Vibration slider -->
     <string name="category_vibrator">Вибрация</string>
     <string name="vib_strength_title_head">Интенсивность</string>
     <string name="vib_strength_summary_head">Установить интенсивность общей вибрации</string>
     <string name="vibration_warning">Установка слишком высокой прочности может привести к необратимому повреждению</string>
+    
+    <string name="camera_title">Камера</string>
+    <string name="always_on_camera_dialog_title">Спрашивать разрешения включить фроналку</string>
+    <string name="always_on_camera_dialog_summary_on">Всегда спрашивать при включении</string>
+    <string name="always_on_camera_dialog_summary_off">Спрашивать только если экран выключен</string>
 </resources>
