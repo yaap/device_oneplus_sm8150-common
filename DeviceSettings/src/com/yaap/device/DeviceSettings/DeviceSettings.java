@@ -39,6 +39,7 @@ import androidx.preference.PreferenceFragment;
 import androidx.preference.SwitchPreference;
 import androidx.preference.TwoStatePreference;
 
+import com.yaap.device.DeviceSettings.ModeSwitch.DCModeSwitch;
 import com.yaap.device.DeviceSettings.ModeSwitch.HBMModeSwitch;
 
 public class DeviceSettings extends PreferenceFragment
@@ -60,6 +61,7 @@ public class DeviceSettings extends PreferenceFragment
 
     private static final String POPUP_HELPER_PKG_NAME = "org.lineageos.camerahelper";
 
+    private TwoStatePreference mDCModeSwitch;
     private TwoStatePreference mHBMModeSwitch;
     private TwoStatePreference mRefreshRate;
     private SwitchPreference mFpsInfo;
@@ -68,6 +70,7 @@ public class DeviceSettings extends PreferenceFragment
 
     private boolean mInternalFpsStart = false;
     private boolean mInternalHbmStart = false;
+    private boolean mInternalDCStart = false;
 
     private final BroadcastReceiver mServiceStateReceiver = new BroadcastReceiver() {
         @Override
@@ -92,6 +95,16 @@ public class DeviceSettings extends PreferenceFragment
                     final boolean hbmStarted = intent.getBooleanExtra(
                             HBMModeSwitch.EXTRA_HBM_STATE, false);
                     mHBMModeSwitch.setChecked(hbmStarted);
+                    break;
+                case DCModeSwitch.ACTION_DCMODE_CHANGED:
+                    if (mInternalDCStart) {
+                        mInternalDCStart = false;
+                        return;
+                    }
+                    if (mDCModeSwitch == null) return;
+                    final boolean dcEnabled = intent.getBooleanExtra(
+                            DCModeSwitch.EXTRA_DCMODE_STATE, false);
+                    mDCModeSwitch.setChecked(dcEnabled);
                     break;
             }
         }
@@ -123,6 +136,11 @@ public class DeviceSettings extends PreferenceFragment
         mMuteMediaSwitch = findPreference(Constants.NOTIF_SLIDER_MUTE_MEDIA_KEY);
         mMuteMediaSwitch.setChecked(Constants.getIsMuteMediaEnabled(getContext()));
         mMuteMediaSwitch.setOnPreferenceChangeListener(this);
+
+        mDCModeSwitch = findPreference(DCModeSwitch.KEY_DC_SWITCH);
+        mDCModeSwitch.setEnabled(DCModeSwitch.isSupported());
+        mDCModeSwitch.setChecked(DCModeSwitch.isCurrentlyEnabled());
+        mDCModeSwitch.setOnPreferenceChangeListener(this);
 
         mHBMModeSwitch = findPreference(KEY_HBM_SWITCH);
         mHBMModeSwitch.setEnabled(HBMModeSwitch.isSupported());
@@ -157,6 +175,7 @@ public class DeviceSettings extends PreferenceFragment
         IntentFilter filter = new IntentFilter();
         filter.addAction(FPSInfoService.ACTION_FPS_SERVICE_CHANGED);
         filter.addAction(HBMModeSwitch.ACTION_HBM_SERVICE_CHANGED);
+        filter.addAction(DCModeSwitch.ACTION_DCMODE_CHANGED);
         getContext().registerReceiver(mServiceStateReceiver, filter);
 
         if (getResources().getBoolean(R.bool.config_deviceHasHighRefreshRate)) {
@@ -199,6 +218,10 @@ public class DeviceSettings extends PreferenceFragment
             Boolean enabled = (Boolean) newValue;
             Settings.System.putInt(resolver,
                     Constants.NOTIF_SLIDER_MUTE_MEDIA_KEY, enabled ? 1 : 0);
+        } else if (preference == mDCModeSwitch) {
+            mInternalDCStart = true;
+            Boolean enabled = (Boolean) newValue;
+            DCModeSwitch.setEnabled(enabled, getContext());
         } else if (newValue instanceof String) {
             Constants.setPreferenceInt(getContext(), preference.getKey(),
                     Integer.parseInt((String) newValue));

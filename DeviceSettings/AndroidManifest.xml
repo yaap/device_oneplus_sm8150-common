@@ -84,6 +84,16 @@
 
         <!-- Quick Settings Tiles -->
         <service
+            android:name="com.yaap.device.DeviceSettings.DCModeTileService"
+            android:icon="@drawable/ic_dimming_off"
+            android:label="@string/tile_dc_mode"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action
+                    android:name="android.service.quicksettings.action.QS_TILE"/>
+            </intent-filter>
+        </service>
+        <service
             android:name="com.yaap.device.DeviceSettings.PanelModeTileService"
             android:icon="@drawable/ic_panel_tile"
             android:label="@string/tile_panel_mode"
