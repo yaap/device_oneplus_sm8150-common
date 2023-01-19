@@ -73,4 +73,7 @@
 
     <!-- Path to fast charging status file to detect whether an oem fast charger is active -->
     <string name="config_oem_charger_path">/sys/class/power_supply/battery/fastchg_status</string>
+
+    <!-- Display color inversion availability -->
+    <bool name="config_displayInversionAvailable">false</bool>
 </resources>
