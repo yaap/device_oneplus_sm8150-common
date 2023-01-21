@@ -32,6 +32,13 @@
     <string name="dc_mode_title">Modalità anti-sfarfallio</string>
     <string name="tile_hbm_mode">Modalità alta luminosità</string>
     <string name="tile_dc_mode">Anti-sfarfallio</string>
+    <string name="natural_mode_title">Naturale</string>
+    <string name="vivid_mode_title">Vivido</string>
+    <string name="panel_mode_info">La disattivazione della correzzione dei colori del display richiede un riavvio</string>
+    <string name="color_mode_balance_red">Forza del rosso</string>
+    <string name="color_mode_balance_green">Forza del verde</string>
+    <string name="color_mode_balance_blue">Forza del blue</string>
+
     <!-- Screen off Gestures : Input -->
     <string name="touchscreen_gesture_settings_title">Gesture sullo schermo</string>
     <string name="touchscreen_gesture_settings_summary">Esegui varie gesture per delle azioni rapide</string>
@@ -74,11 +81,13 @@
     <!-- Refresh rate -->
     <string name="refresh_title">Aggiornamento dello schermo</string>
     <string name="tile_refresh_rate">Frequenza di aggiornamento dello schermo</string>
+    <string name="refresh_rate_summary">Se forzare la frequenza di aggiornamento a 60Hz o permettere l'utilizzo di 90Hz come frequenza di aggiornamento massima</string>
+    <string name="refresh_rate_title">Forza la frequenza di aggiornamento a 60Hz</string>
     <string name="fps_info_title">FPS sullo schermo</string>
     <string name="fps_info_summary">Mostra sullo schermo i tuoi FPS </string>
     <string name="panel_mode_info">Disabilitare la modalità colore necessita un riavvio</string>
     <!-- Notification slider -->
-    <string name="notification_slider_category_title">Cursore delle notifiche</string>
+    <string name="notification_slider_category_title">Slider delle notifiche</string>
     <string name="notification_slider_selection_dialog_title">Azione</string>
     <string name="notification_slider_top_position">Posizione superiore</string>
     <string name="notification_slider_middle_position">Posizione centrale</string>
@@ -94,4 +103,9 @@
     <string name="vib_strength_title_head">Intensità</string>
     <string name="vib_strength_summary_head">Imposta l\'intensità della vibrazione</string>
     <string name="vibration_warning">L\'aumento eccessivo dell\'intensità della vibrazione potrebbe causare danni permanenti all\'hardware</string>
+
+    <string name="camera_title">Fotocamera</string>
+    <string name="always_on_camera_dialog_title">Dialogo per fotocamera frontale</string>
+    <string name="always_on_camera_dialog_summary_on">Chiedi sempre prima di aprire</string>
+    <string name="always_on_camera_dialog_summary_off">Chiedi solamente quando lo schermo è spento</string>
 </resources>
