@@ -458,13 +458,13 @@ PRODUCT_PACKAGES += \
     libwfdaac_vendor
 
 # Dex to make OTA go faster
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+PRODUCT_VENDOR_PROPERTIES += \
     dalvik.vm.boot-dex2oat-cpu-set=1,2,3,4,5,6,7 \
     dalvik.vm.boot-dex2oat-threads=7 \
     dalvik.vm.image-dex2oat-cpu-set=0,1,2,3,4,5,6,7 \
     dalvik.vm.image-dex2oat-threads=8
 
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+PRODUCT_VENDOR_PROPERTIES += \
     ro.surface_flinger.force_hwc_copy_for_virtual_displays=true \
     ro.surface_flinger.has_HDR_display=true \
     ro.surface_flinger.has_wide_color_display=true \
