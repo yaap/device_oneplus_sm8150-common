@@ -281,9 +281,6 @@
     <!-- Flag indicating if device supports EAP SIM, AKA, AKA' -->
     <bool name="config_eap_sim_based_auth_supported">true</bool>
 
-    <!-- Whether device supports double tap to wake -->
-    <bool name="config_supportDoubleTapWake">true</bool>
-
     <!-- If device supports pickup/lift gesture -->
     <bool name="config_dozePulsePickup">true</bool>
 
