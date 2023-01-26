@@ -24,7 +24,7 @@
     <string name="dci_mode_title">DCI-P3</string>
     <string name="Night_mode_summary"></string>
     <string name="Night_mode_title">夜间模式</string>
-    <string name="panel_category_title">面板模式</string>
+    <string name="panel_category_title">颜色模式</string>
     <string name="panel_category_summary">校正显示面板颜色</string>
     <string name="off_mode_title">关闭</string>
     <string name="tile_panel_mode">面板模式</string>
