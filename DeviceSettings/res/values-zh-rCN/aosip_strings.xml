@@ -13,25 +13,32 @@
 <resources>
     <!-- Panel modes -->
     <string name="device_title">一加设置</string>
-    <string name="device_summary">调整一加特定设备设置</string>
+    <string name="device_summary">调整一加设备的特定设置</string>
     <string name="display_title">显示</string>
     <string name="srgb_mode_summary"></string>
-    <string name="srgb_mode_title">sRGB 模式</string>
+    <string name="srgb_mode_title">sRGB</string>
     <string name="hbm_mode_summary"></string>
     <string name="hbm_mode_title">高亮度模式</string>
-    <string name="wide_color_mode_title">广色域模式</string>
+    <string name="wide_color_mode_title">AMOLED 广色域</string>
     <string name="dci_mode_summary"></string>
-    <string name="dci_mode_title">DCI-P3 广色域模式</string>
+    <string name="dci_mode_title">DCI-P3</string>
     <string name="Night_mode_summary"></string>
     <string name="Night_mode_title">夜间模式</string>
-    <string name="panel_category_title">面板模式</string>
-    <string name="panel_category_summary">面板颜色校正模式</string>
+    <string name="panel_category_title">颜色模式</string>
+    <string name="panel_category_summary">校正显示面板颜色</string>
     <string name="off_mode_title">关闭</string>
     <string name="tile_panel_mode">面板模式</string>
     <string name="dc_mode_summary"></string>
     <string name="dc_mode_title">DC 调光</string>
     <string name="tile_hbm_mode">高亮度模式</string>
-    <string name="tile_dc_mode">DC-调光</string>
+    <string name="tile_dc_mode">DC 调光</string>
+    <string name="natural_mode_title">自然</string>
+    <string name="vivid_mode_title">生动</string>
+    <string name="panel_mode_info">关闭面板颜色模式需要重新启动</string>
+    <string name="color_mode_balance_red">红色强度</string>
+    <string name="color_mode_balance_green">绿色强度</string>
+    <string name="color_mode_balance_blue">蓝色强度</string>
+
     <!-- Screen off Gestures : Input -->
     <string name="touchscreen_gesture_settings_title">触摸屏手势</string>
     <string name="touchscreen_gesture_settings_summary">为快捷操作采用各种触摸屏手势</string>
@@ -71,32 +78,39 @@
     <string name="touchscreen_gesture_action_volume_down">降低媒体音量</string>
     <string name="touchscreen_gesture_action_volume_up">提高媒体音量</string>
     <string name="touchscreen_gesture_action_ambient_display">环境显示</string>
+    <string name="touchscreen_gesture_action_wake_device">唤醒设备</string>
+
     <!-- Refresh rate -->
     <string name="refresh_title">屏幕刷新率</string>
     <string name="tile_refresh_rate">屏幕刷新率</string>
+    <string name="refresh_rate_summary">是否强制 60Hz 或允许 90Hz 峰值刷新率</string>
+    <string name="refresh_rate_title">强制 60Hz</string>
     <string name="fps_info_title">FPS 叠加层</string>
     <string name="fps_info_summary">显示帧率悬浮窗</string>
-    <string name="panel_mode_info">禁用面板模式需要重新启动。</string>
+
     <!-- Notification slider -->
-    <string name="notification_slider_category_title">通知滑块</string>
-    <string name="notification_slider_selection_dialog_title">操作</string>
+    <string name="notification_slider_category_title">三段式开关</string>
+    <string name="notification_slider_selection_dialog_title">动作</string>
     <string name="notification_slider_top_position">顶部位置</string>
     <string name="notification_slider_middle_position">中间位置</string>
     <string name="notification_slider_bottom_position">底部位置</string>
-    <string name="notification_slider_mode_total_silence">完全阻止</string>
-    <string name="notification_slider_mode_priority_only">仅限优先打扰</string>
+    <string name="notification_slider_mode_total_silence">完全静音</string>
+    <string name="notification_slider_mode_priority_only">仅优先</string>
     <string name="notification_slider_mode_silent">静音</string>
     <string name="notification_slider_mode_vibrate">振动</string>
-    <string name="notification_slider_mode_none">正常</string>
+    <string name="notification_slider_mode_none">响铃</string>
     <string name="buttons_dashboard_summary">三段式开关设置</string>
+    <string name="alert_slider_mute_media_title">媒体静音</string>
+    <string name="alert_slider_mute_media_summary">切换至静音时也静音媒体音量</string>
+
     <!-- Vibration slider -->
     <string name="category_vibrator">振动</string>
     <string name="vib_strength_title_head">强度</string>
     <string name="vib_strength_summary_head">自定义振动强度</string>
-    <string name="vibration_warning">设置强度过高可能会导致永久性硬件损伤</string>
+    <string name="vibration_warning">设置过高的强度可能导致永久硬件损伤</string>
 
     <string name="camera_title">相机</string>
-    <string name="always_on_camera_dialog_title">使用前置摄像头时打开对话框</string>
-    <string name="always_on_camera_dialog_summary_on">打开前置摄像头前一定会询问</string>
-    <string name="always_on_camera_dialog_summary_off">仅在屏幕关闭时询问</string>
+    <string name="always_on_camera_dialog_title">前置摄像头打开时显示对话框</string>
+    <string name="always_on_camera_dialog_summary_on">打开前询问</string>
+    <string name="always_on_camera_dialog_summary_off">仅屏幕关闭时询问</string>
 </resources>
