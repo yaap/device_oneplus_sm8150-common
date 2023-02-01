@@ -100,8 +100,8 @@
     <string name="notification_slider_mode_vibrate">振动</string>
     <string name="notification_slider_mode_none">响铃</string>
     <string name="buttons_dashboard_summary">三段式开关设置</string>
-    <string name="alert_slider_mute_media_title">媒体静音</string>
-    <string name="alert_slider_mute_media_summary">切换至静音时也静音媒体音量</string>
+    <string name="slider_mute_media_title">媒体静音</string>
+    <string name="slider_mute_media_summary">切换至静音时也静音媒体音量</string>
 
     <!-- Vibration slider -->
     <string name="category_vibrator">振动</string>
