@@ -17,7 +17,6 @@
     <string name="display_title">Wyświetlacz</string>
     <string name="srgb_mode_summary"></string>
     <string name="srgb_mode_title">Tryb sRGB</string>
-    <string name="hbm_mode_summary"></string>
     <string name="hbm_mode_title">Tryb wysokiej jasności</string>
     <string name="wide_color_mode_title">Tryb szerokiej gamy kolorów</string>
     <string name="dci_mode_summary"></string>
@@ -28,7 +27,6 @@
     <string name="panel_category_summary">Tryby wyświetlania z korekcją kolorów</string>
     <string name="off_mode_title">Wyłącz</string>
     <string name="tile_panel_mode">Tryby wyświetlania</string>
-    <string name="dc_mode_summary"></string>
     <string name="dc_mode_title">Redukcja migotania</string>
     <string name="tile_hbm_mode">Tryb wysokiej jasności</string>
     <string name="tile_dc_mode">Redukcja migotania</string>

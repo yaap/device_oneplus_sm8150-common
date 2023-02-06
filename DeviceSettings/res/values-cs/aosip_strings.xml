@@ -17,7 +17,6 @@
     <string name="display_title">Displej</string>
     <string name="srgb_mode_summary"></string>
     <string name="srgb_mode_title">Režim sRGB</string>
-    <string name="hbm_mode_summary"></string>
     <string name="hbm_mode_title">Režim vysokého jasu</string>
     <string name="wide_color_mode_title">Režim širokého barevného spektra</string>
     <string name="dci_mode_summary"></string>
@@ -28,7 +27,6 @@
     <string name="panel_category_summary">Režimy pro korekci barev panelu</string>
     <string name="off_mode_title">Vyp.</string>
     <string name="tile_panel_mode">Režimy panelu</string>
-    <string name="dc_mode_summary"></string>
     <string name="dc_mode_title">DC – Ztlumení</string>
     <string name="tile_hbm_mode">Režimy vysokého jasu</string>
     <string name="tile_dc_mode">DC – Ztlumení</string>

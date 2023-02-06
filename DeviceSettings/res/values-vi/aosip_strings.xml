@@ -17,7 +17,6 @@
     <string name="display_title">Màn hình hiển thị</string>
     <string name="srgb_mode_summary"></string>
     <string name="srgb_mode_title">chế độ sRGB</string>
-    <string name="hbm_mode_summary"></string>
     <string name="hbm_mode_title">Độ sáng cao</string>
     <string name="wide_color_mode_title">Dải màu rộng</string>
     <string name="dci_mode_summary"></string>
@@ -28,7 +27,6 @@
     <string name="panel_category_summary">Các chế độ căn chỉnh màu màn hình</string>
     <string name="off_mode_title">Tắt</string>
     <string name="tile_panel_mode">Chế độ màn hình</string>
-    <string name="dc_mode_summary"></string>
     <string name="dc_mode_title">DC - Làm mờ</string>
     <string name="tile_hbm_mode">Độ sáng cao</string>
     <string name="tile_dc_mode">DC - Làm mờ</string>

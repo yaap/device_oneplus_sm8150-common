@@ -17,7 +17,6 @@
     <string name="display_title">Schermo</string>
     <string name="srgb_mode_summary"></string>
     <string name="srgb_mode_title">modalità sRGB</string>
-    <string name="hbm_mode_summary"></string>
     <string name="hbm_mode_title">Modalità alta luminosità</string>
     <string name="wide_color_mode_title">Modalità Colore ampio</string>
     <string name="dci_mode_summary"></string>
@@ -28,7 +27,6 @@
     <string name="panel_category_summary">Modalità di correzione dei colori del display</string>
     <string name="off_mode_title">Spento</string>
     <string name="tile_panel_mode">Modalità display</string>
-    <string name="dc_mode_summary"></string>
     <string name="dc_mode_title">Modalità anti-sfarfallio</string>
     <string name="tile_hbm_mode">Modalità alta luminosità</string>
     <string name="tile_dc_mode">Anti-sfarfallio</string>

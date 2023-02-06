@@ -17,7 +17,6 @@
     <string name="display_title">Display</string>
     <string name="srgb_mode_summary"></string>
     <string name="srgb_mode_title">modo sRGB</string>
-    <string name="hbm_mode_summary"></string>
     <string name="hbm_mode_title">Modo de brilho alto</string>
     <string name="wide_color_mode_title">Modo de cor ampla</string>
     <string name="dci_mode_summary"></string>
@@ -28,7 +27,6 @@
     <string name="panel_category_summary">Modos para corrigir a cor do painel</string>
     <string name="off_mode_title">Desligado</string>
     <string name="tile_panel_mode">Modos de painel</string>
-    <string name="dc_mode_summary"></string>
     <string name="dc_mode_title">Escurecimento DC</string>
     <string name="tile_hbm_mode">Modos de brilho alto</string>
     <string name="tile_dc_mode">Escurecimento DC</string>
