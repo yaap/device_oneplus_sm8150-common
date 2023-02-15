@@ -30,7 +30,6 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import androidx.preference.PreferenceFragment;
-import androidx.preference.PreferenceManager;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -155,7 +154,7 @@ public class PanelSettings extends PreferenceFragment implements RadioGroup.OnCh
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
-        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+        SharedPreferences sharedPrefs = Constants.getDESharedPrefs(getContext());
         SharedPreferences.Editor edit = sharedPrefs.edit();
 
         boolean natural = checkedId == R.id.natural_mode;

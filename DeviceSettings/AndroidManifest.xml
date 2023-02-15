@@ -76,9 +76,12 @@
             android:theme="@style/Theme.SubSettingsBase">
         </activity>
 
-        <receiver android:name="com.yaap.device.DeviceSettings.Startup" >
+        <receiver
+            android:name="com.yaap.device.DeviceSettings.Startup"
+            android:directBootAware="true" >
             <intent-filter android:priority="100" >
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
 

@@ -25,7 +25,6 @@ import android.content.SharedPreferences;
 import android.os.UserHandle;
 import android.provider.Settings;
 import androidx.preference.SwitchPreference;
-import androidx.preference.PreferenceManager;
 
 import android.media.AudioManager;
 
@@ -33,6 +32,9 @@ public class Constants {
 
     // Broadcast action for settings update
     static final String UPDATE_PREFS_ACTION = "com.yaap.device.DeviceSettings.UPDATE_SETTINGS";
+
+    // Shared preferences
+    private static final String DE_PREF_FILE_NAME = "device_settings";
 
     // Preference keys
     public static final String NOTIF_SLIDER_TOP_KEY = "keycode_top_position";
@@ -114,5 +116,10 @@ public class Constants {
     public static boolean getIsMuteMediaEnabled(Context context) {
         return Settings.System.getIntForUser(context.getContentResolver(),
                 NOTIF_SLIDER_MUTE_MEDIA_KEY, 0, UserHandle.USER_CURRENT) == 1;
+    }
+
+    public static SharedPreferences getDESharedPrefs(Context context) {
+        return context.createDeviceProtectedStorageContext()
+                .getSharedPreferences(DE_PREF_FILE_NAME, Context.MODE_PRIVATE);
     }
 }
