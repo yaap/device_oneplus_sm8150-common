@@ -1,5 +1,9 @@
 [
   {
+    "repository"  : "device_qcom_common",
+    "target_path" : "device/qcom/common"
+  },
+  {
     "repository"  : "kernel_oneplus_sm8150",
     "target_path" : "kernel/oneplus/sm8150"
   },
@@ -10,5 +14,10 @@
   {
     "repository"  : "vendor_oneplus_sm8150-common",
     "target_path" : "vendor/oneplus/sm8150-common"
+  },
+  {
+    "repository"  : "yaosp/vendor_qcom_common",
+    "target_path" : "vendor/qcom/common",
+    "remote"      : "gitlab"
   }
 ]
