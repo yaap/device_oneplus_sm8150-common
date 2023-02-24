@@ -26,5 +26,17 @@
     <!-- Doze: check proximity sensor before pulsing? -->
     <bool name="doze_proximity_check_before_pulse">false</bool>
 
+    <!-- Doze: whether the single tap sensor uses the proximity sensor.
+     If both this parameter and doze_selectively_register_prox are true, registration for the
+     sensor will be delayed when the device first enters dozing but the device has not entered its
+     low powered state yet. -->
+    <bool name="doze_single_tap_uses_prox">false</bool>
+
+    <!-- Doze: whether the long press sensor uses the proximity sensor.
+     If both this parameter and doze_selectively_register_prox are true, registration for the
+     sensor will be delayed when the device first enters dozing but the device has not entered its
+     low powered state yet. -->
+    <bool name="doze_long_press_uses_prox">false</bool>
+
     <integer name="config_udfpsEnrollProgressBar" translatable="false">100</integer>
 </resources>
