@@ -507,13 +507,9 @@ vendor/lib/libsmwrapper.so
 
 # Media (system) - from LA.QSSI.12.0.r1-05800.02-qssi.0
 system_ext/lib/libmmosal.so|4b81152df596a9ad10938c286e879ec3846f6a27
-system_ext/lib/libmmparser_lite.so|dcdbeed7052a993afa8153abc8df5c1df6ffdeb3
 system_ext/lib64/libmmosal.so|2864420a9d3727c92a02e3423c9026b07b78481e
-system_ext/lib64/libmmparser_lite.so|6f31f319f24f3c4e8466be0e040ab75559677b49
 
 # Media (vendor) - from LA.UM.9.1.r1-11500.02-SMxxx0.QSSI12.0
-vendor/bin/hw/vendor.qti.media.c2@1.0-service|83c2effb6f76cb095bae840d95a2026014d92fe9
-vendor/etc/init/vendor.qti.media.c2@1.0-service.rc|11209316ba8aae64b689217bc13b0804f6620678
 vendor/etc/seccomp_policy/codec2.vendor.base.policy|05b0779b5da2ea640984d46a46a796edeaab5fab
 vendor/etc/seccomp_policy/codec2.vendor.ext.policy|6a9a9eb3261048f02805261568097410e1a23b2d
 vendor/etc/system_properties.xml|d4c572e5d0915c907e6308c4f8b12e54ad659bf0
