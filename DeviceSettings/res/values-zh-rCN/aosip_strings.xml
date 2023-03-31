@@ -18,6 +18,7 @@
     <string name="srgb_mode_summary"></string>
     <string name="srgb_mode_title">sRGB</string>
     <string name="hbm_mode_title">高亮度模式</string>
+    <string name="hbm_mode_summary">以最大亮度显示。长时间使用可能会损坏屏幕</string>
     <string name="wide_color_mode_title">AMOLED 广色域</string>
     <string name="dci_mode_summary"></string>
     <string name="dci_mode_title">DCI-P3</string>
