@@ -225,6 +225,20 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.display.mapper@3.0.vendor \
     vendor.qti.hardware.display.mapper@4.0.vendor
 
+ifneq ($(filter guacamoleb,$(TARGET_DEVICE)),)
+PRODUCT_VENDOR_PROPERTIES += \
+    debug.sf.early.sf.duration=16000000 \
+    debug.sf.early.app.duration=16500000 \
+    debug.sf.earlyGl.sf.duration=13500000 \
+    debug.sf.earlyGl.app.duration=21000000
+else
+PRODUCT_VENDOR_PROPERTIES += \
+    debug.sf.early.sf.duration=12000000 \
+    debug.sf.early.app.duration=12500000 \
+    debug.sf.earlyGl.sf.duration=9500000 \
+    debug.sf.earlyGl.app.duration=16000000
+endif
+
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.4-service.clearkey
