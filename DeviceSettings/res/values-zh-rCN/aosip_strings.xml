@@ -18,6 +18,7 @@
     <string name="srgb_mode_summary"></string>
     <string name="srgb_mode_title">sRGB</string>
     <string name="hbm_mode_title">高亮度模式</string>
+    <string name="hbm_mode_summary">以最大亮度显示。长时间使用可能会损坏屏幕</string>
     <string name="wide_color_mode_title">AMOLED 广色域</string>
     <string name="dci_mode_summary"></string>
     <string name="dci_mode_title">DCI-P3</string>
@@ -27,6 +28,7 @@
     <string name="panel_category_summary">校正显示面板颜色</string>
     <string name="off_mode_title">关闭</string>
     <string name="tile_panel_mode">面板模式</string>
+    <string name="dc_mode_summary">适用于对 PWM 敏感的人群\n副作用包括眼疲劳、恶心和偏头痛。\n启用此选项会降低显示颜色的准确性</string>
     <string name="dc_mode_title">DC 调光</string>
     <string name="tile_hbm_mode">高亮度模式</string>
     <string name="tile_dc_mode">DC 调光</string>
