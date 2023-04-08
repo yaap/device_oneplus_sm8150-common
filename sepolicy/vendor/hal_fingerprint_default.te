@@ -37,3 +37,6 @@ get_prop(hal_fingerprint_default, vendor_adsprpc_prop)
 
 # Allow hal_fingerprint_default to read files in vendor_sysfs_battery_supply
 r_dir_file(hal_fingerprint_default, vendor_sysfs_battery_supply)
+
+# Allow hal_fingerprint_default to read and write to sysfs_livedisplay_tuneable
+allow hal_fingerprint_default sysfs_livedisplay_tuneable:file rw_file_perms;
