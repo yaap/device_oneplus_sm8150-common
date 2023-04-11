@@ -17,6 +17,7 @@
     <string name="display_title">Екран</string>
     <string name="srgb_mode_summary"></string>
     <string name="srgb_mode_title">Режим sRGB</string>
+    <string name="hbm_mode_summary">Яскравість дисплею яскравіше, ніж зазвичай дозволена максимальна яскравість. Використання протягом тривалого часу може нашкодити дисплею</string>
     <string name="hbm_mode_title">Режим високої яскравості</string>
     <string name="wide_color_mode_title">Широкий колірний режим</string>
     <string name="dci_mode_summary"></string>
@@ -27,54 +28,66 @@
     <string name="panel_category_summary">Режими для колірної корекції панелей</string>
     <string name="off_mode_title">Вимк.</string>
     <string name="tile_panel_mode">Режим панелей</string>
+    <string name="dc_mode_summary">Корисно для людей, чутливих до ШИМ\nПобічні ефекти включають напругу очей, нудоту та мігрень\nУвімкнення цього означає менш точні кольори дисплея</string>
     <string name="dc_mode_title">DC-Dimming</string>
     <string name="tile_hbm_mode">Режим високої яскравості</string>
     <string name="tile_dc_mode">DC-Dimming</string>
+    <string name="natural_mode_title">Натуральний</string>
+    <string name="vivid_mode_title">Яскравий</string>
+    <string name="panel_mode_info">Для вимкнення режимів екрану потрібно перезавантаження</string>
+    <string name="color_mode_balance_red">Червоний відтінок</string>
+    <string name="color_mode_balance_green">Зелений відтінок</string>
+    <string name="color_mode_balance_blue">Синій відтінок</string>
+
     <!-- Screen off Gestures : Input -->
-    <string name="touchscreen_gesture_settings_title">Touchscreen gestures</string>
-    <string name="touchscreen_gesture_settings_summary">Perform various touchscreen gestures for quick actions</string>
-    <string name="touchscreen_gestures_haptic_feedback_title">Haptic feedback</string>
-    <string name="touchscreen_gestures_haptic_feedback_summary">Vibrate when a touchscreen gesture is detected</string>
-    <string name="touchscreen_gesture_two_finger_down_swipe_title">Swipe down with two fingers</string>
-    <string name="touchscreen_gesture_one_finger_up_swipe_title">Swipe up with one finger</string>
-    <string name="touchscreen_gesture_one_finger_up_swipe_home_title">Swipe up from the home button</string>
-    <string name="touchscreen_gesture_one_finger_down_swipe_title">Swipe down with one finger</string>
-    <string name="touchscreen_gesture_one_finger_left_swipe_title">Swipe left with one finger</string>
-    <string name="touchscreen_gesture_one_finger_right_swipe_title">Swipe right with one finger</string>
-    <string name="touchscreen_gesture_single_tap_title">Single tap</string>
-    <string name="touchscreen_gesture_down_arrow_title">Draw a \"Λ\"</string>
-    <string name="touchscreen_gesture_up_arrow_title">Draw a \"V\"</string>
-    <string name="touchscreen_gesture_right_arrow_title">Draw a \"&lt;\"</string>
-    <string name="touchscreen_gesture_left_arrow_title">Draw a \"&gt;\"</string>
-    <string name="touchscreen_gesture_letter_c_title">Draw the letter \"C\"</string>
-    <string name="touchscreen_gesture_letter_e_title">Draw the letter \"e\"</string>
-    <string name="touchscreen_gesture_letter_o_title">Draw the letter \"O\"</string>
-    <string name="touchscreen_gesture_letter_m_title">Draw the letter \"M\"</string>
-    <string name="touchscreen_gesture_letter_s_title">Draw the letter \"S\"</string>
-    <string name="touchscreen_gesture_letter_v_title">Draw the letter \"V\"</string>
-    <string name="touchscreen_gesture_letter_w_title">Draw the letter \"W\"</string>
-    <string name="touchscreen_gesture_letter_z_title">Draw the letter \"Z\"</string>
+    <string name="touchscreen_gesture_settings_title">Жести на екрані</string>
+    <string name="touchscreen_gesture_settings_summary">Виконуйте різні жести на вимкненому екрані для швидких дій</string>
+    <string name="touchscreen_gestures_haptic_feedback_title">Тактильний зворотний зв\'язок</string>
+    <string name="touchscreen_gestures_haptic_feedback_summary">Вібрувати при виявленні жесту на вимкненому екрані</string>
+    <string name="touchscreen_gesture_two_finger_down_swipe_title">Проведіть двома пальцями вниз</string>
+    <string name="touchscreen_gesture_one_finger_up_swipe_title">Проведіть одним пальцем угору</string>
+    <string name="touchscreen_gesture_one_finger_up_swipe_home_title">Проведіть пальцем угору від кнопки Додому</string>
+    <string name="touchscreen_gesture_one_finger_down_swipe_title">Проведіть одним пальцем вниз</string>
+    <string name="touchscreen_gesture_one_finger_left_swipe_title">Проведіть ліворуч одним пальцем</string>
+    <string name="touchscreen_gesture_one_finger_right_swipe_title">Проведіть праворуч одним пальцем</string>
+    <string name="touchscreen_gesture_single_tap_title">Одне натискання</string>
+    <string name="touchscreen_gesture_up_arrow_title">Намалювати \"V\"</string>
+    <string name="touchscreen_gesture_down_arrow_title">Намалювати \"Λ\"</string>
+    <string name="touchscreen_gesture_left_arrow_title">Намалювати \"&lt;\"</string>
+    <string name="touchscreen_gesture_right_arrow_title">Намалювати \"&gt;\"</string>
+    <string name="touchscreen_gesture_letter_c_title">Намалювати літеру \"C\"</string>
+    <string name="touchscreen_gesture_letter_e_title">Намалювати літеру \"e\"</string>
+    <string name="touchscreen_gesture_letter_o_title">Намалювати літеру \"O\"</string>
+    <string name="touchscreen_gesture_letter_m_title">Намалювати літеру \"M\"</string>
+    <string name="touchscreen_gesture_letter_s_title">Намалювати літеру \"S\"</string>
+    <string name="touchscreen_gesture_letter_v_title">Намалювати літеру \"V\"</string>
+    <string name="touchscreen_gesture_letter_w_title">Намалювати літеру \"W\"</string>
+    <string name="touchscreen_gesture_letter_z_title">Намалювати літеру \"Z\"</string>
     <!-- Screen off Gestures : Actions -->
-    <string name="touchscreen_gesture_action_dialog_title">Gesture action</string>
-    <string name="touchscreen_gesture_action_do_nothing">Do nothing</string>
-    <string name="touchscreen_gesture_action_flashlight">Toggle flashlight</string>
-    <string name="touchscreen_gesture_action_camera">Open the camera</string>
-    <string name="touchscreen_gesture_action_browser">Open the browser</string>
-    <string name="touchscreen_gesture_action_dialer">Open the dialer</string>
-    <string name="touchscreen_gesture_action_email">View your emails</string>
-    <string name="touchscreen_gesture_action_messages">View your messages</string>
-    <string name="touchscreen_gesture_action_play_pause_music">Play/pause music</string>
-    <string name="touchscreen_gesture_action_previous_track">Play the previous music track</string>
-    <string name="touchscreen_gesture_action_next_track">Play the next music track</string>
-    <string name="touchscreen_gesture_action_volume_down">Lower media volume</string>
-    <string name="touchscreen_gesture_action_volume_up">Raise media volume</string>
-    <string name="touchscreen_gesture_action_ambient_display">Show ambient display</string>
+    <string name="touchscreen_gesture_action_dialog_title">Дія жестами</string>
+    <string name="touchscreen_gesture_action_do_nothing">Нічого не робити</string>
+    <string name="touchscreen_gesture_action_flashlight">Увімкнути ліхтарик</string>
+    <string name="touchscreen_gesture_action_camera">Відкрити камеру</string>
+    <string name="touchscreen_gesture_action_browser">Відкрити браузер</string>
+    <string name="touchscreen_gesture_action_dialer">Відкрити номеронабирач</string>
+    <string name="touchscreen_gesture_action_email">Переглянути електронні листи</string>
+    <string name="touchscreen_gesture_action_messages">Переглянути повідомлення</string>
+    <string name="touchscreen_gesture_action_play_pause_music">Відтворити/призупинити музику</string>
+    <string name="touchscreen_gesture_action_previous_track">Відтворити попередній музичний трек</string>
+    <string name="touchscreen_gesture_action_next_track">Відтворити наступний музичний трек</string>
+    <string name="touchscreen_gesture_action_volume_down">Знизити гучність медіа</string>
+    <string name="touchscreen_gesture_action_volume_up">Збільшити гучність медіа</string>
+    <string name="touchscreen_gesture_action_ambient_display">Показати Ambient Display</string>
+    <string name="touchscreen_gesture_action_wake_device">Розбудити пристрій</string>
+
     <!-- Refresh rate -->
-    <string name="refresh_title">Screen refresh</string>
-    <string name="tile_refresh_rate">Screen refresh rate</string>
-    <string name="fps_info_title">FPS overlay</string>
-    <string name="fps_info_summary">Show overlay with with current frames per second</string>
-    <string name="panel_mode_info">Disable panel mode requires reboot.</string>
+    <string name="refresh_title">Оновлення екрану</string>
+    <string name="tile_refresh_rate">Частота оновлення екрану</string>
+    <string name="refresh_rate_summary">Примусово 60 Гц або пікова частота оновлення 90 Гц</string>
+    <string name="refresh_rate_title">Примусова частота оновлення 60 Гц</string>
+    <string name="fps_info_title">FPS оверлей</string>
+    <string name="fps_info_summary">Показати накладання з поточними кадрами в секунду</string>
+
     <!-- Notification slider -->
     <string name="notification_slider_category_title">Повзунок сповіщень</string>
     <string name="notification_slider_selection_dialog_title">Дії</string>
@@ -87,9 +100,17 @@
     <string name="notification_slider_mode_vibrate">Вібрація</string>
     <string name="notification_slider_mode_none">Звичайний</string>
     <string name="buttons_dashboard_summary">Налаштування повзунка сповіщень</string>
+    <string name="slider_mute_media_title">Вимкнути звук медіа</string>
+    <string name="slider_mute_media_summary">Вимкнути звук медіа, коли дзвінок встановлений у беззвучний режим\nВідновить попередню гучність, якщо її не налаштувати</string>
+
     <!-- Vibration slider -->
     <string name="category_vibrator">Вібрація</string>
     <string name="vib_strength_title_head">Сила</string>
     <string name="vib_strength_summary_head">Задати силу вібрації</string>
-    <string name="vibration_warning">Setting strength too high may cause permanent hardware damage</string>
+    <string name="vibration_warning">Занадто висока сила може спричинити безповоротне пошкодження обладнання</string>
+
+    <string name="camera_title">Камера</string>
+    <string name="always_on_camera_dialog_title">Діалог відкриття передньої камери</string>
+    <string name="always_on_camera_dialog_summary_on">Завжди запитувати перед відкриттям</string>
+    <string name="always_on_camera_dialog_summary_off">Запитувати, лише коли екран вимкнено</string>
 </resources>
