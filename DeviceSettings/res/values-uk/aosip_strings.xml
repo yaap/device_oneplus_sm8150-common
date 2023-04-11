@@ -42,7 +42,7 @@
     <!-- Screen off Gestures : Input -->
     <string name="touchscreen_gesture_settings_title">Жести на екрані</string>
     <string name="touchscreen_gesture_settings_summary">Виконуйте різні жести на вимкненому екрані для швидких дій</string>
-    <string name="touchscreen_gestures_haptic_feedback_title">Тактильний зворотний зв'язок</string>
+    <string name="touchscreen_gestures_haptic_feedback_title">Тактильний зворотний зв\'язок</string>
     <string name="touchscreen_gestures_haptic_feedback_summary">Вібрувати при виявленні жесту на вимкненому екрані</string>
     <string name="touchscreen_gesture_two_finger_down_swipe_title">Проведіть двома пальцями вниз</string>
     <string name="touchscreen_gesture_one_finger_up_swipe_title">Проведіть одним пальцем угору</string>
