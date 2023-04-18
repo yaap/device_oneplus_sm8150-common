@@ -30,7 +30,7 @@
     <string name="tile_panel_mode">Panel modes</string>
     <string name="dc_mode_summary">Useful for people who are sensitive to PWM\nSide effects include eye strain, nausea and migraines.\nEnabling this implies less accurate display colors</string>
     <string name="dc_mode_title">DC-Dimming</string>
-    <string name="tile_hbm_mode">High brightness modes</string>
+    <string name="tile_hbm_mode">High brightness mode</string>
     <string name="tile_dc_mode">DC-Dimming</string>
     <string name="natural_mode_title">Natural</string>
     <string name="vivid_mode_title">Vivid</string>
