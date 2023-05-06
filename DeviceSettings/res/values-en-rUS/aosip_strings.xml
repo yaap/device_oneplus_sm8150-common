@@ -28,7 +28,7 @@
     <string name="off_mode_title">Off</string>
     <string name="tile_panel_mode">Panel modes</string>
     <string name="dc_mode_title">DC-Dimming</string>
-    <string name="tile_hbm_mode">High brightness modes</string>
+    <string name="tile_hbm_mode">High brightness mode</string>
     <string name="tile_dc_mode">DC-Dimming</string>
     <!-- Screen off Gestures : Input -->
     <string name="touchscreen_gesture_settings_title">Touchscreen gestures</string>
