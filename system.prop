@@ -59,7 +59,7 @@ ro.netflix.bsp_rev=Q855-16947-1
 ro.vendor.qti.sys.fw.bg_apps_limit=60
 
 # Priv-app permissions whitelist
-ro.control_privapp_permissions=enforce
+ro.control_privapp_permissions=log
 
 # QC framework value-adds
 ro.vendor.qti.va_aosp.support=1
