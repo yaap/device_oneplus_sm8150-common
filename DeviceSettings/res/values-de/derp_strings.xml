@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2021 DerpFest
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+          http://www.apache.org/licenses/LICENSE-2.0
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <string name="device_title">OnePlus-Einstellungen</string>
+    <string name="device_summary">OnePlus-spezifische Geräte-Einstellungen ein</string>
+    <!-- Screen off Gestures : Input -->
+    <string name="touchscreen_gesture_settings_title">Bildschirmgesten</string>
+    <string name="touchscreen_gesture_settings_summary">Mit Hilfe verschiedener Gesten Schnellaktionen durchführen</string>
+    <string name="touchscreen_gestures_haptic_feedback_title">Haptisches Feedback</string>
+    <string name="touchscreen_gestures_haptic_feedback_summary">Vibrieren wenn eine Bildschirmgeste erkannt wurde</string>
+    <string name="touchscreen_gesture_two_finger_down_swipe_title">Mit zwei Fingern nach unten wischen</string>
+    <string name="touchscreen_gesture_one_finger_up_swipe_title">Mit einem Finger nach oben wischen</string>
+    <string name="touchscreen_gesture_one_finger_up_swipe_home_title">Von der Home-Taste aus nach oben wischen</string>
+    <string name="touchscreen_gesture_one_finger_down_swipe_title">Mit einem Finger nach unten wischen</string>
+    <string name="touchscreen_gesture_one_finger_left_swipe_title">Mit einem Finger nach links wischen</string>
+    <string name="touchscreen_gesture_one_finger_right_swipe_title">Mit einem Finger nach rechts wischen</string>
+    <string name="touchscreen_gesture_single_tap_title">Einfaches Tippen</string>
+    <string name="touchscreen_gesture_down_arrow_title">Zeichne ein \"V\"</string>
+    <string name="touchscreen_gesture_up_arrow_title">Zeichne ein \"Λ\"</string>
+    <string name="touchscreen_gesture_right_arrow_title">Zeichne ein \"&gt;\"</string>
+    <string name="touchscreen_gesture_left_arrow_title">Zeichne ein \"&lt;\"</string>
+    <string name="touchscreen_gesture_letter_c_title">Zeichne den Buchstaben \"C\"</string>
+    <string name="touchscreen_gesture_letter_e_title">Zeichne den Buchstaben \"E\"</string>
+    <string name="touchscreen_gesture_letter_o_title">Zeichne den Buchstaben \"O\"</string>
+    <string name="touchscreen_gesture_letter_m_title">Zeichne den Buchstaben \"M\"</string>
+    <string name="touchscreen_gesture_letter_s_title">Zeichne den Buchstaben \"S\"</string>
+    <string name="touchscreen_gesture_letter_v_title">Zeichne den Buchstaben \"V\"</string>
+    <string name="touchscreen_gesture_letter_w_title">Zeichne den Buchstabe \"W\"</string>
+    <string name="touchscreen_gesture_letter_z_title">Zeichne den Buchstabe \"Z\"</string>
+    <!-- Screen off Gestures : Actions -->
+    <string name="touchscreen_gesture_action_dialog_title">Gestenaktion</string>
+    <string name="touchscreen_gesture_action_do_nothing">Nichts tun</string>
+    <string name="touchscreen_gesture_action_flashlight">Taschenlampe ein-/ausschalten</string>
+    <string name="touchscreen_gesture_action_camera">Kamera öffnen</string>
+    <string name="touchscreen_gesture_action_browser">Browser öffnen</string>
+    <string name="touchscreen_gesture_action_dialer">Telefon-App öffnen</string>
+    <string name="touchscreen_gesture_action_email">E-Mails anzeigen</string>
+    <string name="touchscreen_gesture_action_messages">Nachrichten anzeigen</string>
+    <string name="touchscreen_gesture_action_play_pause_music">Musik abspielen/pausieren</string>
+    <string name="touchscreen_gesture_action_previous_track">Zum vorherigen Musiktitel springen</string>
+    <string name="touchscreen_gesture_action_next_track">Zum nächsten Musiktitel springen</string>
+    <string name="touchscreen_gesture_action_volume_down">Medienlautstärke verringern</string>
+    <string name="touchscreen_gesture_action_volume_up">Medienlautstärke erhöhen</string>
+    <string name="touchscreen_gesture_action_ambient_display">Ambient-Display anzeigen</string>
+    <string name="touchscreen_gesture_action_wake_device">Gerät wecken</string>
+    <!-- Notification slider -->
+    <string name="notification_slider_category_title">Alarmschieberegler</string>
+    <string name="notification_slider_selection_dialog_title">Aktion</string>
+    <string name="notification_slider_top_position">Obere Position</string>
+    <string name="notification_slider_middle_position">Mittlere Position</string>
+    <string name="notification_slider_bottom_position">Untere Position</string>
+    <string name="notification_slider_mode_total_silence">Totale Stille</string>
+    <string name="notification_slider_mode_priority_only">Nur Priorität</string>
+    <string name="notification_slider_mode_silent">Lautlos</string>
+    <string name="notification_slider_mode_vibrate">Vibrieren</string>
+    <string name="notification_slider_mode_none">Normal</string>
+    <string name="buttons_dashboard_summary">Alarmschieberegler-Einstellungen</string>
+    <string name="category_vibrator">Vibration</string>
+    <string name="vib_strength_title_head">Stärke</string>
+    <string name="vib_strength_summary_head">Stärke der Vibration einstellen</string>
+    <string name="vibration_warning">Eine zu hohe Einstellung kann zu dauerhaften Hardwareschäden führen</string>
+</resources>

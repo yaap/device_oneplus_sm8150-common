@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2021 AOSP-Krypton Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+
+    <!-- App Title -->
+    <string name="device_settings_title">Настройки OnePlus</string>
+
+    <string name="display_title">Дисплей</string>
+
+    <string name="gesture_title">Жесты</string>
+
+    <!-- Screen off Gestures : Input -->
+    <string name="touchscreen_gesture_settings_title">Жесты сенсорного экрана</string>
+    <string name="touchscreen_gesture_settings_summary">Выполняйте различные жесты на сенсорном экране для быстрых действий</string>
+    <string name="touchscreen_gesture_haptic_feedback_title">Тактильная обратная связь</string>
+    <string name="touchscreen_gesture_haptic_feedback_summary">Вибрация при обнаружении жеста сенсорного экрана</string>
+    <string name="touchscreen_gesture_single_tap_title">Один тап</string>
+    <string name="touchscreen_gesture_two_fingers_down_swipe_title">Проведите двумя пальцами вниз</string>
+    <string name="touchscreen_gesture_up_arrow_title">Нарисуйте a \"Λ\"</string>
+    <string name="touchscreen_gesture_down_arrow_title">Нарисуйте a \"V\"</string>
+    <string name="touchscreen_gesture_right_arrow_title">Нарисуйте a \"&lt;\"</string>
+    <string name="touchscreen_gesture_left_arrow_title">Нарисуйте a \"&gt;\"</string>
+    <string name="touchscreen_gesture_letter_o_title">Нарисуйте букву \"O\"</string>
+    <string name="touchscreen_gesture_letter_m_title">Нарисуйте букву \"M\"</string>
+    <string name="touchscreen_gesture_letter_s_title">Нарисуйте букву \"S\"</string>
+    <string name="touchscreen_gesture_letter_w_title">Нарисуйте букву \"W\"</string>
+
+    <!-- Screen off Gestures : Actions -->
+    <string name="touchscreen_gesture_action_dialog_title">Действие жеста</string>
+    <string name="touchscreen_gesture_action_do_nothing">Ничего не делать</string>
+    <string name="touchscreen_gesture_action_flashlight">Переключить фонарик</string>
+    <string name="touchscreen_gesture_action_camera">Открыть камеру</string>
+    <string name="touchscreen_gesture_action_browser">Открыть браузер</string>
+    <string name="touchscreen_gesture_action_dialer">Открыть номеронабиратель</string>
+    <string name="touchscreen_gesture_action_email">Просмотреть почту</string>
+    <string name="touchscreen_gesture_action_messages">Просмотреть ваши сообщения</string>
+    <string name="touchscreen_gesture_action_play_pause_music">Воспроизведение/пауза музыки</string>
+    <string name="touchscreen_gesture_action_previous_track">Воспроизвести предыдущий трек</string>
+    <string name="touchscreen_gesture_action_next_track">Воспроизвести следующий трек</string>
+    <string name="touchscreen_gesture_action_volume_down">Уменьшить громкость медиа</string>
+    <string name="touchscreen_gesture_action_volume_up">Увеличить громкость медиа</string>
+    <string name="touchscreen_gesture_action_wakeup">Разбудить устройство</string>
+    <string name="touchscreen_gesture_action_ambient_display">Показать окружающий дисплей</string>
+
+    <!-- Vibration-->
+    <string name="category_vibrator">Вибрация</string>
+    <string name="vib_strength_summary_head">Определить силу вибрации</string>
+    <string name="vibration_warning">Установка слишком высокой силы может привести к необратимому повреждению оборудования</string>
+
+    <!-- AlertSlider -->
+    <string name="category_alert_slider">Alert Slider</string>
+    <string name="alert_slider_bottom_title">Нижнее положение</string>
+    <string name="alert_slider_middle_title">Среднее положение</string>
+    <string name="alert_slider_top_title">Верхнее положение</string>
+    <string name="mode_normal">Со звуком</string>
+    <string name="mode_priority">Приоритет</string>
+    <string name="mode_vibrate">Вибрация</string>
+    <string name="mode_silent">Тихо</string>
+    <string name="mode_dnd">Без звука</string>
+    <string name="alert_slider_mute_media_title">Выключить звук медиафайлов</string>
+    <string name="alert_slider_mute_media_summary">Отключение звука при переключении на беззвучный режим</string>
+
+    <!-- Pop-up camera-->
+    <string name="camera_title">Камера</string>
+    <string name="always_on_camera_dialog_title">Диалоговое окно открытия фронтальной камеры</string>
+    <string name="always_on_camera_dialog_summary_on">Всегда спрашивать перед открытием</string>
+    <string name="always_on_camera_dialog_summary_off">Спрашивать только при выключенном экране</string>
+
+</resources>

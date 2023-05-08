@@ -10,52 +10,17 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/device_title">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <SwitchPreference
-        android:key="dc"
-        android:summary="@string/dc_mode_summary"
-        android:title="@string/dc_mode_title" />
-
-    <SwitchPreference
-        android:key="hbm"
-        android:summary="@string/hbm_mode_summary"
-        android:title="@string/hbm_mode_title"
-        android:defaultValue="false" />
-
-    <SwitchPreference
-        android:key="fps_info"
-        android:title="@string/fps_info_title"
-        android:summary="@string/fps_info_summary"
-        android:persistent="true" />
-
-    <SwitchPreference
-        android:key="refresh_rate"
-        android:summary="@string/refresh_rate_summary"
-        android:title="@string/refresh_rate_title"
-        android:persistent="false" />
-
-    <Preference
-        android:key="panel_category"
-        android:title="@string/panel_category_title"
-        android:summary="@string/panel_category_summary"
-        android:persistent="false" >
-        <intent android:action="android.intent.action.MAIN"
-                android:targetPackage="com.yaap.device.DeviceSettings"
-                android:targetClass="com.yaap.device.DeviceSettings.PanelSettingsActivity" />
-    </Preference>
-
-    <Preference
-        android:key="touchscreen_gesture_category"
-        android:title="@string/touchscreen_gesture_settings_title"
-        android:summary="@string/touchscreen_gesture_settings_summary"
-        android:persistent="false" >
-        <intent android:action="android.intent.action.MAIN"
-                android:targetPackage="com.yaap.device.DeviceSettings"
-                android:targetClass="com.yaap.device.DeviceSettings.TouchscreenGestureSettings" />
-    </Preference>
+        <Preference
+            android:key="touchscreen_gesture_category"
+            android:title="@string/touchscreen_gesture_settings_title"
+            android:summary="@string/touchscreen_gesture_settings_summary"
+            android:persistent="false" >
+            <intent android:action="android.intent.action.MAIN"
+                    android:targetPackage="com.derp.device.DeviceSettings"
+                    android:targetClass="com.derp.device.DeviceSettings.TouchscreenGestureSettings" />
+        </Preference>
 
     <PreferenceCategory
         android:key="slider"
@@ -78,30 +43,25 @@
             android:entryValues="@array/notification_slider_action_entry_values" />
 
         <ListPreference
-            android:key="keycode_bottom_position"
-            android:dialogTitle="@string/notification_slider_selection_dialog_title"
-            android:title="@string/notification_slider_bottom_position"
-            android:summary="%s"
-            android:entries="@array/notification_slider_action_entries"
-            android:entryValues="@array/notification_slider_action_entry_values" />
-
-        <SwitchPreference
-            android:key="slider_mute_media"
-            android:title="@string/slider_mute_media_title"
-            android:summary="@string/slider_mute_media_summary"
-            android:defaultValue="false"
-            android:persistent="false" />
+          android:key="keycode_bottom_position"
+          android:dialogTitle="@string/notification_slider_selection_dialog_title"
+          android:title="@string/notification_slider_bottom_position"
+          android:summary="%s"
+          android:entries="@array/notification_slider_action_entries"
+          android:entryValues="@array/notification_slider_action_entry_values" />
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:key="camera"
-        android:title="@string/camera_title">
-        <SwitchPreference
-            android:key="always_on_camera_dialog"
-            android:title="@string/always_on_camera_dialog_title"
-            android:summaryOff="@string/always_on_camera_dialog_summary_off"
-            android:summaryOn="@string/always_on_camera_dialog_summary_on"
-            android:persistent="false" />
-    </PreferenceCategory>
+        android:key="vibrator"
+        android:title="@string/category_vibrator">
 
+        <com.derp.device.DeviceSettings.VibratorStrengthPreference
+            android:key="vib_strength"
+            android:title="@string/vib_strength_title_head"
+            android:summary="@string/vib_strength_summary_head" />
+        <Preference
+            android:icon="@drawable/ic_info_outline_24dp"
+            android:persistent="false"
+            android:summary="@string/vibration_warning" />
+    </PreferenceCategory>
 </PreferenceScreen>
