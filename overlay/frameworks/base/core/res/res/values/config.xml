@@ -557,10 +557,10 @@
     <integer name="config_defaultRefreshRateInZone">90</integer>
     
      <!-- Type of the udfps long press sensor. Empty if long press is not supported. -->
-    <string name="config_dozeUdfpsLongPressSensorType" translatable="false">org.derp.sensor.udfps</string>
+    <string name="config_dozeUdfpsLongPressSensorType" translatable="false">org.yaap.sensor.udfps</string>
 
     <!-- Type of the double tap sensor. Empty if double tap is not supported. -->
-    <string name="config_dozeDoubleTapSensorType" translatable="false">org.derp.sensor.double_tap</string>
+    <string name="config_dozeDoubleTapSensorType" translatable="false">org.yaap.sensor.double_tap</string>
 
     <!-- Auto-brightness sensor type string -->
     <string name="config_displayLightSensorType">"android.sensor.light"</string>
