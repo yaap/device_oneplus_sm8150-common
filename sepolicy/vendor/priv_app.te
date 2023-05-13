@@ -2,3 +2,13 @@
 r_dir_file(priv_app, vendor_sysfs_battery_supply)
 
 allow priv_app oem_service:service_manager { find };
+
+allow priv_app vendor_sysfs_kgsl:file r_file_perms;
+allow priv_app vendor_xdsp_device:chr_file r_file_perms;
+allow priv_app adsprpcd_file:dir r_dir_perms;
+
+allow priv_app hal_cameraHIDL_hwservice:hwservice_manager find;
+binder_call(priv_app, hal_cameraHIDL_default)
+
+allow priv_app vendor_sysfs_battery_supply:dir { search };
+allow priv_app vendor_sysfs_battery_supply:file rw_file_perms;

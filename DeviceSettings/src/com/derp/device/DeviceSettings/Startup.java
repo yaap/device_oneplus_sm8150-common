@@ -17,9 +17,13 @@
 */
 package com.derp.device.DeviceSettings;
 
+import static android.content.Intent.ACTION_BOOT_COMPLETED;
+import static android.content.Intent.ACTION_LOCKED_BOOT_COMPLETED;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.UserHandle;
 import android.content.SharedPreferences;
 import android.provider.Settings;
 import android.text.TextUtils;
@@ -54,6 +58,10 @@ public class Startup extends BroadcastReceiver {
         TouchscreenGestureSettings.MainSettingsFragment.restoreTouchscreenGestureStates(context);
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
         VibratorStrengthPreference.restore(context);
+
+        if (Intent.ACTION_BOOT_COMPLETED.equals(bootintent.getAction())) {
+            context.startServiceAsUser(new Intent(context, ClientPackageObserverService.class), UserHandle.SYSTEM);
+        }
     }
 
     private boolean hasRestoredTunable(Context context) {

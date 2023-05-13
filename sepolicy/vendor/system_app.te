@@ -11,14 +11,20 @@ allow system_app sysfs_aod:file rw_file_perms;
 allow system_app sysfs_fod:file rw_file_perms;
 
 # Allow system_app to read, open and get attributes of vendor_sysfs_graphics
-allow system_app vendor_sysfs_graphics:file { getattr open read };
+allow system_app vendor_sysfs_graphics:file r_file_perms;
 
 # Allow system_app to access zram sysfs nodes
 allow system_app sysfs_zram:dir { search r_file_perms };
-
-allow system_app oem_service:service_manager { find };
 
 allow system_app sysfs_oem:file { read write getattr open };
 
 # Allow KProfiles to be adjusted by a system app
 allow system_app sysfs_kprofiles:file rw_file_perms;
+
+# Vibrator
+allow system_app sysfs_leds:dir { search };
+
+allow system_app hal_cameraHIDL_hwservice:hwservice_manager find;
+binder_call(system_app, hal_cameraHIDL_default)
+
+get_prop(system_app, deviceid_prop)

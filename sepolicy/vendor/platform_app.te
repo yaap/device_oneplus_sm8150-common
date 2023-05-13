@@ -1,0 +1,4 @@
+# Allow SystemUI to read measured fps
+allow platform_app vendor_sysfs_graphics:file r_file_perms;
+
+allow platform_app oem_service:service_manager find;

@@ -36,7 +36,9 @@
         android:icon="@drawable/ic_settings_device"
         android:label="@string/device_title">
 
-        <receiver android:name="com.derp.device.DeviceSettings.Startup" android:exported="true">
+        <receiver android:name="com.derp.device.DeviceSettings.Startup" 
+        android:directBootAware="true"
+        android:exported="false">
             <intent-filter android:priority="1000" >
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
@@ -86,5 +88,8 @@
                 <action android:name="android.content.action.SEARCH_INDEXABLES_PROVIDER" />
             </intent-filter>
         </provider>
-    </application>
+
+        <service android:name="com.derp.DeviceSettings.ClientPackageObserverService"
+            android:exported="false" />
+        </application>
 </manifest>

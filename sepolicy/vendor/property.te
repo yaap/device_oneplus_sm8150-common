@@ -1,2 +1,5 @@
 type vendor_nfc_prop, property_type;
 type vendor_param_prop, property_type;
+
+# Vendor aware available type
+vendor_public_prop(deviceid_prop)

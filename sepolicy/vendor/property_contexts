@@ -1,11 +1,15 @@
 # Audio
 persist.vendor.audio.hac.enable    u:object_r:vendor_audio_prop:s0
 
+# Aware
+ro.vendor.aware_available          u:object_r:deviceid_prop:s0
+
 # Bluetooth
 persist.vendor.bt.a2dp_offload_cap    u:object_r:bluetooth_a2dp_offload_prop:s0
 
 # Camera
 vendor.camera.        u:object_r:vendor_camera_prop:s0
+vendor.oneplus.gallery.debugStory   u:object_r:vendor_camera_prop:s0
 
 # Display
 persist.vendor.color.matrix    u:object_r:vendor_display_prop:s0
