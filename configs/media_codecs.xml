@@ -165,6 +165,7 @@ Only the three quirks included above are recognized at this point:
 <MediaCodecs>
     <Include href="media_codecs_google_audio.xml" />
     <Include href="media_codecs_google_telephony.xml" />
+    <Include href="media_codecs_dolby_audio.xml" />
     <Settings>
         <Setting name="max-video-encoder-input-buffers" value="11" />
     </Settings>
@@ -248,7 +249,7 @@ Only the three quirks included above are recognized at this point:
             <Limit name="concurrent-instances" max="16" />
             <Limit name="performance-point-720x480" value="30" />
         </MediaCodec>
-        <MediaCodec name="OMX.qcom.video.encoder.mpeg4sw" type="video/mp4v-es" >
+        <MediaCodec name="OMX.qcom.video.encoder.mpeg4sw" type="video/mp4v-es" update="true">
              <Quirk name="requires-allocate-on-input-ports" />
              <Quirk name="requires-allocate-on-output-ports" />
              <Quirk name="requires-loaded-to-idle-after-allocation" />
@@ -258,6 +259,7 @@ Only the three quirks included above are recognized at this point:
              <Limit name="blocks-per-second" min="36" max="108000" />
              <Limit name="bitrate" range="1-4000000" />
              <Limit name="frame-rate" range="1-30" />
+             <Attribute name="software-codec" />
              <Limit name="concurrent-instances" max="16" />
              <Limit name="performance-point-1280x720" value="30" />
         </MediaCodec>
