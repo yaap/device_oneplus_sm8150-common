@@ -28,3 +28,6 @@ allow system_app hal_cameraHIDL_hwservice:hwservice_manager find;
 binder_call(system_app, hal_cameraHIDL_default)
 
 get_prop(system_app, deviceid_prop)
+
+allow system_app sysfs_battery_supply:dir search;
+allow system_app sysfs_battery_supply:file { getattr open read };
