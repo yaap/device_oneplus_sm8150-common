@@ -105,12 +105,16 @@ public class KeyHandler implements DeviceKeyHandler {
 
         if (Constants.getIsMuteMediaEnabled(mContext)) {
             final int max = mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+            final int curr = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
             if (keyCodeValue == Constants.KEY_VALUE_SILENT) {
-                final int curr = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+                // going into silent:
+                // saving current media volume and setting to 0
                 Constants.setLastMediaLevel(mContext, Math.round((float)curr * 100f / (float)max));
                 mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC,
                         0, AudioManager.FLAG_SHOW_UI);
-            } else if (mPrevKeyCode == Constants.KEY_VALUE_SILENT) {
+            } else if (mPrevKeyCode == Constants.KEY_VALUE_SILENT && curr == 0) {
+                // going out of silent:
+                // setting media volume back if and only if current volume is still 0
                 final int last = Constants.getLastMediaLevel(mContext);
                 mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC,
                         Math.round((float)max * (float)last / 100f), AudioManager.FLAG_SHOW_UI);
