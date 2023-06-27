@@ -194,28 +194,28 @@ on property:sys.boot_completed=1
     setprop kernel.sched_util_clamp_min_rt_default 500
 
     #top-app
-    write /dev/cpuset/top-app/uclamp.max max
-    write /dev/cpuset/top-app/uclamp.min 10
-    write /dev/cpuset/top-app/uclamp.boosted 1
-    write /dev/cpuset/top-app/uclamp.latency_sensitive 1
+    write /dev/cpuctl/top-app/uclamp.max max
+    write /dev/cpuctl/top-app/uclamp.min 10
+    write /dev/cpuctl/top-app/uclamp.boosted 1
+    write /dev/cpuctl/top-app/uclamp.latency_sensitive 1
 
     #foreground
-    write /dev/cpuset/foreground/uclamp.max 50
-    write /dev/cpuset/foreground/uclamp.min 0
-    write /dev/cpuset/foreground/uclamp.boosted 0
-    write /dev/cpuset/foreground/uclamp.latency_sensitive 0
+    write /dev/cpuctl/foreground/uclamp.max 50
+    write /dev/cpuctl/foreground/uclamp.min 0
+    write /dev/cpuctl/foreground/uclamp.boosted 0
+    write /dev/cpuctl/foreground/uclamp.latency_sensitive 0
 
     #background
-    write /dev/cpuset/background/uclamp.max max
-    write /dev/cpuset/background/uclamp.min 20
-    write /dev/cpuset/background/uclamp.boosted 0
-    write /dev/cpuset/background/uclamp.latency_sensitive 0
+    write /dev/cpuctl/background/uclamp.max max
+    write /dev/cpuctl/background/uclamp.min 20
+    write /dev/cpuctl/background/uclamp.boosted 0
+    write /dev/cpuctl/background/uclamp.latency_sensitive 0
 
     #system-background
-    write /dev/cpuset/system-background/uclamp.max 40
-    write /dev/cpuset/system-background/uclamp.min 0
-    write /dev/cpuset/system-background/uclamp.boosted 0
-    write /dev/cpuset/system-background/uclamp.latency_sensitive 0
+    write /dev/cpuctl/system-background/uclamp.max 40
+    write /dev/cpuctl/system-background/uclamp.min 0
+    write /dev/cpuctl/system-background/uclamp.boosted 0
+    write /dev/cpuctl/system-background/uclamp.latency_sensitive 0
 
 # Route touch_sensitivity_mode to persist
 on property:debug.touch_sensitivity_mode=0
