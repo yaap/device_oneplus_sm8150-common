@@ -13,4 +13,14 @@
 
 <resources>
     <dimen name="color_mode_preview_height">320dp</dimen>
+    <dimen name="alert_slider_icon_size">24dp</dimen>
+    <dimen name="alert_slider_margin">2dp</dimen>
+    <dimen name="alert_slider_container_padding">16dp</dimen>
+    <dimen name="alert_slider_padding">18dp</dimen>
+    <dimen name="alert_slider_dialog_height">48dp</dimen>
+    <dimen name="alert_slider_dialog_width">54dp</dimen>
+    <dimen name="alert_slider_elevation">9dp</dimen>
+    <dimen name="alert_slider_text_size">11sp</dimen>
+    <dimen name="alert_slider_directional_radius">4dp</dimen>
+    <dimen name="alert_slider_corner_radius">28dp</dimen>
 </resources>

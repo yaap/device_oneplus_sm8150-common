@@ -23,8 +23,10 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="com.android.systemui.permission.PLUGIN" />
 
     <protected-broadcast android:name="com.yaap.device.DeviceSettings.UPDATE_SETTINGS" />
+    <protected-broadcast android:name="com.yaap.device.DeviceSettings.UPDATE_SLIDER" />
     <protected-broadcast android:name="android.intent.action.SCREEN_CAMERA_GESTURE" />
 
     <application
@@ -164,6 +166,14 @@
 
         <service android:name="com.yaap.device.DeviceSettings.HBMModeService"
             android:exported="false" />
+
+        <service
+            android:name=".AlertSliderPlugin"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.android.systemui.action.PLUGIN_OVERLAY" />
+            </intent-filter>
+        </service>
 
         <!-- Search indexing -->
         <provider

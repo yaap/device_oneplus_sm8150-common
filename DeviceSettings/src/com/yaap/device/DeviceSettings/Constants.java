@@ -32,6 +32,7 @@ public class Constants {
 
     // Broadcast action for settings update
     static final String UPDATE_PREFS_ACTION = "com.yaap.device.DeviceSettings.UPDATE_SETTINGS";
+    static final String SLIDER_UPDATE_ACTION = "com.yaap.device.DeviceSettings.UPDATE_SLIDER";
 
     // Shared preferences
     private static final String DE_PREF_FILE_NAME = "device_settings";
@@ -42,6 +43,11 @@ public class Constants {
     public static final String NOTIF_SLIDER_BOTTOM_KEY = "keycode_bottom_position";
     public static final String NOTIF_SLIDER_MUTE_MEDIA_KEY = "slider_mute_media";
     private static final String NOTIF_SLIDER_MUTE_MEDIA_LEVEL_KEY = "slider_mute_media_level";
+
+    // Slider positions
+    public static final int POSITION_TOP = 603;
+    public static final int POSITION_MIDDLE = 602;
+    public static final int POSITION_BOTTOM = 601;
 
     // Button prefs
     public static final String NOTIF_SLIDER_TOP_PREF = "pref_keycode_top_position";
@@ -84,9 +90,9 @@ public class Constants {
         sStringKeyPreferenceMap.put(NOTIF_SLIDER_MIDDLE_KEY, NOTIF_SLIDER_MIDDLE_PREF);
         sStringKeyPreferenceMap.put(NOTIF_SLIDER_BOTTOM_KEY, NOTIF_SLIDER_BOTTOM_PREF);
 
-        sKeyMap.put(603, NOTIF_SLIDER_TOP_KEY);
-        sKeyMap.put(602, NOTIF_SLIDER_MIDDLE_KEY);
-        sKeyMap.put(601, NOTIF_SLIDER_BOTTOM_KEY);
+        sKeyMap.put(POSITION_TOP, NOTIF_SLIDER_TOP_KEY);
+        sKeyMap.put(POSITION_MIDDLE, NOTIF_SLIDER_MIDDLE_KEY);
+        sKeyMap.put(POSITION_BOTTOM, NOTIF_SLIDER_BOTTOM_KEY);
 
         sKeyDefaultMap.put(NOTIF_SLIDER_TOP_KEY, KEY_VALUE_TOTAL_SILENCE);
         sKeyDefaultMap.put(NOTIF_SLIDER_MIDDLE_KEY, KEY_VALUE_VIBRATE);

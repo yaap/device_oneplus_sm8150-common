@@ -11,4 +11,7 @@
     limitations under the License.
 -->
 <resources>
+    <style name="alert_slider_theme" parent="Theme.MaterialComponents.DayNight">
+        <item name="android:windowIsFloating">true</item>
+    </style>
 </resources>

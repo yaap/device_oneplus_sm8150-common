@@ -18,12 +18,16 @@
 android_app {
     name: "DeviceSettings",
 
-    srcs: ["src/**/*.java"],
+    srcs: [
+        "src/**/*.java",
+        "src/**/*.kt"
+    ],
     certificate: "platform",
     platform_apis: true,
     system_ext_specific: true,
     privileged: true,
 
+    libs: ["SystemUIPluginLib"],
     static_libs: [
         "org.lineageos.settings.resources",
     ],

@@ -18,8 +18,10 @@ package com.yaap.device.DeviceSettings;
 
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.os.VibrationEffect;
+import android.os.VibratorManager;
 import android.os.Vibrator;
 import android.provider.Settings;
 import android.util.SparseIntArray;
@@ -65,7 +67,8 @@ public class KeyHandler implements DeviceKeyHandler {
         mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         mAudioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
 
-        mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+        VibratorManager vm = (VibratorManager) context.getSystemService(Context.VIBRATOR_MANAGER_SERVICE);
+        mVibrator = vm != null ? vm.getDefaultVibrator() : null;
         if (mVibrator == null || !mVibrator.hasVibrator()) {
             mVibrator = null;
         }
@@ -120,6 +123,7 @@ public class KeyHandler implements DeviceKeyHandler {
                         Math.round((float)max * (float)last / 100f), AudioManager.FLAG_SHOW_UI);
             }
         }
+        sendNotification(scanCode, keyCodeValue);
 
         mPrevKeyCode = keyCodeValue;
         return null;
@@ -134,5 +138,12 @@ public class KeyHandler implements DeviceKeyHandler {
         if (mVibrator != null && mVibrator.hasVibrator() && effect != -1) {
             mVibrator.vibrate(VibrationEffect.get(effect));
         }
+    }
+
+    private void sendNotification(int position, int mode) {
+        final Intent intent = new Intent(Constants.SLIDER_UPDATE_ACTION);
+        intent.putExtra("position", position);
+        intent.putExtra("mode", mode);
+        mContext.sendBroadcast(intent);
     }
 }
