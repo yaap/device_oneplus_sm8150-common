@@ -496,6 +496,7 @@
         <item>"/vendor/lib64/egl/libEGL_adreno.so"</item>
         <item>"/vendor/lib64/egl/libGLESv1_CM_adreno.so"</item>
         <item>"/vendor/lib64/egl/libGLESv2_adreno.so"</item>
+        <item>"/vendor/lib64/hw/goodix.fod.msmnile.so"</item>
         <item>"/vendor/lib64/hw/vulkan.adreno.so"</item>
         <item>"/vendor/lib64/libCB.so"</item>
         <item>"/vendor/lib64/libOpenCL.so"</item>
