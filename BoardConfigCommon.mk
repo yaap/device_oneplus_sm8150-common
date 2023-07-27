@@ -28,6 +28,9 @@ TARGET_2ND_CPU_VARIANT := cortex-a76
 TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a76
 endif
 
+# scudo-free libc32
+MALLOC_SVELTE_FOR_LIBC32 := true
+
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := msmnile
 TARGET_NO_BOOTLOADER := true
