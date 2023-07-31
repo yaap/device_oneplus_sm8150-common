@@ -76,4 +76,7 @@
 
     <!-- Display color inversion availability -->
     <bool name="config_displayInversionAvailable">false</bool>
+
+    <!-- Absolute path of the DC dimming node -->
+    <string name="config_dcdNodePath">/sys/devices/platform/soc/soc:qcom,dsi-display-primary/dc_dim</string>
 </resources>

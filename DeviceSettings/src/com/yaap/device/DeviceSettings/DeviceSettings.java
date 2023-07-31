@@ -17,6 +17,12 @@
 */
 package com.yaap.device.DeviceSettings;
 
+import static com.android.internal.util.yaap.AutoSettingConsts.MODE_DISABLED;
+import static com.android.internal.util.yaap.AutoSettingConsts.MODE_NIGHT;
+import static com.android.internal.util.yaap.AutoSettingConsts.MODE_TIME;
+import static com.android.internal.util.yaap.AutoSettingConsts.MODE_MIXED_SUNSET;
+import static com.android.internal.util.yaap.AutoSettingConsts.MODE_MIXED_SUNRISE;
+
 import android.app.ActivityManager;
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
@@ -61,12 +67,15 @@ public class DeviceSettings extends PreferenceFragment
 
     private static final String POPUP_HELPER_PKG_NAME = "org.lineageos.camerahelper";
 
+    private static final String DC_SCHEDULE_KEY = "dc_schedule";
+
     private TwoStatePreference mDCModeSwitch;
     private TwoStatePreference mHBMModeSwitch;
     private TwoStatePreference mRefreshRate;
     private SwitchPreference mFpsInfo;
     private SwitchPreference mAlwaysCameraSwitch;
     private SwitchPreference mMuteMediaSwitch;
+    private Preference mDCSchedulePref;
 
     private boolean mInternalFpsStart = false;
     private boolean mInternalHbmStart = false;
@@ -171,6 +180,9 @@ public class DeviceSettings extends PreferenceFragment
             mCameraCategory.setVisible(false);
         }
 
+        mDCSchedulePref = findPreference(DC_SCHEDULE_KEY);
+        updateDCScheduleSummary();
+
         // Registering observers
         IntentFilter filter = new IntentFilter();
         filter.addAction(FPSInfoService.ACTION_FPS_SERVICE_CHANGED);
@@ -191,6 +203,7 @@ public class DeviceSettings extends PreferenceFragment
         super.onResume();
         mHBMModeSwitch.setChecked(HBMModeSwitch.isCurrentlyEnabled());
         mFpsInfo.setChecked(isFPSOverlayRunning());
+        updateDCScheduleSummary();
     }
 
     @Override
@@ -257,5 +270,29 @@ public class DeviceSettings extends PreferenceFragment
             if (FPSInfoService.class.getName().equals(service.service.getClassName()))
                 return true;
         return false;
+    }
+
+    private void updateDCScheduleSummary() {
+        if (mDCSchedulePref == null) return;
+        int mode = Settings.Secure.getIntForUser(getActivity().getContentResolver(),
+                Settings.Secure.DC_DIM_AUTO_MODE, 0, UserHandle.USER_CURRENT);
+        switch (mode) {
+            default:
+            case MODE_DISABLED:
+                mDCSchedulePref.setSummary(R.string.disabled);
+                break;
+            case MODE_NIGHT:
+                mDCSchedulePref.setSummary(R.string.dc_schedule_twilight);
+                break;
+            case MODE_TIME:
+                mDCSchedulePref.setSummary(R.string.dc_schedule_custom);
+                break;
+            case MODE_MIXED_SUNSET:
+                mDCSchedulePref.setSummary(R.string.dc_schedule_mixed_sunset);
+                break;
+            case MODE_MIXED_SUNRISE:
+                mDCSchedulePref.setSummary(R.string.dc_schedule_mixed_sunrise);
+                break;
+        }
     }
 }
