@@ -113,4 +113,17 @@
     <string name="always_on_camera_dialog_title">Front camera open dialog</string>
     <string name="always_on_camera_dialog_summary_on">Always ask before openning</string>
     <string name="always_on_camera_dialog_summary_off">Only ask when the screen is off</string>
+
+    <!-- DC Dimming Schedule -->
+    <string name="disabled">Disabled</string>
+    <string name="dc_schedule_title">DC-Dimming schedule</string>
+    <string name="dc_dim_auto_mode_title">Schedule</string>
+    <string name="dc_dim_start_time_title">Start time</string>
+    <string name="dc_dim_end_time_title">End time</string>
+    <string name="dc_schedule_twilight">Turns on from sunset to sunrise</string>
+    <string name="dc_schedule_mixed_sunset">Turns on from sunset till a time</string>
+    <string name="dc_schedule_mixed_sunrise">Turns on from a time till sunrise</string>
+    <string name="dc_schedule_custom">Turns on at a custom time</string>
+    <string name="dc_dim_schedule_sunset">Sunset</string>
+    <string name="dc_dim_schedule_sunrise">Sunrise</string>
 </resources>

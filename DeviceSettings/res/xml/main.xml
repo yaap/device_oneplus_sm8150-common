@@ -19,6 +19,15 @@
         android:summary="@string/dc_mode_summary"
         android:title="@string/dc_mode_title" />
 
+    <Preference
+        android:key="dc_schedule"
+        android:title="@string/dc_schedule_title"
+        android:persistent="false" >
+        <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="com.yaap.device.DeviceSettings"
+                android:targetClass="com.yaap.device.DeviceSettings.DCDimScheduleSettings" />
+    </Preference>
+
     <SwitchPreference
         android:key="hbm"
         android:summary="@string/hbm_mode_summary"

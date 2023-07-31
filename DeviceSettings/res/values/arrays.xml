@@ -64,4 +64,21 @@
         <item>12</item>
         <item>13</item>
     </string-array>
+
+    <!-- DC Dimming Schedule -->
+    <string-array name="dc_dim_auto_mode_entries" translatable="false">
+        <item>@string/disabled</item>
+        <item>@string/dc_schedule_twilight</item>
+        <item>@string/dc_schedule_mixed_sunset</item>
+        <item>@string/dc_schedule_mixed_sunrise</item>
+        <item>@string/dc_schedule_custom</item>
+    </string-array>
+
+    <string-array name="dc_dim_auto_mode_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>3</item>
+        <item>4</item>
+        <item>2</item>
+    </string-array>
 </resources>
