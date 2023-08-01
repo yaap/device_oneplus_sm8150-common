@@ -17,7 +17,7 @@ soong_config_module_type {
     name: "oneplus_msmnile_sensors_hal_cc_defaults",
     module_type: "cc_defaults",
     config_namespace: "ONEPLUS_MSMNILE_SENSORS",
-    value_variables: ["ALS_POS_X", "ALS_POS_Y"],
+    value_variables: ["ALS_POS_X", "ALS_POS_Y", "ALS_RADIUS"],
     properties: ["cppflags"],
 }
 
@@ -29,6 +29,12 @@ oneplus_msmnile_sensors_hal_cc_defaults {
         },
         ALS_POS_Y: {
             cppflags: ["-DALS_POS_Y=%s"],
+        },
+        ALS_RADIUS: {
+            cppflags: ["-DALS_RADIUS=%s"],
+            conditions_default: {
+                cppflags: ["-DALS_RADIUS=64"]
+            },
         },
     },
 }
