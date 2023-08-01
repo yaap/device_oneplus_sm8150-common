@@ -29,3 +29,6 @@ set_prop(vendor_init, vendor_nfc_prop)
 
 # Allow vendor init to set SSR property
 set_prop(vendor_init, vendor_ssr_prop)
+
+# Allow vendor init to set game switch
+allow vendor_init proc_touchpanel:file rw_file_perms;
