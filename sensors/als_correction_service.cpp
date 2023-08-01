@@ -40,7 +40,6 @@ using android::ScreenshotClient;
 using android::sp;
 using android::SurfaceComposerClient;
 
-constexpr int ALS_RADIUS = 64;
 constexpr int SCREENSHOT_INTERVAL = 1;
 
 void updateScreenBuffer() {
