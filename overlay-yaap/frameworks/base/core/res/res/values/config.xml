@@ -79,4 +79,8 @@
 
     <!-- Absolute path of the DC dimming node -->
     <string name="config_dcdNodePath">/sys/devices/platform/soc/soc:qcom,dsi-display-primary/dc_dim</string>
+
+    <!-- Delay in ms before invoking single tap gesture
+         Should be set to dt2w max time / 2 when needed -->
+    <integer name="config_singleTapDelay">250</integer>
 </resources>
