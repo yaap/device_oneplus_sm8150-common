@@ -26,8 +26,8 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
 
-import com.android.internal.util.banana.FileUtils;
-import com.android.internal.util.banana.BananaUtils;
+import com.android.internal.util.rising.systemUtils;
+import org.derpfest.device.DeviceSettings.FileUtils;
 
 import java.io.File;
 
@@ -63,7 +63,7 @@ public class ClientPackageObserverService extends Service {
     public void onCreate() {
         super.onCreate();
         logD("onCreate");
-        isOpCameraInstalledAndActive = BananaUtils.isPackageInstalled(this,
+        isOpCameraInstalledAndActive = systemUtils.isPackageInstalled(this,
                 CLIENT_PACKAGE_NAME, false /** ignore state */);
         logD("isOpCameraInstalledAndActive = " + isOpCameraInstalledAndActive);
         if (isOpCameraInstalledAndActive) {
@@ -94,7 +94,7 @@ public class ClientPackageObserverService extends Service {
     }
 
     private void registerClientObserver() {
-        isOpCameraInstalledAndActive = BananaUtils.isPackageInstalled(this,
+        isOpCameraInstalledAndActive = systemUtils.isPackageInstalled(this,
                 CLIENT_PACKAGE_NAME, false /** ignore state */);
         if (isOpCameraInstalledAndActive && !clientObserverRegistered) {
             logD("registering client observer");
