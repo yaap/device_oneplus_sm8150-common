@@ -16,12 +16,12 @@
 -->
 <resources>
     <string name="close">关闭</string>
-    <string name="raise_the_camera">抬起相机</string>
+    <string name="raise_the_camera">升起前摄</string>
     <string name="retry">重试</string>
     <string name="warning">警告</string>
     <string name="free_fall_detected_title">检测到自由落体</string>
-    <string name="free_fall_detected_message">为了保护前置相机，已命令相机收回。您是否要再次使用前置相机？</string>
-    <string name="motor_cannot_go_down_message">前置相机无法收回，请确保没有任何阻挡。</string>
-    <string name="motor_cannot_go_up_message">前置摄像头无法弹出，请确保没有任何阻挡。</string>
-    <string name="motor_press_message">强行按下前置摄像头可能会导致电机损坏，请不要这样做。</string>
+    <string name="free_fall_detected_message">为了保护前摄，已强制收回。再次开启前摄吗？</string>
+    <string name="motor_cannot_go_down_message">前摄无法收回，请确认没有任何阻挡</string>
+    <string name="motor_cannot_go_up_message">前摄无法升起，请确认没有任何阻挡</string>
+    <string name="motor_press_message">强行按下前摄可能会导致电机损坏，请不要这样做</string>
 </resources>
