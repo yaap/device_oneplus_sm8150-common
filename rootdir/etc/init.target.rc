@@ -195,7 +195,7 @@ on property:sys.boot_completed=1
 
     #top-app
     write /dev/cpuctl/top-app/cpu.uclamp.max max
-    write /dev/cpuctl/top-app/cpu.uclamp.min 25
+    write /dev/cpuctl/top-app/cpu.uclamp.min 10
     write /dev/cpuctl/top-app/cpu.uclamp.latency_sensitive 1
 
     #foreground
@@ -217,6 +217,11 @@ on property:sys.boot_completed=1
     write /dev/cpuctl/nnapi-hal/cpu.uclamp.max max
     write /dev/cpuctl/nnapi-hal/cpu.uclamp.min 50
     write /dev/cpuctl/nnapi-hal/cpu.uclamp.latency_sensitive 1
+
+    #camera-daemon
+    write /dev/cpuctl/camera-daemon/cpu.uclamp.max max
+    write /dev/cpuctl/camera-daemon/cpu.uclamp.min 50
+    write /dev/cpuctl/camera-daemon/cpu.uclamp.latency_sensitive 1
 
 # Route touch_sensitivity_mode to persist
 on property:debug.touch_sensitivity_mode=0
