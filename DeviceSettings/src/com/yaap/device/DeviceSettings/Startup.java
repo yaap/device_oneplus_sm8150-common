@@ -25,6 +25,7 @@ import static com.yaap.device.DeviceSettings.DeviceSettings.KEY_DCI_SWITCH;
 import static com.yaap.device.DeviceSettings.DeviceSettings.KEY_WIDECOLOR_SWITCH;
 import static com.yaap.device.DeviceSettings.DeviceSettings.KEY_NATURAL_SWITCH;
 import static com.yaap.device.DeviceSettings.DeviceSettings.KEY_VIVID_SWITCH;
+import static com.yaap.device.DeviceSettings.FPSInfoService.PREF_KEY_FPS_STATE;
 import static com.yaap.device.DeviceSettings.ModeSwitch.DCModeSwitch.KEY_DC_SWITCH;
 
 import android.content.BroadcastReceiver;
@@ -91,5 +92,8 @@ public class Startup extends BroadcastReceiver {
             final String file = set.getValue();
             restore(file, dePrefs.getBoolean(prefKey, false));
         }
+
+        // reset prefs that reflect a state that does not retain a reboot
+        dePrefs.edit().remove(PREF_KEY_FPS_STATE).commit();
     }
 }

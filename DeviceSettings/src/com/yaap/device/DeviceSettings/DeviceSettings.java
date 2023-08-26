@@ -23,15 +23,14 @@ import static com.android.internal.util.yaap.AutoSettingConsts.MODE_TIME;
 import static com.android.internal.util.yaap.AutoSettingConsts.MODE_MIXED_SUNSET;
 import static com.android.internal.util.yaap.AutoSettingConsts.MODE_MIXED_SUNRISE;
 
-import android.app.ActivityManager;
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.database.ContentObserver;
 import android.os.Bundle;
-import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.UserHandle;
@@ -263,13 +262,8 @@ public class DeviceSettings extends PreferenceFragment
     }
 
     private boolean isFPSOverlayRunning() {
-        ActivityManager am = (ActivityManager) getContext().getSystemService(
-                Context.ACTIVITY_SERVICE);
-        for (ActivityManager.RunningServiceInfo service :
-                am.getRunningServices(Integer.MAX_VALUE))
-            if (FPSInfoService.class.getName().equals(service.service.getClassName()))
-                return true;
-        return false;
+        final SharedPreferences prefs = Constants.getDESharedPrefs(getContext());
+        return prefs.getBoolean(FPSInfoService.PREF_KEY_FPS_STATE, false);
     }
 
     private void updateDCScheduleSummary() {

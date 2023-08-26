@@ -16,11 +16,11 @@
 
 package com.yaap.device.DeviceSettings;
 
-import android.app.ActivityManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 
@@ -77,14 +77,7 @@ public class FPSTileService extends TileService {
     }
 
     private boolean isRunning() {
-        ActivityManager manager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
-        for (ActivityManager.RunningServiceInfo service :
-                manager.getRunningServices(Integer.MAX_VALUE)) {
-            if (FPSInfoService.class.getName().equals(
-                service.service.getClassName())) {
-                    return true;
-            }
-        }
-        return false;
+        final SharedPreferences prefs = Constants.getDESharedPrefs(this);
+        return prefs.getBoolean(FPSInfoService.PREF_KEY_FPS_STATE, false);
     }
 }

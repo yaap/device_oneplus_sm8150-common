@@ -21,6 +21,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -28,6 +29,7 @@ import android.graphics.PixelFormat;
 import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
 import android.os.Message;
 import android.os.RemoteException;
 import android.os.ServiceManager;
@@ -47,6 +49,7 @@ public class FPSInfoService extends Service {
     public static final String ACTION_FPS_SERVICE_CHANGED =
             "com.yaap.device.DeviceSettings.FPS_SERVICE_CHANGED";
     public static final String EXTRA_FPS_STATE = "running";
+    public static final String PREF_KEY_FPS_STATE = "fps_running";
 
     private View mView;
     private Thread mCurFPSThread;
@@ -66,7 +69,7 @@ public class FPSInfoService extends Service {
         private int mNeededHeight;
         private boolean mDataAvail;
 
-        private final Handler mCurFPSHandler = new Handler() {
+        private final Handler mCurFPSHandler = new Handler(Looper.getMainLooper()) {
             public void handleMessage(Message msg) {
                 if (msg.obj == null) return;
                 if (msg.what == 1) {
@@ -210,6 +213,10 @@ public class FPSInfoService extends Service {
 
         WindowManager wm = (WindowManager)getSystemService(WINDOW_SERVICE);
         wm.addView(mView, params);
+
+        // declare service is running
+        final SharedPreferences prefs = Constants.getDESharedPrefs(this);
+        prefs.edit().putBoolean(PREF_KEY_FPS_STATE, true).commit();
     }
 
     @Override
@@ -219,6 +226,10 @@ public class FPSInfoService extends Service {
         ((WindowManager)getSystemService(WINDOW_SERVICE)).removeView(mView);
         mView = null;
         unregisterReceiver(mScreenStateReceiver);
+
+        // declare service isn't running
+        final SharedPreferences prefs = Constants.getDESharedPrefs(this);
+        prefs.edit().remove(PREF_KEY_FPS_STATE).commit();
     }
 
     @Override
