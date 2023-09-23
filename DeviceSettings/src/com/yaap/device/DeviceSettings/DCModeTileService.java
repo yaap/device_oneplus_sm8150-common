@@ -25,7 +25,6 @@ import com.yaap.device.DeviceSettings.ModeSwitch.DCModeSwitch;
 
 public class DCModeTileService extends TileService {
     private boolean mEnabled = false;
-    private boolean mInternalChange = false;
 
     @Override
     public void onDestroy() {

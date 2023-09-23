@@ -28,8 +28,12 @@ import android.service.quicksettings.TileService;
 
 public class RefreshRateTileService extends TileService {
     private boolean mIsInternalChange = false;
-    private final ContentObserver mRefreshRateObserver = new ContentObserver(
-            new Handler(Looper.getMainLooper())) {
+    private final RefreshRateObserver mRefreshRateObserver = new RefreshRateObserver();
+    private final class RefreshRateObserver extends ContentObserver {
+        RefreshRateObserver() {
+            super(new Handler(Looper.getMainLooper()));
+        }
+
         void observe() {
             getContentResolver().registerContentObserver(
                     Settings.System.getUriFor(
@@ -49,7 +53,7 @@ public class RefreshRateTileService extends TileService {
             }
             refreshState();
         }
-    };
+    }
 
     @Override
     public void onDestroy() {
@@ -69,12 +73,14 @@ public class RefreshRateTileService extends TileService {
     @Override
     public void onStartListening() {
         super.onStartListening();
+        mRefreshRateObserver.observe();
         refreshState();
     }
 
     @Override
     public void onStopListening() {
         super.onStopListening();
+        mRefreshRateObserver.stop();
     }
 
     @Override
