@@ -46,6 +46,7 @@ import androidx.preference.TwoStatePreference;
 
 import com.yaap.device.DeviceSettings.ModeSwitch.DCModeSwitch;
 import com.yaap.device.DeviceSettings.ModeSwitch.HBMModeSwitch;
+import com.yaap.device.DeviceSettings.ModeSwitch.ReadingModeSwitch;
 
 public class DeviceSettings extends PreferenceFragment
         implements Preference.OnPreferenceChangeListener {
@@ -75,10 +76,12 @@ public class DeviceSettings extends PreferenceFragment
     private SwitchPreference mAlwaysCameraSwitch;
     private SwitchPreference mMuteMediaSwitch;
     private Preference mDCSchedulePref;
+    private ListPreference mReadingMode;
 
     private boolean mInternalFpsStart = false;
     private boolean mInternalHbmStart = false;
     private boolean mInternalDCStart = false;
+    private boolean mInternalReadingStart = false;
 
     private final BroadcastReceiver mServiceStateReceiver = new BroadcastReceiver() {
         @Override
@@ -113,6 +116,16 @@ public class DeviceSettings extends PreferenceFragment
                     final boolean dcEnabled = intent.getBooleanExtra(
                             DCModeSwitch.EXTRA_DCMODE_STATE, false);
                     mDCModeSwitch.setChecked(dcEnabled);
+                    break;
+                case ReadingModeSwitch.ACTION_READING_CHANGED:
+                    if (mInternalReadingStart) {
+                        mInternalReadingStart = false;
+                        return;
+                    }
+                    if (mReadingMode == null) return;
+                    final int readingState = intent.getIntExtra(
+                            ReadingModeSwitch.EXTRA_READING_STATE, ReadingModeSwitch.STATE_DISABLED);
+                    mReadingMode.setValue(String.valueOf(readingState));
                     break;
             }
         }
@@ -163,6 +176,14 @@ public class DeviceSettings extends PreferenceFragment
             getPreferenceScreen().removePreference(findPreference(KEY_REFRESH_RATE));
         }
 
+        if (ReadingModeSwitch.isSupported()) {
+            mReadingMode = findPreference(ReadingModeSwitch.KEY_READING_SWITCH);
+            mReadingMode.setValue(String.valueOf(ReadingModeSwitch.getState(getContext())));
+            mReadingMode.setOnPreferenceChangeListener(this);
+        } else {
+            getPreferenceScreen().removePreference(findPreference(ReadingModeSwitch.KEY_READING_SWITCH));
+        }
+
         mFpsInfo = findPreference(KEY_FPS_INFO);
         mFpsInfo.setChecked(isFPSOverlayRunning());
         mFpsInfo.setOnPreferenceChangeListener(this);
@@ -187,6 +208,7 @@ public class DeviceSettings extends PreferenceFragment
         filter.addAction(FPSInfoService.ACTION_FPS_SERVICE_CHANGED);
         filter.addAction(HBMModeSwitch.ACTION_HBM_SERVICE_CHANGED);
         filter.addAction(DCModeSwitch.ACTION_DCMODE_CHANGED);
+        filter.addAction(ReadingModeSwitch.ACTION_READING_CHANGED);
         getContext().registerReceiver(mServiceStateReceiver, filter);
 
         if (getResources().getBoolean(R.bool.config_deviceHasHighRefreshRate)) {
@@ -234,6 +256,10 @@ public class DeviceSettings extends PreferenceFragment
             mInternalDCStart = true;
             Boolean enabled = (Boolean) newValue;
             DCModeSwitch.setEnabled(enabled, getContext());
+        } else if (preference == mReadingMode) {
+            mInternalReadingStart = true;
+            String value = (String) newValue;
+            ReadingModeSwitch.setState(Integer.parseInt(value), getContext());
         } else if (newValue instanceof String) {
             Constants.setPreferenceInt(getContext(), preference.getKey(),
                     Integer.parseInt((String) newValue));

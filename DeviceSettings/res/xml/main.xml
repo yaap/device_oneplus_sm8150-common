@@ -46,6 +46,14 @@
         android:title="@string/refresh_rate_title"
         android:persistent="false" />
 
+    <ListPreference
+        android:key="reading_mode"
+        android:summary="@string/reading_mode_summary"
+        android:title="@string/reading_mode_title"
+        android:entries="@array/reading_mode_entries"
+        android:entryValues="@array/reading_mode_values"
+        android:defaultValue="0" />
+
     <Preference
         android:key="panel_category"
         android:title="@string/panel_category_title"

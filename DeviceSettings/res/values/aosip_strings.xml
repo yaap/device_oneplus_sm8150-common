@@ -126,4 +126,11 @@
     <string name="dc_schedule_custom">Turns on at a custom time</string>
     <string name="dc_dim_schedule_sunset">Sunset</string>
     <string name="dc_dim_schedule_sunrise">Sunrise</string>
+
+    <!-- Reading mode tile -->
+    <string name="reading_mode_title">Reading Mode</string>
+    <string name="reading_mode_summary">Static brightness and low refresh rate modes for decreasing power usage in semi static display scenarios</string>
+    <string name="off">Off</string>
+    <string name="enabled">On</string>
+    <string name="enabled_high">On (High brightness)</string>
 </resources>
