@@ -38,6 +38,8 @@ import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
 import com.android.settingslib.widget.R;
 
 import java.lang.System;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TouchscreenGestureSettings extends CollapsingToolbarBaseActivity
         implements PreferenceFragment.OnPreferenceStartFragmentCallback {
@@ -161,6 +163,41 @@ public class TouchscreenGestureSettings extends CollapsingToolbarBaseActivity
             sendUpdateBroadcast(context, gestures);
         }
 
+        public static void migrateTouchscreenGestureStates(final Context context) {
+            if (!isTouchscreenGesturesSupported(context)) {
+                return;
+            }
+
+            final LineageHardwareManager manager = LineageHardwareManager.getInstance(context);
+            final TouchscreenGesture[] gestures = manager.getTouchscreenGestures();
+            final int[] actionList = buildOldActionList(context, gestures);
+            final SharedPreferences oldPrefs = PreferenceManager.getDefaultSharedPreferences(context);
+            final SharedPreferences.Editor oldPrefsEditor = oldPrefs.edit();
+            final SharedPreferences.Editor newPrefsEditor = Constants.getDESharedPrefs(context).edit();
+            for (final TouchscreenGesture gesture : gestures) {
+                final String key = buildPreferenceKey(gesture);
+                final String oldValue = oldPrefs.getString(key, null);
+                if (oldValue == null) continue;
+                newPrefsEditor.putString(key, oldValue);
+                oldPrefsEditor.remove(key);
+            }
+            newPrefsEditor.commit();
+            oldPrefsEditor.commit();
+        }
+
+        public static List<String> getPrefKeys(final Context context) {
+            if (!isTouchscreenGesturesSupported(context)) {
+                return null;
+            }
+
+            final LineageHardwareManager manager = LineageHardwareManager.getInstance(context);
+            final TouchscreenGesture[] gestures = manager.getTouchscreenGestures();
+            final List<String> result = new ArrayList<>();
+            for (final TouchscreenGesture gesture : gestures)
+                result.add(buildPreferenceKey(gesture));
+            return result;
+        }
+
         private static boolean isTouchscreenGesturesSupported(final Context context) {
             final LineageHardwareManager manager = LineageHardwareManager.getInstance(context);
             return manager.isSupported(LineageHardwareManager.FEATURE_TOUCHSCREEN_GESTURES);
@@ -181,9 +218,20 @@ public class TouchscreenGestureSettings extends CollapsingToolbarBaseActivity
 
         private static int[] buildActionList(final Context context,
                 final TouchscreenGesture[] gestures) {
+            final SharedPreferences prefs = Constants.getDESharedPrefs(context);
+            return buildActions(context, gestures, prefs);
+        }
+
+        private static int[] buildOldActionList(final Context context,
+                final TouchscreenGesture[] gestures) {
+            final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+            return buildActions(context, gestures, prefs);
+        }
+
+        private static int[] buildActions(final Context context,
+                final TouchscreenGesture[] gestures, final SharedPreferences prefs) {
             final int[] result = new int[gestures.length];
             final int[] defaultActions = getDefaultGestureActions(context, gestures);
-            final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
             for (final TouchscreenGesture gesture : gestures) {
                 final String key = buildPreferenceKey(gesture);
                 final String defaultValue = String.valueOf(defaultActions[gesture.id]);
