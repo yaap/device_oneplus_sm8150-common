@@ -16,47 +16,44 @@
 
 package com.yaap.device.DeviceSettings;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 
 // TODO: Add FPS drawables
-public class FPSTileService extends TileService {
+public class FPSTileService extends TileService
+        implements SharedPreferences.OnSharedPreferenceChangeListener {
 
+    private SharedPreferences mPrefs;
     private boolean mIsShowing = false;
     private boolean mInternalStart = false;
 
-    private final BroadcastReceiver mServiceStateReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (mInternalStart) {
-                mInternalStart = false;
-                return;
-            }
-            mIsShowing = intent.getBooleanExtra(FPSInfoService.EXTRA_FPS_STATE, false);
-            updateTile();
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key)  {
+        if (!key.equals(FPSInfoService.PREF_KEY_FPS_STATE)) return;
+        if (mInternalStart) {
+            mInternalStart = false;
+            return;
         }
-    };
-
-    public FPSTileService() { }
+        mIsShowing = sharedPreferences.getBoolean(key, false);
+        updateTile();
+    }
 
     @Override
     public void onStartListening() {
         super.onStartListening();
+        mPrefs = Constants.getDESharedPrefs(getApplicationContext());
+        mPrefs.registerOnSharedPreferenceChangeListener(this);
         mIsShowing = isRunning();
         updateTile();
-        IntentFilter filter = new IntentFilter(FPSInfoService.ACTION_FPS_SERVICE_CHANGED);
-        registerReceiver(mServiceStateReceiver, filter);
     }
 
     @Override
     public void onStopListening() {
         super.onStopListening();
-        unregisterReceiver(mServiceStateReceiver);
+        mPrefs.unregisterOnSharedPreferenceChangeListener(this);
+        mPrefs = null;
     }
 
     @Override
@@ -77,7 +74,7 @@ public class FPSTileService extends TileService {
     }
 
     private boolean isRunning() {
-        final SharedPreferences prefs = Constants.getDESharedPrefs(this);
-        return prefs.getBoolean(FPSInfoService.PREF_KEY_FPS_STATE, false);
+        if (mPrefs == null) return false;
+        return mPrefs.getBoolean(FPSInfoService.PREF_KEY_FPS_STATE, false);
     }
 }

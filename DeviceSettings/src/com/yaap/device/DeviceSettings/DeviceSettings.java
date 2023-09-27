@@ -23,11 +23,9 @@ import static com.android.internal.util.yaap.AutoSettingConsts.MODE_TIME;
 import static com.android.internal.util.yaap.AutoSettingConsts.MODE_MIXED_SUNSET;
 import static com.android.internal.util.yaap.AutoSettingConsts.MODE_MIXED_SUNRISE;
 
-import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.database.ContentObserver;
 import android.os.Bundle;
@@ -48,8 +46,8 @@ import com.yaap.device.DeviceSettings.ModeSwitch.DCModeSwitch;
 import com.yaap.device.DeviceSettings.ModeSwitch.HBMModeSwitch;
 import com.yaap.device.DeviceSettings.ModeSwitch.ReadingModeSwitch;
 
-public class DeviceSettings extends PreferenceFragment
-        implements Preference.OnPreferenceChangeListener {
+public class DeviceSettings extends PreferenceFragment implements
+        Preference.OnPreferenceChangeListener, SharedPreferences.OnSharedPreferenceChangeListener {
 
     private static final String KEY_CATEGORY_CAMERA = "camera";
     private static final String KEY_HBM_SWITCH = "hbm";
@@ -83,53 +81,44 @@ public class DeviceSettings extends PreferenceFragment
     private boolean mInternalDCStart = false;
     private boolean mInternalReadingStart = false;
 
-    private final BroadcastReceiver mServiceStateReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            switch (intent.getAction()) {
-                case FPSInfoService.ACTION_FPS_SERVICE_CHANGED:
-                    if (mInternalFpsStart) {
-                        mInternalFpsStart = false;
-                        return;
-                    }
-                    if (mFpsInfo == null) return;
-                    final boolean fpsStarted = intent.getBooleanExtra(
-                            FPSInfoService.EXTRA_FPS_STATE, false);
-                    mFpsInfo.setChecked(fpsStarted);
-                    break;
-                case HBMModeSwitch.ACTION_HBM_SERVICE_CHANGED:
-                    if (mInternalHbmStart) {
-                        mInternalHbmStart = false;
-                        return;
-                    }
-                    if (mHBMModeSwitch == null) return;
-                    final boolean hbmStarted = intent.getBooleanExtra(
-                            HBMModeSwitch.EXTRA_HBM_STATE, false);
-                    mHBMModeSwitch.setChecked(hbmStarted);
-                    break;
-                case DCModeSwitch.ACTION_DCMODE_CHANGED:
-                    if (mInternalDCStart) {
-                        mInternalDCStart = false;
-                        return;
-                    }
-                    if (mDCModeSwitch == null) return;
-                    final boolean dcEnabled = intent.getBooleanExtra(
-                            DCModeSwitch.EXTRA_DCMODE_STATE, false);
-                    mDCModeSwitch.setChecked(dcEnabled);
-                    break;
-                case ReadingModeSwitch.ACTION_READING_CHANGED:
-                    if (mInternalReadingStart) {
-                        mInternalReadingStart = false;
-                        return;
-                    }
-                    if (mReadingMode == null) return;
-                    final int readingState = intent.getIntExtra(
-                            ReadingModeSwitch.EXTRA_READING_STATE, ReadingModeSwitch.STATE_DISABLED);
-                    mReadingMode.setValue(String.valueOf(readingState));
-                    break;
-            }
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key)  {
+        switch (key) {
+            case FPSInfoService.PREF_KEY_FPS_STATE:
+                if (mInternalFpsStart) {
+                    mInternalFpsStart = false;
+                    return;
+                }
+                if (mFpsInfo == null) return;
+                mFpsInfo.setChecked(sharedPreferences.getBoolean(key, false));
+                break;
+            case HBMModeSwitch.PREF_KEY_HBM_STATE:
+                if (mInternalHbmStart) {
+                    mInternalHbmStart = false;
+                    return;
+                }
+                if (mHBMModeSwitch == null) return;
+                mHBMModeSwitch.setChecked(sharedPreferences.getBoolean(key, false));
+                break;
+            case DCModeSwitch.KEY_DC_SWITCH:
+                if (mInternalDCStart) {
+                    mInternalDCStart = false;
+                    return;
+                }
+                if (mDCModeSwitch == null) return;
+                mDCModeSwitch.setChecked(sharedPreferences.getBoolean(key, false));
+                break;
+            case ReadingModeSwitch.KEY_READING_SWITCH:
+                if (mInternalReadingStart) {
+                    mInternalReadingStart = false;
+                    return;
+                }
+                if (mReadingMode == null) return;
+                mReadingMode.setValue(String.valueOf(sharedPreferences.getInt(key,
+                        ReadingModeSwitch.STATE_DISABLED)));
+                break;
         }
-    };
+    }
 
     private final ContentObserver mRefreshRateObserver = new ContentObserver(
             new Handler(Looper.getMainLooper())) {
@@ -204,12 +193,8 @@ public class DeviceSettings extends PreferenceFragment
         updateDCScheduleSummary();
 
         // Registering observers
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(FPSInfoService.ACTION_FPS_SERVICE_CHANGED);
-        filter.addAction(HBMModeSwitch.ACTION_HBM_SERVICE_CHANGED);
-        filter.addAction(DCModeSwitch.ACTION_DCMODE_CHANGED);
-        filter.addAction(ReadingModeSwitch.ACTION_READING_CHANGED);
-        getContext().registerReceiver(mServiceStateReceiver, filter);
+        final SharedPreferences prefs = Constants.getDESharedPrefs(getContext());
+        prefs.registerOnSharedPreferenceChangeListener(this);
 
         if (getResources().getBoolean(R.bool.config_deviceHasHighRefreshRate)) {
             getContext().getContentResolver().registerContentObserver(
@@ -280,7 +265,8 @@ public class DeviceSettings extends PreferenceFragment
     @Override
     public void onDestroy() {
         super.onDestroy();
-        getContext().unregisterReceiver(mServiceStateReceiver);
+        final SharedPreferences prefs = Constants.getDESharedPrefs(getContext());
+        prefs.unregisterOnSharedPreferenceChangeListener(this);
         if (getResources().getBoolean(R.bool.config_deviceHasHighRefreshRate)) {
             getContext().getContentResolver().unregisterContentObserver(
                     mRefreshRateObserver);

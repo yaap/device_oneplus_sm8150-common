@@ -15,30 +15,28 @@
  */
 package com.yaap.device.DeviceSettings;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.graphics.drawable.Icon;
+import android.content.SharedPreferences;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 
 import com.yaap.device.DeviceSettings.ModeSwitch.ReadingModeSwitch;
 
-public class ReadingModeTileService extends TileService {
+public class ReadingModeTileService extends TileService
+        implements SharedPreferences.OnSharedPreferenceChangeListener {
 
+    private SharedPreferences mPrefs;
     private boolean mInternalStart = false;
 
-    private final BroadcastReceiver mStateReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (mInternalStart) {
-                mInternalStart = false;
-                return;
-            }
-            refreshState();
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key)  {
+        if (!key.equals(ReadingModeSwitch.KEY_READING_SWITCH)) return;
+        if (mInternalStart) {
+            mInternalStart = false;
+            return;
         }
-    };
+        refreshState();
+    }
 
     @Override
     public void onDestroy() {
@@ -59,14 +57,15 @@ public class ReadingModeTileService extends TileService {
     public void onStartListening() {
         super.onStartListening();
         refreshState();
-        IntentFilter filter = new IntentFilter(ReadingModeSwitch.ACTION_READING_CHANGED);
-        registerReceiver(mStateReceiver, filter);
+        mPrefs = Constants.getDESharedPrefs(getApplicationContext());
+        mPrefs.registerOnSharedPreferenceChangeListener(this);
     }
 
     @Override
     public void onStopListening() {
         super.onStopListening();
-        unregisterReceiver(mStateReceiver);
+        mPrefs.unregisterOnSharedPreferenceChangeListener(this);
+        mPrefs = null;
     }
 
     @Override

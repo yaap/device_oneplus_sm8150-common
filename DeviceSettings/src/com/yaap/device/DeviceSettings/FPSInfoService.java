@@ -46,9 +46,6 @@ import java.io.FileReader;
 import java.lang.Math;
 
 public class FPSInfoService extends Service {
-    public static final String ACTION_FPS_SERVICE_CHANGED =
-            "com.yaap.device.DeviceSettings.FPS_SERVICE_CHANGED";
-    public static final String EXTRA_FPS_STATE = "running";
     public static final String PREF_KEY_FPS_STATE = "fps_running";
 
     private View mView;
@@ -285,7 +282,7 @@ public class FPSInfoService extends Service {
         Log.d(TAG, "started CurFPSThread");
         mCurFPSThread = new CurFPSThread(mView.getHandler());
         mCurFPSThread.start();
-        broadcastServiceState(true);
+        saveServiceState(true);
     }
 
     private void stopThread() {
@@ -297,13 +294,11 @@ public class FPSInfoService extends Service {
             } catch (InterruptedException ignored) { }
         }
         mCurFPSThread = null;
-        broadcastServiceState(false);
+        saveServiceState(false);
     }
 
-    private void broadcastServiceState(boolean started) {
-        Intent intent = new Intent(ACTION_FPS_SERVICE_CHANGED);
-        intent.putExtra(EXTRA_FPS_STATE, started);
-        intent.setFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY);
-        sendBroadcastAsUser(intent, UserHandle.CURRENT);
+    private void saveServiceState(boolean started) {
+        final SharedPreferences prefs = Constants.getDESharedPrefs(this);
+        prefs.edit().putBoolean(PREF_KEY_FPS_STATE, started).commit();
     }
 }

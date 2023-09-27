@@ -17,14 +17,29 @@
 */
 package com.yaap.device.DeviceSettings;
 
+import android.content.SharedPreferences;
 import android.graphics.drawable.Icon;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 
 import com.yaap.device.DeviceSettings.ModeSwitch.DCModeSwitch;
 
-public class DCModeTileService extends TileService {
+public class DCModeTileService extends TileService
+        implements SharedPreferences.OnSharedPreferenceChangeListener {
+
+    private SharedPreferences mPrefs;
     private boolean mEnabled = false;
+    private boolean mInternalStart = false;
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key)  {
+        if (!key.equals(DCModeSwitch.KEY_DC_SWITCH)) return;
+        if (mInternalStart) {
+            mInternalStart = false;
+            return;
+        }
+        refreshState();
+    }
 
     @Override
     public void onDestroy() {
@@ -45,16 +60,21 @@ public class DCModeTileService extends TileService {
     public void onStartListening() {
         super.onStartListening();
         refreshState();
+        mPrefs = Constants.getDESharedPrefs(getApplicationContext());
+        mPrefs.registerOnSharedPreferenceChangeListener(this);
     }
 
     @Override
     public void onStopListening() {
         super.onStopListening();
+        mPrefs.unregisterOnSharedPreferenceChangeListener(this);
+        mPrefs = null;
     }
 
     @Override
     public void onClick() {
         super.onClick();
+        mInternalStart = true;
         mEnabled = DCModeSwitch.isCurrentlyEnabled();
         DCModeSwitch.setEnabled(!mEnabled, this);
         //getQsTile().setLabel(mEnabled ? "DC off" : "DC On");

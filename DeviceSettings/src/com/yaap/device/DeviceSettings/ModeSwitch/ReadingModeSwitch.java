@@ -17,9 +17,7 @@ package com.yaap.device.DeviceSettings.ModeSwitch;
 
 import android.content.SharedPreferences;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Build;
-import android.os.UserHandle;
 
 import com.yaap.device.DeviceSettings.Constants;
 import com.yaap.device.DeviceSettings.Utils;
@@ -33,8 +31,6 @@ public class ReadingModeSwitch {
         "OnePlus7"
     };
 
-    public static final String ACTION_READING_CHANGED = "com.yaap.device.DeviceSettings.ModeSwitch.READING_CHANGED";
-    public static final String EXTRA_READING_STATE = "state";
     public static final String KEY_READING_SWITCH = "reading_mode";
     public static final int STATE_DISABLED = 0;
     public static final int STATE_ENABLED = 1;
@@ -62,10 +58,6 @@ public class ReadingModeSwitch {
         Utils.writeValue(getFile(), String.valueOf(state));
         SharedPreferences prefs = Constants.getDESharedPrefs(context);
         prefs.edit().putInt(KEY_READING_SWITCH, state).commit();
-        Intent intent = new Intent(ACTION_READING_CHANGED);
-        intent.putExtra(EXTRA_READING_STATE, state);
-        intent.setFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY);
-        context.sendBroadcastAsUser(intent, UserHandle.CURRENT);
     }
 
     public static int getState(Context context) {

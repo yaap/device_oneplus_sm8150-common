@@ -19,8 +19,6 @@ package com.yaap.device.DeviceSettings.ModeSwitch;
 
 import android.content.SharedPreferences;
 import android.content.Context;
-import android.content.Intent;
-import android.os.UserHandle;
 
 import com.yaap.device.DeviceSettings.Constants;
 import com.yaap.device.DeviceSettings.Utils;
@@ -28,9 +26,7 @@ import com.yaap.device.DeviceSettings.Utils;
 public class DCModeSwitch {
 
     private static final String FILE = "/sys/devices/platform/soc/soc:qcom,dsi-display-primary/dc_dim";
-    
-    public static final String ACTION_DCMODE_CHANGED = "com.yaap.device.DeviceSettings.ModeSwitch.DCMODE_CHANGED";
-    public static final String EXTRA_DCMODE_STATE = "enabled";
+
     public static final String KEY_DC_SWITCH = "dc";
 
     public static String getFile() {
@@ -52,9 +48,5 @@ public class DCModeSwitch {
         Utils.writeValue(getFile(), enabled ? "1" : "0");
         SharedPreferences prefs = Constants.getDESharedPrefs(context);
         prefs.edit().putBoolean(KEY_DC_SWITCH, enabled).commit();
-        Intent intent = new Intent(ACTION_DCMODE_CHANGED);
-        intent.putExtra(EXTRA_DCMODE_STATE, enabled);
-        intent.setFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY);
-        context.sendBroadcastAsUser(intent, UserHandle.CURRENT);
     }
 }

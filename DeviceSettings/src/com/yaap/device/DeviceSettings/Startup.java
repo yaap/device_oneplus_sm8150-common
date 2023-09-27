@@ -94,6 +94,12 @@ public class Startup extends BroadcastReceiver {
         }
 
         // reset prefs that reflect a state that does not retain a reboot
-        dePrefs.edit().remove(PREF_KEY_FPS_STATE).commit();
+        Map<String,?> keys = dePrefs.getAll();
+        for (Map.Entry<String,?> entry : keys.entrySet()) {
+            final String key = entry.getKey();
+            if (sKeyFileMap.containsKey(key)) continue;
+            if (KEY_MIGRATION_DONE.equals(key)) continue;
+            dePrefs.edit().remove(key).commit();
+        }
     }
 }
