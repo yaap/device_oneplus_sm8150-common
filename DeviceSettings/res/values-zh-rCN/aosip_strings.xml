@@ -126,4 +126,11 @@
      <string name="dc_schedule_custom">自定义时间</string>
      <string name="dc_dim_schedule_sunset">日落</string>
      <string name="dc_dim_schedule_sunrise">日出</string>
+
+    <!-- Reading mode tile -->
+    <string name="reading_mode_title">阅读模式</string>
+    <string name="reading_mode_summary">静态亮度和低刷新率可降低半静态显示场景的功耗</string>
+    <string name="off">关闭</string>
+    <string name="enabled">开启</string>
+    <string name="enabled_high">开启 (高亮度)</string>
 </resources>
