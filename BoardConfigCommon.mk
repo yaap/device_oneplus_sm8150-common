@@ -115,8 +115,9 @@ ODM_MANIFEST_FILES += $(VENDOR_PATH)/manifest-qva.xml
 TARGET_INIT_VENDOR_LIB := //$(VENDOR_PATH):libinit_oneplus-sm8150
 TARGET_RECOVERY_DEVICE_MODULES := libinit_oneplus-sm8150
 
-# Disable sparse for ext images
+# Disable sparse on all filesystem images
 TARGET_USERIMAGES_SPARSE_EXT_DISABLED := true
+TARGET_USERIMAGES_SPARSE_EROFS_DISABLED := true
 
 # Metadata
 BOARD_USES_METADATA_PARTITION := true
