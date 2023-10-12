@@ -361,6 +361,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.power-service-qti
 
+#Protobuf compat
+PRODUCT_PACKAGES += \
+    libprotobuf-cpp-lite-3.9.1-vendorcompat
+
 # QMI
 PRODUCT_PACKAGES += \
     libjson \
