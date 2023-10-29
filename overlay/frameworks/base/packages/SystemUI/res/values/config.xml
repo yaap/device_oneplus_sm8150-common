@@ -37,6 +37,4 @@
      sensor will be delayed when the device first enters dozing but the device has not entered its
      low powered state yet. -->
     <bool name="doze_long_press_uses_prox">false</bool>
-
-    <integer name="config_udfpsEnrollProgressBar" translatable="false">100</integer>
 </resources>
