@@ -135,6 +135,9 @@ public class TouchscreenGestureSettings extends CollapsingToolbarBaseActivity
                 if (!manager.setTouchscreenGestureEnabled(mGesture, action > 0)) {
                     return false;
                 }
+                final SharedPreferences.Editor editor = Constants.getDESharedPrefs(mContext).edit();
+                editor.putString(getKey(), String.valueOf(newValue));
+                editor.apply();
                 return super.callChangeListener(newValue);
             }
 
