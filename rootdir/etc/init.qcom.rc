@@ -28,6 +28,7 @@
 import /vendor/etc/init/hw/init.oem.rc
 import /vendor/etc/init/hw/init.qcom.usb.rc
 import /vendor/etc/init/hw/init.target.rc
+import /vendor/etc/init/hw/init.op.display.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
