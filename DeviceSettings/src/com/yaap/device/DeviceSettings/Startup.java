@@ -20,11 +20,6 @@ package com.yaap.device.DeviceSettings;
 import static android.content.Intent.ACTION_BOOT_COMPLETED;
 import static android.content.Intent.ACTION_LOCKED_BOOT_COMPLETED;
 
-import static com.yaap.device.DeviceSettings.DeviceSettings.KEY_SRGB_SWITCH;
-import static com.yaap.device.DeviceSettings.DeviceSettings.KEY_DCI_SWITCH;
-import static com.yaap.device.DeviceSettings.DeviceSettings.KEY_WIDECOLOR_SWITCH;
-import static com.yaap.device.DeviceSettings.DeviceSettings.KEY_NATURAL_SWITCH;
-import static com.yaap.device.DeviceSettings.DeviceSettings.KEY_VIVID_SWITCH;
 import static com.yaap.device.DeviceSettings.FPSInfoService.PREF_KEY_FPS_STATE;
 import static com.yaap.device.DeviceSettings.ModeSwitch.DCModeSwitch.KEY_DC_SWITCH;
 
@@ -46,13 +41,7 @@ public class Startup extends BroadcastReceiver {
 
     private static final Map<String, String> sKeyFileMap = Map.of(
         // DC Dimming
-        KEY_DC_SWITCH, DCModeSwitch.getFile(),
-        // Panel modes
-        KEY_SRGB_SWITCH, SRGBModeSwitch.getFile(),
-        KEY_DCI_SWITCH, DCIModeSwitch.getFile(),
-        KEY_WIDECOLOR_SWITCH, WideColorModeSwitch.getFile(),
-        KEY_NATURAL_SWITCH, NaturalModeSwitch.getFile(),
-        KEY_VIVID_SWITCH, VividModeSwitch.getFile()
+        KEY_DC_SWITCH, DCModeSwitch.getFile()
     );
 
     private void restore(String file, boolean enabled) {
