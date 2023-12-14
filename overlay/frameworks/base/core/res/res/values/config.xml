@@ -544,10 +544,6 @@
          Exempted from privacy indicators. -->
      <string name="config_systemTelephonyPackage" translatable="false">com.qualcomm.qti.cne</string>
 
-    <!-- Default refresh rate in the zone defined by brightness and ambient thresholds.
-         If non-positive, then the refresh rate is unchanged even if thresholds are configured. -->
-    <integer name="config_defaultRefreshRateInZone">90</integer>
-
     <!-- Type of the udfps long press sensor. Empty if long press is not supported. -->
     <string name="config_dozeUdfpsLongPressSensorType" translatable="false">org.yaap.sensor.udfps</string>
 
@@ -562,5 +558,4 @@
 
     <!-- Maximum strength, in percentage, supported by bright color reduction. -->
     <integer name="config_reduceBrightColorsStrengthMax">120</integer>
-
 </resources>
