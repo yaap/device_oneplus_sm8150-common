@@ -557,5 +557,5 @@
     <string name="config_displayLightSensorType">"android.sensor.light"</string>
 
     <!-- Maximum strength, in percentage, supported by bright color reduction. -->
-    <integer name="config_reduceBrightColorsStrengthMax">120</integer>
+    <integer name="config_reduceBrightColorsStrengthMax">80</integer>
 </resources>
