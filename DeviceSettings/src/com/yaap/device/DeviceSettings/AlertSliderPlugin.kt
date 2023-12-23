@@ -2,6 +2,7 @@
  * Copyright (C) 2019 CypherOS
  * Copyright (C) 2014-2020 Paranoid Android
  * Copyright (C) 2023 The LineageOS Project
+ * Copyright (C) 2023 Yet Another AOSP Project
  * SPDX-License-Identifier: Apache-2.0
  */
 package com.yaap.device.DeviceSettings
@@ -25,6 +26,7 @@ class AlertSliderPlugin : OverlayPlugin {
     private lateinit var pluginContext: Context
     private lateinit var handler: NotificationHandler
     private lateinit var ambientConfig: AmbientDisplayConfiguration
+    private val dialogLock = Any()
 
     private data class NotificationInfo(
         val position: Int,
@@ -35,16 +37,18 @@ class AlertSliderPlugin : OverlayPlugin {
         override fun onReceive(context: Context, intent: Intent) {
             when (intent.action) {
                 Constants.SLIDER_UPDATE_ACTION -> {
-                    val ringer = intent.getIntExtra("mode", NONE)
-                        .takeIf { it != NONE } ?: return
+                    synchronized (dialogLock) {
+                        val ringer = intent.getIntExtra("mode", NONE)
+                            .takeIf { it != NONE } ?: return
 
-                    handler.obtainMessage(
-                        MSG_DIALOG_UPDATE, NotificationInfo(
-                            intent.getIntExtra("position", Constants.POSITION_BOTTOM),
-                            ringer
-                        )
-                    ).sendToTarget()
-                    handler.sendEmptyMessage(MSG_DIALOG_SHOW)
+                        handler.obtainMessage(
+                            MSG_DIALOG_UPDATE, NotificationInfo(
+                                intent.getIntExtra("position", Constants.POSITION_BOTTOM),
+                                ringer
+                            )
+                        ).sendToTarget()
+                        handler.sendEmptyMessage(MSG_DIALOG_SHOW)
+                    }
                 }
             }
         }
@@ -67,24 +71,28 @@ class AlertSliderPlugin : OverlayPlugin {
     private inner class NotificationHandler(private val context: Context) : Handler(Looper.getMainLooper()) {
         private var dialog = AlertSliderDialog(context)
         private var currUIMode = context.getResources().getConfiguration().uiMode
+        private var currRotation = context.getDisplay().getRotation()
         private var showing = false
             set(value) {
-                if (field != value) {
-                    // Remove pending messages
-                    removeMessages(MSG_DIALOG_SHOW)
-                    removeMessages(MSG_DIALOG_DISMISS)
+                synchronized (dialogLock) {
+                    if (field != value) {
+                        // Remove pending messages
+                        removeMessages(MSG_DIALOG_SHOW)
+                        removeMessages(MSG_DIALOG_DISMISS)
+                        removeMessages(MSG_DIALOG_RESET)
+                        removeMessages(MSG_DIALOG_UPDATE)
 
-                    // Show/hide dialog
-                    if (value) {
-                        handleResetTimeout()
-                        handleDoze()
-                        dialog.show()
-                    } else {
-                        dialog.dismiss()
+                        // Show/hide dialog
+                        if (value) {
+                            handleResetTimeout()
+                            handleDoze()
+                            dialog.show()
+                        } else {
+                            dialog.dismiss()
+                        }
                     }
+                    field = value
                 }
-
-                field = value
             }
 
         override fun handleMessage(msg: Message) = when (msg.what) {
@@ -104,19 +112,20 @@ class AlertSliderPlugin : OverlayPlugin {
         }
 
         private fun handleResetTimeout() {
-            removeMessages(MSG_DIALOG_DISMISS)
-            sendMessageDelayed(
-                handler.obtainMessage(MSG_DIALOG_DISMISS, MSG_DIALOG_RESET, 0), DIALOG_TIMEOUT
-            )
+            synchronized (dialogLock) {
+                removeMessages(MSG_DIALOG_DISMISS)
+                sendMessageDelayed(
+                    handler.obtainMessage(MSG_DIALOG_DISMISS, MSG_DIALOG_RESET, 0), DIALOG_TIMEOUT
+                )
+            }
         }
 
         private fun handleUpdate(info: NotificationInfo) {
-            if (maybeRemake()) {
-                handleShow()
-                return
+            synchronized (dialogLock) {
+                if (maybeRemake()) showing = true
+                handleDoze()
+                dialog.setState(info.position, info.mode)
             }
-            handleDoze()
-            dialog.setState(info.position, info.mode)
         }
 
         private fun handleDoze() {
@@ -127,15 +136,14 @@ class AlertSliderPlugin : OverlayPlugin {
         }
 
         private fun maybeRemake(): Boolean {
-            // Remake if theme changed
+            // Remake if theme changed or rotation
             val uiMode = context.getResources().getConfiguration().uiMode
-            if (uiMode != currUIMode) {
-                currUIMode = uiMode
-                // Remove pending messages
-                removeMessages(MSG_DIALOG_SHOW)
-                removeMessages(MSG_DIALOG_DISMISS)
-                dialog.dismiss()
+            val rotation = context.getDisplay().getRotation()
+            if (uiMode != currUIMode || rotation != currRotation) {
+                showing = false
                 dialog = AlertSliderDialog(context)
+                currUIMode = uiMode
+                currRotation = rotation
                 return true
             }
             return false

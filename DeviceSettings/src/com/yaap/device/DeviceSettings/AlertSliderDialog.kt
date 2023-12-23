@@ -2,6 +2,7 @@
  * Copyright (C) 2019 CypherOS
  * Copyright (C) 2014-2020 Paranoid Android
  * Copyright (C) 2023 The LineageOS Project
+ * Copyright (C) 2023 Yet Another AOSP Project
  * SPDX-License-Identifier: Apache-2.0
  */
 
@@ -14,6 +15,7 @@ import android.graphics.PixelFormat
 import android.graphics.drawable.ColorDrawable
 import android.media.AudioManager
 import android.view.Gravity
+import android.view.Surface
 import android.view.ViewGroup
 import android.view.Window
 import android.view.WindowManager
@@ -26,13 +28,21 @@ import com.yaap.device.DeviceSettings.R
 /**
  * View with some logging to show that its being run.
  */
-class AlertSliderDialog(context: Context) : Dialog(context, R.style.alert_slider_theme) {
+class AlertSliderDialog(private var context: Context) : Dialog(context, R.style.alert_slider_theme) {
     private val dialogView by lazy { findViewById<LinearLayout>(R.id.alert_slider_dialog) }
     private val frameView by lazy { findViewById<ViewGroup>(R.id.alert_slider_view) }
     private val iconView by lazy { findViewById<ImageView>(R.id.alert_slider_icon) }
     private val textView by lazy { findViewById<TextView>(R.id.alert_slider_text) }
 
+    private val rotation: Int = context.getDisplay().getRotation()
+    private val isLand: Boolean = rotation != Surface.ROTATION_0
+
+    private var length: Int = 0
+    private var xPos: Int = 0
+    private var yPos: Int = 0
+
     init {
+        // window init
         window!!.requestFeature(Window.FEATURE_NO_TITLE)
         window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         window.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
@@ -45,7 +55,8 @@ class AlertSliderDialog(context: Context) : Dialog(context, R.style.alert_slider
         window.addPrivateFlags(WindowManager.LayoutParams.PRIVATE_FLAG_TRUSTED_OVERLAY)
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
         window.setType(WindowManager.LayoutParams.TYPE_VOLUME_OVERLAY)
-        window.attributes = window.attributes.apply {
+
+        window!!.attributes = window.attributes.apply {
             format = PixelFormat.TRANSLUCENT
             layoutInDisplayCutoutMode =
                 WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS
@@ -54,56 +65,103 @@ class AlertSliderDialog(context: Context) : Dialog(context, R.style.alert_slider
 
         setCanceledOnTouchOutside(false)
         setContentView(R.layout.alert_slider_dialog)
+
+        // position calculations
+        val fraction = context.resources.getFraction(R.fraction.alert_slider_dialog_y, 1, 1)
+        val widthPixels = context.resources.displayMetrics.widthPixels
+        val heightPixels = context.resources.displayMetrics.heightPixels
+        val pads = dialogView.paddingTop * 2 // equal paddings in all 4 directions
+        length = if (isLand) context.resources.getDimension(R.dimen.alert_slider_dialog_width).toInt()
+                 else context.resources.getDimension(R.dimen.alert_slider_dialog_height).toInt()
+        val hv = (length + pads) * 0.5
+
+        xPos = if (isLand) (widthPixels * fraction - hv).toInt()
+               else widthPixels / 100
+        yPos = if (isLand) 0
+               else (heightPixels * fraction - hv).toInt()
+
+        window!!.attributes = window.attributes.apply {
+            gravity = when(rotation) {
+                Surface.ROTATION_0 -> (Gravity.TOP or Gravity.RIGHT)
+                Surface.ROTATION_90 -> (Gravity.TOP or Gravity.LEFT)
+                Surface.ROTATION_270 -> (Gravity.BOTTOM or Gravity.RIGHT)
+                else -> (Gravity.TOP or Gravity.RIGHT)
+            }
+
+            x = xPos
+            y = yPos
+        }
     }
 
+    @Synchronized
     fun setState(position: Int, ringerMode: Int) {
-        window!!.attributes = window.attributes.apply {
-            gravity = Gravity.TOP or Gravity.RIGHT
-
-            val f = context.resources.getFraction(R.fraction.alert_slider_dialog_y, 1, 1)
-            val h = context.resources.getDimension(R.dimen.alert_slider_dialog_height).toInt()
-            val hv = h + dialogView.paddingTop + dialogView.paddingBottom
-
-            x = context.resources.displayMetrics.widthPixels / 100
-            y = ((context.resources.displayMetrics.heightPixels * f) - (hv * 0.5)).toInt()
-
-            when (position) {
-                Constants.POSITION_TOP -> {
-                    y -= (h * 0.5).toInt()
-                }
-                Constants.POSITION_BOTTOM -> {
-                    y += (h * 0.5).toInt()
-                }
-                else -> {}
+        frameView.setBackgroundResource(
+            when (rotation) {
+                Surface.ROTATION_90 -> sBackgroundResMap90.get(position)!!
+                Surface.ROTATION_270 -> sBackgroundResMap270.get(position)!!
+                else -> sBackgroundResMap.get(position)!! // Surface.ROTATION_0
             }
+        )
+
+        sIconResMap.get(ringerMode)?.let {
+            iconView.setImageResource(it)
+        } ?: {
+            iconView.setImageResource(R.drawable.ic_info)
         }
 
-        frameView.setBackgroundResource(when (position) {
-            Constants.POSITION_TOP -> R.drawable.alert_slider_top
-            Constants.POSITION_MIDDLE -> R.drawable.alert_slider_middle
-            else -> R.drawable.alert_slider_bottom
-        })
+        sTextResMap.get(ringerMode)?.let {
+            textView.setText(it)
+        } ?: {
+            textView.setText(R.string.notification_slider_mode_none)
+        }
 
-        iconView.setImageResource(when (ringerMode) {
-            Constants.KEY_VALUE_SILENT -> R.drawable.ic_volume_ringer_mute
-            Constants.KEY_VALUE_VIBRATE -> R.drawable.ic_volume_ringer_vibrate
-            Constants.KEY_VALUE_NORMAL -> R.drawable.ic_volume_ringer
-            Constants.KEY_VALUE_PRIORTY_ONLY -> R.drawable.ic_notifications_alert
-            Constants.KEY_VALUE_TOTAL_SILENCE -> R.drawable.ic_notifications_silence
-            else -> R.drawable.ic_info
-        })
+        window!!.attributes = window.attributes.apply {
+            val delta = length * when(position) {
+                Constants.POSITION_TOP -> -1
+                Constants.POSITION_BOTTOM -> 1
+                else -> 0 // Constants.POSITION_MIDDLE
+            }
 
-        textView.setText(when (ringerMode) {
-            Constants.KEY_VALUE_SILENT -> R.string.notification_slider_mode_silent
-            Constants.KEY_VALUE_VIBRATE -> R.string.notification_slider_mode_vibrate
-            Constants.KEY_VALUE_NORMAL -> R.string.notification_slider_mode_none
-            Constants.KEY_VALUE_PRIORTY_ONLY -> R.string.notification_slider_mode_priority_only
-            Constants.KEY_VALUE_TOTAL_SILENCE -> R.string.notification_slider_mode_total_silence
-            else -> R.string.notification_slider_mode_none
-        })
+            if (isLand) x = xPos + delta
+            else y = yPos + delta
+        }
     }
 
     companion object {
         private const val TAG = "AlertSliderDialog"
+
+        private val sBackgroundResMap = hashMapOf(
+            Constants.POSITION_TOP to R.drawable.alert_slider_top,
+            Constants.POSITION_MIDDLE to R.drawable.alert_slider_middle,
+            Constants.POSITION_BOTTOM to R.drawable.alert_slider_bottom
+        )
+
+        private val sBackgroundResMap90 = hashMapOf(
+            Constants.POSITION_TOP to R.drawable.alert_slider_top_90,
+            Constants.POSITION_MIDDLE to R.drawable.alert_slider_middle,
+            Constants.POSITION_BOTTOM to R.drawable.alert_slider_bottom_90
+        )
+
+        private val sBackgroundResMap270 = hashMapOf(
+            Constants.POSITION_TOP to R.drawable.alert_slider_top_270,
+            Constants.POSITION_MIDDLE to R.drawable.alert_slider_middle,
+            Constants.POSITION_BOTTOM to R.drawable.alert_slider_bottom_270
+        )
+
+        private val sIconResMap = hashMapOf(
+            Constants.KEY_VALUE_SILENT to R.drawable.ic_volume_ringer_mute,
+            Constants.KEY_VALUE_VIBRATE to R.drawable.ic_volume_ringer_vibrate,
+            Constants.KEY_VALUE_NORMAL to R.drawable.ic_volume_ringer,
+            Constants.KEY_VALUE_PRIORTY_ONLY to R.drawable.ic_notifications_alert,
+            Constants.KEY_VALUE_TOTAL_SILENCE to R.drawable.ic_notifications_silence
+        )
+
+        private val sTextResMap = hashMapOf(
+            Constants.KEY_VALUE_SILENT to R.string.notification_slider_mode_silent,
+            Constants.KEY_VALUE_VIBRATE to R.string.notification_slider_mode_vibrate,
+            Constants.KEY_VALUE_NORMAL to R.string.notification_slider_mode_none,
+            Constants.KEY_VALUE_PRIORTY_ONLY to R.string.notification_slider_mode_priority_only,
+            Constants.KEY_VALUE_TOTAL_SILENCE to R.string.notification_slider_mode_total_silence
+        )
     }
 }
