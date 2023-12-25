@@ -16,7 +16,7 @@ import android.hardware.display.AmbientDisplayConfiguration
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
-import android.os.UserHandle;
+import android.os.UserHandle
 import android.view.View
 import com.android.systemui.plugins.OverlayPlugin
 import com.android.systemui.plugins.annotations.Requires
@@ -80,7 +80,6 @@ class AlertSliderPlugin : OverlayPlugin {
                         removeMessages(MSG_DIALOG_SHOW)
                         removeMessages(MSG_DIALOG_DISMISS)
                         removeMessages(MSG_DIALOG_RESET)
-                        removeMessages(MSG_DIALOG_UPDATE)
 
                         // Show/hide dialog
                         if (value) {
@@ -123,6 +122,7 @@ class AlertSliderPlugin : OverlayPlugin {
         private fun handleUpdate(info: NotificationInfo) {
             synchronized (dialogLock) {
                 if (maybeRemake()) showing = true
+                handleResetTimeout()
                 handleDoze()
                 dialog.setState(info.position, info.mode)
             }

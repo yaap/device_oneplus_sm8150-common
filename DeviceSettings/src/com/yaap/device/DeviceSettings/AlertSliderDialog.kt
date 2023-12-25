@@ -8,12 +8,16 @@
 
 package com.yaap.device.DeviceSettings
 
+import android.animation.Animator
+import android.animation.PropertyValuesHolder
+import android.animation.ValueAnimator
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.PixelFormat
 import android.graphics.drawable.ColorDrawable
 import android.media.AudioManager
+import android.view.animation.OvershootInterpolator
 import android.view.Gravity
 import android.view.Surface
 import android.view.ViewGroup
@@ -40,6 +44,9 @@ class AlertSliderDialog(private var context: Context) : Dialog(context, R.style.
     private var length: Int = 0
     private var xPos: Int = 0
     private var yPos: Int = 0
+
+    private var isAnimating = false
+    private var animator = ValueAnimator()
 
     init {
         // window init
@@ -95,14 +102,59 @@ class AlertSliderDialog(private var context: Context) : Dialog(context, R.style.
 
     @Synchronized
     fun setState(position: Int, ringerMode: Int) {
-        frameView.setBackgroundResource(
-            when (rotation) {
-                Surface.ROTATION_90 -> sBackgroundResMap90.get(position)!!
-                Surface.ROTATION_270 -> sBackgroundResMap270.get(position)!!
-                else -> sBackgroundResMap.get(position)!! // Surface.ROTATION_0
-            }
-        )
+        val delta = length * when(position) {
+            Constants.POSITION_TOP -> -1
+            Constants.POSITION_BOTTOM -> 1
+            else -> 0 // Constants.POSITION_MIDDLE
+        }
+        var endX = xPos
+        var endY = yPos
+        if (isLand) endX += delta
+        else endY += delta
+        if (isShowing()) {
+            animatePosition(endX, endY, position, ringerMode)
+        } else {
+            applyOnStart(ringerMode)
+            applyOnEnd(endX, endY, position)
+        }
+    }
 
+    @Synchronized
+    private fun animatePosition(endX: Int, endY: Int, position: Int, ringerMode: Int) {
+        if (isAnimating) animator.cancel()
+        animator = ValueAnimator()
+        animator.setDuration(100)
+        animator.setInterpolator(OvershootInterpolator())
+        animator.setValues(
+            PropertyValuesHolder.ofInt("x", window!!.attributes.x, endX),
+            PropertyValuesHolder.ofInt("y", window!!.attributes.y, endY)
+        )
+        animator.addUpdateListener(object : ValueAnimator.AnimatorUpdateListener {
+            override fun onAnimationUpdate(animation: ValueAnimator) {
+                window!!.attributes = window.attributes.apply {
+                    x = animation.getAnimatedValue("x") as Int
+                    y = animation.getAnimatedValue("y") as Int
+                }
+            }
+        })
+        animator.addListener(object : Animator.AnimatorListener {
+            override fun onAnimationStart(animation: Animator) {
+                isAnimating = true
+                applyOnStart(ringerMode)
+            }
+
+            override fun onAnimationEnd(animation: Animator) {
+                applyOnEnd(endX, endY, position)
+                isAnimating = false
+            }
+
+            override fun onAnimationCancel(animation: Animator) { }
+            override fun onAnimationRepeat(animation: Animator) { }
+        })
+        animator.start()
+    }
+
+    private fun applyOnStart(ringerMode: Int) {
         sIconResMap.get(ringerMode)?.let {
             iconView.setImageResource(it)
         } ?: {
@@ -114,16 +166,19 @@ class AlertSliderDialog(private var context: Context) : Dialog(context, R.style.
         } ?: {
             textView.setText(R.string.notification_slider_mode_none)
         }
+    }
 
-        window!!.attributes = window.attributes.apply {
-            val delta = length * when(position) {
-                Constants.POSITION_TOP -> -1
-                Constants.POSITION_BOTTOM -> 1
-                else -> 0 // Constants.POSITION_MIDDLE
+    private fun applyOnEnd(endX: Int, endY: Int, position: Int) {
+        frameView.setBackgroundResource(
+            when (rotation) {
+                Surface.ROTATION_90 -> sBackgroundResMap90.get(position)!!
+                Surface.ROTATION_270 -> sBackgroundResMap270.get(position)!!
+                else -> sBackgroundResMap.get(position)!! // Surface.ROTATION_0
             }
-
-            if (isLand) x = xPos + delta
-            else y = yPos + delta
+        )
+        window!!.attributes = window.attributes.apply {
+            x = endX
+            y = endY
         }
     }
 

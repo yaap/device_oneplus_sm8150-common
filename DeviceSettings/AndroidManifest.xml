@@ -28,6 +28,7 @@
     <protected-broadcast android:name="com.yaap.device.DeviceSettings.UPDATE_SETTINGS" />
     <protected-broadcast android:name="com.yaap.device.DeviceSettings.UPDATE_SLIDER" />
     <protected-broadcast android:name="android.intent.action.SCREEN_CAMERA_GESTURE" />
+    <protected-broadcast android:name="com.android.systemui.doze.pulse" />
 
     <application
         android:icon="@drawable/ic_settings_device"
