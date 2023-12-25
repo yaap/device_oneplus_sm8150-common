@@ -15,13 +15,10 @@
     <string name="device_title">Настройки OnePlus</string>
     <string name="device_summary">Отрегулируйте настройки устройства OnePlus</string>
     <string name="display_title">Экран</string>
-    <string name="srgb_mode_summary"></string>
-    <string name="srgb_mode_title">Режим sRGB</string>
     <string name="hbm_mode_summary">Включите дисплей ярче, чем обычно допустимая максимальная яркость. Использование в течение длительного периода времени может привести к повреждению дисплея</string>
     <string name="hbm_mode_title">Режим высокой яркости</string>
     <string name="wide_color_mode_title">AMOLED с широкой гаммой</string>
-    <string name="dci_mode_summary"></string>
-    <string name="dci_mode_title">Режим широкой цветовой гаммы DCI-P3</string>
+
     <string name="Night_mode_summary"></string>
     <string name="Night_mode_title">Ночной режим</string>
     <string name="panel_category_title">Режим экрана</string>
@@ -30,13 +27,8 @@
     <string name="tile_panel_mode">Режимы панели</string>
     <string name="dc_mode_summary">Полезно для людей, чувствительных к ШИМ.\nПобочные эффекты включают усталость глаз, тошноту и мигрень.\nВключение этого параметра приводит к снижению точности отображения цветов.</string>
     <string name="dc_mode_title">DC-Dimming</string>
-     <string name="tile_hbm_mode">Режим повышенной яркости</string>
-    <string name="natural_mode_title">Натуральный</string>
-    <string name="vivid_mode_title">Яркий</string>
-    <string name="panel_mode_info">Отключение режима панели требует перезагрузки</string>
-    <string name="color_mode_balance_red">Сила красного</string>
-    <string name="color_mode_balance_green">Сила зелёного</string>
-    <string name="color_mode_balance_blue">Сила синего</string>
+    <string name="tile_hbm_mode">Режим высокой яркости</string>
+    <string name="tile_dc_mode">DC-Dimming</string>
 
     <!-- Screen off Gestures : Input -->
     <string name="touchscreen_gesture_settings_title">Экранные жесты</string>
@@ -96,8 +88,8 @@
     <string name="notification_slider_mode_total_silence">Полная тишина</string>
     <string name="notification_slider_mode_priority_only">Только важные</string>
     <string name="notification_slider_mode_silent">Без звука</string>
-    <string name="notification_slider_mode_vibrate">Вибрация</string>
-    <string name="notification_slider_mode_none">Нормальный</string>
+    <string name="notification_slider_mode_vibrate">Вибро</string>
+    <string name="notification_slider_mode_none">Звук</string>
     <string name="buttons_dashboard_summary">Параметры слайдера уведомлений</string>
     <string name="slider_mute_media_title">Выключить звук медиа</string>
     <string name="slider_mute_media_summary">Отключает звук медиа, когда слайдер в режиме полной тишины\nПри отключении режима вернутся прежние значения громкости</string>
@@ -112,4 +104,24 @@
     <string name="always_on_camera_dialog_title">Диалоговое окно открытия фронтальной камеры</string>
     <string name="always_on_camera_dialog_summary_on">Всегда спрашивать при включении</string>
     <string name="always_on_camera_dialog_summary_off">Спрашивать только если экран выключен</string>
+
+    <!-- DC Dimming Schedule -->
+    <string name="disabled">Отключен</string>
+    <string name="dc_schedule_title"> Расписание DC-Dimming</string>
+    <string name="dc_dim_auto_mode_title">Расписание</string>
+    <string name="dc_dim_start_time_title">Начало</string>
+    <string name="dc_dim_end_time_title">Окончание</string>
+    <string name="dc_schedule_twilight">Включается от заката до восхода солнца</string>
+    <string name="dc_schedule_mixed_sunset">Включается от заката до времени</string>
+    <string name="dc_schedule_mixed_sunrise">Включается от времени до восхода солнца</string>
+    <string name="dc_schedule_custom">Включается в установленное время</string>
+    <string name="dc_dim_schedule_sunset">Закат солнца</string>
+    <string name="dc_dim_schedule_sunrise">Восход солнца</string>
+
+    <!-- Reading mode tile -->
+    <string name="reading_mode_title">Режим чтения</string>
+    <string name="reading_mode_summary">Режимы статической яркости и низкой частоты обновления для снижения энергопотребления в полустатичных сценариях отображения.</string>
+    <string name="off">Выкл</string>
+    <string name="enabled">Вкл</string>
+    <string name="enabled_high">Вкл (высокая яркость)</string>
 </resources>
