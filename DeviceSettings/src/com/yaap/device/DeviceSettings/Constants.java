@@ -38,6 +38,8 @@ public class Constants {
     private static final String DE_PREF_FILE_NAME = "device_settings";
 
     // Preference keys
+    public static final String NOTIF_DIALOG_ENABLED_KEY = "slider_dialog_enabled";
+    public static final String NOTIF_DIALOG_DOZE_KEY = "slider_doze_enabled";
     public static final String NOTIF_SLIDER_TOP_KEY = "keycode_top_position";
     public static final String NOTIF_SLIDER_MIDDLE_KEY = "keycode_middle_position";
     public static final String NOTIF_SLIDER_BOTTOM_KEY = "keycode_bottom_position";
@@ -122,6 +124,16 @@ public class Constants {
     public static boolean getIsMuteMediaEnabled(Context context) {
         return Settings.System.getIntForUser(context.getContentResolver(),
                 NOTIF_SLIDER_MUTE_MEDIA_KEY, 0, UserHandle.USER_CURRENT) == 1;
+    }
+
+    public static boolean getIsSliderDialogEnabled(Context context) {
+        return Settings.System.getIntForUser(context.getContentResolver(),
+                NOTIF_DIALOG_ENABLED_KEY, 1, UserHandle.USER_CURRENT) == 1;
+    }
+
+    public static boolean getIsSliderDozeEnabled(Context context) {
+        return Settings.System.getIntForUser(context.getContentResolver(),
+                NOTIF_DIALOG_DOZE_KEY, 1, UserHandle.USER_CURRENT) == 1;
     }
 
     public static SharedPreferences getDESharedPrefs(Context context) {

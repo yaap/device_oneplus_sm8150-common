@@ -137,6 +137,8 @@ class AlertSliderPlugin : OverlayPlugin {
         private fun handleDoze() {
             if (!ambientConfig.pulseOnNotificationEnabled(UserHandle.USER_CURRENT))
                 return
+            if (!Constants.getIsSliderDozeEnabled(context))
+                return
             val intent = Intent("com.android.systemui.doze.pulse")
             context.sendBroadcastAsUser(intent, UserHandle.CURRENT)
         }

@@ -28,6 +28,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.ContentObserver;
+import android.hardware.display.AmbientDisplayConfiguration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -62,12 +63,16 @@ public class DeviceSettings extends PreferenceFragment implements
 
     private static final String DC_SCHEDULE_KEY = "dc_schedule";
 
+    private AmbientDisplayConfiguration mAmbientDisplayConfiguration;
+
     private TwoStatePreference mDCModeSwitch;
     private TwoStatePreference mHBMModeSwitch;
     private TwoStatePreference mRefreshRate;
     private SwitchPreference mFpsInfo;
     private SwitchPreference mAlwaysCameraSwitch;
     private SwitchPreference mMuteMediaSwitch;
+    private SwitchPreference mSliderDialogSwitch;
+    private SwitchPreference mSliderDozeSwitch;
     private Preference mDCSchedulePref;
     private ListPreference mReadingMode;
 
@@ -128,6 +133,8 @@ public class DeviceSettings extends PreferenceFragment implements
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.main);
 
+        mAmbientDisplayConfiguration = new AmbientDisplayConfiguration(getContext());
+
         ListPreference mTopKeyPref = findPreference(Constants.NOTIF_SLIDER_TOP_KEY);
         mTopKeyPref.setValueIndex(Constants.getPreferenceInt(getContext(), Constants.NOTIF_SLIDER_TOP_KEY));
         mTopKeyPref.setOnPreferenceChangeListener(this);
@@ -141,6 +148,16 @@ public class DeviceSettings extends PreferenceFragment implements
         mMuteMediaSwitch = findPreference(Constants.NOTIF_SLIDER_MUTE_MEDIA_KEY);
         mMuteMediaSwitch.setChecked(Constants.getIsMuteMediaEnabled(getContext()));
         mMuteMediaSwitch.setOnPreferenceChangeListener(this);
+
+        mSliderDialogSwitch = findPreference(Constants.NOTIF_DIALOG_ENABLED_KEY);
+        mSliderDialogSwitch.setChecked(Constants.getIsSliderDialogEnabled(getContext()));
+        mSliderDialogSwitch.setOnPreferenceChangeListener(this);
+
+        mSliderDozeSwitch = findPreference(Constants.NOTIF_DIALOG_DOZE_KEY);
+        mSliderDozeSwitch.setChecked(Constants.getIsSliderDozeEnabled(getContext()));
+        mSliderDozeSwitch.setOnPreferenceChangeListener(this);
+
+        updateSliderEnablement();
 
         mDCModeSwitch = findPreference(DCModeSwitch.KEY_DC_SWITCH);
         mDCModeSwitch.setEnabled(DCModeSwitch.isSupported());
@@ -232,6 +249,15 @@ public class DeviceSettings extends PreferenceFragment implements
             Boolean enabled = (Boolean) newValue;
             Settings.System.putInt(resolver,
                     Constants.NOTIF_SLIDER_MUTE_MEDIA_KEY, enabled ? 1 : 0);
+        } else if (preference == mSliderDialogSwitch) {
+            Boolean enabled = (Boolean) newValue;
+            Settings.System.putInt(resolver,
+                    Constants.NOTIF_DIALOG_ENABLED_KEY, enabled ? 1 : 0);
+            updateSliderEnablement();
+        } else if (preference == mSliderDozeSwitch) {
+            Boolean enabled = (Boolean) newValue;
+            Settings.System.putInt(resolver,
+                    Constants.NOTIF_DIALOG_DOZE_KEY, enabled ? 1 : 0);
         } else if (preference == mDCModeSwitch) {
             mInternalDCStart = true;
             Boolean enabled = (Boolean) newValue;
@@ -295,5 +321,14 @@ public class DeviceSettings extends PreferenceFragment implements
                 mDCSchedulePref.setSummary(R.string.dc_schedule_mixed_sunrise);
                 break;
         }
+    }
+
+    private void updateSliderEnablement() {
+        if (!mAmbientDisplayConfiguration.pulseOnNotificationEnabled(UserHandle.USER_CURRENT)) {
+            mSliderDozeSwitch.setEnabled(false);
+            mSliderDozeSwitch.setSummary(R.string.slider_doze_enabled_doze_disabled_summary);
+            return;
+        }
+        mSliderDozeSwitch.setEnabled(Constants.getIsSliderDialogEnabled(getContext()));
     }
 }
