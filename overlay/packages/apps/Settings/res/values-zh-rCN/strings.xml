@@ -15,8 +15,8 @@
 -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="panel_mode_natural">自然 sRGB</string>
-    <string name="panel_mode_boosted">增强自然</string>
+    <string name="panel_mode_natural">自然 (sRGB)</string>
+    <string name="panel_mode_boosted">自然（增强）</string>
     <string name="panel_mode_sturated">饱和</string>
     <string name="panel_mode_wide">广色域</string>
 </resources>

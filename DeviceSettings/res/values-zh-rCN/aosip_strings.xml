@@ -15,29 +15,18 @@
      <string name="device_title">一加设置</string>
      <string name="device_summary">调整一加设备的特定设置</string>
      <string name="display_title">显示</string>
-     <string name="srgb_mode_summary"></string>
-     <string name="srgb_mode_title">sRGB</string>
-     <string name="hbm_mode_title">高亮度模式</string>
      <string name="hbm_mode_summary">以最大亮度显示\n长时间使用可能会损坏屏幕</string>
+     <string name="hbm_mode_title">高亮度模式</string>
      <string name="wide_color_mode_title">AMOLED 广色域</string>
-     <string name="dci_mode_summary"></string>
-     <string name="dci_mode_title">DCI-P3</string>
      <string name="Night_mode_summary"></string>
      <string name="Night_mode_title">夜间模式</string>
      <string name="panel_category_title">颜色模式</string>
      <string name="panel_category_summary">校正显示面板颜色</string>
      <string name="off_mode_title">关闭</string>
-     <string name="tile_panel_mode">面板模式</string>
      <string name="dc_mode_summary">适用于对 PWM 敏感的人群\n副作用包括眼疲劳、恶心和偏头痛\n启用此选项会降低显示颜色的准确性</string>
      <string name="dc_mode_title">DC 调光</string>
      <string name="tile_hbm_mode">高亮度模式</string>
      <string name="tile_dc_mode">DC 调光</string>
-     <string name="natural_mode_title">自然</string>
-     <string name="vivid_mode_title">生动</string>
-     <string name="panel_mode_info">关闭面板颜色模式需要重新启动</string>
-     <string name="color_mode_balance_red">红色强度</string>
-     <string name="color_mode_balance_green">绿色强度</string>
-     <string name="color_mode_balance_blue">蓝色强度</string>
 
      <!-- Screen off Gestures : Input -->
      <string name="touchscreen_gesture_settings_title">屏幕手势</string>
@@ -102,6 +91,11 @@
      <string name="buttons_dashboard_summary">三段式开关设置</string>
      <string name="slider_mute_media_title">媒体静音</string>
      <string name="slider_mute_media_summary">切换至静音时也静音媒体音量</string>
+    <string name="slider_dialog_enabled_title">位置提示</string>
+    <string name="slider_dialog_enabled_summary">三段式开关切换到对应模式时提示</string>
+    <string name="slider_doze_enabled_title">息屏位置提示</string>
+    <string name="slider_doze_enabled_summary">将在环境显示中显示提示</string>
+    <string name="slider_doze_enabled_doze_disabled_summary">环境显示已在系统中关闭</string>
 
      <!-- Vibration slider -->
      <string name="category_vibrator">振动</string>

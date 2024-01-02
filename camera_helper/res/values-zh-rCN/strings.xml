@@ -20,8 +20,12 @@
     <string name="retry">重试</string>
     <string name="warning">警告</string>
     <string name="free_fall_detected_title">检测到自由落体</string>
-    <string name="free_fall_detected_message">为了保护前摄，已强制收回。再次开启前摄吗？</string>
+    <string name="free_fall_detected_message">为了保护前摄，已强制收回。再次开启吗？</string>
     <string name="motor_cannot_go_down_message">前摄无法收回，请确认没有任何阻挡</string>
     <string name="motor_cannot_go_up_message">前摄无法升起，请确认没有任何阻挡</string>
     <string name="motor_press_message">强行按下前摄可能会导致电机损坏，请不要这样做</string>
+    <!-- Popup camera dialog -->
+    <string name="popup_camera_dialog_message">升起前摄吗？</string>
+    <string name="popup_camera_dialog_no">不要</string>
+    <string name="popup_camera_dialog_raise">好的</string>
 </resources>
