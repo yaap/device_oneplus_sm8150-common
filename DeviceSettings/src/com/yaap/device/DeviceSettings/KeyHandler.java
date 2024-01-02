@@ -123,7 +123,8 @@ public class KeyHandler implements DeviceKeyHandler {
                         Math.round((float)max * (float)last / 100f), AudioManager.FLAG_SHOW_UI);
             }
         }
-        sendNotification(scanCode, keyCodeValue);
+        if (Constants.getIsSliderDialogEnabled(mContext))
+            sendNotification(scanCode, keyCodeValue);
 
         mPrevKeyCode = keyCodeValue;
         return null;
