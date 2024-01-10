@@ -42,11 +42,14 @@
 
         <TextView
             android:id="@+id/alert_slider_text"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:fontFamily="@*android:string/config_headlineFontFamilyMedium"
             android:gravity="center_vertical"
             android:textColor="?android:attr/textColorPrimary"
-            android:textSize="@dimen/alert_slider_text_size" />
+            android:autoSizeTextType="uniform"
+            android:autoSizeMinTextSize="4sp"
+            android:autoSizeMaxTextSize="@dimen/alert_slider_text_size"
+            android:breakStrategy="simple" />
     </LinearLayout>
 </LinearLayout>
