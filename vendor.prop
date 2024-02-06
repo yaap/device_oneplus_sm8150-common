@@ -124,6 +124,7 @@ debug.sf.late.app.duration=20500000
 debug.sf.use_phase_offsets_as_durations=1
 persist.demo.hdmirotationlock=false
 debug.sf.predict_hwc_composition_strategy=0
+debug.sf.enable_gl_backpressure=0
 debug.sf.disable_backpressure=1
 persist.sys.sf.color_saturation=1.0
 renderthread.skia.reduceopstasksplitting=true
