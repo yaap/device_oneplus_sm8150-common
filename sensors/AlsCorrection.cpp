@@ -45,7 +45,7 @@ void AlsCorrection::init() {
     blue_max_lux = get("/mnt/vendor/persist/engineermode/blue_max_lux", 0);
     white_max_lux = get("/mnt/vendor/persist/engineermode/white_max_lux", 0);
     als_bias = get("/mnt/vendor/persist/engineermode/als_bias", 0);
-    max_brightness = get("/sys/class/backlight/panel0-backlight/max_brightness", 255);
+    max_brightness = get("/sys/class/backlight/panel0-backlight/max_brightness", 2047);
     ALOGV("max r = %d, max g = %d, max b = %d", red_max_lux, green_max_lux, blue_max_lux);
 }
 
