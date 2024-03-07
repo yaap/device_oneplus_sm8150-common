@@ -50,24 +50,26 @@ class AlertSliderDialog(private var context: Context) : Dialog(context, R.style.
 
     init {
         // window init
-        window!!.requestFeature(Window.FEATURE_NO_TITLE)
-        window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        window.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
-        window.addFlags(
-            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
-                    or WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
-                    or WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH
-                    or WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED
-        )
-        window.addPrivateFlags(WindowManager.LayoutParams.PRIVATE_FLAG_TRUSTED_OVERLAY)
-        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
-        window.setType(WindowManager.LayoutParams.TYPE_VOLUME_OVERLAY)
+        getWindow()?.let {
+            it.requestFeature(Window.FEATURE_NO_TITLE)
+            it.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            it.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
+            it.addFlags(
+                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                        or WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+                        or WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH
+                        or WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED
+            )
+            it.addPrivateFlags(WindowManager.LayoutParams.PRIVATE_FLAG_TRUSTED_OVERLAY)
+            it.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
+            it.setType(WindowManager.LayoutParams.TYPE_VOLUME_OVERLAY)
 
-        window!!.attributes = window.attributes.apply {
-            format = PixelFormat.TRANSLUCENT
-            layoutInDisplayCutoutMode =
-                WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS
-            title = TAG
+            it.attributes = it.attributes.apply {
+                format = PixelFormat.TRANSLUCENT
+                layoutInDisplayCutoutMode =
+                    WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS
+                title = TAG
+            }
         }
 
         setCanceledOnTouchOutside(false)
@@ -77,7 +79,7 @@ class AlertSliderDialog(private var context: Context) : Dialog(context, R.style.
         val fraction = context.resources.getFraction(R.fraction.alert_slider_dialog_y, 1, 1)
         val widthPixels = context.resources.displayMetrics.widthPixels
         val heightPixels = context.resources.displayMetrics.heightPixels
-        val pads = dialogView.paddingTop * 2 // equal paddings in all 4 directions
+        val pads = dialogView!!.paddingTop * 2 // equal paddings in all 4 directions
         length = if (isLand) context.resources.getDimension(R.dimen.alert_slider_dialog_width).toInt()
                  else context.resources.getDimension(R.dimen.alert_slider_dialog_height).toInt()
         val hv = (length + pads) * 0.5
@@ -87,16 +89,18 @@ class AlertSliderDialog(private var context: Context) : Dialog(context, R.style.
         yPos = if (isLand) 0
                else (heightPixels * fraction - hv).toInt()
 
-        window!!.attributes = window.attributes.apply {
-            gravity = when(rotation) {
-                Surface.ROTATION_0 -> (Gravity.TOP or Gravity.RIGHT)
-                Surface.ROTATION_90 -> (Gravity.TOP or Gravity.LEFT)
-                Surface.ROTATION_270 -> (Gravity.BOTTOM or Gravity.RIGHT)
-                else -> (Gravity.TOP or Gravity.RIGHT)
-            }
+        getWindow()?.let {
+            it.attributes = it.attributes.apply {
+                gravity = when(rotation) {
+                    Surface.ROTATION_0 -> (Gravity.TOP or Gravity.RIGHT)
+                    Surface.ROTATION_90 -> (Gravity.TOP or Gravity.LEFT)
+                    Surface.ROTATION_270 -> (Gravity.BOTTOM or Gravity.RIGHT)
+                    else -> (Gravity.TOP or Gravity.RIGHT)
+                }
 
-            x = xPos
-            y = yPos
+                x = xPos
+                y = yPos
+            }
         }
     }
 
@@ -125,15 +129,19 @@ class AlertSliderDialog(private var context: Context) : Dialog(context, R.style.
         animator = ValueAnimator()
         animator.setDuration(100)
         animator.setInterpolator(OvershootInterpolator())
-        animator.setValues(
-            PropertyValuesHolder.ofInt("x", window!!.attributes.x, endX),
-            PropertyValuesHolder.ofInt("y", window!!.attributes.y, endY)
-        )
+        getWindow()?.let {
+            animator.setValues(
+                PropertyValuesHolder.ofInt("x", it.attributes.x, endX),
+                PropertyValuesHolder.ofInt("y", it.attributes.y, endY)
+            )
+        }
         animator.addUpdateListener(object : ValueAnimator.AnimatorUpdateListener {
             override fun onAnimationUpdate(animation: ValueAnimator) {
-                window!!.attributes = window.attributes.apply {
-                    x = animation.getAnimatedValue("x") as Int
-                    y = animation.getAnimatedValue("y") as Int
+                getWindow()?.let {
+                    it.attributes = it.attributes.apply {
+                        x = animation.getAnimatedValue("x") as Int
+                        y = animation.getAnimatedValue("y") as Int
+                    }
                 }
             }
         })
@@ -156,29 +164,31 @@ class AlertSliderDialog(private var context: Context) : Dialog(context, R.style.
 
     private fun applyOnStart(ringerMode: Int) {
         sIconResMap.get(ringerMode)?.let {
-            iconView.setImageResource(it)
+            iconView!!.setImageResource(it)
         } ?: {
-            iconView.setImageResource(R.drawable.ic_info)
+            iconView!!.setImageResource(R.drawable.ic_info)
         }
 
         sTextResMap.get(ringerMode)?.let {
-            textView.setText(it)
+            textView!!.setText(it)
         } ?: {
-            textView.setText(R.string.notification_slider_mode_none)
+            textView!!.setText(R.string.notification_slider_mode_none)
         }
     }
 
     private fun applyOnEnd(endX: Int, endY: Int, position: Int) {
-        frameView.setBackgroundResource(
+        frameView!!.setBackgroundResource(
             when (rotation) {
                 Surface.ROTATION_90 -> sBackgroundResMap90.get(position)!!
                 Surface.ROTATION_270 -> sBackgroundResMap270.get(position)!!
                 else -> sBackgroundResMap.get(position)!! // Surface.ROTATION_0
             }
         )
-        window!!.attributes = window.attributes.apply {
-            x = endX
-            y = endY
+        getWindow()?.let {
+            it.attributes = it.attributes.apply {
+                x = endX
+                y = endY
+            }
         }
     }
 
