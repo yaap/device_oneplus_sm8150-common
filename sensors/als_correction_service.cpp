@@ -74,7 +74,6 @@ void updateScreenBuffer() {
             ALS_POS_X + ALS_RADIUS, ALS_POS_Y + ALS_RADIUS);
     captureArgs.width = ALS_RADIUS * 2;
     captureArgs.height = ALS_RADIUS * 2;
-    captureArgs.useIdentityTransform = true;
     captureArgs.captureSecureLayers = true;
 
     DisplayState state;
