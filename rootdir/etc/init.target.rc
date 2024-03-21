@@ -131,7 +131,6 @@ on boot
     setprop vendor.usb.dpl.inst.name "dpl"
     setprop vendor.usb.qdss.inst.name "qdss"
     setprop vendor.usb.controller a600000.dwc3
-    setprop sys.usb.configfs 1
 
 #display add 2018/10/19  @lichao_display
     chmod 0666 /sys/class/drm/card0-DSI-1/SRGB
@@ -252,7 +251,6 @@ on property:sys.shutdown.requested=*
 on charger
     start vendor.power_off_alarm
     setprop sys.usb.controller a600000.dwc3
-    setprop sys.usb.configfs 1
 
 service vendor.spdaemon /vendor/bin/spdaemon
     class core
