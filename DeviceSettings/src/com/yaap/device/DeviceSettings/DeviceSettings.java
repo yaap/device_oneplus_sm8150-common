@@ -40,7 +40,7 @@ import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragment;
-import androidx.preference.SwitchPreference;
+import androidx.preference.SwitchPreferenceCompat;
 import androidx.preference.TwoStatePreference;
 
 import com.yaap.device.DeviceSettings.ModeSwitch.DCModeSwitch;
@@ -68,11 +68,11 @@ public class DeviceSettings extends PreferenceFragment implements
     private TwoStatePreference mDCModeSwitch;
     private TwoStatePreference mHBMModeSwitch;
     private TwoStatePreference mRefreshRate;
-    private SwitchPreference mFpsInfo;
-    private SwitchPreference mAlwaysCameraSwitch;
-    private SwitchPreference mMuteMediaSwitch;
-    private SwitchPreference mSliderDialogSwitch;
-    private SwitchPreference mSliderDozeSwitch;
+    private SwitchPreferenceCompat mFpsInfo;
+    private SwitchPreferenceCompat mAlwaysCameraSwitch;
+    private SwitchPreferenceCompat mMuteMediaSwitch;
+    private SwitchPreferenceCompat mSliderDialogSwitch;
+    private SwitchPreferenceCompat mSliderDozeSwitch;
     private Preference mDCSchedulePref;
     private ListPreference mReadingMode;
 

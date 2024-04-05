@@ -30,7 +30,7 @@ import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.PreferenceManager;
-import androidx.preference.SwitchPreference;
+import androidx.preference.SwitchPreferenceCompat;
 
 import com.android.internal.yaap.hardware.LineageHardwareManager; // Need FWB support
 import com.android.internal.yaap.hardware.TouchscreenGesture; // Need FWB support
@@ -87,7 +87,7 @@ public class TouchscreenGestureSettings extends CollapsingToolbarBaseActivity
         private void initTouchscreenGestures() {
             final LineageHardwareManager manager = LineageHardwareManager.getInstance(getContext());
             mTouchscreenGestures = manager.getTouchscreenGestures();
-            SwitchPreference getstureHapticsSwitch = findPreference(KEY_TOUCHSCREEN_GESTURE_HAPTIC);
+            SwitchPreferenceCompat getstureHapticsSwitch = findPreference(KEY_TOUCHSCREEN_GESTURE_HAPTIC);
             boolean enabled = Settings.System.getInt(getContext().getContentResolver(),
                     KEY_TOUCHSCREEN_GESTURE_HAPTIC, 1) == 1;
             getstureHapticsSwitch.setChecked(enabled);
