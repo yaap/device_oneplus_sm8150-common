@@ -57,4 +57,7 @@
         <item>3</item>
     </integer-array>
 
+    <!-- Whether to display the "Enable wireless display" menu -->
+     <bool name="config_show_wifi_display_enable_menu">false</bool>
+
 </resources>
