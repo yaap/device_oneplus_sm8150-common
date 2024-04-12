@@ -17,6 +17,7 @@
 */
 package com.yaap.device.DeviceSettings;
 
+import static android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
 import static android.content.Intent.ACTION_BOOT_COMPLETED;
 import static android.content.Intent.ACTION_LOCKED_BOOT_COMPLETED;
 
@@ -24,9 +25,11 @@ import static com.yaap.device.DeviceSettings.FPSInfoService.PREF_KEY_FPS_STATE;
 import static com.yaap.device.DeviceSettings.ModeSwitch.DCModeSwitch.KEY_DC_SWITCH;
 
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.provider.Settings;
 import androidx.preference.PreferenceManager;
 
@@ -38,6 +41,8 @@ import java.util.Map;
 public class Startup extends BroadcastReceiver {
 
     private static final String KEY_MIGRATION_DONE = "migration_done_2";
+    private static final String PKG_NAME = "com.yaap.device.DeviceSettings";
+    private static final String READING_TILE_CLASS_NAME = PKG_NAME + ".ReadingModeTileService";
 
     private static final Map<String, String> sKeyFileMap = Map.of(
         // DC Dimming
@@ -72,6 +77,15 @@ public class Startup extends BroadcastReceiver {
                 oldPrefsEditor.commit();
 
                 TouchscreenGestureSettings.MainSettingsFragment.migrateTouchscreenGestureStates(context);
+            }
+
+            // disable unavailable tiles
+            if (!ReadingModeSwitch.isSupported()) {
+                PackageManager pm = context.getPackageManager();
+                ComponentName cn = new ComponentName(PKG_NAME, READING_TILE_CLASS_NAME);
+                final int enabledSetting = pm.getComponentEnabledSetting(cn);
+                if (enabledSetting != COMPONENT_ENABLED_STATE_DISABLED)
+                    pm.setComponentEnabledSetting(cn, COMPONENT_ENABLED_STATE_DISABLED, 0);
             }
         }
 
