@@ -105,7 +105,7 @@
 
     <string name="camera_title">Camera</string>
     <string name="always_on_camera_dialog_title">Front camera open dialog</string>
-    <string name="always_on_camera_dialog_summary_on">Always ask before openning</string>
+    <string name="always_on_camera_dialog_summary_on">Always ask before opening</string>
     <string name="always_on_camera_dialog_summary_off">Only ask when the screen is off</string>
 
     <!-- DC Dimming Schedule -->
