@@ -48,8 +48,10 @@
             android:gravity="center_vertical"
             android:textColor="?android:attr/textColorPrimary"
             android:autoSizeTextType="uniform"
-            android:autoSizeMinTextSize="4sp"
+            android:autoSizeMinTextSize="8sp"
             android:autoSizeMaxTextSize="@dimen/alert_slider_text_size"
-            android:breakStrategy="simple" />
+            android:scrollHorizontally="true"
+            android:ellipsize="marquee"
+            android:lines="1" />
     </LinearLayout>
 </LinearLayout>
