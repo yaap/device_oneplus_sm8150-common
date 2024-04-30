@@ -55,8 +55,7 @@ ro.vendor.qti.sys.fw.bservice_enable=true
 ro.vendor.qti.sys.fw.bservice_limit=8
 
 # lmkd
-ro.lmk.thrashing_limit=200
-ro.lmk.psi_partial_stall_ms=120
+ro.lmk.swap_compression_ratio=3
 
 # Netflix
 ro.netflix.bsp_rev=Q855-16947-1
