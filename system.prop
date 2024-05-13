@@ -55,6 +55,7 @@ ro.vendor.qti.sys.fw.bservice_enable=true
 ro.vendor.qti.sys.fw.bservice_limit=8
 
 # lmkd
+ro.lmk.lowmem_min_oom_score=801
 ro.lmk.swap_compression_ratio=3
 
 # Netflix
