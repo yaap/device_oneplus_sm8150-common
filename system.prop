@@ -56,7 +56,7 @@ ro.vendor.qti.sys.fw.bservice_limit=8
 
 # lmkd
 ro.lmk.lowmem_min_oom_score=801
-ro.lmk.swap_compression_ratio=3
+ro.lmk.swap_compression_ratio=2
 
 # Netflix
 ro.netflix.bsp_rev=Q855-16947-1
