@@ -1,0 +1,13 @@
+//
+// Copyright (C) 2024 LibreMobileOS Foundation
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+cc_library_static {
+    name: "libcameraservice_extension.opsm8150",
+    srcs: ["CameraProviderExtension.cpp"],
+    include_dirs: [
+        "frameworks/av/services/camera/libcameraservice/common"
+    ],
+}

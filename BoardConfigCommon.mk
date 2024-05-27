@@ -85,6 +85,7 @@ USE_CUSTOM_AUDIO_POLICY := 1
 # Camera
 TARGET_USES_QTI_CAMERA_DEVICE := true
 USE_DEVICE_SPECIFIC_CAMERA := true
+TARGET_CAMERA_SERVICE_EXT_LIB := //$(VENDOR_PATH):libcameraservice_extension.opsm8150
 
 # FOD
 TARGET_SURFACEFLINGER_UDFPS_LIB := //hardware/oneplus:libudfps_extension.oneplus
