@@ -170,6 +170,7 @@ PRODUCT_PACKAGES_DEBUG += \
 PRODUCT_PACKAGES += \
     liba2dpoffload \
     libbthost_if \
+    libldacBT_bco \
     android.hardware.bluetooth.audio-impl \
     vendor.qti.hardware.bluetooth_audio@2.0.vendor:32 \
     vendor.qti.hardware.btconfigstore@1.0.vendor:64 \
@@ -360,7 +361,8 @@ PRODUCT_PACKAGES += \
     libOmxVdec \
     libOmxVenc \
     libOmxVidcCommon \
-    libstagefrighthw
+    libstagefrighthw \
+    libstagefright_softomx_plugin.vendor
 
 # Perf
 PRODUCT_PACKAGES += \
@@ -449,6 +451,15 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.vibrator.service.oneplus
 
 # VNDK
+PRODUCT_PACKAGES += \
+    libutilscallstack.vendor:64 \
+    libnetutils.vendor:64 \
+    libsqlite.vendor:64 \
+    libprocessgroup.vendor \
+    libjsoncpp.vendor \
+    libcurl.vendor \
+    libpng.vendor:32
+
 PRODUCT_EXTRA_VNDK_VERSIONS := 30
 
 # Wifi
