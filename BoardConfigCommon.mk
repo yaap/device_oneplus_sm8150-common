@@ -184,3 +184,8 @@ WIFI_DRIVER_STATE_ON := "ON"
 WIFI_HIDL_FEATURE_DUAL_INTERFACE := true
 WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X
+
+# FCM
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
+    vendor/qcom/opensource/core-utils/vendor_framework_compatibility_matrix.xml \
+    $(VENDOR_PATH)/configs/vintf/oneplus_vendor_framework_compatibility_matrix.xml
