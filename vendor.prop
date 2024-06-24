@@ -184,4 +184,5 @@ ro.soc.model=SM8150
 # USB
 ro.usb.uvc.enabled=true
 vendor.usb.diag.func.name=diag
-vendor.usb.use_ffs_mtp=0
+vendor.usb.use_ffs_mtp=1
+sys.usb.mtp.batchcancel=1
