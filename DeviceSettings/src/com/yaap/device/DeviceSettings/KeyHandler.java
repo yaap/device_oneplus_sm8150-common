@@ -20,6 +20,8 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.os.VibrationEffect;
 import android.os.VibratorManager;
 import android.os.Vibrator;
@@ -59,6 +61,9 @@ public class KeyHandler implements DeviceKeyHandler {
     private final Context mContext;
     private final NotificationManager mNotificationManager;
     private final AudioManager mAudioManager;
+    private final HandlerThread mHandlerThread = new HandlerThread("KeyHandlerThread");
+    private final Handler mHandler;
+    private boolean mNeedsRun;
     private Vibrator mVibrator;
     private int mPrevKeyCode = 0;
 
@@ -72,6 +77,9 @@ public class KeyHandler implements DeviceKeyHandler {
         if (mVibrator == null || !mVibrator.hasVibrator()) {
             mVibrator = null;
         }
+
+        mHandlerThread.start();
+        mHandler = new Handler(mHandlerThread.getLooper());
     }
 
     private boolean hasSetupCompleted() {
@@ -100,11 +108,31 @@ public class KeyHandler implements DeviceKeyHandler {
             return event;
         }
 
-        doHapticFeedback(sSupportedSliderHaptics.get(keyCodeValue));
-        mAudioManager.setRingerModeInternal(sSupportedSliderRingModes.get(keyCodeValue));
-        if (mPrevKeyCode == Constants.KEY_VALUE_TOTAL_SILENCE)
+        mNeedsRun = false;
+        mHandler.removeCallbacksAndMessages(null);
+
+        if (mPrevKeyCode == Constants.KEY_VALUE_TOTAL_SILENCE && keyCodeValue != mPrevKeyCode) {
+            // if previous was total silence we need to vibrate after setRingerModeInternal
+            // for it to actually fire.
+            // we also have to exit it before setRingerModeInternal because it sets it internally
+            final int targetMode = sSupportedSliderRingModes.get(keyCodeValue);
+            mNotificationManager.setZenMode(sSupportedSliderZenModes.get(keyCodeValue), null, TAG);
+            mAudioManager.setRingerModeInternal(targetMode);
             doHapticFeedback(sSupportedSliderHaptics.get(keyCodeValue));
-        mNotificationManager.setZenMode(sSupportedSliderZenModes.get(keyCodeValue), null, TAG);
+            // make sure ringer mode was set correctly (race condition because setZenMode is async)
+            mNeedsRun = true;
+            mHandler.postDelayed(() -> {
+                if (mAudioManager.getRingerModeInternal() != targetMode && mNeedsRun) {
+                    mAudioManager.setRingerModeInternal(targetMode);
+                }
+            }, 200); // 200ms is long enough even if the system is very busy
+        } else {
+            // here we have to vibrate before setting anything else.
+            // also setRingerModeInternal before setZenMode because it could set the ringer mode
+            doHapticFeedback(sSupportedSliderHaptics.get(keyCodeValue));
+            mAudioManager.setRingerModeInternal(sSupportedSliderRingModes.get(keyCodeValue));
+            mNotificationManager.setZenMode(sSupportedSliderZenModes.get(keyCodeValue), null, TAG);
+        }
 
         if (Constants.getIsMuteMediaEnabled(mContext)) {
             final int max = mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
