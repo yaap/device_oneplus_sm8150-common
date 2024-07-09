@@ -366,12 +366,6 @@
 
     <bool name="config_enableHapticTextHandle">true</bool>
 
-    <integer name="config_defaultHapticFeedbackIntensity">3</integer>
-
-    <integer name="config_defaultNotificationVibrationIntensity">3</integer>
-
-    <integer name="config_defaultRingVibrationIntensity">3</integer>
-
     <!-- Boolean indicating if current platform supports BLE peripheral mode -->
     <bool name="config_bluetooth_le_peripheral_mode_supported">true</bool>
 
