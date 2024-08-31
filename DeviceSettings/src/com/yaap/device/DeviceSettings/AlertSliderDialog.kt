@@ -40,10 +40,10 @@ class AlertSliderDialog(private var context: Context) : Dialog(context, R.style.
 
     private val rotation: Int = context.getDisplay().getRotation()
     private val isLand: Boolean = rotation != Surface.ROTATION_0
-
-    private var length: Int = 0
-    private var xPos: Int = 0
-    private var yPos: Int = 0
+    private val isLeft = context.resources.getBoolean(R.bool.alert_slider_dialog_left)
+    private val length: Int
+    private val xPos: Int
+    private val yPos: Int
 
     private var isAnimating = false
     private var animator = ValueAnimator()
@@ -85,17 +85,26 @@ class AlertSliderDialog(private var context: Context) : Dialog(context, R.style.
         val hv = (length + pads) * 0.5
 
         xPos = if (isLand) (widthPixels * fraction - hv).toInt()
+               else if (isLeft) 0
                else widthPixels / 100
-        yPos = if (isLand) 0
+        yPos = if (isLand) (if (isLeft) (widthPixels / 100) else 0)
                else (heightPixels * fraction - hv).toInt()
 
         getWindow()?.let {
             it.attributes = it.attributes.apply {
                 gravity = when(rotation) {
-                    Surface.ROTATION_0 -> (Gravity.TOP or Gravity.RIGHT)
-                    Surface.ROTATION_90 -> (Gravity.TOP or Gravity.LEFT)
-                    Surface.ROTATION_270 -> (Gravity.BOTTOM or Gravity.RIGHT)
-                    else -> (Gravity.TOP or Gravity.RIGHT)
+                    Surface.ROTATION_0 ->
+                        if (isLeft) (Gravity.TOP or Gravity.LEFT)
+                        else (Gravity.TOP or Gravity.RIGHT)
+                    Surface.ROTATION_90 ->
+                        if (isLeft) (Gravity.BOTTOM or Gravity.LEFT)
+                        else (Gravity.TOP or Gravity.LEFT)
+                    Surface.ROTATION_270 ->
+                        if (isLeft) (Gravity.TOP or Gravity.RIGHT)
+                        else (Gravity.BOTTOM or Gravity.RIGHT)
+                    else ->
+                        if (isLeft) (Gravity.TOP or Gravity.LEFT)
+                        else (Gravity.TOP or Gravity.RIGHT)
                 }
 
                 x = xPos
@@ -177,13 +186,23 @@ class AlertSliderDialog(private var context: Context) : Dialog(context, R.style.
     }
 
     private fun applyOnEnd(endX: Int, endY: Int, position: Int) {
-        frameView!!.setBackgroundResource(
-            when (rotation) {
-                Surface.ROTATION_90 -> sBackgroundResMap90.get(position)!!
-                Surface.ROTATION_270 -> sBackgroundResMap270.get(position)!!
-                else -> sBackgroundResMap.get(position)!! // Surface.ROTATION_0
-            }
-        )
+        if (isLeft) {
+            frameView!!.setBackgroundResource(
+                when (rotation) {
+                    Surface.ROTATION_90 -> sBackgroundResMapLeft90.get(position)!!
+                    Surface.ROTATION_270 -> sBackgroundResMapLeft270.get(position)!!
+                    else -> sBackgroundResMapLeft.get(position)!! // Surface.ROTATION_0
+                }
+            )
+        } else {
+            frameView!!.setBackgroundResource(
+                when (rotation) {
+                    Surface.ROTATION_90 -> sBackgroundResMap90.get(position)!!
+                    Surface.ROTATION_270 -> sBackgroundResMap270.get(position)!!
+                    else -> sBackgroundResMap.get(position)!! // Surface.ROTATION_0
+                }
+            )
+        }
         getWindow()?.let {
             it.attributes = it.attributes.apply {
                 x = endX
@@ -201,16 +220,34 @@ class AlertSliderDialog(private var context: Context) : Dialog(context, R.style.
             Constants.POSITION_BOTTOM to R.drawable.alert_slider_bottom
         )
 
+        private val sBackgroundResMapLeft = hashMapOf(
+            Constants.POSITION_TOP to R.drawable.alert_slider_top_270,
+            Constants.POSITION_MIDDLE to R.drawable.alert_slider_middle,
+            Constants.POSITION_BOTTOM to R.drawable.alert_slider_bottom_90
+        )
+
         private val sBackgroundResMap90 = hashMapOf(
             Constants.POSITION_TOP to R.drawable.alert_slider_top_90,
             Constants.POSITION_MIDDLE to R.drawable.alert_slider_middle,
             Constants.POSITION_BOTTOM to R.drawable.alert_slider_bottom_90
         )
 
+        private val sBackgroundResMapLeft90 = hashMapOf(
+            Constants.POSITION_TOP to R.drawable.alert_slider_bottom_270,
+            Constants.POSITION_MIDDLE to R.drawable.alert_slider_middle,
+            Constants.POSITION_BOTTOM to R.drawable.alert_slider_top_270
+        )
+
         private val sBackgroundResMap270 = hashMapOf(
             Constants.POSITION_TOP to R.drawable.alert_slider_top_270,
             Constants.POSITION_MIDDLE to R.drawable.alert_slider_middle,
             Constants.POSITION_BOTTOM to R.drawable.alert_slider_bottom_270
+        )
+
+        private val sBackgroundResMapLeft270 = hashMapOf(
+            Constants.POSITION_TOP to R.drawable.alert_slider_bottom_90,
+            Constants.POSITION_MIDDLE to R.drawable.alert_slider_middle,
+            Constants.POSITION_BOTTOM to R.drawable.alert_slider_top_90
         )
 
         private val sIconResMap = hashMapOf(
