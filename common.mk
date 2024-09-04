@@ -229,6 +229,7 @@ PRODUCT_PACKAGES += \
     hwcomposer.msmnile \
     libdisplayconfig.qti \
     libdisplayconfig.system.qti \
+    libgui_vendor \
     libqdMetaData \
     libqdMetaData.system \
     libvulkan \
