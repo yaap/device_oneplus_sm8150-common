@@ -69,6 +69,9 @@ function blob_fixup() {
         vendor/lib64/hw/camera.qcom.so )
             grep -q libcamera_metadata_shim.so "${2}" || "${PATCHELF}" --add-needed libcamera_metadata_shim.so "${2}"
             ;;
+        vendor/lib64/mediadrm/libwvdrmengine.so|vendor/lib64/libwvhidl.so )
+            grep -q "libcrypto-v33.so" "${2}" || "${PATCHELF}" --replace-needed "libcrypto.so" "libcrypto-v33.so" "${2}"
+            ;;
     esac
     case "${DEVICE}" in
         hotdog | hotdogb | hotdogg )
