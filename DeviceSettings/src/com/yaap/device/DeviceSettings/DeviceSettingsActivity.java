@@ -17,7 +17,14 @@
 */
 package com.yaap.device.DeviceSettings;
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
+import android.view.WindowInsetsController;
+
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.graphics.Insets;
 
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
 import com.android.settingslib.collapsingtoolbar.R;
@@ -31,5 +38,19 @@ public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
         getFragmentManager().beginTransaction()
                 .add(R.id.content_frame, new DeviceSettings())
                 .commit();
+
+        // Handle window insets for padding adjustments
+        View rootView = findViewById(R.id.content_frame);
+        ViewCompat.setOnApplyWindowInsetsListener(rootView, (view, insets) -> {
+            Insets systemInsets = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+
+            view.setPadding(
+                view.getPaddingLeft(),
+                view.getPaddingTop(),
+                view.getPaddingRight(),
+                systemInsets.bottom
+            );
+            return insets;
+        });
     }
 }
