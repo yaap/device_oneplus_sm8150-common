@@ -50,6 +50,9 @@
 /mnt/vendor/persist/dual_camera_calibration(/.*)?    u:object_r:persist_camera_file:s0
 /mnt/vendor/persist/engineermode(/.*)?               u:object_r:persist_engineer_file:s0
 
+# Sensors
+/vendor/bin/hw/android\.hardware\.sensors@2\.0-service\.oneplus_msmnile    u:object_r:hal_sensors_default_exec:s0
+
 # Socket files
 /dev/socket/vl53l1_daemon    u:object_r:vl53l1_socket:s0
 
