@@ -1,0 +1,5 @@
+runtime_resource_overlay {
+    name: "NfcOverlay",
+    sdk_version: "current",
+    product_specific: true
+}
