@@ -86,6 +86,10 @@ function blob_fixup() {
             [ "$2" = "" ] && return 0
             sed -i "s|vendor.boot.verifiedbootstate|vendor.boot.fingerprintbstate|g" "${2}"
             ;;
+        vendor/etc/seccomp_policy/gnss@2.0-qsap-location.policy)
+            [ "$2" = "" ] && return 0
+            grep -q "gettid: 1" "${2}" || echo -e "\ngettid: 1" >> "${2}"
+            ;;
         *)
             return 1
             ;;
