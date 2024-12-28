@@ -15,18 +15,13 @@
     <string name="device_title">OnePlus beállítások</string>
     <string name="device_summary">OnePlus specifikus készülékbeállítások</string>
     <string name="display_title">Kijelző</string>
-    <string name="srgb_mode_summary"></string>
-    <string name="srgb_mode_title">sRGB mód</string>
     <string name="hbm_mode_title">Magas fényerejű mód</string>
     <string name="wide_color_mode_title">Széles színskála mód</string>
-    <string name="dci_mode_summary"></string>
-    <string name="dci_mode_title">DCI-P3 széles színskála mód</string>
     <string name="Night_mode_summary"></string>
     <string name="Night_mode_title">Éjszakai mód</string>
     <string name="panel_category_title">Panelmódok</string>
     <string name="panel_category_summary">A panelszín-korrekció módjai</string>
     <string name="off_mode_title">Ki</string>
-    <string name="tile_panel_mode">Panelmódok</string>
     <string name="dc_mode_title">DC-Dimming</string>
     <string name="tile_hbm_mode">Magas fényerejű módok</string>
     <string name="tile_dc_mode">DC-Dimming</string>
@@ -74,7 +69,6 @@
     <string name="tile_refresh_rate">Screen refresh rate</string>
     <string name="fps_info_title">FPS overlay</string>
     <string name="fps_info_summary">Show overlay with with current frames per second</string>
-    <string name="panel_mode_info">Disable panel mode requires reboot.</string>
     <!-- Notification slider -->
     <string name="notification_slider_category_title">Értesítési csúszka</string>
     <string name="notification_slider_selection_dialog_title">Művelet</string>

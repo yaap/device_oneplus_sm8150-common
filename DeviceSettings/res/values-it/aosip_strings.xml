@@ -15,26 +15,16 @@
     <string name="device_title">Impostazioni OnePlus</string>
     <string name="device_summary">Correggi impostazioni dispositivo specifico OnePlus</string>
     <string name="display_title">Schermo</string>
-    <string name="srgb_mode_summary"></string>
-    <string name="srgb_mode_title">modalità sRGB</string>
     <string name="hbm_mode_title">Modalità alta luminosità</string>
     <string name="wide_color_mode_title">Modalità Colore ampio</string>
-    <string name="dci_mode_summary"></string>
-    <string name="dci_mode_title">DCI-P3 modalità con ampia gamma di colori</string>
     <string name="Night_mode_summary"></string>
     <string name="Night_mode_title">Modalità notte</string>
     <string name="panel_category_title">Modalità display</string>
     <string name="panel_category_summary">Modalità di correzione dei colori del display</string>
     <string name="off_mode_title">Spento</string>
-    <string name="tile_panel_mode">Modalità display</string>
     <string name="dc_mode_title">Modalità anti-sfarfallio</string>
     <string name="tile_hbm_mode">Modalità alta luminosità</string>
     <string name="tile_dc_mode">Anti-sfarfallio</string>
-    <string name="natural_mode_title">Naturale</string>
-    <string name="vivid_mode_title">Vivido</string>
-    <string name="color_mode_balance_red">Intensità del rosso</string>
-    <string name="color_mode_balance_green">Intensità del verde</string>
-    <string name="color_mode_balance_blue">Intensità del blue</string>
 
     <!-- Screen off Gestures : Input -->
     <string name="touchscreen_gesture_settings_title">Gesture sullo schermo</string>
@@ -82,7 +72,6 @@
     <string name="refresh_rate_title">Forza la frequenza di aggiornamento a 60Hz</string>
     <string name="fps_info_title">FPS sullo schermo</string>
     <string name="fps_info_summary">Mostra sullo schermo i tuoi FPS </string>
-    <string name="panel_mode_info">Disabilitare la modalità colore necessita un riavvio</string>
     <!-- Notification slider -->
     <string name="notification_slider_category_title">Slider delle notifiche</string>
     <string name="notification_slider_selection_dialog_title">Azione</string>

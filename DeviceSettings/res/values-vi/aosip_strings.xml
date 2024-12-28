@@ -15,18 +15,13 @@
     <string name="device_title">Cài đặt OnePlus</string>
     <string name="device_summary">Điều chỉnh cài đặt thiết bị cụ thể của OnePlus</string>
     <string name="display_title">Màn hình hiển thị</string>
-    <string name="srgb_mode_summary"></string>
-    <string name="srgb_mode_title">chế độ sRGB</string>
     <string name="hbm_mode_title">Độ sáng cao</string>
     <string name="wide_color_mode_title">Dải màu rộng</string>
-    <string name="dci_mode_summary"></string>
-    <string name="dci_mode_title">Dải màu rộng DCI-P3</string>
     <string name="Night_mode_summary"></string>
     <string name="Night_mode_title">Chế độ ban đêm</string>
     <string name="panel_category_title">Chế độ màn hình</string>
     <string name="panel_category_summary">Các chế độ căn chỉnh màu màn hình</string>
     <string name="off_mode_title">Tắt</string>
-    <string name="tile_panel_mode">Chế độ màn hình</string>
     <string name="dc_mode_title">DC - Làm mờ</string>
     <string name="tile_hbm_mode">Độ sáng cao</string>
     <string name="tile_dc_mode">DC - Làm mờ</string>
@@ -74,7 +69,6 @@
     <string name="tile_refresh_rate">Tốc độ làm tươi màn hình</string>
     <string name="fps_info_title">Lớp phủ FPS</string>
     <string name="fps_info_summary">Hiển thị lớp phủ với các khung hiện tại mỗi giây</string>
-    <string name="panel_mode_info">Vô hiệu hóa chế độ bảng điều khiển yêu cầu khởi động lại.</string>
     <!-- Notification slider -->
     <string name="notification_slider_category_title">Thanh trượt thông báo</string>
     <string name="notification_slider_selection_dialog_title">Tác vụ</string>

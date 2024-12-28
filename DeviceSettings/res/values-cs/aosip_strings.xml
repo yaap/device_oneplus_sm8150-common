@@ -15,18 +15,13 @@
     <string name="device_title">OnePlus nastavení</string>
     <string name="device_summary">Upravte konkrétní nastavení pro zařízení OnePlus</string>
     <string name="display_title">Displej</string>
-    <string name="srgb_mode_summary"></string>
-    <string name="srgb_mode_title">Režim sRGB</string>
     <string name="hbm_mode_title">Režim vysokého jasu</string>
     <string name="wide_color_mode_title">Režim širokého barevného spektra</string>
-    <string name="dci_mode_summary"></string>
-    <string name="dci_mode_title">Režim širokého barevného spektra DCI-P3</string>
     <string name="Night_mode_summary"></string>
     <string name="Night_mode_title">Noční režim</string>
     <string name="panel_category_title">Režimy panelu</string>
     <string name="panel_category_summary">Režimy pro korekci barev panelu</string>
     <string name="off_mode_title">Vyp.</string>
-    <string name="tile_panel_mode">Režimy panelu</string>
     <string name="dc_mode_title">DC – Ztlumení</string>
     <string name="tile_hbm_mode">Režimy vysokého jasu</string>
     <string name="tile_dc_mode">DC – Ztlumení</string>
@@ -74,7 +69,6 @@
     <string name="tile_refresh_rate">Obnovovací frekvence obrazovky</string>
     <string name="fps_info_title">Překrytí FPS</string>
     <string name="fps_info_summary">Zobrazit překrytí s aktuálním počtem snímků za sekundu</string>
-    <string name="panel_mode_info">Vypnutí režimu panelu vyžaduje restart.</string>
     <!-- Notification slider -->
     <string name="notification_slider_category_title">Posuvník oznámení</string>
     <string name="notification_slider_selection_dialog_title">Akce</string>

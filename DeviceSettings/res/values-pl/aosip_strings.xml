@@ -99,6 +99,4 @@
     <string name="slider_doze_enabled_doze_disabled_summary">Doze jest wyłączony systemowo. Włącz doze na stronie ustawień baterii.</string>
 
     <!-- Miscellaneous -->
-    <string name="usb2_fast_charge">Szybkie ładowanie USB 2.0</string>
-    <string name="usb2_fast_charge_summary">Pozwala na szybkie ładowanie przez port USB 2.0</string>
 </resources>

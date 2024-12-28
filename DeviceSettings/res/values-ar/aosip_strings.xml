@@ -15,18 +15,13 @@
     <string name="device_title">إعدادات OnePlus</string>
     <string name="device_summary">تعديل إعدادات خاصة بأجهزة OnePlus</string>
     <string name="display_title">العرض</string>
-    <string name="srgb_mode_summary"></string>
-    <string name="srgb_mode_title">وضع sRGB</string>
     <string name="hbm_mode_title">وضع السطوع العالي</string>
     <string name="wide_color_mode_title">وضع اللون الواسع</string>
-    <string name="dci_mode_summary"></string>
-    <string name="dci_mode_title">وضع التدرج اللوني الواسع DCI-P3</string>
     <string name="Night_mode_summary"></string>
     <string name="Night_mode_title">الوضع الليلي</string>
     <string name="panel_category_title">أوضاع اللوحة</string>
     <string name="panel_category_summary">أوضاع لوحة تصحيح اللون</string>
     <string name="off_mode_title">إيقاف</string>
-    <string name="tile_panel_mode">أوضاع اللوحة</string>
     <string name="dc_mode_title">DC-Dimming</string>
     <string name="tile_hbm_mode">أوضاع السطوع العالي</string>
     <string name="tile_dc_mode">DC-Dimming</string>
@@ -74,7 +69,6 @@
     <string name="tile_refresh_rate">Screen refresh rate</string>
     <string name="fps_info_title">FPS overlay</string>
     <string name="fps_info_summary">Show overlay with with current frames per second</string>
-    <string name="panel_mode_info">Disable panel mode requires reboot.</string>
     <!-- Notification slider -->
     <string name="notification_slider_category_title">ممرر الإشعارات</string>
     <string name="notification_slider_selection_dialog_title">الإجراء</string>

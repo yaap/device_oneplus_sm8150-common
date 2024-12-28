@@ -24,7 +24,6 @@
     <string name="panel_category_title">Режим экрана</string>
     <string name="panel_category_summary">Режимы для цветовой коррекции экрана</string>
     <string name="off_mode_title">Выкл</string>
-    <string name="tile_panel_mode">Режимы панели</string>
     <string name="dc_mode_summary">Полезно для людей, чувствительных к ШИМ.\nПобочные эффекты включают усталость глаз, тошноту и мигрень.\nВключение этого параметра приводит к снижению точности отображения цветов.</string>
     <string name="dc_mode_title">DC-Dimming</string>
     <string name="tile_hbm_mode">Режим высокой яркости</string>

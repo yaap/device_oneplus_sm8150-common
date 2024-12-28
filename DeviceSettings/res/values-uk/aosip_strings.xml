@@ -15,29 +15,18 @@
     <string name="device_title">Налаштування OnePlus</string>
     <string name="device_summary">Відрегулюйте налаштування пристрою OnePlus</string>
     <string name="display_title">Екран</string>
-    <string name="srgb_mode_summary"></string>
-    <string name="srgb_mode_title">Режим sRGB</string>
     <string name="hbm_mode_summary">Яскравість дисплею яскравіше, ніж зазвичай дозволена максимальна яскравість. Використання протягом тривалого часу може нашкодити дисплею</string>
     <string name="hbm_mode_title">Режим високої яскравості</string>
     <string name="wide_color_mode_title">Широкий колірний режим</string>
-    <string name="dci_mode_summary"></string>
-    <string name="dci_mode_title">Режим широкої колірної гами DCI-P3</string>
     <string name="Night_mode_summary"></string>
     <string name="Night_mode_title">Нічний режим</string>
     <string name="panel_category_title">Режим панелей</string>
     <string name="panel_category_summary">Режими для колірної корекції панелей</string>
     <string name="off_mode_title">Вимк.</string>
-    <string name="tile_panel_mode">Режим панелей</string>
     <string name="dc_mode_summary">Корисно для людей, чутливих до ШИМ\nПобічні ефекти включають напругу очей, нудоту та мігрень\nУвімкнення цього означає менш точні кольори дисплея</string>
     <string name="dc_mode_title">DC-Dimming</string>
     <string name="tile_hbm_mode">Режим високої яскравості</string>
     <string name="tile_dc_mode">DC-Dimming</string>
-    <string name="natural_mode_title">Натуральний</string>
-    <string name="vivid_mode_title">Яскравий</string>
-    <string name="panel_mode_info">Для вимкнення режимів екрану потрібно перезавантаження</string>
-    <string name="color_mode_balance_red">Червоний відтінок</string>
-    <string name="color_mode_balance_green">Зелений відтінок</string>
-    <string name="color_mode_balance_blue">Синій відтінок</string>
 
     <!-- Screen off Gestures : Input -->
     <string name="touchscreen_gesture_settings_title">Жести на екрані</string>

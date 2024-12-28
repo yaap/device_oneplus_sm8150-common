@@ -15,18 +15,13 @@
     <string name="device_title">Definições OnePlus</string>
     <string name="device_summary">Ajustar definições específicas de dispositivos OnePlus</string>
     <string name="display_title">Display</string>
-    <string name="srgb_mode_summary"></string>
-    <string name="srgb_mode_title">modo sRGB</string>
     <string name="hbm_mode_title">Modo de brilho alto</string>
     <string name="wide_color_mode_title">Modo de cor ampla</string>
-    <string name="dci_mode_summary"></string>
-    <string name="dci_mode_title">Modo de gama de cores DCI-P3</string>
     <string name="Night_mode_summary"></string>
     <string name="Night_mode_title">Modo noturno</string>
     <string name="panel_category_title">Modos do painel</string>
     <string name="panel_category_summary">Modos para corrigir a cor do painel</string>
     <string name="off_mode_title">Desligado</string>
-    <string name="tile_panel_mode">Modos de painel</string>
     <string name="dc_mode_title">Escurecimento DC</string>
     <string name="tile_hbm_mode">Modos de brilho alto</string>
     <string name="tile_dc_mode">Escurecimento DC</string>
@@ -74,7 +69,6 @@
     <string name="tile_refresh_rate">Taxa de atualização da tela</string>
     <string name="fps_info_title">Sobreposição de FPS</string>
     <string name="fps_info_summary">Mostrar sobreposição com os quadros atuais por segundo</string>
-    <string name="panel_mode_info">Desativar o modo de painel requer reinicialização.</string>
     <!-- Notification slider -->
     <string name="notification_slider_category_title">Controle deslizante de notificação</string>
     <string name="notification_slider_selection_dialog_title">Açao</string>
