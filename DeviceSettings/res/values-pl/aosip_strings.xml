@@ -13,31 +13,29 @@
 <resources>
     <!-- Panel modes -->
     <string name="device_title">Ustawienia OnePlus</string>
-    <string name="device_summary">Ustawienia OnePlus dotyczące tego urządzenia</string>
+    <string name="device_summary">Dostosuj ustawienia urządzenia OnePlus</string>
     <string name="display_title">Wyświetlacz</string>
-    <string name="srgb_mode_summary"></string>
-    <string name="srgb_mode_title">Tryb sRGB</string>
+    <string name="hbm_mode_summary">Podświetl wyświetlacz na jaśniej niż maksymalna dozwolona jasność. Długie użytkowanie może uszkodzić wyświetlacz</string>
     <string name="hbm_mode_title">Tryb wysokiej jasności</string>
-    <string name="wide_color_mode_title">Tryb szerokiej gamy kolorów</string>
-    <string name="dci_mode_summary"></string>
-    <string name="dci_mode_title">Tryb szerokiej gamy kolorów DCI-P3</string>
+    <string name="wide_color_mode_title">AMOLED Szeroka Gama</string>
     <string name="Night_mode_summary"></string>
     <string name="Night_mode_title">Tryb nocny</string>
     <string name="panel_category_title">Tryby wyświetlania</string>
-    <string name="panel_category_summary">Tryby wyświetlania z korekcją kolorów</string>
+    <string name="panel_category_summary">Tryby z korekcją kolorów panelu</string>
     <string name="off_mode_title">Wyłącz</string>
-    <string name="tile_panel_mode">Tryby wyświetlania</string>
-    <string name="dc_mode_title">Redukcja migotania</string>
+    <string name="dc_mode_summary">Przydatne dla osób wrażliwych na PWM. Efekty uboczne mogą obejmować zmęczenie oczu, nudności i migreny. Włączenie powoduje mniej dokładne kolory wyświetlacza</string>
+    <string name="dc_mode_title">Redukcja migotania (DC-Dimming)</string>
     <string name="tile_hbm_mode">Tryb wysokiej jasności</string>
-    <string name="tile_dc_mode">Redukcja migotania</string>
+    <string name="tile_dc_mode">Redukcja migotania (DC-Dimming)</string>
+
     <!-- Screen off Gestures : Input -->
     <string name="touchscreen_gesture_settings_title">Gesty ekranowe</string>
-    <string name="touchscreen_gesture_settings_summary">Wykonaj różne gesty ekranowe, aby wykonać szybkie akcje</string>
+    <string name="touchscreen_gesture_settings_summary">Wykonuj różne gesty ekranowe, aby wykonać szybkie akcje</string>
     <string name="touchscreen_gestures_haptic_feedback_title">Wibracja przy dotyku</string>
     <string name="touchscreen_gestures_haptic_feedback_summary">Wibruj po wykryciu gestu ekranowego</string>
     <string name="touchscreen_gesture_two_finger_down_swipe_title">Przesuń dwoma palcami w dół</string>
     <string name="touchscreen_gesture_one_finger_up_swipe_title">Przesuń palcem w górę</string>
-    <string name="touchscreen_gesture_one_finger_up_swipe_home_title">Przesuń palcem w górę od przycisku home</string>
+    <string name="touchscreen_gesture_one_finger_up_swipe_home_title">Przesuń palcem w górę od przycisku Home</string>
     <string name="touchscreen_gesture_one_finger_down_swipe_title">Przesuń palcem w dół</string>
     <string name="touchscreen_gesture_one_finger_left_swipe_title">Przesuń palcem w lewo</string>
     <string name="touchscreen_gesture_one_finger_right_swipe_title">Przesuń palcem w prawo</string>
@@ -54,27 +52,32 @@
     <string name="touchscreen_gesture_letter_v_title">Narysuj literę \"V\"</string>
     <string name="touchscreen_gesture_letter_w_title">Narysuj literę \"W\"</string>
     <string name="touchscreen_gesture_letter_z_title">Narysuj literę \"Z\"</string>
+
     <!-- Screen off Gestures : Actions -->
-    <string name="touchscreen_gesture_action_dialog_title">Gest akcji</string>
+    <string name="touchscreen_gesture_action_dialog_title">Akcja gestu</string>
     <string name="touchscreen_gesture_action_do_nothing">Nic nie rób</string>
-    <string name="touchscreen_gesture_action_flashlight">Włącz/wyłącz latarkę</string>
-    <string name="touchscreen_gesture_action_camera">Uruchom aparat</string>
+    <string name="touchscreen_gesture_action_flashlight">Włącz/Wyłącz latarkę</string>
+    <string name="touchscreen_gesture_action_camera">Otwórz aparat</string>
     <string name="touchscreen_gesture_action_browser">Otwórz przeglądarkę</string>
     <string name="touchscreen_gesture_action_dialer">Otwórz wybieranie numerów</string>
-    <string name="touchscreen_gesture_action_email">Zobacz swoje wiadomości e-mail</string>
-    <string name="touchscreen_gesture_action_messages">Zobacz swoje wiadomości</string>
-    <string name="touchscreen_gesture_action_play_pause_music">Odtwórz/Zatrzymaj muzykę</string>
+    <string name="touchscreen_gesture_action_email">Zobacz wiadomości e-mail</string>
+    <string name="touchscreen_gesture_action_messages">Zobacz wiadomości</string>
+    <string name="touchscreen_gesture_action_play_pause_music">Odtwórz/Wstrzymaj muzykę</string>
     <string name="touchscreen_gesture_action_previous_track">Odtwórz poprzedni utwór</string>
     <string name="touchscreen_gesture_action_next_track">Odtwórz następny utwór</string>
-    <string name="touchscreen_gesture_action_volume_down">Mniejsza głośność multimediów</string>
+    <string name="touchscreen_gesture_action_volume_down">Zmniejsz głośność multimediów</string>
     <string name="touchscreen_gesture_action_volume_up">Zwiększ głośność multimediów</string>
-    <string name="touchscreen_gesture_action_ambient_display">Pokaż ekran dostosowany do otoczenia</string>
+    <string name="touchscreen_gesture_action_ambient_display">Pokaż ekran otoczenia</string>
+    <string name="touchscreen_gesture_action_wake_device">Wybudź urządzenie</string>
+
     <!-- Refresh rate -->
-    <string name="refresh_title">Częstotliwość odświeżania ekranu</string>
+    <string name="refresh_title">Odświeżanie ekranu</string>
     <string name="tile_refresh_rate">Częstotliwość odświeżania ekranu</string>
+    <string name="refresh_rate_summary">Czy wymusić 60Hz lub zezwolić na szczytowy odświeżanie 90Hz</string>
+    <string name="refresh_rate_title">Wymuś 60Hz odświeżania</string>
     <string name="fps_info_title">Nakładka FPS</string>
-    <string name="fps_info_summary">Pokaż nakładkę z bieżącymi klatkami na sekundę</string>
-    <string name="panel_mode_info">Wyłączenie tryb panelu wymaga ponownego uruchomienia.</string>
+    <string name="fps_info_summary">Pokaż nakładkę z bieżącą liczbą klatek na sekundę</string>
+
     <!-- Notification slider -->
     <string name="notification_slider_category_title">Suwak powiadomień</string>
     <string name="notification_slider_selection_dialog_title">Akcja</string>
@@ -82,14 +85,20 @@
     <string name="notification_slider_middle_position">Środkowa pozycja</string>
     <string name="notification_slider_bottom_position">Dolna pozycja</string>
     <string name="notification_slider_mode_total_silence">Całkowite wyciszenie</string>
-    <string name="notification_slider_mode_priority_only">Tylko priorytetowe</string>
+    <string name="notification_slider_mode_priority_only">Tylko priorytet</string>
     <string name="notification_slider_mode_silent">Wyciszony</string>
     <string name="notification_slider_mode_vibrate">Wibracje</string>
     <string name="notification_slider_mode_none">Normalny</string>
     <string name="buttons_dashboard_summary">Ustawienia suwaka powiadomień</string>
-    <!-- Vibration slider -->
-    <string name="category_vibrator">Wibracje</string>
-    <string name="vib_strength_title_head">Siła</string>
-    <string name="vib_strength_summary_head">Zdefiniuj siłę wibracji</string>
-    <string name="vibration_warning">Ustawienie zbyt dużej siły może spowodować trwałe uszkodzenie sprzętu</string>
+    <string name="slider_mute_media_title">Wycisz multimedia</string>
+    <string name="slider_mute_media_summary">Wycisz multimedia, gdy dzwonek jest wyciszony. Przywróć poprzednią głośność po wyłączeniu</string>
+    <string name="slider_dialog_enabled_title">Dialog suwaka</string>
+    <string name="slider_dialog_enabled_summary">Pokaż okno dialogowe z informacją o pozycji i trybie suwaka</string>
+    <string name="slider_doze_enabled_title">Suwak Doze</string>
+    <string name="slider_doze_enabled_summary">Doze impuls, aby pokazać dialog, gdy ekran jest wyłączony</string>
+    <string name="slider_doze_enabled_doze_disabled_summary">Doze jest wyłączony systemowo. Włącz doze na stronie ustawień baterii.</string>
+
+    <!-- Miscellaneous -->
+    <string name="usb2_fast_charge">Szybkie ładowanie USB 2.0</string>
+    <string name="usb2_fast_charge_summary">Pozwala na szybkie ładowanie przez port USB 2.0</string>
 </resources>
