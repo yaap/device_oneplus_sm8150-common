@@ -39,7 +39,8 @@ PRODUCT_ENFORCE_RRO_TARGETS := *
 
 # RROs
 PRODUCT_PACKAGES += \
-    NfcOverlay
+    NfcOverlay \
+    ApertureOverlay
 
 # Add common definitions for Qualcomm
 $(call inherit-product, hardware/qcom-caf/common/common.mk)
