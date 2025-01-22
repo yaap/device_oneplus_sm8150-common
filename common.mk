@@ -23,8 +23,9 @@ TARGET_EXCLUDE_QCOM_SEPOLICY := true
 TARGET_BOARD_PLATFORM := msmnile
 TARGET_COMMON_QTI_COMPONENTS := \
     adreno \
+    av \
     media \
-    av
+    wfd
 
 # Additional native libraries
 PRODUCT_COPY_FILES += \
