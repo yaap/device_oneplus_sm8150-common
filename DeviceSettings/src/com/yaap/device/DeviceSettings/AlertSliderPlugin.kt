@@ -52,7 +52,10 @@ class AlertSliderPlugin : OverlayPlugin {
                 }
                 Intent.ACTION_CONFIGURATION_CHANGED -> {
                     synchronized (dialogLock) {
-                        handler.sendEmptyMessage(MSG_DIALOG_RECREATE)
+                        Handler(Looper.getMainLooper()).postDelayed({
+                            handler.context = context
+                            handler.sendEmptyMessage(MSG_DIALOG_RECREATE)
+                        }, 100) // for some reason it takes a while for systemui to update the theme here
                     }
                 }
             }
@@ -64,8 +67,11 @@ class AlertSliderPlugin : OverlayPlugin {
         handler = NotificationHandler(plugin)
         ambientConfig = AmbientDisplayConfiguration(context)
 
-        plugin.registerReceiver(updateReceiver, IntentFilter(Constants.SLIDER_UPDATE_ACTION))
-        plugin.registerReceiver(updateReceiver, IntentFilter(Intent.ACTION_CONFIGURATION_CHANGED))
+        val filter = IntentFilter().apply {
+            addAction(Constants.SLIDER_UPDATE_ACTION)
+            addAction(Intent.ACTION_CONFIGURATION_CHANGED)
+        }
+        plugin.registerReceiver(updateReceiver, filter)
     }
 
     override fun onDestroy() {
@@ -74,10 +80,10 @@ class AlertSliderPlugin : OverlayPlugin {
 
     override fun setup(statusBar: View, navBar: View) {}
 
-    private inner class NotificationHandler(private val context: Context) : Handler(Looper.getMainLooper()) {
+    private inner class NotificationHandler(var context: Context) : Handler(Looper.getMainLooper()) {
         private var dialog = AlertSliderDialog(context)
-        private var currUIMode = context.getResources().getConfiguration().uiMode
-        private var currRotation = context.getDisplay().getRotation()
+        private var currUIMode = context.resources.configuration.uiMode
+        private var currRotation = context.display.rotation
         private var showing = false
             set(value) {
                 synchronized (dialogLock) {
@@ -145,9 +151,11 @@ class AlertSliderPlugin : OverlayPlugin {
 
         private fun handleRecreate() {
             // Remake if theme changed or rotation
-            val uiMode = context.getResources().getConfiguration().uiMode
-            val rotation = context.getDisplay().getRotation()
-            if (uiMode != currUIMode || rotation != currRotation) {
+            val uiMode = context.resources.configuration.uiMode
+            val rotation = context.display.rotation
+            val themeChanged = uiMode != currUIMode
+            val rotationChanged = rotation != currRotation
+            if (themeChanged || rotationChanged) {
                 showing = false
                 dialog = AlertSliderDialog(context)
                 currUIMode = uiMode
