@@ -73,6 +73,7 @@ public class DeviceSettings extends PreferenceFragment implements
     private SwitchPreferenceCompat mMuteMediaSwitch;
     private SwitchPreferenceCompat mSliderDialogSwitch;
     private SwitchPreferenceCompat mSliderDozeSwitch;
+    private SwitchPreferenceCompat mSliderKeepZenSwitch;
     private Preference mDCSchedulePref;
     private ListPreference mReadingMode;
 
@@ -156,6 +157,10 @@ public class DeviceSettings extends PreferenceFragment implements
         mSliderDozeSwitch = findPreference(Constants.NOTIF_DIALOG_DOZE_KEY);
         mSliderDozeSwitch.setChecked(Constants.getIsSliderDozeEnabled(getContext()));
         mSliderDozeSwitch.setOnPreferenceChangeListener(this);
+
+        mSliderKeepZenSwitch = findPreference(Constants.NOTIF_SLIDER_ZEN_KEEP_KEY);
+        mSliderKeepZenSwitch.setChecked(Constants.getIsSliderZenKeepEnabled(getContext()));
+        mSliderKeepZenSwitch.setOnPreferenceChangeListener(this);
 
         updateSliderEnablement();
 
@@ -249,6 +254,10 @@ public class DeviceSettings extends PreferenceFragment implements
             Boolean enabled = (Boolean) newValue;
             Settings.System.putInt(resolver,
                     Constants.NOTIF_SLIDER_MUTE_MEDIA_KEY, enabled ? 1 : 0);
+        } else if (preference == mSliderKeepZenSwitch) {
+            Boolean enabled = (Boolean) newValue;
+            Settings.System.putInt(resolver,
+                    Constants.NOTIF_SLIDER_ZEN_KEEP_KEY, enabled ? 1 : 0);
         } else if (preference == mSliderDialogSwitch) {
             Boolean enabled = (Boolean) newValue;
             Settings.System.putInt(resolver,

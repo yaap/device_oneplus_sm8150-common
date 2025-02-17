@@ -100,6 +100,13 @@
             android:persistent="false" />
 
         <SwitchPreferenceCompat
+            android:key="slider_zen_keep"
+            android:title="@string/slider_zen_keep_title"
+            android:summary="@string/slider_zen_keep_summary"
+            android:defaultValue="false"
+            android:persistent="false" />
+
+        <SwitchPreferenceCompat
             android:key="slider_dialog_enabled"
             android:title="@string/slider_dialog_enabled_title"
             android:summary="@string/slider_dialog_enabled_summary"

@@ -111,14 +111,16 @@ public class KeyHandler implements DeviceKeyHandler {
         mNeedsRun = false;
         mHandler.removeCallbacksAndMessages(null);
 
+        final int targetMode = sSupportedSliderRingModes.get(keyCodeValue);
+        final int targetZenMode = sSupportedSliderZenModes.get(keyCodeValue);
+        final int targetHaptic = sSupportedSliderHaptics.get(keyCodeValue);
         if (mPrevKeyCode == Constants.KEY_VALUE_TOTAL_SILENCE && keyCodeValue != mPrevKeyCode) {
             // if previous was total silence we need to vibrate after setRingerModeInternal
             // for it to actually fire.
             // we also have to exit it before setRingerModeInternal because it sets it internally
-            final int targetMode = sSupportedSliderRingModes.get(keyCodeValue);
-            mNotificationManager.setZenMode(sSupportedSliderZenModes.get(keyCodeValue), null, TAG);
+            mNotificationManager.setZenMode(targetZenMode, null, TAG);
             mAudioManager.setRingerModeInternal(targetMode);
-            doHapticFeedback(sSupportedSliderHaptics.get(keyCodeValue));
+            doHapticFeedback(targetHaptic);
             // make sure ringer mode was set correctly (race condition because setZenMode is async)
             mNeedsRun = true;
             mHandler.postDelayed(() -> {
@@ -129,9 +131,13 @@ public class KeyHandler implements DeviceKeyHandler {
         } else {
             // here we have to vibrate before setting anything else.
             // also setRingerModeInternal before setZenMode because it could set the ringer mode
-            doHapticFeedback(sSupportedSliderHaptics.get(keyCodeValue));
+            doHapticFeedback(targetHaptic);
             mAudioManager.setRingerModeInternal(sSupportedSliderRingModes.get(keyCodeValue));
-            mNotificationManager.setZenMode(sSupportedSliderZenModes.get(keyCodeValue), null, TAG);
+            final boolean zenKeepEnabled = Constants.getIsSliderZenKeepEnabled(mContext);
+            if (!zenKeepEnabled || targetZenMode != Settings.Global.ZEN_MODE_OFF) {
+                // if zen keep is enabled we only transition into zen mode, not out of it
+                mNotificationManager.setZenMode(targetZenMode, null, TAG);
+            }
         }
 
         if (Constants.getIsMuteMediaEnabled(mContext)) {
@@ -151,8 +157,9 @@ public class KeyHandler implements DeviceKeyHandler {
                         Math.round((float)max * (float)last / 100f), AudioManager.FLAG_SHOW_UI);
             }
         }
-        if (Constants.getIsSliderDialogEnabled(mContext))
+        if (Constants.getIsSliderDialogEnabled(mContext)) {
             sendNotification(scanCode, keyCodeValue);
+        }
 
         mPrevKeyCode = keyCodeValue;
         return null;

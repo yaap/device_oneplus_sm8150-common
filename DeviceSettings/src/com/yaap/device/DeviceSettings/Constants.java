@@ -44,6 +44,7 @@ public class Constants {
     public static final String NOTIF_SLIDER_BOTTOM_KEY = "keycode_bottom_position";
     public static final String NOTIF_SLIDER_MUTE_MEDIA_KEY = "slider_mute_media";
     private static final String NOTIF_SLIDER_MUTE_MEDIA_LEVEL_KEY = "slider_mute_media_level";
+    public static final String NOTIF_SLIDER_ZEN_KEEP_KEY = "slider_zen_keep";
 
     // Slider positions
     public static final int POSITION_TOP = 603;
@@ -123,6 +124,11 @@ public class Constants {
     public static boolean getIsMuteMediaEnabled(Context context) {
         return Settings.System.getIntForUser(context.getContentResolver(),
                 NOTIF_SLIDER_MUTE_MEDIA_KEY, 0, UserHandle.USER_CURRENT) == 1;
+    }
+
+    public static boolean getIsSliderZenKeepEnabled(Context context) {
+        return Settings.System.getIntForUser(context.getContentResolver(),
+                NOTIF_SLIDER_ZEN_KEEP_KEY, 0, UserHandle.USER_CURRENT) == 1;
     }
 
     public static boolean getIsSliderDialogEnabled(Context context) {

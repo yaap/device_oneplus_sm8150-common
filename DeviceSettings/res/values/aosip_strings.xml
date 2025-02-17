@@ -96,6 +96,8 @@
     <string name="slider_doze_enabled_title">Slider doze</string>
     <string name="slider_doze_enabled_summary">Pulse doze to show the dialog when the screen is off</string>
     <string name="slider_doze_enabled_doze_disabled_summary">Doze is disabled system wide</string>
+    <string name="slider_zen_keep_title">Keep zen</string>
+    <string name="slider_zen_keep_summary">Slider would only enable Do Not Disturb but never disable it\nDoes not apply to total silence</string>
 
     <!-- Vibration slider -->
     <string name="category_vibrator">Vibrator</string>
