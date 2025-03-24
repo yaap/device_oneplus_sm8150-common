@@ -4,7 +4,10 @@
 //
 
 soong_namespace {
-    imports: ["hardware/qcom-caf/bootctrl"],
+    imports: [
+        "hardware/qcom-caf/bootctrl",
+        "vendor/oneplus/sm8150-common",
+    ],
 }
 
 prebuilt_hidl_interfaces {
