@@ -35,7 +35,7 @@ import androidx.preference.SwitchPreferenceCompat;
 import com.android.internal.yaap.hardware.LineageHardwareManager; // Need FWB support
 import com.android.internal.yaap.hardware.TouchscreenGesture; // Need FWB support
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
-import com.android.settingslib.collapsingtoolbar.R;
+import com.yaap.device.DeviceSettings.R;
 
 import java.lang.System;
 import java.util.ArrayList;
@@ -50,7 +50,8 @@ public class TouchscreenGestureSettings extends CollapsingToolbarBaseActivity
 
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
-                    .replace(R.id.content_frame, new MainSettingsFragment())
+                    .replace(com.android.settingslib.collapsingtoolbar.R.id.content_frame,
+                            new MainSettingsFragment())
                     .commit();
         }
     }
