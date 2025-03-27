@@ -509,6 +509,17 @@ vendor/lib/liblistensoundmodel2.so
 vendor/lib/libmulawdec.so
 vendor/lib/libsmwrapper.so
 
+# MDM Interface (from LA.UM.9.1.r1-11500.02-SMxxx0.QSSI12.0)
+vendor/lib/liboemnvbk_img_helper.so|c99261a01879acfa5c79fe1cb052ba03265b08a3
+vendor/lib64/libmdmimgload.so|131e8e7b09e4691a7cfde8cf6bf26ecdceced21e
+vendor/lib64/liboemnvbk_img_helper.so|3bc9b321d4e159bc19b8c0ce1f09304ba3d4b520
+-vendor/lib64/libmdmdetect.so;MODULE_SUFFIX=_vendor|de2a1c7a920b212379a5e0104c4e79fc761b71ce
+vendor/bin/init.mdm.sh|b8778c5ee154871ccbb390204ddd3f8af4cb4aa2
+vendor/bin/ks|3d26cb693f66345a15339755249c6a8519dab9c7
+vendor/bin/mdm_helper|ae461bfcf72ba66bb242ac27cb00c9bca98d4cb4
+vendor/bin/mdm_helper_proxy|4ca61671f94d204c2599655fa82a268fb10ed9d6
+vendor/bin/oemnvbkdaemon|1fa81b6b60e4b3eb718eadfcf34368f523bf483f
+
 # Media (vendor) - from LA.UM.9.1.r1-11500.02-SMxxx0.QSSI12.0
 vendor/etc/seccomp_policy/codec2.vendor.base.policy|05b0779b5da2ea640984d46a46a796edeaab5fab
 vendor/etc/seccomp_policy/codec2.vendor.ext.policy|6a9a9eb3261048f02805261568097410e1a23b2d
