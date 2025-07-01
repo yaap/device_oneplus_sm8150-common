@@ -24,8 +24,7 @@ TARGET_BOARD_PLATFORM := msmnile
 TARGET_COMMON_QTI_COMPONENTS := \
     adreno \
     av \
-    media \
-    wfd
+    media
 
 # Additional native libraries
 PRODUCT_COPY_FILES += \
