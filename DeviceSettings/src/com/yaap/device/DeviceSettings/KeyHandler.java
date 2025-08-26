@@ -105,7 +105,7 @@ public class KeyHandler implements DeviceKeyHandler {
 
         // We only want ACTION_UP event
         if (event.getAction() != KeyEvent.ACTION_UP) {
-            return event;
+            return null;
         }
 
         mNeedsRun = false;
