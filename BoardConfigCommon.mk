@@ -55,7 +55,6 @@ BOARD_USES_QCOM_HARDWARE := true
 TARGET_BOARD_PLATFORM := msmnile
 
 # Properties
-TARGET_ODM_PROP += $(VENDOR_PATH)/odm.prop
 TARGET_PRODUCT_PROP += $(VENDOR_PATH)/product.prop
 TARGET_SYSTEM_PROP += $(VENDOR_PATH)/system.prop
 TARGET_SYSTEM_EXT_PROP += $(VENDOR_PATH)/system_ext.prop

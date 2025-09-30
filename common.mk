@@ -129,18 +129,30 @@ PRODUCT_PACKAGES += \
     audio.bluetooth.default \
     audio.r_submix.default \
     audio.usb.default \
-    libaudio-resampler \
-    libaudioroute \
-    libhdmiedid \
+    libaudioroute.vendor \
+    libaudiopreprocessing \
+    libbatterylistener \
+    libbundlewrapper \
+    libcomprcapture \
+    libdownmix \
+    libdynproc \
+    libeffectproxy \
     libexthwplugin \
+    libhdmiedid \
     libhfp \
+    libldnhncr \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
+    libreverbwrapper \
     libsndmonitor \
     libspkrprot \
     libtinycompress \
+    libvisualizer \
     libvolumelistener \
+    liba2dpoffload \
+    libhdmiedid \
+    libhfp \
     tinymix
 
 PRODUCT_COPY_FILES += \
