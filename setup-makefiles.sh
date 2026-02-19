@@ -28,14 +28,8 @@ function vendor_imports() {
 		"hardware/oneplus",
 		"hardware/qcom-caf/sm8150",
 		"hardware/qcom/wlan/legacy",
-		"vendor/qcom/common/system/av",
-		"vendor/qcom/common/system/telephony",
-		"vendor/qcom/common/vendor/adreno-r",
-		"vendor/qcom/common/vendor/media-legacy",
-		"vendor/qcom/common/vendor/dsprpcd",
-		"vendor/qcom/common/system/wfd",
-		"vendor/qcom/opensource/dataservices",
 		"vendor/qcom/opensource/display",
+		"vendor/qcom/opensource/dataservices",
 EOF
 }
 
@@ -60,9 +54,6 @@ function lib_to_package_fixup_vendor_variants() {
             libasn1crtx | \
             libxtwifi_server_protocol | \
             libxtwifi_server_protocol_uri_v3 | \
-            libOmxCore| \
-            libplatformconfig| \
-            libc2dcolorconvert | \
             libaudio_log_utils | \
             vendor.qti.hardware.audiohalext@1.0 | \
             libwpa_client) ;;

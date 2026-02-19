@@ -21,10 +21,6 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 # Get Qcom components
 TARGET_EXCLUDE_QCOM_SEPOLICY := true
 TARGET_BOARD_PLATFORM := msmnile
-TARGET_COMMON_QTI_COMPONENTS := \
-    adreno \
-    av \
-    media
 
 # Additional native libraries
 PRODUCT_COPY_FILES += \
