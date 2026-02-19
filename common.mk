@@ -484,8 +484,6 @@ PRODUCT_PACKAGES += \
     libcurl.vendor \
     libpng.vendor:32
 
-PRODUCT_EXTRA_VNDK_VERSIONS := 30
-
 # Wifi
 PRODUCT_PACKAGES += \
     android.hardware.wifi-service \
