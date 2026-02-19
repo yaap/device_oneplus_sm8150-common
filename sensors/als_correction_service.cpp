@@ -77,7 +77,6 @@ void updateScreenBuffer() {
     captureArgs.captureArgs.sourceCrop = rect;
     captureArgs.width = ALS_RADIUS * 2;
     captureArgs.height = ALS_RADIUS * 2;
-    captureArgs.captureArgs.captureSecureLayers = true;
 
     DisplayState state;
     SurfaceComposerClient::getDisplayState(display, &state);
