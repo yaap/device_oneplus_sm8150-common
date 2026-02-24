@@ -39,15 +39,15 @@ import android.view.MenuItem;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
-import androidx.preference.PreferenceFragment;
 import androidx.preference.SwitchPreferenceCompat;
 import androidx.preference.TwoStatePreference;
 
+import com.android.settingslib.widget.SettingsBasePreferenceFragment;
 import com.yaap.device.DeviceSettings.ModeSwitch.DCModeSwitch;
 import com.yaap.device.DeviceSettings.ModeSwitch.HBMModeSwitch;
 import com.yaap.device.DeviceSettings.ModeSwitch.ReadingModeSwitch;
 
-public class DeviceSettings extends PreferenceFragment implements
+public class DeviceSettings extends SettingsBasePreferenceFragment implements
         Preference.OnPreferenceChangeListener, SharedPreferences.OnSharedPreferenceChangeListener {
 
     private static final String KEY_CATEGORY_CAMERA = "camera";

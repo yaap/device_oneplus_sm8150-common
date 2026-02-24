@@ -35,8 +35,9 @@ public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        getFragmentManager().beginTransaction()
-                .add(R.id.content_frame, new DeviceSettings())
+        getSupportFragmentManager().beginTransaction()
+                .replace(com.android.settingslib.collapsingtoolbar.R.id.content_frame,
+                        new DeviceSettings(), "DeviceSettingsActivity")
                 .commit();
 
         // Handle window insets for padding adjustments

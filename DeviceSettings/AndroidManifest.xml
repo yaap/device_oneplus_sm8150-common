@@ -33,7 +33,7 @@
     <application
         android:icon="@drawable/ic_settings_device"
         android:label="@string/device_title"
-        android:theme="@style/Theme.SubSettingsBase">
+        android:theme="@style/Theme.SubSettingsBase.Expressive">
 
         <!-- Device Settings -->
         <activity
@@ -66,14 +66,14 @@
         <activity
             android:name=".TouchscreenGestureSettings"
             android:label="@string/touchscreen_gesture_settings_title"
-            android:theme="@style/Theme.SubSettingsBase"
+            android:theme="@style/Theme.SubSettingsBase.Expressive"
             android:exported="false">
         </activity>
 
         <activity
             android:name=".DCDimScheduleSettings"
             android:label="@string/dc_schedule_title"
-            android:theme="@style/Theme.SubSettingsBase"
+            android:theme="@style/Theme.SubSettingsBase.Expressive"
             android:exported="false">
         </activity>
 
