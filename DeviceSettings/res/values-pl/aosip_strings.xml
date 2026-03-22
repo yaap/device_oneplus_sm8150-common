@@ -97,6 +97,38 @@
     <string name="slider_doze_enabled_title">Suwak Doze</string>
     <string name="slider_doze_enabled_summary">Doze impuls, aby pokazać dialog, gdy ekran jest wyłączony</string>
     <string name="slider_doze_enabled_doze_disabled_summary">Doze jest wyłączony systemowo. Włącz doze na stronie ustawień baterii.</string>
+    <string name="slider_zen_keep_title">Zachowaj tryb zen</string>
+    <string name="slider_zen_keep_summary">Suwak włącza jedynie tryb \"Nie przeszkadzać\", ale go nie wyłącza\nNie dotyczy trybu całkowitej ciszy</string>
 
-    <!-- Miscellaneous -->
+    <!-- Vibration slider -->
+    <string name="category_vibrator">Wibracje</string>
+    <string name="vib_strength_title_head">Siła</string>
+    <string name="vib_strength_summary_head">Zdefiniuj siłę wibracji</string>
+    <string name="vibration_warning">Ustawienie zbyt wysokiej siły może spowodować trwałe uszkodzenie sprzętu</string>
+
+    <!-- Camera -->
+    <string name="camera_title">Aparat</string>
+    <string name="always_on_camera_dialog_title">Okno dialogowe otwarcia przedniego aparatu</string>
+    <string name="always_on_camera_dialog_summary_on">Zawsze pytaj przed otwarciem</string>
+    <string name="always_on_camera_dialog_summary_off">Pytaj tylko, gdy ekran jest wyłączony</string>
+
+    <!-- DC Dimming Schedule -->
+    <string name="disabled">Wyłączone</string>
+    <string name="dc_schedule_title">Harmonogram redukcji migotania (DC-Dimming)</string>
+    <string name="dc_dim_auto_mode_title">Harmonogram</string>
+    <string name="dc_dim_start_time_title">Czas rozpoczęcia</string>
+    <string name="dc_dim_end_time_title">Czas zakończenia</string>
+    <string name="dc_schedule_twilight">Włącza się od zachodu do wschodu słońca</string>
+    <string name="dc_schedule_mixed_sunset">Włącza się od zachodu słońca do określonej godziny</string>
+    <string name="dc_schedule_mixed_sunrise">Włącza się od określonej godziny do wschodu słońca</string>
+    <string name="dc_schedule_custom">Włącza się o niestandardowej godzinie</string>
+    <string name="dc_dim_schedule_sunset">Zachód słońca</string>
+    <string name="dc_dim_schedule_sunrise">Wschód słońca</string>
+
+    <!-- Reading mode tile -->
+    <string name="reading_mode_title">Tryb czytania</string>
+    <string name="reading_mode_summary">Statyczna jasność i niska częstotliwość odświeżania w celu zmniejszenia zużycia energii w scenariuszach wyświetlania półstatycznego</string>
+    <string name="off">Wyłącz</string>
+    <string name="enabled">Włączony</string>
+    <string name="enabled_high">Włączony (Wysoka jasność)</string>
 </resources>
