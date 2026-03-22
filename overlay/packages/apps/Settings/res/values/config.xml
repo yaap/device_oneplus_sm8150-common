@@ -57,4 +57,7 @@
         <item>3</item>
     </integer-array>
 
+    <!-- Uses the legacy UDFPS enrollment UI with side text instead of a footer button. -->
+    <bool name="config_useLegacyUdfpsUi" translatable="false">true</bool>
+
 </resources>
